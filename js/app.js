@@ -3,7 +3,7 @@ import { today, addDays, daysBetween, newProgress, grade, newPerDay } from './sr
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback, geminiChat, stripMarks } from './speech.js';
 import { t, L, setLang, getLang } from './i18n.js';
 
-const APP_VERSION = '2.0.0';
+const APP_VERSION = '3.0.0';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
 
@@ -32,14 +32,14 @@ function view(item) {
 }
 function meaningHtml(item, v = view(item)) {
   if (item.kind === 'letter' || item.kind === 'mark') {
-    return getLang() === 'ur' ? `<div class="mean">${esc(item.ur)}</div>` : `<div class="mean">${esc(item.en)}</div>${showUrdu() ? `<div class="mean-ur" dir="rtl">${esc(item.ur)}</div>` : ''}`;
+    return getLang() === 'ur' ? `<p class="mean">${esc(item.ur)}</p>` : `<p class="mean">${esc(item.en)}</p>${showUrdu() ? `<p class="mean-ur" dir="rtl" lang="ur">${esc(item.ur)}</p>` : ''}`;
   }
-  if (getLang() === 'ur') return `<div class="mean" dir="rtl">${esc(item.ur)}</div>`;
-  return `<div class="mean">${esc(v.en)}</div>${showUrdu() ? `<div class="mean-ur" dir="rtl">${esc(item.ur)}</div>` : ''}`;
+  if (getLang() === 'ur') return `<p class="mean" dir="rtl">${esc(item.ur)}</p>`;
+  return `<p class="mean">${esc(v.en)}</p>${showUrdu() ? `<p class="mean-ur" dir="rtl" lang="ur">${esc(item.ur)}</p>` : ''}`;
 }
 function hookHtml(item) {
   if (!item.hook || !showUrdu()) return '';
-  return `<div class="hook"><span class="label">${t('hook')}</span>${esc(L(item.hook))}</div>`;
+  return `<div class="hook"><small>${t('hook')}</small>${esc(L(item.hook))}</div>`;
 }
 const hasAudio = item => item.kind === 'ayah' ? !!item.audio : !['letter'].includes(item.kind);
 async function play(item, slow = false) {
@@ -134,37 +134,77 @@ async function loadState() {
 async function saveProfile() { await kv.set('profile', S.profile); }
 async function saveSettings() { await kv.set('settings', S.settings); }
 
+// ---------- design primitives ----------
+const IC = {
+  today: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.6 3.3 4.1-.7-.7 4.1 3.3 2.6-3.3 2.6.7 4.1-4.1-.7L12 21.5l-2.6-3.3-4.1.7.7-4.1L2.7 12.2 6 9.6l-.7-4.1 4.1.7z"/></svg>',
+  practice: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/></svg>',
+  progress: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V5M19 20v-6"/></svg>',
+  settings: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M5.5 18.5l2.1-2.1M16.4 7.6l2.1-2.1"/></svg>',
+  close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  back: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',
+  play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" class="fill"/></svg>',
+  mic: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>',
+  chat: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>',
+  check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+};
+const icon = (name, cls = '') => `<span class="ic ${cls}">${IC[name]}</span>`;
+
+// The eight-pointed star (khatam). Each point is one of the last 8 days; filled when practised.
+function starSvg(days, centre, sub) {
+  const cx = 100, cy = 100, R = 96, r = 62;
+  const pt = (a, rad) => [cx + rad * Math.cos(a * Math.PI / 180), cy + rad * Math.sin(a * Math.PI / 180)];
+  const tips = days.map((on, i) => {
+    const a = -90 + (i - 7) * 45; // today at the top, earlier days running anticlockwise
+    const [x0, y0] = pt(a, R), [x1, y1] = pt(a - 22.5, r), [x2, y2] = pt(a + 22.5, r);
+    return `<path d="M${x1.toFixed(1)} ${y1.toFixed(1)}L${x0.toFixed(1)} ${y0.toFixed(1)}L${x2.toFixed(1)} ${y2.toFixed(1)}Z" class="tip ${on ? 'on' : ''}"/>`;
+  }).join('');
+  const oct = Array.from({ length: 8 }, (_, i) => pt(-90 + 22.5 + i * 45, r).map(v => v.toFixed(1)).join(' ')).join(' L');
+  return `<svg class="star" viewBox="0 0 200 200" role="img" aria-label="${esc(sub)}">${tips}<path d="M${oct}Z" class="core"/>
+    <text x="100" y="104" class="star-n">${esc(centre)}</text><text x="100" y="130" class="star-sub">${esc(sub)}</text></svg>`;
+}
+
+function shell(tab, inner) {
+  const tabs = [['today', 'tab_today', home], ['practice', 'tab_practice', practiceTab], ['progress', 'tab_progress', progressTab], ['settings', 'tab_settings', settings]];
+  render(`<div class="shell"><main class="page">${inner}</main>
+    <nav class="tabbar" aria-label="Main">${tabs.map(([id, label]) => `<button class="tab ${id === tab ? 'on' : ''}" data-tab="${id}" ${id === tab ? 'aria-current="page"' : ''}>${icon(id)}<span>${t(label)}</span></button>`).join('')}</nav></div>`);
+  tabs.forEach(([id, , fn]) => on(`[data-tab="${id}"]`, 'click', fn));
+}
+
+function vibrate(ok) { try { navigator.vibrate && navigator.vibrate(ok ? 18 : [30, 40, 30]); } catch (e) {} }
+
 // ---------- onboarding ----------
 const OB = {};
-function obScreen(title, body, hint = '') {
-  render(`<main class="screen onboard">
-    <div class="ob-progress"><span style="width:${OB.pct || 0}%"></span></div>
-    <h1>${title}</h1>${hint ? `<p class="hint">${hint}</p>` : ''}
-    <div class="ob-body">${body}</div></main>`);
+function obScreen(title, body, { hint = '', back = null, next = 'next', nextLabel = t('next') } = {}) {
+  render(`<div class="flow"><header class="flow-top">
+      ${back ? `<button class="icon-btn" id="back" aria-label="${t('back')}">${icon('back')}</button>` : '<span class="icon-btn"></span>'}
+      <div class="meter"><i style="width:${OB.pct || 0}%"></i></div><span class="icon-btn"></span></header>
+    <section class="flow-body"><h1>${title}</h1>${hint ? `<p class="lead">${hint}</p>` : ''}${body}</section>
+    ${next ? `<div class="dock"><p class="err" id="err" role="alert"></p><button class="btn primary" id="${next}">${nextLabel}</button></div>` : ''}</div>`);
+  if (back) on('#back', 'click', back);
 }
 
 function startOnboarding() {
   OB.data = { lang: 'enur', paths: ['umrah'], skipFoundations: false, goalDate: null, minutes: 20, form: 'both' };
   setLang('en');
-  render(`<main class="screen welcome">
-    <div class="logo ar">ع</div>
-    <h1>${t('welcome_title')}</h1><p class="lead">${t('welcome_body')}</p>
-    <button class="btn primary big" id="go">${t('start')}</button></main>`);
+  render(`<div class="welcome">
+    <div class="welcome-art"><div class="iqra ar" lang="ar">اقْرَأْ</div><p class="iqra-note">${t('welcome_caption')}</p></div>
+    <div class="welcome-text"><h1>${t('welcome_title')}</h1><p class="lead">${t('welcome_body')}</p></div>
+    <div class="dock"><button class="btn primary" id="go">${t('start')}</button></div></div>`);
   on('#go', 'click', obLang);
 }
 
-function choiceList(name, options, selected, multi = false) {
-  return `<div class="choices">${options.map(o => `
-    <label class="choice ${o.disabled ? 'disabled' : ''}">
+function tiles(name, options, selected, multi = false) {
+  return `<div class="tiles-list" role="${multi ? 'group' : 'radiogroup'}">${options.map(o => `
+    <label class="tile-opt ${o.disabled ? 'disabled' : ''}">
       <input type="${multi ? 'checkbox' : 'radio'}" name="${name}" value="${esc(o.value)}" ${(multi ? selected.includes(o.value) : selected === o.value) ? 'checked' : ''} ${o.disabled ? 'disabled' : ''}>
-      <span><b>${o.label}</b>${o.sub ? `<small>${o.sub}</small>` : ''}</span></label>`).join('')}</div>`;
+      <span class="tile-text"><b>${o.label}</b>${o.sub ? `<small>${o.sub}</small>` : ''}</span>
+      <span class="tick">${IC.check}</span></label>`).join('')}</div>`;
 }
-const navButtons = (backFn = true) => `<div class="row">${backFn ? `<button class="btn" id="back">${t('back')}</button>` : ''}<button class="btn primary" id="next">${t('next')}</button></div>`;
 
 function obLang() {
-  OB.pct = 10;
-  obScreen(t('ob_lang_q'), choiceList('lang', [
-    { value: 'en', label: t('ob_lang_en') }, { value: 'enur', label: t('ob_lang_enur') }, { value: 'ur', label: t('ob_lang_ur') }], OB.data.lang) + navButtons(false));
+  OB.pct = 12;
+  obScreen(t('ob_lang_q'), tiles('lang', [
+    { value: 'en', label: t('ob_lang_en') }, { value: 'enur', label: t('ob_lang_enur'), sub: t('ob_lang_enur_sub') }, { value: 'ur', label: t('ob_lang_ur') }], OB.data.lang), { back: startOnboarding });
   on('#next', 'click', () => {
     OB.data.lang = $app.querySelector('input[name=lang]:checked').value;
     setLang(OB.data.lang === 'ur' ? 'ur' : 'en');
@@ -173,10 +213,9 @@ function obLang() {
 }
 
 function obPaths() {
-  OB.pct = 25;
-  const opts = S.index.paths.map(p => ({ value: p.id, label: esc(L(p.title)), sub: p.available ? esc(L(p.desc)) : `${t('coming_soon')} · ${esc(p.eta)}`, disabled: !p.available }));
-  obScreen(t('ob_paths_q'), choiceList('paths', opts, OB.data.paths, true) + `<p class="err" id="err"></p>` + navButtons(), t('ob_paths_hint'));
-  on('#back', 'click', obLang);
+  OB.pct = 26;
+  const opts = S.index.paths.map(p => ({ value: p.id, label: esc(L(p.title)), sub: p.available ? esc(L(p.desc)) : t('coming_soon'), disabled: !p.available }));
+  obScreen(t('ob_paths_q'), tiles('paths', opts, OB.data.paths, true), { hint: t('ob_paths_hint'), back: obLang });
   on('#next', 'click', () => {
     const v = [...$app.querySelectorAll('input[name=paths]:checked')].map(i => i.value);
     if (!v.length) { $app.querySelector('#err').textContent = t('ob_paths_hint'); return; }
@@ -186,67 +225,66 @@ function obPaths() {
 
 function obLevel() {
   OB.pct = 40;
-  obScreen(t('ob_level_q'), `<div class="stack">
-    <button class="btn primary big" id="quiz">${t('ob_level_quiz')}</button>
-    <button class="btn big" id="zero">${t('ob_level_zero')}</button></div>
-    <div class="row"><button class="btn" id="back">${t('back')}</button></div>`, t('ob_level_quiz_hint'));
-  on('#back', 'click', obPaths);
+  obScreen(t('ob_level_q'), `<div class="tiles-list">
+    <button class="tile-opt as-btn" id="quiz"><span class="tile-text"><b>${t('ob_level_quiz')}</b><small>${t('ob_level_quiz_hint')}</small></span></button>
+    <button class="tile-opt as-btn" id="zero"><span class="tile-text"><b>${t('ob_level_zero')}</b><small>${t('ob_level_zero_sub')}</small></span></button></div>`, { back: obPaths, next: null });
   on('#zero', 'click', () => { OB.data.skipFoundations = false; obGoal(); });
   on('#quiz', 'click', () => placement(0, 0));
 }
 
 function placement(i, score) {
   const Q = S.index.placement;
+  OB.pct = 40 + Math.round(10 * i / Q.length);
   if (i >= Q.length) {
     OB.data.skipFoundations = score >= Q.length - 1;
-    obScreen(t('placement_title'), `<p class="result">${score} / ${Q.length}</p><p>${OB.data.skipFoundations ? t('placement_pass') : t('placement_fail')}</p>${navButtons()}`);
-    on('#back', 'click', obLevel); on('#next', 'click', obGoal);
+    obScreen(OB.data.skipFoundations ? t('placement_pass_title') : t('placement_fail_title'),
+      `<p class="big-num">${score}<span>/${Q.length}</span></p><p class="lead">${OB.data.skipFoundations ? t('placement_pass') : t('placement_fail')}</p>`, { back: obLevel });
+    on('#next', 'click', obGoal);
     return;
   }
   const [ar, ans, wrong] = Q[i];
-  obScreen(t('placement_title'), `<div class="big-ar ar">${esc(ar)}</div>
-    <div class="options">${shuffle([ans, ...wrong]).map(o => `<button class="btn opt" data-v="${esc(o)}">${esc(o)}</button>`).join('')}</div>
-    <p class="hint">${i + 1} / ${Q.length}</p>`);
-  on('.opt', 'click', e => placement(i + 1, score + (e.currentTarget.dataset.v === ans ? 1 : 0)));
+  obScreen(t('placement_title'), `<div class="glyph ar" lang="ar">${esc(ar)}</div>
+    <div class="answers">${shuffle([ans, ...wrong]).map(o => `<button class="answer" data-v="${esc(o)}">${esc(o)}</button>`).join('')}</div>
+    <p class="hint center">${t('question_n', { i: i + 1, n: Q.length })}</p>`, { back: obLevel, next: null });
+  on('.answer', 'click', e => placement(i + 1, score + (e.currentTarget.dataset.v === ans ? 1 : 0)));
 }
 
 function obGoal() {
-  OB.pct = 55;
+  OB.pct = 56;
   const has = !!OB.data.goalDate;
-  obScreen(t('ob_goal_q'), choiceList('goal', [
+  obScreen(t('ob_goal_q'), tiles('goal', [
     { value: 'none', label: t('ob_goal_none') }, { value: 'date', label: t('ob_goal_date') }], has ? 'date' : 'none') +
-    `<input type="date" id="date" min="${addDays(today(), 7)}" value="${OB.data.goalDate || ''}" class="${has ? '' : 'hidden'}">
-    <p class="err" id="err"></p>` + navButtons(), t('ob_goal_hint'));
+    `<input type="date" id="date" class="field ${has ? '' : 'hidden'}" min="${addDays(today(), 7)}" value="${OB.data.goalDate || ''}" aria-label="${t('ob_goal_date')}">`,
+  { hint: t('ob_goal_hint'), back: obLevel });
   on('input[name=goal]', 'change', () => $app.querySelector('#date').classList.toggle('hidden', $app.querySelector('input[name=goal]:checked').value !== 'date'));
-  on('#back', 'click', obLevel);
   on('#next', 'click', () => {
     const mode = $app.querySelector('input[name=goal]:checked').value;
     const d = $app.querySelector('#date').value;
-    if (mode === 'date' && !d) { $app.querySelector('#err').textContent = t('ob_goal_date'); return; }
+    if (mode === 'date' && !d) { $app.querySelector('#err').textContent = t('ob_goal_pick'); return; }
     OB.data.goalDate = mode === 'date' ? d : null; obMinutes();
   });
 }
 
 function obMinutes() {
-  OB.pct = 65;
-  obScreen(t('ob_minutes_q'), choiceList('min', [10, 20, 30].map(n => ({ value: String(n), label: t('minutes_n', { n }) })), String(OB.data.minutes)) + navButtons());
-  on('#back', 'click', obGoal);
+  OB.pct = 68;
+  obScreen(t('ob_minutes_q'), tiles('min', [
+    { value: '10', label: t('minutes_n', { n: 10 }), sub: t('min_10') },
+    { value: '20', label: t('minutes_n', { n: 20 }), sub: t('min_20') },
+    { value: '30', label: t('minutes_n', { n: 30 }), sub: t('min_30') }], String(OB.data.minutes)), { back: obGoal });
   on('#next', 'click', () => { OB.data.minutes = Number($app.querySelector('input[name=min]:checked').value); obForm(); });
 }
 
 function obForm() {
-  OB.pct = 75;
-  obScreen(t('ob_form_q'), choiceList('form', [
-    { value: 'm', label: t('form_m') }, { value: 'f', label: t('form_f') }, { value: 'both', label: t('form_both') }], OB.data.form) + navButtons(), t('ob_form_hint'));
-  on('#back', 'click', obMinutes);
+  OB.pct = 78;
+  obScreen(t('ob_form_q'), tiles('form', [
+    { value: 'm', label: t('form_m') }, { value: 'f', label: t('form_f') }, { value: 'both', label: t('form_both') }], OB.data.form), { hint: t('ob_form_hint'), back: obMinutes });
   on('#next', 'click', () => { OB.data.form = $app.querySelector('input[name=form]:checked').value; obKey(); });
 }
 
 function obKey() {
-  OB.pct = 85;
-  obScreen(t('ob_key_q'), `<input type="password" id="key" autocomplete="off" placeholder="${t('ob_key_placeholder')}" value="${esc(S.settings.geminiKey || '')}">
-    <div class="row"><button class="btn" id="back">${t('back')}</button><button class="btn" id="skip">${t('ob_key_skip')}</button><button class="btn primary" id="save">${t('save')}</button></div>`, t('ob_key_body'));
-  on('#back', 'click', obForm);
+  OB.pct = 88;
+  obScreen(t('ob_key_q'), `<input type="password" id="key" class="field" autocomplete="off" placeholder="${t('ob_key_placeholder')}" value="${esc(S.settings.geminiKey || '')}" aria-label="${t('set_key')}">
+    <button class="btn text" id="skip">${t('ob_key_skip')}</button>`, { hint: t('ob_key_body'), back: obForm, next: 'save', nextLabel: t('save') });
   on('#skip', 'click', obMic);
   on('#save', 'click', async () => {
     S.settings.geminiKey = $app.querySelector('#key').value.trim();
@@ -255,16 +293,16 @@ function obKey() {
 }
 
 function obMic() {
-  OB.pct = 95;
-  obScreen(t('ob_mic_q'), `<div class="big-ar ar">مَرْحَبَا</div>
-    ${canRecognize ? `<button class="btn primary big" id="test"><span class="mic"></span>${t('mic_test_btn')}</button>` : `<p class="warn">${t('mic_unsupported')}</p>`}
-    <p id="res" class="hint"></p>
-    <div class="row"><button class="btn" id="back">${t('back')}</button><button class="btn primary" id="finish">${t('done')}</button></div>`, t('ob_mic_body'));
-  on('#back', 'click', obKey);
+  OB.pct = 100;
+  obScreen(t('ob_mic_q'), `<div class="glyph ar" lang="ar">مَرْحَبَا</div><p class="center tr-line">marhaba</p>
+    ${canRecognize ? `<button class="mic-orb" id="test" aria-label="${t('mic_test_btn')}">${icon('mic')}</button><p class="center hint">${t('mic_test_btn')}</p>` : `<p class="note warn">${t('mic_unsupported')}</p>`}
+    <p id="res" class="center result-line" role="status"></p>`, { hint: t('ob_mic_body'), back: obKey, next: 'finish', nextLabel: t('done') });
   on('#test', 'click', async () => {
-    const res = $app.querySelector('#res'); res.textContent = t('listening');
-    try { const alts = await listen(); res.textContent = t('mic_ok', { h: alts[0] }); res.className = 'ok'; }
-    catch (e) { res.textContent = t('mic_fail', { e: e.message }); res.className = 'warn'; }
+    const res = $app.querySelector('#res'), orb = $app.querySelector('#test');
+    orb.classList.add('live'); res.className = 'center result-line'; res.textContent = t('listening');
+    try { const alts = await listen(); res.textContent = t('mic_ok', { h: alts[0] }); res.classList.add('ok'); }
+    catch (e) { res.textContent = t('mic_fail', { e: e.message }); res.classList.add('bad'); }
+    orb.classList.remove('live');
   });
   on('#finish', 'click', finishOnboarding);
 }
@@ -277,7 +315,589 @@ async function finishOnboarding() {
   home();
 }
 
-// ---------- home ----------
+// ---------- today ----------
+async function home() {
+  setLang(S.profile.lang === 'ur' ? 'ur' : 'en');
+  const st = await computeStats();
+  const date = today();
+  const dayN = daysBetween(S.profile.start, date) + 1;
+  const due = [...S.progress.values()].filter(p => p.due <= date).length;
+  const remainingIds = sequence().filter(id => !S.progress.has(id));
+  const nNew = st.doneToday ? 0 : Math.min(remainingIds.length, newPerDay(S.profile, plannedRemaining(), date));
+  const preview = remainingIds.slice(0, nNew).map(id => S.items.get(id)).filter(i => i && ['word', 'phrase', 'dua', 'sign'].includes(i.kind) && stripMarks(view(i).ar).length <= 14).slice(0, 3);
+  const lastExport = await kv.get('lastExport');
+  const needBackup = daysBetween(S.profile.start, date) >= 7 && (!lastExport || daysBetween(lastExport, date) >= 7);
+  const left = S.profile.goalDate ? Math.max(0, daysBetween(date, S.profile.goalDate)) : null;
+  const rehearsal = left !== null && left <= 5;
+  const done8 = Array.from({ length: 8 }, (_, i) => st.dates.has(addDays(date, i - 7)));
+  const mins = Math.max(5, Math.round((nNew * 60 + Math.min(due, 30) * 25) / 60));
+  const notes = [];
+  if (dayN % 7 === 0 && !st.doneToday) notes.push(`<div class="note brass">${t('boss_banner')}</div>`);
+  if (rehearsal) notes.push(`<div class="note brass">${t('rehearsal_banner')}</div>`);
+  if (needBackup) notes.push(`<div class="note"><span>${t('backup_reminder')}</span><button class="btn small" id="bk">${t('backup_now')}</button></div>`);
+
+  shell('today', `
+    <header class="today-head"><h1>${t('home_day', { n: dayN })}</h1><p class="lead">${left !== null ? t('home_goal_left', { n: left }) : t('home_no_goal')}</p></header>
+    <section class="star-wrap">${starSvg(done8, st.streak, t('stat_streak'))}<p class="hint center">${t('star_caption')}</p></section>
+    <section class="today-card ${st.doneToday ? 'done' : ''}">
+      ${st.doneToday ? `<h2>${t('home_done_today')}</h2><p class="lead">${t('done_sub')}</p>
+        <button class="btn" id="again">${t('home_again')}</button>`
+      : `<h2>${t('today_level')}</h2>
+        ${preview.length ? `<div class="preview" lang="ar" dir="rtl">${preview.map(i => `<span class="ar">${esc(view(i).ar)}</span>`).join('')}</div>` : ''}
+        <p class="lead">${t('today_meta', { n: nNew, r: Math.min(due, 30), m: mins })}</p>
+        <button class="btn primary" id="start">${t('home_start')}</button>`}
+    </section>
+    ${notes.join('')}
+    ${matchMedia('(display-mode: standalone)').matches ? '' : `<p class="hint center install">${t('install_hint')}</p>`}`);
+  on('#start', 'click', () => startLevel(false));
+  on('#again', 'click', () => startLevel(true));
+  on('#bk', 'click', doExport);
+}
+
+// ---------- practice tab ----------
+async function practiceTab() {
+  const all = await loadRoleplays();
+  const list = all.filter(sc => S.profile.paths.includes(sc.path));
+  const scores = await kv.get('rp-scores') || {};
+  const canTest = S.progress.size >= 20;
+  shell('practice', `
+    <header class="page-head"><h1>${t('tab_practice')}</h1><p class="lead">${t('practice_sub')}</p></header>
+    <section class="group">
+      <button class="row-btn" id="weak"><span><b>${t('practise_weak')}</b><small>${t('practise_weak_sub')}</small></span></button>
+      <button class="row-btn" id="ft" ${canTest ? '' : 'aria-disabled="true"'}><span><b>${t('ft_title')}</b><small>${canTest ? t('ft_sub') : t('ft_locked')}</small></span></button>
+    </section>
+    <h2 class="group-title">${t('rp_title')}</h2>
+    <p class="hint">${t('rp_desc')}</p>
+    <section class="group">${list.map(sc => `
+      <div class="rp-row">
+        <button class="rp-main" data-rp="${sc.id}"><b>${esc(L(sc.title))}</b><small>${esc(L(sc.desc))}${scores[sc.id] != null ? ` <em class="best">${t('best', { n: scores[sc.id] })}</em>` : ''}</small></button>
+        <button class="rp-gem" data-chat="${sc.id}" aria-label="${t('rp_free')}: ${esc(L(sc.title))}">${icon('chat')}<span>${t('rp_free_short')}</span></button>
+      </div>`).join('') || `<p class="hint">${t('rp_none')}</p>`}</section>`);
+  on('#weak', 'click', () => startLevel(true));
+  on('#ft', 'click', () => canTest ? ftStart() : toast(t('ft_locked')));
+  on('[data-rp]', 'click', e => rpPlay(list.find(x => x.id === e.currentTarget.dataset.rp), 0, 0));
+  on('[data-chat]', 'click', e => rpChat(list.find(x => x.id === e.currentTarget.dataset.chat)));
+}
+const rpList = practiceTab;
+
+// ---------- progress tab ----------
+async function progressTab() {
+  const st = await computeStats();
+  const prog = [...S.progress.values()];
+  const mastered = prog.filter(p => p.box >= 4).length;
+  const boxes = [1, 2, 3, 4, 5].map(b => prog.filter(p => p.box === b).length);
+  const maxBox = Math.max(1, ...boxes);
+  const date = today();
+  const days = Array.from({ length: 14 }, (_, i) => addDays(date, i - 13));
+  const byDate = Object.fromEntries(st.log.map(l => [l.date, l]));
+  const tests = await kv.get('final-tests') || [];
+  shell('progress', `
+    <header class="page-head"><h1>${t('tab_progress')}</h1></header>
+    <section class="figures">
+      <div><b>${st.streak}</b><span>${t('stat_streak')}</span></div>
+      <div><b>${prog.length}</b><span>${t('fig_started')}</span></div>
+      <div><b>${mastered}</b><span>${t('fig_mastered')}</span></div>
+      <div><b>${st.xp}</b><span>XP</span></div>
+    </section>
+    <h2 class="group-title">${t('last14')}</h2>
+    <section class="days">${days.map(d => { const l = byDate[d]; return `<div class="day-cell ${l ? (l.passed ? 'pass' : 'tried') : ''} ${d === date ? 'is-today' : ''}" title="${d}${l ? `: ${l.score}%` : ''}"><i></i><span>${Number(d.slice(8))}</span></div>`; }).join('')}</section>
+    <h2 class="group-title">${t('home_readiness')}</h2>
+    <section class="group">${pathReadiness().map(r => `
+      <div class="path-row"><div class="path-line"><b>${esc(L(r.pack.title))}</b><span>${r.pct}%</span></div>
+        <div class="bar"><i style="width:${r.pct}%"></i><s style="width:${r.total ? Math.round(100 * r.started / r.total) : 0}%"></s></div>
+        <small>${t('path_progress', { s: r.started, n: r.total })}${r.current ? `. ${t('path_next')}: ${esc(L(r.current.title))}` : ''}</small></div>`).join('')}</section>
+    <h2 class="group-title">${t('memory_title')}</h2>
+    <p class="hint">${t('memory_sub')}</p>
+    <section class="shelves">${boxes.map((n, i) => `<div class="shelf"><span class="shelf-name">${t('box_n', { n: i + 1 })}<small>${t('box_gap_' + (i + 1))}</small></span><div class="shelf-bar"><i style="width:${Math.round(100 * n / maxBox)}%"></i></div><b>${n}</b></div>`).join('')}</section>
+    ${tests.length ? `<p class="hint">${t('ft_last', { s: tests[tests.length - 1].score })}</p>` : ''}
+    <h2 class="group-title">${t('your_data')}</h2>
+    <p class="hint">${t('your_data_sub')}</p>
+    <section class="group">
+      <button class="row-btn" id="exp"><span><b>${t('export_btn')}</b><small>${t('export_sub')}</small></span></button>
+      <label class="row-btn"><span><b>${t('import_btn')}</b><small>${t('import_sub')}</small></span><input type="file" id="imp" accept="application/json,.json" hidden></label>
+      <button class="row-btn" id="rep"><span><b>${t('report_btn')}</b><small>${t('report_sub')}</small></span></button>
+    </section>`);
+  on('#exp', 'click', doExport);
+  on('#imp', 'change', async e => {
+    const f = e.target.files[0]; if (!f) return;
+    try { await importData(JSON.parse(await f.text())); await loadState(); toast(t('imported')); progressTab(); }
+    catch (err) { toast(t('import_fail')); }
+  });
+  on('#rep', 'click', copyReport);
+}
+
+// ---------- level ----------
+let LV = null;
+
+function startLevel(practice) {
+  LV = buildLevel(practice);
+  if (!LV.rounds.length) { toast(t('nothing_to_practise')); return home(); }
+  nextStep();
+}
+
+const ROUND_NAME = { review: 'round_review', learn: 'round_learn', read: 'round_read', listen: 'round_listen', speak: 'round_speak', build: 'round_build', meaning: 'round_meaning', plain: 'round_plain' };
+
+function levelFrame(stage, dock) {
+  const totalSteps = LV.rounds.reduce((s, r) => s + r.items.length, 0);
+  const doneSteps = LV.rounds.slice(0, LV.r).reduce((s, r) => s + r.items.length, 0) + LV.i;
+  const round = LV.rounds[LV.r];
+  render(`<div class="flow level">
+    <header class="flow-top"><button class="icon-btn" id="quit" aria-label="${t('close')}">${icon('close')}</button>
+      <div class="meter" role="progressbar" aria-valuenow="${doneSteps}" aria-valuemax="${totalSteps}"><i style="width:${Math.round(100 * doneSteps / totalSteps)}%"></i></div>
+      <span class="count">${doneSteps + 1}/${totalSteps}</span></header>
+    <p class="round-name ${round.boss ? 'boss' : ''}">${round.boss ? t('round_boss') + ': ' : ''}${t(ROUND_NAME[round.type])}</p>
+    <section class="stage">${stage}</section>
+    <div class="dock" id="dock"><div class="verdict" id="fb" role="status"></div>${dock}</div></div>`);
+  on('#quit', 'click', () => { if (confirm(t('quit_confirm'))) home(); });
+}
+function verdict(ok, html) {
+  const dock = $app.querySelector('#dock');
+  dock.classList.remove('ok', 'bad'); if (ok !== null) dock.classList.add(ok ? 'ok' : 'bad');
+  $app.querySelector('#fb').innerHTML = html;
+  if (ok !== null) vibrate(ok);
+}
+
+function nextStep() {
+  const round = LV.rounds[LV.r];
+  if (!round) return finishLevel();
+  if (LV.i >= round.items.length) { LV.r++; LV.i = 0; return nextStep(); }
+  const item = round.items[LV.i];
+  ({ review: stepReview, learn: stepLearn, read: stepRead, listen: stepListen, speak: stepSpeak, build: stepBuild, meaning: stepMeaning, plain: stepPlain })[round.type](item);
+}
+function advance() { LV.i++; nextStep(); }
+
+function audioButtons(item) {
+  if (!hasAudio(item)) return '';
+  return `<div class="audio"><button class="play" id="play" aria-label="${t('play')}">${icon('play')}</button>${item.kind !== 'ayah' ? `<button class="btn small ghost" id="slow">${t('play_slow')}</button>` : ''}</div>`;
+}
+function wireAudio(item) { on('#play', 'click', () => play(item)); on('#slow', 'click', () => play(item, true)); }
+
+function formsHtml(item) {
+  let h = '';
+  if (item.ar_f && S.profile.form === 'both') {
+    h += `<div class="forms"><div><small>${t('form_label_m')}</small><span class="ar" lang="ar">${esc(item.ar)}</span><em>${esc(item.tr)}</em></div>
+      <div><small>${t('form_label_f')}</small><span class="ar" lang="ar">${esc(item.ar_f)}</span><em>${esc(item.tr_f)}</em></div></div>`;
+  }
+  if (item.msa) h += `<div class="msa"><small>${t('standard_form')}</small><span class="ar" lang="ar">${esc(item.msa)}</span></div>`;
+  return h;
+}
+
+function glyphClass(item) { return item.kind === 'ayah' ? 'ayah ar' : item.kind === 'letter' ? 'letter ar' : (view(item).ar || '').length > 18 ? 'glyph long ar' : 'glyph ar'; }
+function cardHtml(item, back = true) {
+  const v = view(item);
+  return `<div class="word">
+    <div class="${glyphClass(item)}" lang="ar" dir="rtl">${esc(v.ar || '…')}</div>
+    ${back ? `<p class="tr-line">${esc(item.kind === 'letter' ? item.tr : v.tr)}</p>${meaningHtml(item, v)}${formsHtml(item)}${hookHtml(item)}` : ''}
+  </div>`;
+}
+
+function stepLearn(item) {
+  levelFrame(`${cardHtml(item)}${audioButtons(item)}`, `<button class="btn primary" id="next">${t('continue')}</button>`);
+  wireAudio(item);
+  if (hasAudio(item)) play(item);
+  on('#next', 'click', async () => { await markLearned(item); advance(); });
+}
+
+function stepReview(item) {
+  levelFrame(`<p class="q">${t('review_q')}</p>${cardHtml(item, false)}<div id="back"></div>`,
+    `<button class="btn primary" id="show">${t('show_answer')}</button>
+     <div class="pair hidden" id="grade"><button class="btn" id="no">${t('didnt')}</button><button class="btn primary" id="yes">${t('knew')}</button></div>`);
+  on('#show', 'click', () => {
+    $app.querySelector('.stage').innerHTML = cardHtml(item, true) + audioButtons(item);
+    wireAudio(item);
+    $app.querySelector('#show').classList.add('hidden');
+    $app.querySelector('#grade').classList.remove('hidden');
+  });
+  on('#yes', 'click', async () => { await answer(item, true); advance(); });
+  on('#no', 'click', async () => { await answer(item, false); advance(); });
+}
+
+function optionsStep(item, promptHtml, correct, others, renderOpt, after) {
+  const opts = shuffle([correct, ...others]);
+  levelFrame(`${promptHtml}<div class="answers ${renderOpt.cls || ''}">${opts.map((o, k) => `<button class="answer" data-k="${k}">${renderOpt(o)}</button>`).join('')}</div>`,
+    `<button class="btn primary hidden" id="next">${t('continue')}</button><p class="hint center" id="pick">${t('pick_one')}</p>`);
+  let done = false;
+  on('.answer', 'click', async e => {
+    if (done) return; done = true;
+    const k = Number(e.currentTarget.dataset.k);
+    const ok = opts[k] === correct;
+    $app.querySelectorAll('.answer').forEach((b, j) => { b.disabled = true; if (opts[j] === correct) b.classList.add('right'); else if (j === k) b.classList.add('wrong'); });
+    await answer(item, ok);
+    verdict(ok, `<b>${ok ? t('correct') : t('not_quite')}</b>`);
+    if (after) after(ok);
+    $app.querySelector('#pick').classList.add('hidden');
+    $app.querySelector('#next').classList.remove('hidden');
+    $app.querySelector('#next').focus();
+  });
+  on('#next', 'click', advance);
+}
+const addDetail = html => { const fb = $app.querySelector('#fb'); fb.innerHTML += `<span>${html}</span>`; };
+
+function stepRead(item) {
+  const sameKind = [...S.items.values()].filter(i => i.kind === item.kind && i.id !== item.id);
+  if (item.kind === 'letter') {
+    const f = o => esc(getLang() === 'ur' ? o.ur : o.en);
+    optionsStep(item, `<p class="q">${t('letter_sound')}</p><div class="letter ar" lang="ar">${esc(item.ar)}</div>`, item, sample(sameKind, 2), f, () => addDetail(`${esc(item.tr)}`));
+  } else {
+    optionsStep(item, `<p class="q">${t('reading_q')}</p><div class="glyph ar" lang="ar">${esc(item.ar)}</div>`, item, sample(sameKind.filter(o => o.tr !== item.tr), 2), o => esc(o.tr));
+  }
+}
+
+function stepListen(item) {
+  const group = item.kind === 'ayah' ? ['ayah'] : ['word', 'phrase', 'dua', 'sign'];
+  const known = [...S.items.values()].filter(i => i.id !== item.id && group.includes(i.kind) && i.ar && view(i).ar !== view(item).ar);
+  const pref = known.filter(i => S.progress.has(i.id));
+  const f = o => `<span class="ar" lang="ar">${esc(view(o).ar)}</span>`;
+  f.cls = 'arabic';
+  optionsStep(item, `<p class="q">${t('tap_listen_pick')}</p><div class="audio big">${audioButtons(item).replace('<div class="audio">', '').replace(/<\/div>$/, '')}</div>`, item, sample(pref.length >= 2 ? pref : known, 2), f,
+    () => addDetail(`${esc(view(item).tr)}: ${esc(getLang() === 'ur' ? item.ur : view(item).en)}`));
+  wireAudio(item);
+  setTimeout(() => play(item), 300);
+}
+
+function stepMeaning(item) {
+  const group = item.kind === 'ayah' ? ['ayah'] : ['word', 'phrase', 'dua', 'sign'];
+  const mean = o => getLang() === 'ur' ? o.ur : view(o).en;
+  const others = sample([...S.items.values()].filter(i => i.id !== item.id && group.includes(i.kind) && mean(i) !== mean(item)), 2);
+  optionsStep(item, `<p class="q">${t('pick_meaning')}</p><div class="${glyphClass(item)}" lang="ar">${esc(view(item).ar)}</div>`, item, others, o => esc(mean(o)), () => addDetail(esc(view(item).tr)));
+}
+
+function stepPlain(item) {
+  const mean = o => getLang() === 'ur' ? o.ur : view(o).en;
+  const others = sample([...S.items.values()].filter(i => i.id !== item.id && ['word', 'phrase', 'dua', 'sign'].includes(i.kind) && mean(i) !== mean(item)), 2);
+  optionsStep(item, `<p class="q">${t('plain_q')}</p><div class="glyph plain ar" lang="ar">${esc(stripMarks(view(item).ar))}</div>`, item, others, o => esc(mean(o)),
+    () => addDetail(`<span class="ar" lang="ar">${esc(view(item).ar)}</span> ${esc(view(item).tr)}`));
+}
+
+function wireFeedback(item) {
+  on('#gem', 'click', async () => {
+    const out = $app.querySelector('#gemout');
+    if (!S.settings.geminiKey) { out.textContent = t('feedback_nokey'); return; }
+    try {
+      out.textContent = t('feedback_recording');
+      const blob = await record(4000);
+      out.textContent = t('feedback_wait');
+      const txt = await geminiFeedback({ key: S.settings.geminiKey, model: S.settings.model || DEFAULT_MODEL, blob, item: { ...item, ...view(item) }, uiLang: getLang() });
+      out.textContent = txt;
+      const p = S.progress.get(item.id);
+      if (p) { p.note = txt.slice(0, 300); await db.put('progress', p); }
+    } catch (e) { out.textContent = t('gemini_error', { e: e.message }); }
+  });
+}
+
+function stepSpeak(item) {
+  const v = view(item);
+  const targets = [v.ar, item.ar, item.ar_f, item.msa, ...(item.accept || [])].filter(Boolean);
+  const threshold = ['ayah', 'dua'].includes(item.kind) ? 0.55 : 0.6;
+  let tries = 0, finished = false;
+  levelFrame(`${cardHtml(item)}${audioButtons(item)}
+    <button class="mic-orb" id="mic" aria-label="${t('tap_mic')}">${icon('mic')}</button><p class="center hint" id="mic-hint">${t('tap_mic')}</p>
+    ${S.settings.geminiKey ? `<button class="btn small ghost center-btn" id="gem">${t('feedback_btn')}</button><div id="gemout" class="gem" role="status"></div>` : ''}`,
+    `<div class="pair"><button class="btn" id="skip">${t('skip_word')}</button><button class="btn primary hidden" id="next">${t('continue')}</button></div>`);
+  wireAudio(item); wireFeedback(item);
+  const end = async ok => {
+    if (finished) return; finished = true;
+    await answer(item, ok);
+    $app.querySelector('#mic').disabled = true;
+    $app.querySelector('#skip').classList.add('hidden');
+    $app.querySelector('#next').classList.remove('hidden');
+  };
+  on('#mic', 'click', async () => {
+    if (finished) return;
+    const orb = $app.querySelector('#mic'); orb.classList.add('live'); orb.disabled = true;
+    verdict(null, t('listening'));
+    try {
+      const alts = await listen();
+      const j = judge(alts, targets, threshold);
+      tries++;
+      if (j.pass) { verdict(true, `<b>${t('correct')}</b><span>${t('heard', { h: esc(j.heard) })}</span>`); await end(true); }
+      else {
+        verdict(false, `<b>${tries >= 3 ? t('not_quite') : t('try_again')}</b><span>${t('heard', { h: esc(j.heard) })}</span>`);
+        if (tries >= 3) await end(false);
+      }
+    } catch (e) { verdict(false, t('mic_fail', { e: e.message })); }
+    orb.classList.remove('live'); if (!finished) orb.disabled = false;
+  });
+  on('#skip', 'click', () => end(false));
+  on('#next', 'click', advance);
+}
+
+function stepBuild(item) {
+  const v = view(item);
+  const words = v.ar.split(/\s+/);
+  const pool = [...S.items.values()].filter(i => i.id !== item.id && ['word', 'phrase'].includes(i.kind) && i.ar).flatMap(i => view(i).ar.split(/\s+/)).filter(w => !words.includes(w));
+  const tiles = shuffle([...words, ...sample([...new Set(pool)], 2)]);
+  let line = [];
+  levelFrame(`<p class="q">${t('build_prompt')}</p><p class="build-mean">${esc(getLang() === 'ur' ? item.ur : v.en)}</p>
+    <div class="line" id="line" dir="rtl" aria-label="${t('build_prompt')}"></div><div class="tiles" id="tiles" dir="rtl"></div>
+    <div id="after" class="hidden">${audioButtons(item)}${canRecognize ? `<button class="mic-orb small" id="mic" aria-label="${t('say_sentence')}">${icon('mic')}</button><p class="center hint">${t('say_sentence')}</p>` : ''}</div>`,
+    `<div class="pair" id="pre"><button class="btn" id="clear">${t('clear')}</button><button class="btn primary" id="check">${t('check')}</button></div>
+     <button class="btn primary hidden" id="next">${t('continue')}</button>`);
+  const draw = () => {
+    $app.querySelector('#line').innerHTML = line.map((w, k) => `<button class="chip ar" lang="ar" data-l="${k}">${esc(w)}</button>`).join('');
+    const used = [...line];
+    $app.querySelector('#tiles').innerHTML = tiles.map((w, k) => {
+      const u = used.indexOf(w); if (u >= 0) { used.splice(u, 1); return `<button class="chip ar used" lang="ar" disabled>${esc(w)}</button>`; }
+      return `<button class="chip ar" lang="ar" data-t="${k}">${esc(w)}</button>`;
+    }).join('');
+    $app.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { line.push(tiles[Number(b.dataset.t)]); draw(); });
+    $app.querySelectorAll('[data-l]').forEach(b => b.onclick = () => { line.splice(Number(b.dataset.l), 1); draw(); });
+  };
+  draw();
+  let checked = false;
+  on('#clear', 'click', () => { if (!checked) { line = []; draw(); } });
+  on('#check', 'click', async () => {
+    if (checked) return;
+    if (!line.length) { verdict(null, t('build_empty')); return; }
+    checked = true;
+    const ok = line.join(' ') === words.join(' ');
+    verdict(ok, ok ? `<b>${t('correct')}</b><span>${esc(v.tr)}</span>` : `<b>${t('not_quite')}</b><span class="ar" lang="ar">${esc(v.ar)}</span><span>${esc(v.tr)}</span>`);
+    await answer(item, ok);
+    $app.querySelector('#pre').classList.add('hidden');
+    $app.querySelector('#next').classList.remove('hidden');
+    $app.querySelector('#after').classList.remove('hidden');
+    wireAudio(item);
+    on('#mic', 'click', async () => {
+      const orb = $app.querySelector('#mic'); orb.classList.add('live');
+      try { const j = judge(await listen(), [v.ar, item.ar, item.ar_f].filter(Boolean), 0.6); addDetail(`${j.pass ? t('correct') : t('try_again')} ${t('heard', { h: esc(j.heard) })}`); }
+      catch (e) { addDetail(t('mic_fail', { e: e.message })); }
+      orb.classList.remove('live');
+    });
+  });
+  on('#next', 'click', advance);
+}
+
+async function finishLevel() {
+  const date = today();
+  const score = LV.total ? Math.round(100 * LV.right / LV.total) : 100;
+  const passed = score >= 80;
+  const xp = LV.right * 10 + (passed ? 50 : 0) + (passed && LV.boss ? 100 : 0);
+  const prev = await db.get('log', date);
+  const minutes = Math.round((Date.now() - LV.started) / 60000);
+  const rounds = Object.fromEntries(LV.rounds.map(r => [r.type, r.items.length]));
+  const entry = prev ? { ...prev, score: Math.max(prev.score, score), passed: prev.passed || passed, xp: (prev.xp || 0) + xp, minutes: (prev.minutes || 0) + minutes, practice: (prev.practice || 0) + (LV.practice ? 1 : 0) }
+    : { date, day: daysBetween(S.profile.start, date) + 1, score, passed, xp, minutes, learned: LV.fresh.size, rounds, practice: LV.practice ? 1 : 0, boss: LV.boss };
+  await db.put('log', entry);
+  const st = await computeStats();
+  const done8 = Array.from({ length: 8 }, (_, i) => st.dates.has(addDays(date, i - 7)));
+  const missed = [...LV.results.entries()].filter(([, r]) => !r.ok).map(([id]) => S.items.get(id)).filter(Boolean);
+  render(`<div class="flow summary">
+    <section class="stage">
+      <div class="star-wrap small">${starSvg(done8, `${score}%`, t('summary_score'))}</div>
+      <h1 class="center">${passed ? t('summary_pass_title') : t('summary_fail_title')}</h1>
+      <p class="lead center">${passed ? t('summary_pass') : t('summary_fail')}</p>
+      ${LV.boss && passed ? `<p class="note brass center">${t('summary_boss')}</p>` : ''}
+      <section class="figures two"><div><b>+${xp}</b><span>XP</span></div><div><b>${LV.right}/${LV.total}</b><span>${t('summary_right')}</span></div></section>
+      ${missed.length ? `<h2 class="group-title">${t('summary_missed')}</h2><ul class="missed">${missed.map(i => `<li><span class="ar" lang="ar">${esc(view(i).ar)}</span><span>${esc(view(i).tr)}</span></li>`).join('')}</ul>` : ''}
+    </section>
+    <div class="dock"><button class="btn primary" id="home">${t('continue')}</button></div></div>`);
+  on('#home', 'click', home);
+}
+
+// ---------- role-plays ----------
+async function loadRoleplays() {
+  if (S.roleplays) return S.roleplays;
+  try { S.roleplays = (await loadJSON('content/roleplays.json')).scenarios; } catch (e) { S.roleplays = []; }
+  return S.roleplays;
+}
+function npcHtml(line) {
+  return `<div class="bubble npc"><div class="ar" lang="ar" dir="rtl">${esc(line.ar)}</div><em>${esc(line.tr || '')}</em>
+    <p>${esc(getLang() === 'ur' ? (line.ur || line.en) : line.en)}</p></div>`;
+}
+
+function rpPlay(sc, step, score) {
+  if (step >= sc.steps.length) return rpDone(sc, score);
+  const st = sc.steps[step];
+  const exp = st.expect.map(id => S.items.get(id)).filter(Boolean);
+  const targets = exp.flatMap(i => [view(i).ar, i.ar, i.ar_f, i.msa, ...(i.accept || [])]).filter(Boolean);
+  let tries = 0, done = false;
+  render(`<div class="flow level">
+    <header class="flow-top"><button class="icon-btn" id="quit" aria-label="${t('close')}">${icon('close')}</button>
+      <div class="meter"><i style="width:${Math.round(100 * step / sc.steps.length)}%"></i></div><span class="count">${step + 1}/${sc.steps.length}</span></header>
+    <p class="round-name">${esc(L(sc.title))}</p>
+    <section class="stage">
+      ${npcHtml(st.npc)}
+      <div class="audio"><button class="play" id="play" aria-label="${t('play')}">${icon('play')}</button></div>
+      <p class="q">${t('rp_your_turn')}</p>
+      <div id="hints" class="hidden">${exp.map(i => `<div class="bubble me"><div class="ar" lang="ar" dir="rtl">${esc(view(i).ar)}</div><em>${esc(view(i).tr)}</em><p>${esc(getLang() === 'ur' ? i.ur : view(i).en)}</p></div>`).join('')}</div>
+      <button class="btn small ghost center-btn" id="hint">${t('rp_hint')}</button>
+      ${canRecognize ? `<button class="mic-orb" id="mic" aria-label="${t('tap_mic')}">${icon('mic')}</button>` : `<p class="note warn">${t('mic_unsupported')}</p>`}
+    </section>
+    <div class="dock" id="dock"><div class="verdict" id="fb" role="status"></div>
+      <div class="pair"><button class="btn" id="skip">${t('skip_word')}</button><button class="btn primary hidden" id="next">${t('continue')}</button></div></div></div>`);
+  const say = () => speak(st.npc.ar);
+  say();
+  on('#play', 'click', say);
+  on('#quit', 'click', practiceTab);
+  on('#hint', 'click', () => { $app.querySelector('#hints').classList.remove('hidden'); $app.querySelector('#hint').classList.add('hidden'); });
+  const finish = ok => {
+    if (done) return; done = true; if (ok) score++;
+    $app.querySelector('#hints').classList.remove('hidden'); $app.querySelector('#hint').classList.add('hidden');
+    $app.querySelector('#mic')?.setAttribute('disabled', '');
+    $app.querySelector('#skip').classList.add('hidden'); $app.querySelector('#next').classList.remove('hidden');
+  };
+  on('#mic', 'click', async () => {
+    if (done) return;
+    const orb = $app.querySelector('#mic'); orb.classList.add('live');
+    verdict(null, t('listening'));
+    try {
+      const j = judge(await listen(), targets, 0.6); tries++;
+      if (j.pass) { verdict(true, `<b>${t('correct')}</b><span>${t('heard', { h: esc(j.heard) })}</span>`); finish(true); }
+      else { verdict(false, `<b>${t('try_again')}</b><span>${t('heard', { h: esc(j.heard) })}</span>`); if (tries >= 3) finish(false); }
+    } catch (e) { verdict(false, t('mic_fail', { e: e.message })); }
+    orb.classList.remove('live');
+  });
+  on('#skip', 'click', () => finish(false));
+  on('#next', 'click', () => rpPlay(sc, step + 1, score));
+}
+
+async function rpDone(sc, score) {
+  const pct = Math.round(100 * score / sc.steps.length);
+  const scores = await kv.get('rp-scores') || {};
+  scores[sc.id] = Math.max(scores[sc.id] || 0, pct);
+  await kv.set('rp-scores', scores);
+  render(`<div class="flow summary"><section class="stage">
+    <p class="big-num center">${pct}<span>%</span></p>
+    <h1 class="center">${esc(L(sc.title))}</h1>
+    <p class="lead center">${pct >= 80 ? t('rp_passed') : t('rp_again')}</p></section>
+    <div class="dock"><div class="pair"><button class="btn" id="again">${t('rp_retry')}</button><button class="btn primary" id="list">${t('continue')}</button></div></div></div>`);
+  on('#again', 'click', () => rpPlay(sc, 0, 0));
+  on('#list', 'click', practiceTab);
+}
+
+function rpChat(sc) {
+  if (!S.settings.geminiKey) { toast(t('feedback_nokey')); return; }
+  const history = [];
+  render(`<div class="flow level chat">
+    <header class="flow-top"><button class="icon-btn" id="quit" aria-label="${t('close')}">${icon('close')}</button><p class="round-name inline">${esc(L(sc.title))}</p><span class="icon-btn"></span></header>
+    <section class="stage"><p class="hint center">${t('chat_intro')}</p><div id="log" class="log" aria-live="polite"></div></section>
+    <div class="dock" id="dock"><div class="verdict" id="fb" role="status"></div>
+      <div class="composer">${canRecognize ? `<button class="mic-orb small" id="mic" aria-label="${t('tap_mic')}">${icon('mic')}</button>` : ''}
+        <input type="text" id="txt" class="field" dir="auto" placeholder="${t('rp_type_ph')}" aria-label="${t('rp_type_ph')}"><button class="btn primary small" id="send">${t('send')}</button></div>
+      <button class="btn text" id="end">${t('rp_end')}</button></div></div>`);
+  const log = $app.querySelector('#log');
+  const addNpc = r => {
+    const d = document.createElement('div');
+    d.innerHTML = r.ar ? npcHtml(r) + (r.tip ? `<div class="hook"><small>${t('rp_tip')}</small>${esc(r.tip)}</div>` : '')
+      : `<div class="note">${esc(getLang() === 'ur' ? (r.ur || r.en) : r.en)}</div>`;
+    log.appendChild(d); d.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    if (r.ar) speak(r.ar);
+  };
+  const addMe = text => { const d = document.createElement('div'); d.innerHTML = `<div class="bubble me"><p dir="auto">${esc(text)}</p></div>`; log.appendChild(d); };
+  const send = async text => {
+    if (!text) return;
+    if (text !== '[START]' && text !== '[END]') addMe(text);
+    history.push({ role: 'user', text });
+    verdict(null, t('rp_thinking'));
+    try {
+      const r = await geminiChat({ key: S.settings.geminiKey, model: S.settings.model || DEFAULT_MODEL, system: rpSystem(sc), history });
+      history.push({ role: 'model', text: JSON.stringify(r) });
+      verdict(null, ''); addNpc(r);
+    } catch (e) { verdict(false, t('gemini_error', { e: e.message })); history.pop(); }
+  };
+  send('[START]');
+  on('#quit', 'click', practiceTab);
+  on('#mic', 'click', async () => {
+    const orb = $app.querySelector('#mic'); orb.classList.add('live'); verdict(null, t('listening'));
+    try { const alts = await listen({ timeoutMs: 10000 }); await send(alts[0]); }
+    catch (e) { verdict(false, t('mic_fail', { e: e.message })); }
+    orb.classList.remove('live');
+  });
+  const sendTyped = () => { const i = $app.querySelector('#txt'); const v = i.value.trim(); i.value = ''; send(v); };
+  on('#send', 'click', sendTyped);
+  $app.querySelector('#txt').addEventListener('keydown', e => { if (e.key === 'Enter') sendTyped(); });
+  on('#end', 'click', () => send('[END]'));
+}
+
+// ---------- final test ----------
+function ftStart() {
+  const learned = [...S.progress.keys()].map(id => S.items.get(id)).filter(i => i && ['word', 'phrase', 'dua', 'sign'].includes(i.kind));
+  ftStep(sample(learned, 20), 0, 0, []);
+}
+function ftStep(items, i, right, missed) {
+  if (i >= items.length) return ftDone(items.length, right, missed);
+  const item = items[i]; let checked = false;
+  render(`<div class="flow level">
+    <header class="flow-top"><button class="icon-btn" id="quit" aria-label="${t('close')}">${icon('close')}</button>
+      <div class="meter"><i style="width:${Math.round(100 * i / items.length)}%"></i></div><span class="count">${i + 1}/${items.length}</span></header>
+    <p class="round-name">${t('ft_title')}</p>
+    <section class="stage"><p class="q">${t('ft_q')}</p><div class="${glyphClass(item)}" lang="ar">${esc(view(item).ar)}</div>
+      <input type="text" id="ans" class="field big" dir="auto" autocomplete="off" placeholder="${t('ft_ph')}" aria-label="${t('ft_ph')}"></section>
+    <div class="dock" id="dock"><div class="verdict" id="fb" role="status"></div><button class="btn primary" id="go">${t('check')}</button></div></div>`);
+  const input = $app.querySelector('#ans'); input.focus();
+  const act = () => {
+    if (!checked) {
+      if (!input.value.trim()) { verdict(null, t('ft_empty')); return; }
+      checked = true; input.disabled = true;
+      const ok = checkTyped(item, input.value);
+      if (ok) right++; else missed.push(item);
+      verdict(ok, `<b>${ok ? t('correct') : t('not_quite')}</b><span>${esc(view(item).tr)}: ${esc(getLang() === 'ur' ? item.ur : view(item).en)}</span>`);
+      $app.querySelector('#go').textContent = t('continue');
+      return;
+    }
+    ftStep(items, i + 1, right, missed);
+  };
+  on('#go', 'click', act);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') act(); });
+  on('#quit', 'click', practiceTab);
+}
+async function ftDone(n, right, missed) {
+  const pct = n ? Math.round(100 * right / n) : 0;
+  const tests = await kv.get('final-tests') || [];
+  tests.push({ date: today(), score: pct, n });
+  await kv.set('final-tests', tests);
+  render(`<div class="flow summary"><section class="stage">
+    <p class="big-num center">${pct}<span>%</span></p><h1 class="center">${t('ft_title')}</h1>
+    <p class="lead center">${t('ft_result', { r: right, n })}</p>
+    ${missed.length ? `<h2 class="group-title">${t('summary_missed')}</h2><ul class="missed">${missed.map(i => `<li><span class="ar" lang="ar">${esc(view(i).ar)}</span><span>${esc(getLang() === 'ur' ? i.ur : view(i).en)}</span></li>`).join('')}</ul>` : ''}</section>
+    <div class="dock"><button class="btn primary" id="home">${t('continue')}</button></div></div>`);
+  on('#home', 'click', practiceTab);
+}
+
+// ---------- settings ----------
+function settings() {
+  const p = S.profile;
+  shell('settings', `
+    <header class="page-head"><h1>${t('tab_settings')}</h1></header>
+    <section class="group form">
+      <label>${t('set_lang')}<select id="lang" class="field"><option value="en">${t('ob_lang_en')}</option><option value="enur">${t('ob_lang_enur')}</option><option value="ur">${t('ob_lang_ur')}</option></select></label>
+      <label>${t('set_form')}<select id="form" class="field"><option value="m">${t('form_m')}</option><option value="f">${t('form_f')}</option><option value="both">${t('form_both')}</option></select></label>
+      <label>${t('set_minutes')}<select id="min" class="field"><option value="10">${t('minutes_n', { n: 10 })}</option><option value="20">${t('minutes_n', { n: 20 })}</option><option value="30">${t('minutes_n', { n: 30 })}</option></select></label>
+      <label>${t('set_goal')}<input type="date" id="goal" class="field" value="${esc(p.goalDate || '')}"></label>
+    </section>
+    <h2 class="group-title">${t('paths_label')}</h2>
+    <section class="group form">${S.index.paths.map(x => `<label class="check"><input type="checkbox" name="paths" value="${x.id}" ${p.paths.includes(x.id) ? 'checked' : ''} ${x.available ? '' : 'disabled'}><span>${esc(L(x.title))}</span></label>`).join('')}
+      <label class="check"><input type="checkbox" id="found" ${p.skipFoundations ? '' : 'checked'}><span>${t('path_foundations')}</span></label></section>
+    <h2 class="group-title">${t('gemini_title')}</h2>
+    <p class="hint">${t('ob_key_body')}</p>
+    <section class="group form">
+      <label>${t('set_key')}<input type="password" id="key" class="field" value="${esc(S.settings.geminiKey || '')}" autocomplete="off" placeholder="${t('ob_key_placeholder')}"></label>
+      <label>${t('set_model')}<input type="text" id="model" class="field" value="${esc(S.settings.model || DEFAULT_MODEL)}"></label>
+    </section>
+    <button class="btn primary wide" id="save">${t('save_settings')}</button>
+    <h2 class="group-title">${t('about_title')}</h2>
+    <p class="hint">${t('about_body')} v${APP_VERSION}</p>
+    <button class="btn danger wide" id="reset">${t('reset_btn')}</button>`);
+  $app.querySelector('#lang').value = p.lang; $app.querySelector('#form').value = p.form; $app.querySelector('#min').value = String(p.minutes);
+  on('#save', 'click', async () => {
+    p.lang = $app.querySelector('#lang').value; p.form = $app.querySelector('#form').value;
+    p.minutes = Number($app.querySelector('#min').value); p.goalDate = $app.querySelector('#goal').value || null;
+    const paths = [...$app.querySelectorAll('input[name=paths]:checked')].map(i => i.value);
+    if (paths.length) p.paths = paths;
+    p.skipFoundations = !$app.querySelector('#found').checked;
+    S.settings.geminiKey = $app.querySelector('#key').value.trim();
+    S.settings.model = $app.querySelector('#model').value.trim() || DEFAULT_MODEL;
+    await saveProfile(); await saveSettings();
+    setLang(p.lang === 'ur' ? 'ur' : 'en'); toast(t('saved')); settings();
+  });
+  on('#reset', 'click', async () => {
+    if (!confirm(t('reset_confirm'))) return;
+    await db.clear('progress'); await db.clear('log'); await kv.set('profile', null);
+    S.progress = new Map(); S.profile = null; startOnboarding();
+  });
+}
+
+// ---------- logic ----------
 async function computeStats() {
   const log = await db.all('log');
   const dates = new Set(log.filter(l => l.passed !== undefined).map(l => l.date));
@@ -285,7 +905,7 @@ async function computeStats() {
   if (!dates.has(d)) d = addDays(d, -1);
   while (dates.has(d)) { streak++; d = addDays(d, -1); }
   const xp = log.reduce((s, l) => s + (l.xp || 0), 0);
-  return { log, streak, xp, doneToday: dates.has(today()) };
+  return { log, streak, xp, dates, doneToday: dates.has(today()) };
 }
 
 function pathReadiness() {
@@ -298,53 +918,6 @@ function pathReadiness() {
     return { pack, pct: items.length ? Math.round(100 * mastered / items.length) : 0, started, total: items.length, current };
   });
 }
-
-async function home() {
-  setLang(S.profile.lang === 'ur' ? 'ur' : 'en');
-  const st = await computeStats();
-  const date = today();
-  const dayN = daysBetween(S.profile.start, date) + 1;
-  const due = [...S.progress.values()].filter(p => p.due <= date).length;
-  const remaining = sequence().filter(id => !S.progress.has(id)).length;
-  const nNew = Math.min(remaining, newPerDay(S.profile, plannedRemaining(), date));
-  const lastExport = await kv.get('lastExport');
-  const needBackup = daysBetween(S.profile.start, date) >= 7 && (!lastExport || daysBetween(lastExport, date) >= 7);
-  const goal = S.profile.goalDate ? t('home_goal_left', { n: Math.max(0, daysBetween(date, S.profile.goalDate)) }) : t('home_no_goal');
-  const ready = pathReadiness();
-  const rehearsal = S.profile.goalDate && daysBetween(date, S.profile.goalDate) <= 5 && daysBetween(date, S.profile.goalDate) >= 0;
-  render(`<main class="screen home">
-    <header class="top"><div><div class="day">${t('home_day', { n: dayN })}</div><div class="hint">${goal}</div></div>
-      <button class="icon-btn" id="settings" aria-label="${t('home_settings')}">⚙</button></header>
-    <section class="stats">
-      <div class="stat"><b>${st.streak}</b><span>${t('stat_streak')}</span></div>
-      <div class="stat"><b>${st.xp}</b><span>XP</span></div>
-      <div class="stat"><b>${due}</b><span>${t('stat_due')}</span></div>
-      <div class="stat"><b>${st.doneToday ? 0 : nNew}</b><span>${t('stat_new')}</span></div>
-    </section>
-    ${dayN % 7 === 0 && !st.doneToday ? `<div class="banner boss-banner">${t('boss_banner')}</div>` : ''}
-    ${needBackup ? `<div class="banner">${t('backup_reminder')} <button class="btn small" id="bk">${t('backup_now')}</button></div>` : ''}
-    ${st.doneToday ? `<p class="ok center">${t('home_done_today')}</p><button class="btn big" id="again">${t('home_again')}</button>`
-      : `<button class="btn primary big" id="start">${t('home_start')}</button>`}
-    ${ready.length ? `<section class="ready"><h2>${t('home_readiness')}</h2>${ready.map(r => `
-      <div class="path-row"><div class="bar-row"><span><b>${esc(L(r.pack.title))}</b></span><div class="bar"><i style="width:${r.pct}%"></i></div><b>${r.pct}%</b></div>
-      <small class="hint">${t('path_progress', { s: r.started, n: r.total })}${r.current ? ` · ${t('path_next')}: ${esc(L(r.current.title))}` : ''}</small></div>`).join('')}</section>` : ''}
-    <section class="practice"><h2>${t('practice_title')}</h2>
-      ${rehearsal ? `<div class="banner boss-banner">${t('rehearsal_banner')}</div>` : ''}
-      <button class="btn big" id="rp">${t('rp_title')}</button>
-      ${S.progress.size >= 20 ? `<button class="btn big" id="ft">${t('ft_title')}</button>` : `<p class="hint">${t('ft_locked')}</p>`}
-    </section>
-    <p class="hint center">${t('install_hint')}</p>
-  </main>`);
-  on('#settings', 'click', settings);
-  on('#start', 'click', () => startLevel(false));
-  on('#again', 'click', () => startLevel(true));
-  on('#bk', 'click', doExport);
-  on('#rp', 'click', rpList);
-  on('#ft', 'click', ftStart);
-}
-
-// ---------- level ----------
-let LV = null;
 
 function buildLevel(practice) {
   const date = today();
@@ -389,34 +962,6 @@ function buildLevel(practice) {
   return { practice, boss, rounds, fresh: new Set(fresh.map(i => i.id)), base: new Map(pool.map(i => [i.id, S.progress.get(i.id)])), results: new Map(), right: 0, total: 0, r: 0, i: 0, started: Date.now() };
 }
 
-function startLevel(practice) {
-  LV = buildLevel(practice);
-  if (!LV.rounds.length) { toast('—'); return home(); }
-  nextStep();
-}
-
-const ROUND_NAME = { review: 'round_review', learn: 'round_learn', read: 'round_read', listen: 'round_listen', speak: 'round_speak', build: 'round_build', meaning: 'round_meaning', plain: 'round_plain' };
-
-function levelFrame(inner) {
-  const totalSteps = LV.rounds.reduce((s, r) => s + r.items.length, 0);
-  const doneSteps = LV.rounds.slice(0, LV.r).reduce((s, r) => s + r.items.length, 0) + LV.i;
-  render(`<main class="screen level">
-    <header class="lv-top"><button class="icon-btn" id="quit" aria-label="Close">✕</button>
-      <div class="lv-bar"><i style="width:${Math.round(100 * doneSteps / totalSteps)}%"></i></div></header>
-    <div class="round-name">${LV.rounds[LV.r].boss ? `<span class="boss">${t('round_boss')}</span> · ` : ''}${t(ROUND_NAME[LV.rounds[LV.r].type])}</div>
-    ${inner}</main>`);
-  on('#quit', 'click', home);
-}
-
-function nextStep() {
-  const round = LV.rounds[LV.r];
-  if (!round) return finishLevel();
-  if (LV.i >= round.items.length) { LV.r++; LV.i = 0; return nextStep(); }
-  const item = round.items[LV.i];
-  ({ review: stepReview, learn: stepLearn, read: stepRead, listen: stepListen, speak: stepSpeak, build: stepBuild, meaning: stepMeaning, plain: stepPlain })[round.type](item);
-}
-function advance() { LV.i++; nextStep(); }
-
 // Record one graded answer and save the item's progress right away.
 async function answer(item, correct) {
   LV.total++; if (correct) LV.right++;
@@ -445,320 +990,6 @@ async function markLearned(item) {
   await db.put('progress', p);
 }
 
-function audioButtons(item) {
-  if (!hasAudio(item)) return '';
-  return `<div class="audio"><button class="btn round" id="play" aria-label="${t('play')}">▶</button>${item.kind !== 'ayah' ? `<button class="btn small" id="slow">${t('play_slow')}</button>` : ''}</div>`;
-}
-function wireAudio(item) { on('#play', 'click', () => play(item)); on('#slow', 'click', () => play(item, true)); }
-
-function formsHtml(item) {
-  let h = '';
-  if (item.ar_f && S.profile.form === 'both') {
-    h += `<div class="forms"><div><span class="label">${t('form_label_m')}</span><span class="ar">${esc(item.ar)}</span><small>${esc(item.tr)}</small></div>
-      <div><span class="label">${t('form_label_f')}</span><span class="ar">${esc(item.ar_f)}</span><small>${esc(item.tr_f)}</small></div></div>`;
-  }
-  if (item.msa) h += `<div class="msa"><span class="label">${t('standard_form')}</span><span class="ar">${esc(item.msa)}</span></div>`;
-  return h;
-}
-
-function cardHtml(item, back = true) {
-  const v = view(item);
-  const arClass = item.kind === 'ayah' ? 'ayah ar' : (item.kind === 'letter' ? 'letter ar' : 'big-ar ar');
-  return `<div class="card">
-    <div class="${arClass}">${esc(v.ar || '…')}</div>
-    ${back ? `<div class="tr">${esc(item.kind === 'letter' ? item.tr : v.tr)}</div>${meaningHtml(item, v)}${formsHtml(item)}${hookHtml(item)}` : ''}
-  </div>`;
-}
-
-function stepLearn(item) {
-  levelFrame(`${cardHtml(item)}${audioButtons(item)}<button class="btn primary big" id="next">${t('next')}</button>`);
-  wireAudio(item);
-  if (hasAudio(item)) play(item);
-  on('#next', 'click', async () => { await markLearned(item); advance(); });
-}
-
-function stepReview(item) {
-  levelFrame(`${cardHtml(item, false)}<div id="backside"></div>
-    <button class="btn primary big" id="show">${t('show_answer')}</button>
-    <div class="row hidden" id="grade"><button class="btn bad" id="no">${t('didnt')}</button><button class="btn good" id="yes">${t('knew')}</button></div>`);
-  on('#show', 'click', () => {
-    $app.querySelector('.card').outerHTML = cardHtml(item, true) + audioButtons(item);
-    wireAudio(item);
-    $app.querySelector('#show').classList.add('hidden');
-    $app.querySelector('#grade').classList.remove('hidden');
-  });
-  on('#yes', 'click', async () => { await answer(item, true); advance(); });
-  on('#no', 'click', async () => { await answer(item, false); advance(); });
-}
-
-function optionsStep(item, promptHtml, correct, others, renderOpt, after) {
-  const opts = shuffle([correct, ...others]);
-  levelFrame(`${promptHtml}<div class="options">${opts.map((o, k) => `<button class="btn opt ${renderOpt.cls || ''}" data-k="${k}">${renderOpt(o)}</button>`).join('')}</div>
-    <p id="fb" class="fb"></p><button class="btn primary big hidden" id="next">${t('next')}</button>`);
-  let done = false;
-  on('.opt', 'click', async e => {
-    if (done) return; done = true;
-    const k = Number(e.currentTarget.dataset.k);
-    const ok = opts[k] === correct;
-    $app.querySelectorAll('.opt').forEach((b, j) => { if (opts[j] === correct) b.classList.add('good'); else if (j === k) b.classList.add('bad'); });
-    await answer(item, ok);
-    if (after) after(ok);
-    $app.querySelector('#next').classList.remove('hidden');
-  });
-  on('#next', 'click', advance);
-}
-
-function stepRead(item) {
-  const sameKind = [...S.items.values()].filter(i => i.kind === item.kind && i.id !== item.id);
-  if (item.kind === 'letter') {
-    const others = sample(sameKind, 2);
-    const f = o => esc(getLang() === 'ur' ? o.ur : o.en);
-    optionsStep(item, `<p class="q">${t('letter_sound')}</p><div class="letter ar">${esc(item.ar)}</div>`, item, others, f);
-  } else {
-    const others = sample(sameKind.filter(o => o.tr !== item.tr), 2);
-    optionsStep(item, `<p class="q">${t('reading_q')}</p><div class="big-ar ar">${esc(item.ar)}</div>`, item, others, o => esc(o.tr));
-  }
-}
-
-function stepListen(item) {
-  const group = item.kind === 'ayah' ? ['ayah'] : ['word', 'phrase', 'dua', 'sign'];
-  const known = [...S.items.values()].filter(i => i.id !== item.id && group.includes(i.kind) && i.ar && view(i).ar !== view(item).ar);
-  const pref = known.filter(i => S.progress.has(i.id));
-  const others = sample(pref.length >= 2 ? pref : known, 2);
-  const f = o => `<span class="ar">${esc(view(o).ar)}</span>`;
-  f.cls = 'ar-opt';
-  optionsStep(item, `<p class="q">${t('tap_listen_pick')}</p>${audioButtons(item)}`, item, others, f, () => {
-    $app.querySelector('#fb').innerHTML = `${esc(view(item).tr)} — ${esc(getLang() === 'ur' ? item.ur : view(item).en)}`;
-  });
-  wireAudio(item);
-  setTimeout(() => play(item), 300);
-}
-
-function stepMeaning(item) {
-  const group = item.kind === 'ayah' ? ['ayah'] : ['word', 'phrase', 'dua', 'sign'];
-  const mean = o => getLang() === 'ur' ? o.ur : view(o).en;
-  const others = sample([...S.items.values()].filter(i => i.id !== item.id && group.includes(i.kind) && mean(i) !== mean(item)), 2);
-  const arClass = item.kind === 'ayah' ? 'ayah ar' : 'big-ar ar';
-  optionsStep(item, `<p class="q">${t('pick_meaning')}</p><div class="card"><div class="${arClass}">${esc(view(item).ar)}</div></div>`, item, others, o => esc(mean(o)), () => {
-    $app.querySelector('#fb').textContent = view(item).tr;
-  });
-}
-
-function stepPlain(item) {
-  const mean = o => getLang() === 'ur' ? o.ur : view(o).en;
-  const group = ['word', 'phrase', 'dua', 'sign'];
-  const others = sample([...S.items.values()].filter(i => i.id !== item.id && group.includes(i.kind) && mean(i) !== mean(item)), 2);
-  optionsStep(item, `<p class="q">${t('plain_q')}</p><div class="card"><div class="big-ar ar">${esc(stripMarks(view(item).ar))}</div></div>`, item, others, o => esc(mean(o)), () => {
-    $app.querySelector('#fb').innerHTML = `<span class="ar">${esc(view(item).ar)}</span> · ${esc(view(item).tr)}`;
-  });
-}
-
-function feedbackHtml() {
-  return `<button class="btn small" id="gem">${t('feedback_btn')}</button><div id="gemout" class="gem"></div>`;
-}
-function wireFeedback(item) {
-  on('#gem', 'click', async () => {
-    const out = $app.querySelector('#gemout');
-    if (!S.settings.geminiKey) { out.textContent = t('feedback_nokey'); return; }
-    try {
-      out.textContent = t('feedback_recording');
-      const blob = await record(4000);
-      out.textContent = t('feedback_wait');
-      const txt = await geminiFeedback({ key: S.settings.geminiKey, model: S.settings.model || DEFAULT_MODEL, blob, item: { ...item, ...view(item) }, uiLang: getLang() });
-      out.textContent = txt;
-      const p = S.progress.get(item.id);
-      if (p) { p.note = txt.slice(0, 300); await db.put('progress', p); }
-    } catch (e) { out.textContent = e.message; }
-  });
-}
-
-function stepSpeak(item) {
-  const v = view(item);
-  const targets = [v.ar, item.ar, item.ar_f, item.msa, ...(item.accept || [])].filter(Boolean);
-  const threshold = ['ayah', 'dua'].includes(item.kind) ? 0.55 : 0.6;
-  let tries = 0, finished = false;
-  levelFrame(`${cardHtml(item)}${audioButtons(item)}
-    <button class="btn primary big mic-btn" id="mic"><span class="mic"></span>${t('tap_mic')}</button>
-    <p id="fb" class="fb"></p>
-    ${feedbackHtml()}
-    <div class="row"><button class="btn" id="skip">${t('skip_word')}</button><button class="btn primary hidden" id="next">${t('next')}</button></div>`);
-  wireAudio(item); wireFeedback(item);
-  const fb = () => $app.querySelector('#fb');
-  const end = async ok => {
-    if (finished) return; finished = true;
-    await answer(item, ok);
-    $app.querySelector('#mic').classList.add('hidden');
-    $app.querySelector('#skip').classList.add('hidden');
-    $app.querySelector('#next').classList.remove('hidden');
-  };
-  on('#mic', 'click', async () => {
-    if (finished) return;
-    const btn = $app.querySelector('#mic'); btn.disabled = true; fb().className = 'fb'; fb().textContent = t('listening');
-    try {
-      const alts = await listen();
-      const j = judge(alts, targets, threshold);
-      tries++;
-      if (j.pass) { fb().className = 'fb ok'; fb().textContent = `${t('correct')} · ${t('heard', { h: j.heard })}`; await end(true); }
-      else {
-        fb().className = 'fb bad'; fb().textContent = `${t('try_again')} ${t('heard', { h: j.heard })}`;
-        if (tries >= 3) await end(false);
-      }
-    } catch (e) { fb().className = 'fb bad'; fb().textContent = t('mic_fail', { e: e.message }); }
-    btn.disabled = false;
-  });
-  on('#skip', 'click', () => end(false));
-  on('#next', 'click', advance);
-}
-
-function stepBuild(item) {
-  const v = view(item);
-  const words = v.ar.split(/\s+/);
-  const pool = [...S.items.values()].filter(i => i.id !== item.id && ['word', 'phrase'].includes(i.kind) && i.ar).flatMap(i => view(i).ar.split(/\s+/)).filter(w => !words.includes(w));
-  const tiles = shuffle([...words, ...sample([...new Set(pool)], 2)]);
-  let line = [];
-  levelFrame(`<p class="q">${t('build_prompt')}</p><div class="card"><div class="mean">${esc(getLang() === 'ur' ? item.ur : v.en)}</div></div>
-    <div class="line ar" id="line" dir="rtl"></div><div class="tiles" id="tiles" dir="rtl"></div>
-    <p id="fb" class="fb"></p>
-    <div class="row"><button class="btn" id="clear">${t('clear')}</button><button class="btn primary" id="check">${t('check')}</button></div>
-    <div id="after" class="hidden">${audioButtons(item)}<p class="q">${t('say_sentence')}</p>${canRecognize ? `<button class="btn mic-btn" id="mic"><span class="mic"></span>${t('tap_mic')}</button>` : ''}<p id="fb2" class="fb"></p>
-    <button class="btn primary big" id="next">${t('next')}</button></div>`);
-  const draw = () => {
-    $app.querySelector('#line').innerHTML = line.map((w, k) => `<button class="tile ar" data-l="${k}">${esc(w)}</button>`).join('');
-    const used = [...line];
-    $app.querySelector('#tiles').innerHTML = tiles.map((w, k) => {
-      const u = used.indexOf(w); if (u >= 0) { used.splice(u, 1); return `<button class="tile ar used" disabled>${esc(w)}</button>`; }
-      return `<button class="tile ar" data-t="${k}">${esc(w)}</button>`;
-    }).join('');
-    $app.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { line.push(tiles[Number(b.dataset.t)]); draw(); });
-    $app.querySelectorAll('[data-l]').forEach(b => b.onclick = () => { line.splice(Number(b.dataset.l), 1); draw(); });
-  };
-  draw();
-  let checked = false;
-  on('#clear', 'click', () => { if (!checked) { line = []; draw(); } });
-  on('#check', 'click', async () => {
-    if (checked) return;
-    if (!line.length) { $app.querySelector('#fb').textContent = t('build_prompt'); return; }
-    checked = true;
-    const ok = line.join(' ') === words.join(' ');
-    const fb = $app.querySelector('#fb');
-    fb.className = ok ? 'fb ok' : 'fb bad';
-    fb.innerHTML = ok ? `${t('correct')} · ${esc(v.tr)}` : `<span class="ar">${esc(v.ar)}</span><br>${esc(v.tr)}`;
-    await answer(item, ok);
-    $app.querySelector('#clear').parentElement.classList.add('hidden');
-    $app.querySelector('#after').classList.remove('hidden');
-    wireAudio(item);
-    on('#mic', 'click', async () => {
-      const f2 = $app.querySelector('#fb2'); f2.textContent = t('listening');
-      try { const j = judge(await listen(), [v.ar, item.ar, item.ar_f].filter(Boolean), 0.6); f2.className = j.pass ? 'fb ok' : 'fb bad'; f2.textContent = `${j.pass ? t('correct') : t('try_again')} ${t('heard', { h: j.heard })}`; }
-      catch (e) { f2.textContent = t('mic_fail', { e: e.message }); }
-    });
-  });
-  on('#next', 'click', advance);
-}
-
-async function finishLevel() {
-  const date = today();
-  const score = LV.total ? Math.round(100 * LV.right / LV.total) : 100;
-  const passed = score >= 80;
-  const xp = LV.right * 10 + (passed ? 50 : 0) + (passed && LV.boss ? 100 : 0);
-  const prev = await db.get('log', date);
-  const minutes = Math.round((Date.now() - LV.started) / 60000);
-  const rounds = Object.fromEntries(LV.rounds.map(r => [r.type, r.items.length]));
-  const entry = prev ? { ...prev, score: Math.max(prev.score, score), passed: prev.passed || passed, xp: (prev.xp || 0) + xp, minutes: (prev.minutes || 0) + minutes, practice: (prev.practice || 0) + (LV.practice ? 1 : 0) }
-    : { date, day: daysBetween(S.profile.start, date) + 1, score, passed, xp, minutes, learned: LV.fresh.size, rounds, practice: LV.practice ? 1 : 0, boss: LV.boss };
-  await db.put('log', entry);
-  const missed = [...LV.results.entries()].filter(([, r]) => !r.ok).map(([id]) => S.items.get(id));
-  render(`<main class="screen summary">
-    <h1>${t('summary_title')}</h1>
-    <div class="score ${passed ? 'ok' : 'bad'}">${score}%</div>
-    <p>${passed ? t('summary_pass') : t('summary_fail')}</p>${LV.boss && passed ? `<p class="ok"><b>${t('summary_boss')}</b></p>` : ''}
-    <div class="stats"><div class="stat"><b>+${xp}</b><span>${t('summary_xp')}</span></div><div class="stat"><b>${LV.right}/${LV.total}</b><span>${t('summary_score')}</span></div></div>
-    ${missed.length ? `<h2>${t('summary_missed')}</h2><ul class="missed">${missed.map(i => `<li><span class="ar">${esc(view(i).ar)}</span> — ${esc(view(i).tr)}</li>`).join('')}</ul>` : ''}
-    <button class="btn primary big" id="home">${t('home_btn')}</button></main>`);
-  on('#home', 'click', home);
-}
-
-// ---------- role-plays and final test ----------
-async function loadRoleplays() {
-  if (S.roleplays) return S.roleplays;
-  try { S.roleplays = (await loadJSON('content/roleplays.json')).scenarios; } catch (e) { S.roleplays = []; }
-  return S.roleplays;
-}
-function npcHtml(line) {
-  return `<div class="bubble npc"><div class="ar">${esc(line.ar)}</div><small>${esc(line.tr || '')}</small>
-    <div class="mean-sm">${esc(getLang() === 'ur' ? (line.ur || line.en) : line.en)}</div></div>`;
-}
-
-async function rpList() {
-  const all = await loadRoleplays();
-  const list = all.filter(sc => S.profile.paths.includes(sc.path));
-  const scores = await kv.get('rp-scores') || {};
-  render(`<main class="screen">
-    <header class="top"><button class="icon-btn" id="back" aria-label="${t('back')}">←</button><h1>${t('rp_title')}</h1></header>
-    <p class="hint">${t('rp_desc')}</p>
-    ${list.map(sc => `<div class="rp-card"><div><b>${esc(L(sc.title))}</b><small>${esc(L(sc.desc))}</small>
-      ${scores[sc.id] != null ? `<small class="ok">${t('best', { n: scores[sc.id] })}</small>` : ''}</div>
-      <div class="rp-actions"><button class="btn small primary" data-rp="${sc.id}">${t('rp_start')}</button>
-      <button class="btn small" data-chat="${sc.id}">${t('rp_free')}</button></div></div>`).join('') || `<p class="hint">—</p>`}
-  </main>`);
-  on('#back', 'click', home);
-  on('[data-rp]', 'click', e => rpPlay(list.find(x => x.id === e.currentTarget.dataset.rp), 0, 0));
-  on('[data-chat]', 'click', e => rpChat(list.find(x => x.id === e.currentTarget.dataset.chat)));
-}
-
-function rpPlay(sc, step, score) {
-  if (step >= sc.steps.length) return rpDone(sc, score);
-  const st = sc.steps[step];
-  const exp = st.expect.map(id => S.items.get(id)).filter(Boolean);
-  const targets = exp.flatMap(i => [view(i).ar, i.ar, i.ar_f, i.msa, ...(i.accept || [])]).filter(Boolean);
-  let tries = 0, done = false;
-  render(`<main class="screen level">
-    <header class="lv-top"><button class="icon-btn" id="quit" aria-label="Close">✕</button>
-      <div class="lv-bar"><i style="width:${Math.round(100 * step / sc.steps.length)}%"></i></div></header>
-    <div class="round-name">${esc(L(sc.title))}</div>
-    ${npcHtml(st.npc)}
-    <div class="audio"><button class="btn round" id="play" aria-label="${t('play')}">▶</button></div>
-    <p class="q">${t('rp_your_turn')}</p>
-    <div id="hints" class="hidden">${exp.map(i => `<div class="bubble me"><div class="ar">${esc(view(i).ar)}</div><small>${esc(view(i).tr)} — ${esc(getLang() === 'ur' ? i.ur : view(i).en)}</small></div>`).join('')}</div>
-    <button class="btn small" id="hint">${t('rp_hint')}</button>
-    ${canRecognize ? `<button class="btn primary big mic-btn" id="mic"><span class="mic"></span>${t('tap_mic')}</button>` : `<p class="warn">${t('mic_unsupported')}</p>`}
-    <p id="fb" class="fb"></p>
-    <div class="row"><button class="btn" id="skip">${t('skip_word')}</button><button class="btn primary hidden" id="next">${t('next')}</button></div>
-  </main>`);
-  const say = () => speak(st.npc.ar);
-  say();
-  on('#play', 'click', say);
-  on('#quit', 'click', rpList);
-  on('#hint', 'click', () => $app.querySelector('#hints').classList.remove('hidden'));
-  const fb = () => $app.querySelector('#fb');
-  const finish = ok => { if (done) return; done = true; if (ok) score++; $app.querySelector('#hints').classList.remove('hidden'); $app.querySelector('#mic')?.classList.add('hidden'); $app.querySelector('#skip').classList.add('hidden'); $app.querySelector('#next').classList.remove('hidden'); };
-  on('#mic', 'click', async () => {
-    if (done) return;
-    fb().className = 'fb'; fb().textContent = t('listening');
-    try {
-      const j = judge(await listen(), targets, 0.6); tries++;
-      if (j.pass) { fb().className = 'fb ok'; fb().textContent = `${t('correct')} · ${t('heard', { h: j.heard })}`; finish(true); }
-      else { fb().className = 'fb bad'; fb().textContent = `${t('try_again')} ${t('heard', { h: j.heard })}`; if (tries >= 3) finish(false); }
-    } catch (e) { fb().className = 'fb bad'; fb().textContent = t('mic_fail', { e: e.message }); }
-  });
-  on('#skip', 'click', () => finish(false));
-  on('#next', 'click', () => rpPlay(sc, step + 1, score));
-}
-
-async function rpDone(sc, score) {
-  const pct = Math.round(100 * score / sc.steps.length);
-  const scores = await kv.get('rp-scores') || {};
-  scores[sc.id] = Math.max(scores[sc.id] || 0, pct);
-  await kv.set('rp-scores', scores);
-  render(`<main class="screen summary"><h1>${esc(L(sc.title))}</h1>
-    <div class="score ${pct >= 80 ? 'ok' : 'bad'}">${pct}%</div>
-    <p>${pct >= 80 ? t('summary_pass') : t('rp_again')}</p>
-    <button class="btn primary big" id="again">${t('rp_start')}</button>
-    <button class="btn big" id="list">${t('rp_title')}</button></main>`);
-  on('#again', 'click', () => rpPlay(sc, 0, 0));
-  on('#list', 'click', rpList);
-}
-
 function rpSystem(sc) {
   return `You are role-playing a scene in Saudi Arabia. Your role: ${sc.persona}
 The learner is a beginner in Arabic whose first language is Urdu or English, practising for Umrah and travel.
@@ -767,50 +998,6 @@ Stay in your role, be realistic and kind, and move the scene forward with one si
 If the learner's last message has a mistake, or is in English or Urdu, put the correct Arabic they could have said in "tip" (with tashkeel and transliteration); otherwise "tip" is "".
 Always reply with JSON only: {"ar": "your reply", "tr": "simple Latin transliteration", "en": "English meaning", "ur": "Urdu meaning", "tip": "..."}.
 If the learner sends [END], reply with "ar": "" and put 2 or 3 short sentences of feedback on their Arabic in "en" and in "ur".`;
-}
-
-function rpChat(sc) {
-  if (!S.settings.geminiKey) { toast(t('feedback_nokey')); return; }
-  const history = [];
-  let turns = 0;
-  render(`<main class="screen level chat">
-    <header class="lv-top"><button class="icon-btn" id="quit" aria-label="Close">✕</button><div class="round-name">${esc(L(sc.title))} · Gemini</div></header>
-    <div id="log" class="log"></div>
-    <p id="fb" class="fb"></p>
-    ${canRecognize ? `<button class="btn primary big mic-btn" id="mic"><span class="mic"></span>${t('tap_mic')}</button>` : ''}
-    <div class="row"><input type="text" id="txt" dir="auto" placeholder="${t('rp_type_ph')}"><button class="btn" id="send">${t('send')}</button></div>
-    <button class="btn big" id="end">${t('rp_end')}</button>
-  </main>`);
-  const log = $app.querySelector('#log');
-  const fb = $app.querySelector('#fb');
-  const addNpc = r => {
-    const d = document.createElement('div');
-    d.innerHTML = r.ar ? npcHtml(r) + (r.tip ? `<div class="hook"><span class="label">${t('rp_tip')}</span>${esc(r.tip)}</div>` : '')
-      : `<div class="hook">${esc(getLang() === 'ur' ? (r.ur || r.en) : r.en)}</div>`;
-    log.appendChild(d); d.scrollIntoView({ behavior: 'smooth' });
-    if (r.ar) speak(r.ar);
-  };
-  const addMe = text => { const d = document.createElement('div'); d.innerHTML = `<div class="bubble me"><div dir="auto">${esc(text)}</div></div>`; log.appendChild(d); };
-  const send = async text => {
-    if (!text) return;
-    if (text !== '[START]' && text !== '[END]') addMe(text);
-    history.push({ role: 'user', text });
-    fb.textContent = t('rp_thinking');
-    try {
-      const r = await geminiChat({ key: S.settings.geminiKey, model: S.settings.model || DEFAULT_MODEL, system: rpSystem(sc), history });
-      history.push({ role: 'model', text: JSON.stringify(r) });
-      fb.textContent = ''; addNpc(r);
-    } catch (e) { fb.textContent = e.message; history.pop(); }
-  };
-  send('[START]');
-  on('#quit', 'click', rpList);
-  on('#mic', 'click', async () => {
-    fb.textContent = t('listening');
-    try { const alts = await listen({ timeoutMs: 10000 }); turns++; await send(alts[0]); }
-    catch (e) { fb.textContent = t('mic_fail', { e: e.message }); }
-  });
-  on('#send', 'click', () => { const i = $app.querySelector('#txt'); const v = i.value.trim(); i.value = ''; turns++; send(v); });
-  on('#end', 'click', () => send('[END]'));
 }
 
 // Final recall test: type the meaning yourself, no choices.
@@ -827,101 +1014,6 @@ function checkTyped(item, typed) {
   const k = keywords(item);
   const hit = list => list.length && list.filter(w => words.has(w) || [...words].some(x => x.length > 3 && (x.startsWith(w) || w.startsWith(x)))).length / list.length;
   return Math.max(hit(k.en) || 0, hit(k.ur) || 0) >= 0.5;
-}
-
-function ftStart() {
-  const learned = [...S.progress.keys()].map(id => S.items.get(id)).filter(i => i && ['word', 'phrase', 'dua', 'sign'].includes(i.kind));
-  ftStep(sample(learned, 20), 0, 0, []);
-}
-function ftStep(items, i, right, missed) {
-  if (i >= items.length) return ftDone(items.length, right, missed);
-  const item = items[i]; let checked = false;
-  render(`<main class="screen level">
-    <header class="lv-top"><button class="icon-btn" id="quit" aria-label="Close">✕</button>
-      <div class="lv-bar"><i style="width:${Math.round(100 * i / items.length)}%"></i></div></header>
-    <div class="round-name">${t('ft_title')} · ${i + 1} / ${items.length}</div>
-    <div class="card"><div class="big-ar ar">${esc(view(item).ar)}</div></div>
-    <input type="text" id="ans" dir="auto" autocomplete="off" placeholder="${t('ft_ph')}">
-    <p id="fb" class="fb"></p>
-    <button class="btn primary big" id="go">${t('check')}</button></main>`);
-  const input = $app.querySelector('#ans'); input.focus();
-  const act = () => {
-    const fb = $app.querySelector('#fb');
-    if (!checked) {
-      if (!input.value.trim()) { fb.className = 'fb bad'; fb.textContent = t('ft_ph'); return; }
-      checked = true;
-      const ok = checkTyped(item, input.value);
-      if (ok) right++; else missed.push(item);
-      fb.className = ok ? 'fb ok' : 'fb bad';
-      fb.innerHTML = `${ok ? t('correct') : ''} ${esc(view(item).tr)} — ${esc(getLang() === 'ur' ? item.ur : view(item).en)}`;
-      $app.querySelector('#go').textContent = t('next');
-      return;
-    }
-    ftStep(items, i + 1, right, missed);
-  };
-  on('#go', 'click', act);
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') act(); });
-  on('#quit', 'click', home);
-}
-async function ftDone(n, right, missed) {
-  const pct = n ? Math.round(100 * right / n) : 0;
-  const tests = await kv.get('final-tests') || [];
-  tests.push({ date: today(), score: pct, n });
-  await kv.set('final-tests', tests);
-  render(`<main class="screen summary"><h1>${t('ft_title')}</h1>
-    <div class="score ${pct >= 85 ? 'ok' : 'bad'}">${pct}%</div><p>${t('ft_result', { r: right, n })}</p>
-    ${missed.length ? `<h2>${t('summary_missed')}</h2><ul class="missed">${missed.map(i => `<li><span class="ar">${esc(view(i).ar)}</span> — ${esc(getLang() === 'ur' ? i.ur : view(i).en)}</li>`).join('')}</ul>` : ''}
-    <button class="btn primary big" id="home">${t('home_btn')}</button></main>`);
-  on('#home', 'click', home);
-}
-
-// ---------- settings, backup, report ----------
-function settings() {
-  const p = S.profile;
-  render(`<main class="screen settings">
-    <header class="top"><button class="icon-btn" id="back" aria-label="${t('back')}">←</button><h1>${t('settings_title')}</h1></header>
-    <label>${t('set_lang')}<select id="lang"><option value="en">${t('ob_lang_en')}</option><option value="enur">${t('ob_lang_enur')}</option><option value="ur">${t('ob_lang_ur')}</option></select></label>
-    <label>${t('set_form')}<select id="form"><option value="m">${t('form_m')}</option><option value="f">${t('form_f')}</option><option value="both">${t('form_both')}</option></select></label>
-    <label>${t('set_minutes')}<select id="min"><option>10</option><option>20</option><option>30</option></select></label>
-    <label>${t('set_goal')}<input type="date" id="goal" value="${esc(p.goalDate || '')}"></label>
-    <fieldset><legend>${t('paths_label')}</legend>${S.index.paths.map(x => `<label class="inline"><input type="checkbox" name="paths" value="${x.id}" ${p.paths.includes(x.id) ? 'checked' : ''} ${x.available ? '' : 'disabled'}> ${esc(L(x.title))}${x.available ? '' : ` <small>(${t('coming_soon')})</small>`}</label>`).join('')}
-      <label class="inline"><input type="checkbox" id="found" ${p.skipFoundations ? '' : 'checked'}> ${t('path_foundations')}</label></fieldset>
-    <label>${t('set_key')}<input type="password" id="key" value="${esc(S.settings.geminiKey || '')}" autocomplete="off" placeholder="${t('ob_key_placeholder')}"></label>
-    <label>${t('set_model')}<input type="text" id="model" value="${esc(S.settings.model || DEFAULT_MODEL)}"></label>
-    <button class="btn primary big" id="save">${t('save')}</button>
-    <hr>
-    <button class="btn big" id="exp">${t('export_btn')}</button>
-    <label class="btn big file">${t('import_btn')}<input type="file" id="imp" accept="application/json,.json" hidden></label>
-    <button class="btn big" id="rep">${t('report_btn')}</button>
-    <hr>
-    <h2>${t('about_title')}</h2><p class="hint">${t('about_body')} v${APP_VERSION}</p>
-    <button class="btn bad" id="reset">${t('reset_btn')}</button>
-  </main>`);
-  $app.querySelector('#lang').value = p.lang; $app.querySelector('#form').value = p.form; $app.querySelector('#min').value = String(p.minutes);
-  on('#back', 'click', home);
-  on('#save', 'click', async () => {
-    p.lang = $app.querySelector('#lang').value; p.form = $app.querySelector('#form').value;
-    p.minutes = Number($app.querySelector('#min').value); p.goalDate = $app.querySelector('#goal').value || null;
-    const paths = [...$app.querySelectorAll('input[name=paths]:checked')].map(i => i.value);
-    if (paths.length) p.paths = paths;
-    p.skipFoundations = !$app.querySelector('#found').checked;
-    S.settings.geminiKey = $app.querySelector('#key').value.trim();
-    S.settings.model = $app.querySelector('#model').value.trim() || DEFAULT_MODEL;
-    await saveProfile(); await saveSettings();
-    setLang(p.lang === 'ur' ? 'ur' : 'en'); toast(t('saved')); settings();
-  });
-  on('#exp', 'click', doExport);
-  on('#imp', 'change', async e => {
-    const f = e.target.files[0]; if (!f) return;
-    try { await importData(JSON.parse(await f.text())); await loadState(); toast(t('imported')); home(); }
-    catch (err) { toast(t('import_fail')); }
-  });
-  on('#rep', 'click', copyReport);
-  on('#reset', 'click', async () => {
-    if (!confirm(t('reset_confirm'))) return;
-    await db.clear('progress'); await db.clear('log'); await kv.set('profile', null);
-    S.progress = new Map(); S.profile = null; startOnboarding();
-  });
 }
 
 async function doExport() {
@@ -969,5 +1061,5 @@ async function boot() {
   if (!S.profile) startOnboarding(); else home();
 }
 
-window.__kn = { S, buildReport, startLevel, home, rpList, ftStart, checkTyped }; // for debugging and tests
+window.__kn = { S, buildReport, startLevel, home, rpList, ftStart, checkTyped, practiceTab, progressTab }; // for debugging and tests
 boot();
