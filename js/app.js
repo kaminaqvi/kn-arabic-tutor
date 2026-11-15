@@ -4,7 +4,7 @@ import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, ge
 import { t, L, setLang, getLang } from './i18n.js';
 import { listProfiles, activeProfile, migrateProfiles, createProfile, deleteProfile, openProfile, chooseProfile, profileSummary, updateProfile, getMode, setMode, ADULT_ICONS } from './profiles.js';
 
-const APP_VERSION = '3.6.0';
+const APP_VERSION = '3.7.0';
 const APP_DATE = '2026-11-16';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');

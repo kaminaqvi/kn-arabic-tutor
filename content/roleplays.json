@@ -647,6 +647,252 @@
      ]
     }
    ]
+  },
+  {
+   "id": "sim",
+   "path": "umrah",
+   "title": {
+    "en": "Buying a SIM card",
+    "ur": "سم کارڈ خریدنا"
+   },
+   "desc": {
+    "en": "Get internet at the airport",
+    "ur": "ایئرپورٹ پر انٹرنیٹ لیں"
+   },
+   "persona": "a mobile phone shop assistant at the airport selling SIM cards to pilgrims.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "أَهْلًا، إِيشْ تِبْغَى؟",
+      "tr": "ahlan, eesh tibgha?",
+      "en": "Hello, what would you like?",
+      "ur": "جی، کیا چاہیے؟"
+     },
+     "expect": [
+      "up-sim"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "جَوَازَ السَّفَرْ لَوْ سَمَحْتْ",
+      "tr": "jawaz as-safar law samaht",
+      "en": "Passport, please.",
+      "ur": "پاسپورٹ دیں"
+     },
+     "expect": [
+      "um-tafaddal"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "الْبَاقَة بِمِيَّة رِيَالْ",
+      "tr": "al-baqa bi-miyat riyal",
+      "en": "The package is one hundred riyals.",
+      "ur": "پیکج سو ریال کا ہے"
+     },
+     "expect": [
+      "um-adfa",
+      "up-kash",
+      "um-ghalimarra"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "تَمَامْ، الشَّرِيحَة جَاهْزَة",
+      "tr": "tamam, ash-shareeha jahza",
+      "en": "Done, the SIM is ready.",
+      "ur": "ٹھیک ہے، سم تیار ہے"
+     },
+     "expect": [
+      "um-shukran",
+      "um-yateek",
+      "um-jazak"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pharmacy",
+   "path": "umrah",
+   "title": {
+    "en": "At the pharmacy",
+    "ur": "دواخانے پر"
+   },
+   "desc": {
+    "en": "Explain what is wrong",
+    "ur": "بتائیں کیا تکلیف ہے"
+   },
+   "persona": "a pharmacist near the Haram helping a tired pilgrim.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "السَّلَامُ عَلَيْكُمْ، إِيشْ فِيكْ؟",
+      "tr": "as-salamu 'alaykum, eesh feek?",
+      "en": "Peace be upon you. What's wrong?",
+      "ur": "السلام علیکم، کیا تکلیف ہے؟"
+     },
+     "expect": [
+      "um-suda",
+      "um-tabaan",
+      "uh-hurts"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "عِنْدَكْ حَسَاسِيَّة مِنْ دَوَاءْ؟",
+      "tr": "'indak hasasiyya min dawa'?",
+      "en": "Are you allergic to any medicine?",
+      "ur": "کسی دوا سے الرجی ہے؟"
+     },
+     "expect": [
+      "um-la",
+      "uh-allergy"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "عِنْدَكْ سُكَّرِي وَلَّا ضَغْطْ؟",
+      "tr": "'indak sukkari walla daght?",
+      "en": "Do you have diabetes or blood pressure?",
+      "ur": "شوگر یا بلڈ پریشر ہے؟"
+     },
+     "expect": [
+      "um-la",
+      "uh-sukkari",
+      "uh-daght"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "خُذْ هَادَا الدَّوَاءْ بَعْدَ الْأَكْلْ",
+      "tr": "khudh hada d-dawa' ba'd al-akl",
+      "en": "Take this medicine after food.",
+      "ur": "یہ دوا کھانے کے بعد لیں"
+     },
+     "expect": [
+      "um-kamsiruh",
+      "um-shukran",
+      "um-allahyihfazak"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "exchange",
+   "path": "umrah",
+   "title": {
+    "en": "Changing money",
+    "ur": "پیسے تبدیل کرنا"
+   },
+   "desc": {
+    "en": "Dollars to riyals",
+    "ur": "ڈالر سے ریال"
+   },
+   "persona": "a money exchange clerk in Makkah.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "حَيَّاكْ، تَفَضَّلْ",
+      "tr": "hayyak, tafaddal",
+      "en": "Welcome, go ahead.",
+      "ur": "خوش آمدید، فرمائیے"
+     },
+     "expect": [
+      "up-asrif"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "كَمْ دُولَارْ؟",
+      "tr": "kam dolar?",
+      "en": "How many dollars?",
+      "ur": "کتنے ڈالر؟"
+     },
+     "expect": [
+      "um-miya",
+      "um-meetayn",
+      "um-khamsmiya"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "تِبْغَى كُلَّهْ كَاشْ؟",
+      "tr": "tibgha kulluh kash?",
+      "en": "Do you want it all in cash?",
+      "ur": "سب نقد چاہیے؟"
+     },
+     "expect": [
+      "um-iwa",
+      "um-la",
+      "up-kash"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "تَفَضَّلْ، هَادِي الْفُلُوسْ",
+      "tr": "tafaddal, hadi l-floos",
+      "en": "Here you are, this is the money.",
+      "ur": "یہ لیجیے، آپ کے پیسے"
+     },
+     "expect": [
+      "um-shukran",
+      "um-jazak",
+      "um-barakallah"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lostchild",
+   "path": "umrah",
+   "title": {
+    "en": "A lost family member",
+    "ur": "گھر والوں کا گم ہو جانا"
+   },
+   "desc": {
+    "en": "Ask a guard for help",
+    "ur": "گارڈ سے مدد مانگیں"
+   },
+   "persona": "a calm security guard at the Haram helping someone who has lost a family member.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "إِيشْ صَارْ؟",
+      "tr": "eesh sar?",
+      "en": "What happened?",
+      "ur": "کیا ہوا؟"
+     },
+     "expect": [
+      "uh-lostchild",
+      "uh-lostmother",
+      "um-saidni"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "إِيشْ اِسْمُهْ؟",
+      "tr": "eesh ismuh?",
+      "en": "What is his name?",
+      "ur": "اس کا نام کیا ہے؟"
+     },
+     "expect": [
+      "um-ismi"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "لَا تِخَافْ، رُوحْ مَكْتَبْ الْمَفْقُودَاتْ، قَرِيبْ مِنْ هِنَا",
+      "tr": "la tikhaf, rooh maktab al-mafqoodat, qareeb min hina",
+      "en": "Don't worry. Go to the lost and found office, it's near here.",
+      "ur": "فکر نہ کریں، گمشدہ اشیا کے دفتر جائیں، یہیں قریب ہے"
+     },
+     "expect": [
+      "um-fen",
+      "um-shukran",
+      "um-jazak"
+     ]
+    }
+   ]
   }
  ]
 }

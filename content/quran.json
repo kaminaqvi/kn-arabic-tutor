@@ -59,6 +59,36 @@
    ]
   },
   {
+   "id": "q-salahtexts",
+   "title": {
+    "en": "Understanding the salah",
+    "ur": "نماز کو سمجھنا"
+   },
+   "items": [
+    "qs-thana",
+    "qs-tash1",
+    "qs-tash2",
+    "qs-tash3",
+    "qs-tash4",
+    "qs-durood1",
+    "qs-durood2",
+    "qs-taslim"
+   ]
+  },
+  {
+   "id": "q-ikhlas",
+   "title": {
+    "en": "Surah Al-Ikhlas",
+    "ur": "سورۃ الاخلاص"
+   },
+   "items": [
+    "q-112-1",
+    "q-112-2",
+    "q-112-3",
+    "q-112-4"
+   ]
+  },
+  {
    "id": "q-words2",
    "title": {
     "en": "Qur'an words 2",
@@ -78,16 +108,20 @@
    ]
   },
   {
-   "id": "q-ikhlas",
+   "id": "q-dhikr",
    "title": {
-    "en": "Surah Al-Ikhlas",
-    "ur": "سورۃ الاخلاص"
+    "en": "Daily dhikr and short duas",
+    "ur": "روزانہ کے اذکار اور مختصر دعائیں"
    },
    "items": [
-    "q-112-1",
-    "q-112-2",
-    "q-112-3",
-    "q-112-4"
+    "qd-anta",
+    "qd-subhanbihamdih",
+    "qd-hawqala",
+    "qd-hasbuna",
+    "qd-rabbighfir",
+    "qd-afw",
+    "qd-bismillah",
+    "qd-parents"
    ]
   },
   {
@@ -112,6 +146,20 @@
    ]
   },
   {
+   "id": "q-falaq",
+   "title": {
+    "en": "Surah Al-Falaq",
+    "ur": "سورۃ الفلق"
+   },
+   "items": [
+    "q-113-1",
+    "q-113-2",
+    "q-113-3",
+    "q-113-4",
+    "q-113-5"
+   ]
+  },
+  {
    "id": "q-names",
    "title": {
     "en": "Names and attributes of Allah",
@@ -129,17 +177,18 @@
    ]
   },
   {
-   "id": "q-falaq",
+   "id": "q-nas",
    "title": {
-    "en": "Surah Al-Falaq",
-    "ur": "سورۃ الفلق"
+    "en": "Surah An-Nas",
+    "ur": "سورۃ الناس"
    },
    "items": [
-    "q-113-1",
-    "q-113-2",
-    "q-113-3",
-    "q-113-4",
-    "q-113-5"
+    "q-114-1",
+    "q-114-2",
+    "q-114-3",
+    "q-114-4",
+    "q-114-5",
+    "q-114-6"
    ]
   },
   {
@@ -162,18 +211,15 @@
    ]
   },
   {
-   "id": "q-nas",
+   "id": "q-kawthar",
    "title": {
-    "en": "Surah An-Nas",
-    "ur": "سورۃ الناس"
+    "en": "Surah Al-Kawthar",
+    "ur": "سورۃ الکوثر"
    },
    "items": [
-    "q-114-1",
-    "q-114-2",
-    "q-114-3",
-    "q-114-4",
-    "q-114-5",
-    "q-114-6"
+    "q-108-1",
+    "q-108-2",
+    "q-108-3"
    ]
   },
   {
@@ -194,15 +240,15 @@
    ]
   },
   {
-   "id": "q-kawthar",
+   "id": "q-asr",
    "title": {
-    "en": "Surah Al-Kawthar",
-    "ur": "سورۃ الکوثر"
+    "en": "Surah Al-Asr",
+    "ur": "سورۃ العصر"
    },
    "items": [
-    "q-108-1",
-    "q-108-2",
-    "q-108-3"
+    "q-103-1",
+    "q-103-2",
+    "q-103-3"
    ]
   },
   {
@@ -223,15 +269,27 @@
    ]
   },
   {
-   "id": "q-asr",
+   "id": "q-kursi",
    "title": {
-    "en": "Surah Al-Asr",
-    "ur": "سورۃ العصر"
+    "en": "Ayat al-Kursi",
+    "ur": "آیۃ الکرسی"
    },
    "items": [
-    "q-103-1",
-    "q-103-2",
-    "q-103-3"
+    "q-2-255"
+   ]
+  },
+  {
+   "id": "q-qadr",
+   "title": {
+    "en": "Surah Al-Qadr",
+    "ur": "سورۃ القدر"
+   },
+   "items": [
+    "q-97-1",
+    "q-97-2",
+    "q-97-3",
+    "q-97-4",
+    "q-97-5"
    ]
   },
   {
@@ -319,13 +377,75 @@
    ]
   },
   {
-   "id": "q-kursi",
+   "id": "q-zalzala",
    "title": {
-    "en": "Ayat al-Kursi",
-    "ur": "آیۃ الکرسی"
+    "en": "Surah Az-Zalzalah",
+    "ur": "سورۃ الزلزال"
    },
    "items": [
-    "q-2-255"
+    "q-99-1",
+    "q-99-2",
+    "q-99-3",
+    "q-99-4",
+    "q-99-5",
+    "q-99-6",
+    "q-99-7",
+    "q-99-8"
+   ]
+  },
+  {
+   "id": "q-qaria",
+   "title": {
+    "en": "Surah Al-Qari'ah",
+    "ur": "سورۃ القارعہ"
+   },
+   "items": [
+    "q-101-1",
+    "q-101-2",
+    "q-101-3",
+    "q-101-4",
+    "q-101-5",
+    "q-101-6",
+    "q-101-7",
+    "q-101-8",
+    "q-101-9",
+    "q-101-10",
+    "q-101-11"
+   ]
+  },
+  {
+   "id": "q-takathur",
+   "title": {
+    "en": "Surah At-Takathur",
+    "ur": "سورۃ التکاثر"
+   },
+   "items": [
+    "q-102-1",
+    "q-102-2",
+    "q-102-3",
+    "q-102-4",
+    "q-102-5",
+    "q-102-6",
+    "q-102-7",
+    "q-102-8"
+   ]
+  },
+  {
+   "id": "q-humaza",
+   "title": {
+    "en": "Surah Al-Humazah",
+    "ur": "سورۃ الہمزہ"
+   },
+   "items": [
+    "q-104-1",
+    "q-104-2",
+    "q-104-3",
+    "q-104-4",
+    "q-104-5",
+    "q-104-6",
+    "q-104-7",
+    "q-104-8",
+    "q-104-9"
    ]
   }
  ],
@@ -1337,7 +1457,521 @@
    "tr": "allahu la ilaha illa huwa l-hayyu l-qayyum…",
    "en": "Allah: there is no god but Him, the Ever-Living, the Sustainer of all. Neither drowsiness nor sleep overtakes Him. To Him belongs all that is in the heavens and the earth… His Throne extends over the heavens and the earth, and guarding them does not tire Him. He is the Most High, the Most Great.",
    "ur": "اللہ، اس کے سوا کوئی معبود نہیں، وہ زندہ ہے، سب کو تھامنے والا ہے۔ نہ اسے اونگھ آتی ہے نہ نیند۔ آسمانوں اور زمین میں جو کچھ ہے اسی کا ہے… اس کی کرسی آسمانوں اور زمین پر چھائی ہوئی ہے اور ان کی حفاظت اسے نہیں تھکاتی۔ وہ بلند اور عظمت والا ہے۔"
+  },
+  {
+   "id": "qs-thana",
+   "kind": "dua",
+   "ar": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَٰهَ غَيْرُكَ",
+   "tr": "subhanaka llahumma wa bihamdik, wa tabaraka smuk, wa ta'ala jadduk, wa la ilaha ghayruk",
+   "en": "Glory be to You, O Allah, and praise. Blessed is Your name, exalted is Your majesty, and there is no god but You (opening of the salah)",
+   "ur": "اے اللہ، تو پاک ہے اور تیری حمد ہے، تیرا نام بابرکت ہے، تیری شان بلند ہے اور تیرے سوا کوئی معبود نہیں (ثنا)"
+  },
+  {
+   "id": "qs-tash1",
+   "kind": "dua",
+   "ar": "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ",
+   "tr": "at-tahiyyatu lillahi was-salawatu wat-tayyibat",
+   "en": "All greetings, prayers and good words are for Allah (tashahhud, part 1)",
+   "ur": "تمام قولی، بدنی اور مالی عبادتیں اللہ کے لیے ہیں (التحیات، حصہ 1)"
+  },
+  {
+   "id": "qs-tash2",
+   "kind": "dua",
+   "ar": "السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ",
+   "tr": "as-salamu 'alayka ayyuha n-nabiyyu wa rahmatu llahi wa barakatuh",
+   "en": "Peace be upon you, O Prophet, and the mercy of Allah and His blessings (part 2)",
+   "ur": "اے نبی، آپ پر سلام اور اللہ کی رحمت اور اس کی برکتیں (حصہ 2)"
+  },
+  {
+   "id": "qs-tash3",
+   "kind": "dua",
+   "ar": "السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ",
+   "tr": "as-salamu 'alayna wa 'ala 'ibadi llahi s-saliheen",
+   "en": "Peace be upon us and upon the righteous servants of Allah (part 3)",
+   "ur": "سلام ہو ہم پر اور اللہ کے نیک بندوں پر (حصہ 3)"
+  },
+  {
+   "id": "qs-tash4",
+   "kind": "dua",
+   "ar": "أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+   "tr": "ash-hadu an la ilaha illa llah, wa ash-hadu anna muhammadan 'abduhu wa rasooluh",
+   "en": "I bear witness that there is no god but Allah, and that Muhammad is His servant and messenger (part 4)",
+   "ur": "میں گواہی دیتا ہوں کہ اللہ کے سوا کوئی معبود نہیں اور محمد اس کے بندے اور رسول ہیں (حصہ 4)"
+  },
+  {
+   "id": "qs-durood1",
+   "kind": "dua",
+   "ar": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
+   "tr": "allahumma salli 'ala muhammadin wa 'ala ali muhammad, kama sallayta 'ala ibraheema wa 'ala ali ibraheem, innaka hameedun majeed",
+   "en": "O Allah, send prayers on Muhammad and his family, as You sent prayers on Ibrahim and his family. You are Praiseworthy, Glorious (durood, part 1)",
+   "ur": "اے اللہ، محمد اور آلِ محمد پر رحمت بھیج جیسے تو نے ابراہیم اور آلِ ابراہیم پر رحمت بھیجی، بے شک تو قابلِ تعریف، بزرگی والا ہے (درود، حصہ 1)"
+  },
+  {
+   "id": "qs-durood2",
+   "kind": "dua",
+   "ar": "اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
+   "tr": "allahumma barik 'ala muhammadin wa 'ala ali muhammad, kama barakta 'ala ibraheema wa 'ala ali ibraheem, innaka hameedun majeed",
+   "en": "O Allah, bless Muhammad and his family, as You blessed Ibrahim and his family. You are Praiseworthy, Glorious (durood, part 2)",
+   "ur": "اے اللہ، محمد اور آلِ محمد پر برکت نازل فرما جیسے تو نے ابراہیم اور آلِ ابراہیم پر برکت نازل فرمائی، بے شک تو قابلِ تعریف، بزرگی والا ہے (درود، حصہ 2)"
+  },
+  {
+   "id": "qs-taslim",
+   "kind": "dua",
+   "ar": "السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ",
+   "tr": "as-salamu 'alaykum wa rahmatu llah",
+   "en": "Peace and the mercy of Allah be upon you (ending the salah)",
+   "ur": "تم پر سلامتی اور اللہ کی رحمت ہو (سلام پھیرتے وقت)"
+  },
+  {
+   "id": "qd-anta",
+   "kind": "dua",
+   "ar": "اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",
+   "tr": "allahumma anta s-salam wa minka s-salam, tabarakta ya dha l-jalali wal-ikram",
+   "en": "O Allah, You are Peace and from You comes peace. Blessed are You, Owner of majesty and honour (after salah)",
+   "ur": "اے اللہ، تو سلامتی والا ہے اور تجھ ہی سے سلامتی ہے، تو بابرکت ہے اے جلال اور عزت والے (نماز کے بعد)"
+  },
+  {
+   "id": "qd-subhanbihamdih",
+   "kind": "dua",
+   "ar": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+   "tr": "subhana llahi wa bihamdih",
+   "en": "Glory be to Allah and praise be to Him",
+   "ur": "اللہ پاک ہے اپنی تعریف کے ساتھ"
+  },
+  {
+   "id": "qd-hawqala",
+   "kind": "dua",
+   "ar": "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+   "tr": "la hawla wa la quwwata illa billah",
+   "en": "There is no power and no strength except with Allah",
+   "ur": "اللہ کے سوا نہ کوئی طاقت ہے نہ قوت",
+   "hook": {
+    "en": "‘Quwwat’ = strength, as in Urdu.",
+    "ur": "’قوت‘ اردو کی طرح"
+   }
+  },
+  {
+   "id": "qd-hasbuna",
+   "kind": "dua",
+   "ar": "حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ",
+   "tr": "hasbuna llahu wa ni'ma l-wakeel",
+   "en": "Allah is enough for us, and He is the best guardian",
+   "ur": "ہمارے لیے اللہ کافی ہے اور وہ بہترین کارساز ہے",
+   "hook": {
+    "en": "‘Wakeel’ = one who looks after your affairs.",
+    "ur": "’وکیل‘ = کارساز"
+   }
+  },
+  {
+   "id": "qd-rabbighfir",
+   "kind": "dua",
+   "ar": "رَبِّ اغْفِرْ لِي",
+   "tr": "rabbi ghfir lee",
+   "en": "My Lord, forgive me",
+   "ur": "اے میرے رب، مجھے معاف کر دے",
+   "hook": {
+    "en": "Same root as ‘maghfirat’.",
+    "ur": "’مغفرت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qd-afw",
+   "kind": "dua",
+   "ar": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
+   "tr": "allahumma innaka 'afuwwun tuhibbu l-'afwa fa'fu 'annee",
+   "en": "O Allah, You are Pardoning and love to pardon, so pardon me",
+   "ur": "اے اللہ، تو معاف کرنے والا ہے، معافی کو پسند کرتا ہے، پس مجھے معاف کر دے",
+   "hook": {
+    "en": "‘Afw’ = pardon, as in ‘maafi’.",
+    "ur": "’عفو‘ = معافی"
+   }
+  },
+  {
+   "id": "qd-bismillah",
+   "kind": "dua",
+   "ar": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+   "tr": "bismillahi r-rahmani r-raheem",
+   "en": "In the name of Allah, the Most Gracious, the Most Merciful",
+   "ur": "اللہ کے نام سے جو بڑا مہربان، نہایت رحم والا ہے"
+  },
+  {
+   "id": "qd-parents",
+   "kind": "ayah",
+   "quran": "17:24",
+   "ar": "",
+   "tr": "…wa qul rabbi rhamhuma kama rabbayanee sagheera",
+   "en": "…and say: My Lord, have mercy on them as they raised me when I was small (dua for parents)",
+   "ur": "…اور کہو: اے میرے رب، ان دونوں پر رحم فرما جیسے انہوں نے بچپن میں میری پرورش کی (والدین کے لیے دعا)"
+  },
+  {
+   "id": "q-97-1",
+   "kind": "ayah",
+   "quran": "97:1",
+   "ar": "",
+   "tr": "inna anzalnahu fee laylati l-qadr",
+   "en": "Indeed, We sent it down on the Night of Decree.",
+   "ur": "بے شک ہم نے اسے شبِ قدر میں نازل کیا"
+  },
+  {
+   "id": "q-97-2",
+   "kind": "ayah",
+   "quran": "97:2",
+   "ar": "",
+   "tr": "wa ma adraka ma laylatu l-qadr",
+   "en": "And what will make you know what the Night of Decree is?",
+   "ur": "اور تمہیں کیا معلوم کہ شبِ قدر کیا ہے؟"
+  },
+  {
+   "id": "q-97-3",
+   "kind": "ayah",
+   "quran": "97:3",
+   "ar": "",
+   "tr": "laylatu l-qadri khayrun min alfi shahr",
+   "en": "The Night of Decree is better than a thousand months.",
+   "ur": "شبِ قدر ہزار مہینوں سے بہتر ہے"
+  },
+  {
+   "id": "q-97-4",
+   "kind": "ayah",
+   "quran": "97:4",
+   "ar": "",
+   "tr": "tanazzalu l-mala'ikatu war-roohu feeha bi-idhni rabbihim min kulli amr",
+   "en": "The angels and the Spirit descend in it by permission of their Lord, for every matter.",
+   "ur": "اس میں فرشتے اور روح اپنے رب کے حکم سے ہر کام کے لیے اترتے ہیں"
+  },
+  {
+   "id": "q-97-5",
+   "kind": "ayah",
+   "quran": "97:5",
+   "ar": "",
+   "tr": "salamun hiya hatta matla'i l-fajr",
+   "en": "Peace it is, until the rising of the dawn.",
+   "ur": "وہ رات سراسر سلامتی ہے، فجر طلوع ہونے تک"
+  },
+  {
+   "id": "q-99-1",
+   "kind": "ayah",
+   "quran": "99:1",
+   "ar": "",
+   "tr": "idha zulzilati l-ardu zilzalaha",
+   "en": "When the earth is shaken with its great quake,",
+   "ur": "جب زمین پوری شدت سے ہلا دی جائے گی"
+  },
+  {
+   "id": "q-99-2",
+   "kind": "ayah",
+   "quran": "99:2",
+   "ar": "",
+   "tr": "wa akhrajati l-ardu athqalaha",
+   "en": "and the earth brings out its burdens,",
+   "ur": "اور زمین اپنے بوجھ نکال باہر پھینکے گی"
+  },
+  {
+   "id": "q-99-3",
+   "kind": "ayah",
+   "quran": "99:3",
+   "ar": "",
+   "tr": "wa qala l-insanu ma laha",
+   "en": "and man says, ‘What is wrong with it?’",
+   "ur": "اور انسان کہے گا اسے کیا ہو گیا ہے؟"
+  },
+  {
+   "id": "q-99-4",
+   "kind": "ayah",
+   "quran": "99:4",
+   "ar": "",
+   "tr": "yawma'idhin tuhaddithu akhbaraha",
+   "en": "that Day it will tell its news,",
+   "ur": "اس دن وہ اپنی خبریں بیان کرے گی"
+  },
+  {
+   "id": "q-99-5",
+   "kind": "ayah",
+   "quran": "99:5",
+   "ar": "",
+   "tr": "bi-anna rabbaka awha laha",
+   "en": "because your Lord has inspired it.",
+   "ur": "کیونکہ تمہارے رب نے اسے یہی حکم دیا ہوگا"
+  },
+  {
+   "id": "q-99-6",
+   "kind": "ayah",
+   "quran": "99:6",
+   "ar": "",
+   "tr": "yawma'idhin yasduru n-nasu ashtatan li-yuraw a'malahum",
+   "en": "That Day people will come out in groups to be shown their deeds.",
+   "ur": "اس دن لوگ الگ الگ گروہوں میں نکلیں گے تاکہ انہیں ان کے اعمال دکھائے جائیں"
+  },
+  {
+   "id": "q-99-7",
+   "kind": "ayah",
+   "quran": "99:7",
+   "ar": "",
+   "tr": "fa-man ya'mal mithqala dharratin khayran yarah",
+   "en": "So whoever does an atom's weight of good will see it,",
+   "ur": "پس جس نے ذرہ برابر نیکی کی ہوگی وہ اسے دیکھ لے گا"
+  },
+  {
+   "id": "q-99-8",
+   "kind": "ayah",
+   "quran": "99:8",
+   "ar": "",
+   "tr": "wa man ya'mal mithqala dharratin sharran yarah",
+   "en": "and whoever does an atom's weight of evil will see it.",
+   "ur": "اور جس نے ذرہ برابر برائی کی ہوگی وہ اسے دیکھ لے گا"
+  },
+  {
+   "id": "q-101-1",
+   "kind": "ayah",
+   "quran": "101:1",
+   "ar": "",
+   "tr": "al-qari'ah",
+   "en": "The Striking Calamity!",
+   "ur": "کھڑکھڑانے والی"
+  },
+  {
+   "id": "q-101-2",
+   "kind": "ayah",
+   "quran": "101:2",
+   "ar": "",
+   "tr": "ma l-qari'ah",
+   "en": "What is the Striking Calamity?",
+   "ur": "کیا ہے وہ کھڑکھڑانے والی؟"
+  },
+  {
+   "id": "q-101-3",
+   "kind": "ayah",
+   "quran": "101:3",
+   "ar": "",
+   "tr": "wa ma adraka ma l-qari'ah",
+   "en": "And what will make you know what the Striking Calamity is?",
+   "ur": "اور تمہیں کیا معلوم کہ وہ کھڑکھڑانے والی کیا ہے؟"
+  },
+  {
+   "id": "q-101-4",
+   "kind": "ayah",
+   "quran": "101:4",
+   "ar": "",
+   "tr": "yawma yakoonu n-nasu kal-farashi l-mabthooth",
+   "en": "The Day people will be like scattered moths,",
+   "ur": "جس دن لوگ بکھرے ہوئے پروانوں کی طرح ہوں گے"
+  },
+  {
+   "id": "q-101-5",
+   "kind": "ayah",
+   "quran": "101:5",
+   "ar": "",
+   "tr": "wa takoonu l-jibalu kal-'ihni l-manfoosh",
+   "en": "and the mountains like fluffed wool.",
+   "ur": "اور پہاڑ دھنکی ہوئی اون کی طرح ہوں گے"
+  },
+  {
+   "id": "q-101-6",
+   "kind": "ayah",
+   "quran": "101:6",
+   "ar": "",
+   "tr": "fa-amma man thaqulat mawazeenuh",
+   "en": "Then as for the one whose scales are heavy,",
+   "ur": "تو جس کے پلڑے بھاری ہوں گے"
+  },
+  {
+   "id": "q-101-7",
+   "kind": "ayah",
+   "quran": "101:7",
+   "ar": "",
+   "tr": "fa-huwa fee 'eeshatin radiyah",
+   "en": "he will be in a pleasing life.",
+   "ur": "وہ پسندیدہ زندگی میں ہوگا"
+  },
+  {
+   "id": "q-101-8",
+   "kind": "ayah",
+   "quran": "101:8",
+   "ar": "",
+   "tr": "wa amma man khaffat mawazeenuh",
+   "en": "But as for the one whose scales are light,",
+   "ur": "اور جس کے پلڑے ہلکے ہوں گے"
+  },
+  {
+   "id": "q-101-9",
+   "kind": "ayah",
+   "quran": "101:9",
+   "ar": "",
+   "tr": "fa-ummuhu hawiyah",
+   "en": "his refuge will be an abyss.",
+   "ur": "اس کا ٹھکانا ہاویہ ہوگا"
+  },
+  {
+   "id": "q-101-10",
+   "kind": "ayah",
+   "quran": "101:10",
+   "ar": "",
+   "tr": "wa ma adraka ma hiyah",
+   "en": "And what will make you know what that is?",
+   "ur": "اور تمہیں کیا معلوم کہ وہ کیا ہے؟"
+  },
+  {
+   "id": "q-101-11",
+   "kind": "ayah",
+   "quran": "101:11",
+   "ar": "",
+   "tr": "narun hamiyah",
+   "en": "A blazing fire.",
+   "ur": "دہکتی ہوئی آگ"
+  },
+  {
+   "id": "q-102-1",
+   "kind": "ayah",
+   "quran": "102:1",
+   "ar": "",
+   "tr": "alhakumu t-takathur",
+   "en": "Competing for more distracts you",
+   "ur": "تمہیں کثرت کی چاہت نے غافل کر دیا"
+  },
+  {
+   "id": "q-102-2",
+   "kind": "ayah",
+   "quran": "102:2",
+   "ar": "",
+   "tr": "hatta zurtumu l-maqabir",
+   "en": "until you visit the graves.",
+   "ur": "یہاں تک کہ تم قبروں تک جا پہنچے"
+  },
+  {
+   "id": "q-102-3",
+   "kind": "ayah",
+   "quran": "102:3",
+   "ar": "",
+   "tr": "kalla sawfa ta'lamoon",
+   "en": "No! You will come to know.",
+   "ur": "ہرگز نہیں، تم جلد جان لو گے"
+  },
+  {
+   "id": "q-102-4",
+   "kind": "ayah",
+   "quran": "102:4",
+   "ar": "",
+   "tr": "thumma kalla sawfa ta'lamoon",
+   "en": "Again no! You will come to know.",
+   "ur": "پھر ہرگز نہیں، تم جلد جان لو گے"
+  },
+  {
+   "id": "q-102-5",
+   "kind": "ayah",
+   "quran": "102:5",
+   "ar": "",
+   "tr": "kalla law ta'lamoona 'ilma l-yaqeen",
+   "en": "No! If only you knew with certainty,",
+   "ur": "ہرگز نہیں، کاش تم یقینی علم سے جانتے"
+  },
+  {
+   "id": "q-102-6",
+   "kind": "ayah",
+   "quran": "102:6",
+   "ar": "",
+   "tr": "la-tarawunna l-jaheem",
+   "en": "you will surely see the Hellfire.",
+   "ur": "تم ضرور جہنم کو دیکھو گے"
+  },
+  {
+   "id": "q-102-7",
+   "kind": "ayah",
+   "quran": "102:7",
+   "ar": "",
+   "tr": "thumma la-tarawunnaha 'ayna l-yaqeen",
+   "en": "Then you will surely see it with the eye of certainty.",
+   "ur": "پھر تم اسے یقین کی آنکھ سے دیکھو گے"
+  },
+  {
+   "id": "q-102-8",
+   "kind": "ayah",
+   "quran": "102:8",
+   "ar": "",
+   "tr": "thumma la-tus'alunna yawma'idhin 'ani n-na'eem",
+   "en": "Then on that Day you will be asked about the pleasures.",
+   "ur": "پھر اس دن تم سے نعمتوں کے بارے میں ضرور پوچھا جائے گا"
+  },
+  {
+   "id": "q-104-1",
+   "kind": "ayah",
+   "quran": "104:1",
+   "ar": "",
+   "tr": "waylun li-kulli humazatin lumazah",
+   "en": "Woe to every slanderer and backbiter,",
+   "ur": "ہر طعنہ دینے والے، عیب جو کے لیے خرابی ہے"
+  },
+  {
+   "id": "q-104-2",
+   "kind": "ayah",
+   "quran": "104:2",
+   "ar": "",
+   "tr": "alladhee jama'a malan wa 'addadah",
+   "en": "who collects wealth and counts it,",
+   "ur": "جس نے مال جمع کیا اور اسے گن گن کر رکھا"
+  },
+  {
+   "id": "q-104-3",
+   "kind": "ayah",
+   "quran": "104:3",
+   "ar": "",
+   "tr": "yahsabu anna malahu akhladah",
+   "en": "thinking that his wealth will make him last forever.",
+   "ur": "وہ سمجھتا ہے کہ اس کا مال اسے ہمیشہ رکھے گا"
+  },
+  {
+   "id": "q-104-4",
+   "kind": "ayah",
+   "quran": "104:4",
+   "ar": "",
+   "tr": "kalla la-yumbadhanna fi l-hutamah",
+   "en": "No! He will surely be thrown into the Crusher.",
+   "ur": "ہرگز نہیں، وہ ضرور حطمہ میں پھینکا جائے گا"
+  },
+  {
+   "id": "q-104-5",
+   "kind": "ayah",
+   "quran": "104:5",
+   "ar": "",
+   "tr": "wa ma adraka ma l-hutamah",
+   "en": "And what will make you know what the Crusher is?",
+   "ur": "اور تمہیں کیا معلوم کہ حطمہ کیا ہے؟"
+  },
+  {
+   "id": "q-104-6",
+   "kind": "ayah",
+   "quran": "104:6",
+   "ar": "",
+   "tr": "naru llahi l-mooqadah",
+   "en": "The fire of Allah, kindled,",
+   "ur": "اللہ کی بھڑکائی ہوئی آگ"
+  },
+  {
+   "id": "q-104-7",
+   "kind": "ayah",
+   "quran": "104:7",
+   "ar": "",
+   "tr": "allatee tattali'u 'ala l-af'idah",
+   "en": "which rises over the hearts.",
+   "ur": "جو دلوں تک جا پہنچے گی"
+  },
+  {
+   "id": "q-104-8",
+   "kind": "ayah",
+   "quran": "104:8",
+   "ar": "",
+   "tr": "innaha 'alayhim mu'sadah",
+   "en": "It will be closed in upon them",
+   "ur": "وہ ان پر بند کر دی جائے گی"
+  },
+  {
+   "id": "q-104-9",
+   "kind": "ayah",
+   "quran": "104:9",
+   "ar": "",
+   "tr": "fee 'amadin mumaddadah",
+   "en": "in extended columns.",
+   "ur": "لمبے لمبے ستونوں میں"
   }
  ],
- "planned": 134
+ "planned": 191
 }
