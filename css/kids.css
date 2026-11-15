@@ -157,3 +157,5 @@ html[dir=rtl] .k-meter i { margin-inline-start: auto; }
 .k-grownups { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; border: 0; background: var(--paper); color: var(--soft); border-radius: 999px; padding: 8px 16px; min-height: 44px; font-size: 15px; font-weight: 600; box-shadow: 0 4px 0 var(--line); }
 .k-sum { font-size: 52px; font-weight: 800; text-align: center; margin: 10px 0 14px; direction: ltr; }
 .k-gate-msg { min-height: 28px; color: #C2334F; font-weight: 600; text-align: center; }
+.k-adultbar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.k-adultbar .k-grownups { margin-top: 0; }

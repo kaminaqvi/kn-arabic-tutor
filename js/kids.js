@@ -5,7 +5,7 @@ import { today, newProgress, grade } from './srs.js';
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice } from './speech.js';
 import { activeProfile, updateProfile, createProfile, chooseProfile, setMode as setProfileMode } from './profiles.js';
 
-const KIDS_VERSION = '1.4.0';
+const KIDS_VERSION = '1.5.0';
 const setMode = setProfileMode;
 const $app = document.getElementById('app');
 const K = { profile: null, items: new Map(), pack: null, progress: new Map(), units: {}, stickers: [] };
@@ -22,7 +22,7 @@ const STR = {
     great: ['Shabash!', 'Ahsant!', 'Super!', 'Mumtaz!', 'Well done!'], try_again: 'Try again!', heard: 'I heard: {h}',
     skip: 'Skip', level_done: 'Level complete!', you_got: 'You got {n} stars', you_got_1: 'You got 1 star', new_sticker: 'New sticker!',
     back_map: 'Back to map', sticker_book: 'My sticker book', sticker_count: '{n} of {t} collected',
-    parent_hold: 'Grown-ups', grownups: 'Grown-ups', gate_q: 'Grown-ups only. Please answer this sum to open settings and switch profile.', gate_ph: 'Answer', gate_ok: 'Continue', gate_wrong: 'Not quite. Ask a grown-up to help.', parents: 'For parents', lang: 'Help language', sounds: 'Sound effects',
+    parent_hold: 'Grown-ups', grownups: 'Grown-ups', gate_q: 'Grown-ups only. Answer this sum to open the settings.', gate_q_switch: 'Grown-ups only. Answer this sum to choose another profile.', switch_profile: 'Switch profile', settings_short: 'Settings', gate_ph: 'Answer', gate_ok: 'Continue', gate_wrong: 'Not quite. Ask a grown-up to help.', parents: 'For parents', lang: 'Help language', sounds: 'Sound effects',
     on: 'On', off: 'Off', export: 'Save a backup file', import: 'Restore from a backup file', reset: 'Start again from zero',
     reset_confirm: 'Delete all of this child’s progress on this phone?', adult_app: 'Switch profile', close: 'Close',
     version: 'Kids version {v}', saved: 'Saved', imported: 'Backup restored', import_fail: 'That file is not a kids backup.',
@@ -40,7 +40,7 @@ const STR = {
     great: ['شاباش!', 'أحسنت!', 'زبردست!', 'ممتاز!', 'بہت خوب!'], try_again: 'پھر سے کوشش کرو!', heard: 'میں نے سنا: {h}',
     skip: 'چھوڑو', level_done: 'لیول مکمل!', you_got: 'تمہیں {n} ستارے ملے', you_got_1: 'تمہیں 1 ستارہ ملا', new_sticker: 'نیا اسٹیکر!',
     back_map: 'نقشے پر واپس', sticker_book: 'میری اسٹیکر بک', sticker_count: '{t} میں سے {n} جمع',
-    parent_hold: 'بڑوں کے لیے', grownups: 'بڑوں کے لیے', gate_q: 'صرف بڑوں کے لیے۔ سیٹنگز کھولنے اور پروفائل بدلنے کے لیے یہ جمع حل کریں۔', gate_ph: 'جواب', gate_ok: 'جاری رکھیں', gate_wrong: 'درست نہیں۔ کسی بڑے سے مدد لیں۔', parents: 'والدین کے لیے', lang: 'مدد کی زبان', sounds: 'آوازیں',
+    parent_hold: 'بڑوں کے لیے', grownups: 'بڑوں کے لیے', gate_q: 'صرف بڑوں کے لیے۔ سیٹنگز کھولنے کے لیے یہ جمع حل کریں۔', gate_q_switch: 'صرف بڑوں کے لیے۔ دوسرا پروفائل چننے کے لیے یہ جمع حل کریں۔', switch_profile: 'پروفائل بدلیں', settings_short: 'سیٹنگز', gate_ph: 'جواب', gate_ok: 'جاری رکھیں', gate_wrong: 'درست نہیں۔ کسی بڑے سے مدد لیں۔', parents: 'والدین کے لیے', lang: 'مدد کی زبان', sounds: 'آوازیں',
     on: 'آن', off: 'آف', export: 'بیک اپ فائل محفوظ کریں', import: 'بیک اپ فائل سے بحال کریں', reset: 'شروع سے دوبارہ',
     reset_confirm: 'اس فون سے بچے کی تمام پیش رفت مٹا دیں؟', adult_app: 'پروفائل بدلیں', close: 'بند کریں',
     version: 'بچوں کا ورژن {v}', saved: 'محفوظ ہو گیا', imported: 'بیک اپ بحال ہو گیا', import_fail: 'یہ بچوں کی بیک اپ فائل نہیں ہے۔',
@@ -188,15 +188,15 @@ function map() {
       <span class="k-me"><span class="k-avatar">${esc(K.profile.buddy)}</span><b>${K.profile.name ? t('hi', { n: esc(K.profile.name) }) : t('hi_anon')}</b></span>
       <span class="k-score" aria-label="${totalStars()} ${t('stars')}">⭐ ${totalStars()}</span>
     </header>
-    <button class="k-grownups" id="grownups">🔒 ${t('grownups')}</button>
+    <div class="k-adultbar"><button class="k-grownups" id="switch">👥 ${t('switch_profile')}</button><button class="k-grownups" id="grownups">⚙️ ${t('settings_short')}</button></div>
     <button class="k-book" id="book"><span>📒</span><b>${t('stickers')}</b><small>${K.stickers.length}/${STICKERS.length}</small></button>
     <ol class="k-path">${nodes}</ol>
-    <footer class="k-foot"><button class="k-gate" id="gate" aria-label="${t('grownups')}">⚙︎</button><small>${t('grownups')}</small><small>${t('version', { v: KIDS_VERSION })}</small></footer>
+    <footer class="k-foot"><small>${t('version', { v: KIDS_VERSION })}</small></footer>
   </main>`);
   on('[data-u]', 'click', e => playUnit(Number(e.currentTarget.dataset.u)));
   on('#book', 'click', stickerBook);
-  on('#gate', 'click', parentGate);
-  on('#grownups', 'click', parentGate);
+  on('#switch', 'click', () => parentGate('switch'));
+  on('#grownups', 'click', () => parentGate('settings'));
   const curEl = $app.querySelector('.k-node.current'); if (curEl) setTimeout(() => curEl.scrollIntoView({ block: 'center', behavior: 'smooth' }), 150);
 }
 
@@ -371,11 +371,11 @@ function stickerBook() {
 
 
 // A grown-up check that works on every phone: a sum young children can't read or solve yet.
-function parentGate() {
+function parentGate(goal = 'settings') {
   const a = 11 + Math.floor(Math.random() * 9), b = 3 + Math.floor(Math.random() * 7);
   render(`<main class="k-screen k-parents">
-    <header class="k-ltop"><button class="k-x" id="back" aria-label="${t('close')}">✕</button><h1 class="k-title">${t('parents')}</h1></header>
-    <p class="k-lead">${t('gate_q')}</p>
+    <header class="k-ltop"><button class="k-x" id="back" aria-label="${t('close')}">✕</button><h1 class="k-title">${goal === 'switch' ? t('switch_profile') : t('parents')}</h1></header>
+    <p class="k-lead">${goal === 'switch' ? t('gate_q_switch') : t('gate_q')}</p>
     <p class="k-sum" aria-live="polite">${a} + ${b} = ?</p>
     <input id="ans" class="k-input" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="${t('gate_ph')}" placeholder="${t('gate_ph')}">
     <p class="k-gate-msg" id="msg" role="alert"></p>
@@ -383,9 +383,9 @@ function parentGate() {
   </main>`);
   const input = $app.querySelector('#ans'); input.focus();
   const check = () => {
-    if (Number(input.value.trim()) === a + b) return parents();
+    if (Number(input.value.trim()) === a + b) return goal === 'switch' ? chooseProfile('../') : parents();
     $app.querySelector('#msg').textContent = t('gate_wrong'); input.value = '';
-    setTimeout(parentGate, 1200);
+    setTimeout(() => parentGate(goal), 1200);
   };
   on('#ok', 'click', check);
   input.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
