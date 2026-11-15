@@ -34,5 +34,11 @@ if (existsSync('content/roleplays.json')) {
   }
   console.log(`✓ roleplays.json: ${rp.scenarios.length} scenarios`);
 }
+const appSrc = readFileSync('js/app.js', 'utf8');
+const appV = (appSrc.match(/APP_VERSION = '([\d.]+)'/) || [])[1];
+const verJ = JSON.parse(readFileSync('version.json', 'utf8'));
+const swV = (readFileSync('sw.js', 'utf8').match(/kn-v([\d.]+)/) || [])[1];
+if (appV !== verJ.version || appV !== swV) err(`version mismatch: app ${appV}, version.json ${verJ.version}, sw ${swV}`);
+else console.log(`✓ version ${appV} in app, version.json and sw.js`);
 if (errors) { console.error(`${errors} problem(s)`); process.exit(1); }
 console.log('All content checks passed.');

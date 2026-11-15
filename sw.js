@@ -1,5 +1,5 @@
 // Service worker: app shell and lessons work offline; Qur'an text/audio and fonts are cached after first use.
-const VERSION = 'kn-v3.1.0';
+const VERSION = 'kn-v3.2.0';
 const SHELL = [
   './', 'index.html', 'css/style.css', 'manifest.webmanifest',
   'js/app.js', 'js/db.js', 'js/srs.js', 'js/speech.js', 'js/i18n.js',
@@ -20,6 +20,7 @@ self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || e.request.headers.has('range')) return; // audio streams: let the browser handle them
   const sameOrigin = url.origin === self.location.origin;
+  if (sameOrigin && url.pathname.endsWith('/version.json')) return; // always ask the network for the latest version
   if (!sameOrigin && !RUNTIME.includes(url.hostname)) return; // e.g. Gemini: always network
   // Stale-while-revalidate: answer from cache at once, refresh in the background.
   e.respondWith(caches.open(VERSION).then(async cache => {

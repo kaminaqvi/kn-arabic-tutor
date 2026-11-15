@@ -3,9 +3,41 @@ import { today, addDays, daysBetween, newProgress, grade, newPerDay } from './sr
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback, geminiChat, stripMarks } from './speech.js';
 import { t, L, setLang, getLang } from './i18n.js';
 
-const APP_VERSION = '3.1.0';
+const APP_VERSION = '3.2.0';
+const APP_DATE = '2026-11-16';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
+
+// ---------- version and updates ----------
+const newer = (a, b) => { const x = a.split('.').map(Number), y = b.split('.').map(Number); for (let i = 0; i < 3; i++) { if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0); } return false; };
+async function checkUpdate() {
+  try {
+    const r = await fetch(`version.json?t=${Date.now()}`, { cache: 'no-store' });
+    const j = await r.json();
+    S.latest = j; S.updateReady = newer(j.version, APP_VERSION);
+  } catch (e) { S.latest = null; S.updateReady = false; }
+  return S.updateReady;
+}
+async function updateNow() {
+  toast(t('updating'));
+  try {
+    const regs = await navigator.serviceWorker?.getRegistrations?.() || [];
+    await Promise.all(regs.map(r => r.update().catch(() => {})));
+    const keys = await caches.keys(); await Promise.all(keys.map(k => caches.delete(k)));
+  } catch (e) { /* reload anyway */ }
+  location.reload();
+}
+const fmtDate = d => { try { return new Date(d + 'T12:00:00').toLocaleDateString(getLang() === 'ur' ? 'ur-PK' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' }); } catch (e) { return d; } };
+function versionHtml() {
+  const latest = S.latest;
+  const status = !latest ? t('ver_offline') : S.updateReady ? t('ver_update', { v: latest.version }) : t('ver_latest');
+  return `<div class="version ${S.updateReady ? 'has-update' : ''}"><div><b>${t('ver_label', { v: APP_VERSION })}</b><small>${t('ver_released', { d: fmtDate(APP_DATE) })}. ${status}</small></div>
+    ${S.updateReady ? `<button class="btn small primary" id="upd">${t('ver_update_btn')}</button>` : `<button class="btn small" id="chk">${t('ver_check')}</button>`}</div>`;
+}
+function wireVersion(rerender) {
+  on('#upd', 'click', updateNow);
+  on('#chk', 'click', async () => { await checkUpdate(); if (S.updateReady) rerender(); else toast(S.latest ? t('ver_latest') : t('ver_offline')); });
+}
 
 const S = {
   profile: null, settings: {}, index: null,
@@ -349,7 +381,9 @@ async function home() {
         <button class="btn primary" id="start">${t('home_start')}</button>`}
     </section>
     ${notes.join('')}
-    ${matchMedia('(display-mode: standalone)').matches ? '' : `<p class="hint center install">${t('install_hint')}</p>`}`);
+    ${matchMedia('(display-mode: standalone)').matches ? '' : `<p class="hint center install">${t('install_hint')}</p>`}
+    <p class="hint center ver-line">${t('ver_label', { v: APP_VERSION })}</p>`);
+  if (S.updateReady) { const n = document.createElement('div'); n.className = 'note update'; n.innerHTML = `<span>${t('ver_update', { v: S.latest.version })}</span><button class="btn small primary" id="upd2">${t('ver_update_btn')}</button>`; $app.querySelector('.today-head').after(n); on('#upd2', 'click', updateNow); }
   on('#start', 'click', () => startLevel(false));
   on('#again', 'click', () => startLevel(true));
   on('#more', 'click', () => startLevel(false, true));
@@ -878,8 +912,10 @@ function settings() {
     </section>
     <button class="btn primary wide" id="save">${t('save_settings')}</button>
     <h2 class="group-title">${t('about_title')}</h2>
-    <p class="hint">${t('about_body')} v${APP_VERSION}</p>
+    ${versionHtml()}
+    <p class="hint">${t('about_body')}</p>
     <button class="btn danger wide" id="reset">${t('reset_btn')}</button>`);
+  wireVersion(settings);
   $app.querySelector('#lang').value = p.lang; $app.querySelector('#form').value = p.form; $app.querySelector('#min').value = String(p.minutes);
   on('#save', 'click', async () => {
     p.lang = $app.querySelector('#lang').value; p.form = $app.querySelector('#form').value;
@@ -1061,6 +1097,7 @@ async function boot() {
   try { await loadContent(); }
   catch (e) { render(`<main class="screen"><p class="warn">Could not load lessons. Check your connection and reload.</p></main>`); return; }
   if (!S.profile) startOnboarding(); else home();
+  checkUpdate().then(ready => { if (ready && S.profile && $app.querySelector('.today-head')) home(); });
 }
 
 window.__kn = { S, buildReport, startLevel, home, rpList, ftStart, checkTyped, practiceTab, progressTab }; // for debugging and tests
