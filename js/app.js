@@ -3,7 +3,7 @@ import { today, addDays, daysBetween, newProgress, grade, newPerDay } from './sr
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback, geminiChat, stripMarks } from './speech.js';
 import { t, L, setLang, getLang } from './i18n.js';
 
-const APP_VERSION = '3.4.0';
+const APP_VERSION = '3.5.0';
 const APP_DATE = '2026-11-16';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
@@ -212,6 +212,62 @@ function shell(tab, inner) {
 
 function vibrate(ok) { try { navigator.vibrate && navigator.vibrate(ok ? 18 : [30, 40, 30]); } catch (e) {} }
 
+
+// ---------- landing: choose who is learning ----------
+const CAMEL = `<svg viewBox="0 0 220 190" aria-hidden="true" class="camel">
+  <ellipse cx="105" cy="178" rx="70" ry="7" fill="rgba(43,35,80,.12)"/>
+  <path d="M48 120c-6 22-4 40-2 52M70 128c-2 20 0 34 2 44M128 128c2 20 0 34-2 44M150 120c6 22 4 40 2 52" fill="none" stroke="#C9962E" stroke-width="12" stroke-linecap="round"/>
+  <path d="M30 118c0-30 22-44 40-44 6-22 22-30 32-30s24 10 30 30c18 2 36 14 36 40 0 22-30 30-70 30s-68-6-68-26z" fill="#F2C879" stroke="#C9962E" stroke-width="3"/>
+  <path d="M158 104c8-14 10-36 12-56" fill="none" stroke="#F2C879" stroke-width="22" stroke-linecap="round"/>
+  <ellipse cx="180" cy="44" rx="24" ry="18" fill="#F2C879" stroke="#C9962E" stroke-width="3"/>
+  <circle cx="186" cy="40" r="4.5" fill="#2B2350"/><circle cx="192" cy="52" r="4" fill="#FF5E7E" opacity=".55"/>
+  <path d="M196 47c3 3 3 7 0 9" fill="none" stroke="#2B2350" stroke-width="3" stroke-linecap="round"/></svg>`;
+
+// Read the kids app's saved name and stars without creating its database.
+async function kidsSummary() {
+  try {
+    if (!indexedDB.databases) return null;
+    const list = await indexedDB.databases();
+    if (!list.some(d => d.name === 'kn-arabic-kids')) return null;
+    const kdb = await new Promise((res, rej) => { const r = indexedDB.open('kn-arabic-kids'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
+    if (!kdb.objectStoreNames.contains('kv')) { kdb.close(); return null; }
+    const get = k => new Promise(res => { const q = kdb.transaction('kv').objectStore('kv').get(k); q.onsuccess = () => res(q.result); q.onerror = () => res(null); });
+    const [profile, units] = [await get('profile'), await get('units')];
+    kdb.close();
+    if (!profile) return null;
+    return { name: profile.name, buddy: profile.buddy, stars: Object.values(units || {}).reduce((a, u) => a + (u.stars || 0), 0), levels: Object.keys(units || {}).length };
+  } catch (e) { return null; }
+}
+
+async function landing() {
+  const kid = await kidsSummary();
+  const st = S.profile ? await computeStats() : null;
+  const adultSub = S.profile ? t('land_adult_progress', { d: daysBetween(S.profile.start, today()) + 1, s: st.streak, w: S.progress.size }) : t('land_adult_new');
+  const kidSub = kid ? t('land_kids_progress', { n: esc(kid.name || ''), s: kid.stars, l: kid.levels }) : t('land_kids_new');
+  render(`<main class="landing">
+    <header class="land-top"><div class="land-lang"><button data-l="en" class="${getLang() === 'en' ? 'on' : ''}">English</button><button data-l="ur" class="${getLang() === 'ur' ? 'on' : ''}">اردو</button></div></header>
+    <h1>${t('land_title')}</h1>
+    <p class="lead">${t('land_sub')}</p>
+    <button class="who adult" id="pick-adult">
+      <span class="who-art ar" lang="ar">اقْرَأْ</span>
+      <span class="who-text"><b>${t('mode_adult')}</b><small>${t('land_adult_desc')}</small><em>${adultSub}</em></span>
+    </button>
+    <button class="who kids" id="pick-kids">
+      <span class="who-art">${kid && kid.buddy && kid.buddy !== '🐪' ? `<span class="who-buddy">${esc(kid.buddy)}</span>` : CAMEL}</span>
+      <span class="who-text"><b>${t('mode_kids')}</b><small>${t('land_kids_desc')}</small><em>${kidSub}</em></span>
+    </button>
+    <p class="hint center">${t('land_note')}</p>
+    <p class="hint center ver-line">${t('ver_label', { v: APP_VERSION })}</p>
+  </main>`);
+  on('[data-l]', 'click', e => { setLang(e.currentTarget.dataset.l); landing(); });
+  on('#pick-kids', 'click', toKids);
+  on('#pick-adult', 'click', () => {
+    setMode('adult');
+    if (S.profile) { saveProfile(); home(); }
+    else { initOnboarding(); OB.data.lang = getLang() === 'ur' ? 'ur' : 'enur'; obLang(); }
+  });
+}
+
 // ---------- onboarding ----------
 const OB = {};
 function obScreen(title, body, { hint = '', back = null, next = 'next', nextLabel = t('next') } = {}) {
@@ -223,8 +279,9 @@ function obScreen(title, body, { hint = '', back = null, next = 'next', nextLabe
   if (back) on('#back', 'click', back);
 }
 
+function initOnboarding() { OB.data = { lang: 'enur', paths: ['umrah'], skipFoundations: false, goalDate: null, minutes: 20, form: 'both' }; }
 function startOnboarding() {
-  OB.data = { lang: 'enur', paths: ['umrah'], skipFoundations: false, goalDate: null, minutes: 20, form: 'both' };
+  initOnboarding();
   setLang('en');
   render(`<div class="welcome">
     <div class="welcome-art"><div class="iqra ar" lang="ar">اقْرَأْ</div><p class="iqra-note">${t('welcome_caption')}</p></div>
@@ -247,7 +304,7 @@ function tiles(name, options, selected, multi = false) {
 function obLang() {
   OB.pct = 12;
   obScreen(t('ob_lang_q'), tiles('lang', [
-    { value: 'en', label: t('ob_lang_en') }, { value: 'enur', label: t('ob_lang_enur'), sub: t('ob_lang_enur_sub') }, { value: 'ur', label: t('ob_lang_ur') }], OB.data.lang), { back: startOnboarding });
+    { value: 'en', label: t('ob_lang_en') }, { value: 'enur', label: t('ob_lang_enur'), sub: t('ob_lang_enur_sub') }, { value: 'ur', label: t('ob_lang_ur') }], OB.data.lang), { back: landing });
   on('#next', 'click', () => {
     OB.data.lang = $app.querySelector('input[name=lang]:checked').value;
     setLang(OB.data.lang === 'ur' ? 'ur' : 'en');
@@ -925,13 +982,14 @@ function settings() {
     </section>
     <button class="btn primary wide" id="save">${t('save_settings')}</button>
     <h2 class="group-title">${t('kids_title')}</h2>
-    <section class="group"><a class="row-btn" href="kids/" id="kids-row"><span><b>${t('kids_open')}</b><small>${t('kids_sub')}</small></span></a></section>
+    <section class="group"><button class="row-btn" id="switch-profile"><span><b>${t('switch_profile')}</b><small>${t('switch_profile_sub')}</small></span></button><a class="row-btn" href="kids/" id="kids-row"><span><b>${t('kids_open')}</b><small>${t('kids_sub')}</small></span></a></section>
     <h2 class="group-title">${t('about_title')}</h2>
     ${versionHtml()}
     <p class="hint">${t('about_body')}</p>
     <button class="btn danger wide" id="reset">${t('reset_btn')}</button>`);
   wireVersion(settings);
   on('#kids-row', 'click', e => { e.preventDefault(); toKids(); });
+  on('#switch-profile', 'click', () => { setMode('choose'); landing(); });
   $app.querySelector('#lang').value = p.lang; $app.querySelector('#form').value = p.form; $app.querySelector('#min').value = String(p.minutes);
   on('#save', 'click', async () => {
     p.lang = $app.querySelector('#lang').value; p.form = $app.querySelector('#form').value;
@@ -947,7 +1005,7 @@ function settings() {
   on('#reset', 'click', async () => {
     if (!confirm(t('reset_confirm'))) return;
     await db.clear('progress'); await db.clear('log'); await kv.set('profile', null);
-    S.progress = new Map(); S.profile = null; startOnboarding();
+    S.progress = new Map(); S.profile = null; setMode('choose'); landing();
   });
 }
 
@@ -1108,14 +1166,16 @@ async function copyReport() {
 // ---------- boot ----------
 async function boot() {
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => {});
-  if (getMode() === 'kids' && !location.hash.includes('grown-up')) { location.replace('kids/'); return; }
+  const mode = getMode();
+  if (mode === 'kids' && !location.hash.includes('grown-up')) { location.replace('kids/'); return; }
+  if (location.hash.includes('grown-up')) { setMode('adult'); history.replaceState(null, '', location.pathname); }
   await loadState();
-  setLang(S.profile?.lang === 'ur' ? 'ur' : 'en');
+  setLang(S.profile?.lang === 'ur' ? 'ur' : ((navigator.language || '').startsWith('ur') && !S.profile ? 'ur' : 'en'));
   try { await loadContent(); }
   catch (e) { render(`<main class="screen"><p class="warn">Could not load lessons. Check your connection and reload.</p></main>`); return; }
-  if (!S.profile) startOnboarding(); else home();
+  if (getMode() !== 'adult') landing(); else if (!S.profile) { initOnboarding(); obLang(); } else home();
   checkUpdate().then(ready => { if (ready && S.profile && $app.querySelector('.today-head')) home(); });
 }
 
-window.__kn = { S, buildReport, startLevel, home, rpList, ftStart, checkTyped, practiceTab, progressTab }; // for debugging and tests
+window.__kn = { S, landing, buildReport, startLevel, home, rpList, ftStart, checkTyped, practiceTab, progressTab }; // for debugging and tests
 boot();

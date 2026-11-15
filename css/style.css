@@ -295,3 +295,25 @@ a.row-btn { color: inherit; text-decoration: none; }
 .mode-switch { display: inline-flex; background: var(--paper); border-radius: 999px; padding: 4px; box-shadow: var(--shadow); }
 .mode-switch button { border: 0; background: none; border-radius: 999px; padding: 6px 16px; min-height: 36px; font-size: 14px; font-weight: 500; color: var(--muted); }
 .mode-switch button.on { background: var(--green); color: var(--on-green); }
+
+/* landing: choose a profile */
+.landing { max-width: 520px; margin: 0 auto; min-height: 100dvh; padding: calc(16px + env(safe-area-inset-top)) 20px calc(28px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; }
+.land-top { display: flex; justify-content: flex-end; margin-bottom: 18px; }
+.land-lang { display: inline-flex; background: var(--paper); border-radius: 999px; padding: 4px; box-shadow: var(--shadow); }
+.land-lang button { border: 0; background: none; border-radius: 999px; padding: 6px 14px; min-height: 36px; font-size: 14px; color: var(--muted); }
+.land-lang button.on { background: var(--green); color: var(--on-green); }
+.landing h1 { font-size: 32px; }
+.who { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 16px; width: 100%; text-align: start; border: 0; border-radius: 28px; padding: 18px 20px; margin: 10px 0; min-height: 150px; transition: transform .12s ease; }
+.who:active { transform: scale(.985); }
+.who.adult { background: var(--paper); box-shadow: var(--shadow); color: var(--ink); }
+.who.kids { background: #2BB3C0; color: #fff; box-shadow: 0 8px 0 #1E8792; font-family: 'Baloo Bhaijaan 2', var(--ui); }
+.who-art { display: grid; place-items: center; }
+.who.adult .who-art { font-size: 64px; line-height: 1.3; color: var(--green); }
+.who .camel { width: 120px; height: auto; }
+.who-buddy { font-size: 72px; line-height: 1; }
+.who-text { display: grid; gap: 4px; }
+.who-text b { font-size: 24px; font-weight: 600; }
+.who-text small { font-size: 14.5px; opacity: .85; line-height: 1.4; }
+.who-text em { font-style: normal; font-size: 13.5px; font-weight: 500; }
+.who.adult .who-text em { color: var(--green); }
+.who.kids .who-text em { color: #FFF4C2; }

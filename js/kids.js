@@ -4,7 +4,7 @@ import { db, kv, requestPersistence, exportData, importData } from './db.js';
 import { today, newProgress, grade } from './srs.js';
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice } from './speech.js';
 
-const KIDS_VERSION = '1.1.0';
+const KIDS_VERSION = '1.2.0';
 const setMode = m => { try { localStorage.setItem('kn-mode', m); } catch (e) {} };
 const $app = document.getElementById('app');
 const K = { profile: null, items: new Map(), pack: null, progress: new Map(), units: {}, stickers: [] };
@@ -23,7 +23,7 @@ const STR = {
     back_map: 'Back to map', sticker_book: 'My sticker book', sticker_count: '{n} of {t} collected',
     parent_hold: 'Grown-ups: hold for 2 seconds', parents: 'For parents', lang: 'Help language', sounds: 'Sound effects',
     on: 'On', off: 'Off', export: 'Save a backup file', import: 'Restore from a backup file', reset: 'Start again from zero',
-    reset_confirm: 'Delete all of this child’s progress on this phone?', adult_app: 'Switch to grown-up mode', close: 'Close',
+    reset_confirm: 'Delete all of this child’s progress on this phone?', adult_app: 'Switch profile', close: 'Close',
     version: 'Kids version {v}', saved: 'Saved', imported: 'Backup restored', import_fail: 'That file is not a kids backup.',
     no_voice: 'Install an Arabic voice: phone Settings → Text-to-speech → Install voice data → Arabic.',
     quran_offline: 'Connect to the internet once to download the Qur’an recitation.', mic_fail: 'I could not hear you. Try again!',
@@ -41,7 +41,7 @@ const STR = {
     back_map: 'نقشے پر واپس', sticker_book: 'میری اسٹیکر بک', sticker_count: '{t} میں سے {n} جمع',
     parent_hold: 'بڑوں کے لیے: 2 سیکنڈ دبائے رکھیں', parents: 'والدین کے لیے', lang: 'مدد کی زبان', sounds: 'آوازیں',
     on: 'آن', off: 'آف', export: 'بیک اپ فائل محفوظ کریں', import: 'بیک اپ فائل سے بحال کریں', reset: 'شروع سے دوبارہ',
-    reset_confirm: 'اس فون سے بچے کی تمام پیش رفت مٹا دیں؟', adult_app: 'بڑوں کے موڈ پر جائیں', close: 'بند کریں',
+    reset_confirm: 'اس فون سے بچے کی تمام پیش رفت مٹا دیں؟', adult_app: 'پروفائل بدلیں', close: 'بند کریں',
     version: 'بچوں کا ورژن {v}', saved: 'محفوظ ہو گیا', imported: 'بیک اپ بحال ہو گیا', import_fail: 'یہ بچوں کی بیک اپ فائل نہیں ہے۔',
     no_voice: 'عربی آواز انسٹال کریں: فون کی Settings ← Text-to-speech ← Install voice data ← Arabic',
     quran_offline: 'قرآن کی تلاوت ڈاؤن لوڈ کرنے کے لیے ایک بار انٹرنیٹ سے جڑیں۔', mic_fail: 'آواز نہیں آئی۔ پھر سے کوشش کرو!',
@@ -379,7 +379,7 @@ function parents() {
   </main>`);
   $app.querySelector('#lang').value = p.lang; $app.querySelector('#snd').value = p.sounds === false ? '0' : '1';
   on('#back', 'click', map);
-  on('#grown', 'click', () => { setMode('adult'); location.href = '../#grown-up'; });
+  on('#grown', 'click', () => { setMode('choose'); location.href = '../'; });
   on('#save', 'click', async () => {
     p.lang = $app.querySelector('#lang').value; p.sounds = $app.querySelector('#snd').value === '1'; p.name = $app.querySelector('#name').value.trim().slice(0, 20);
     await saveProfile(); setLang(p.lang); toast(t('saved')); map();
