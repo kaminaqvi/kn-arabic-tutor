@@ -1,0 +1,789 @@
+{
+ "id": "umrah",
+ "title": {
+  "en": "Umrah and Hajj travel",
+  "ur": "عمرہ اور حج کا سفر"
+ },
+ "units": [
+  {
+   "id": "day1",
+   "title": {
+    "en": "Greetings and courtesy",
+    "ur": "سلام اور آداب"
+   },
+   "items": [
+    "um-salam",
+    "um-wsalam",
+    "um-marhaba",
+    "um-ahlan",
+    "um-shukran",
+    "um-afwan",
+    "um-lawsamaht",
+    "um-masalama"
+   ]
+  },
+  {
+   "id": "day2",
+   "title": {
+    "en": "Yes, no and understanding",
+    "ur": "ہاں، نہیں اور سمجھنا"
+   },
+   "items": [
+    "um-iwa",
+    "um-la",
+    "um-kayfak",
+    "um-hamdulillah",
+    "um-ismi",
+    "um-eeshismak",
+    "um-pakistan",
+    "um-mafham",
+    "um-shwayya",
+    "um-titkallam"
+   ]
+  },
+  {
+   "id": "day3",
+   "title": {
+    "en": "Numbers 1 to 10",
+    "ur": "گنتی ایک سے دس"
+   },
+   "items": [
+    "um-n1",
+    "um-n2",
+    "um-n3",
+    "um-n4",
+    "um-n5",
+    "um-n6",
+    "um-n7",
+    "um-n8",
+    "um-n9",
+    "um-n10"
+   ]
+  },
+  {
+   "id": "day4",
+   "title": {
+    "en": "I want",
+    "ur": "مجھے چاہیے"
+   },
+   "items": [
+    "um-abgha",
+    "um-moya",
+    "um-abghamoya",
+    "um-shay",
+    "um-gahwa",
+    "um-khubz",
+    "um-akl",
+    "um-abghashay",
+    "um-bikam"
+   ]
+  },
+  {
+   "id": "day5",
+   "title": {
+    "en": "Where is…?",
+    "ur": "کہاں ہے…؟"
+   },
+   "items": [
+    "um-fen",
+    "um-fenhammam",
+    "um-fenharam",
+    "um-funduq",
+    "um-fenfunduq",
+    "um-yameen",
+    "um-yasar",
+    "um-alatool",
+    "um-qareeb",
+    "um-baeed"
+   ]
+  },
+  {
+   "id": "day6",
+   "title": {
+    "en": "The talbiyah",
+    "ur": "تلبیہ"
+   },
+   "items": [
+    "um-talb1",
+    "um-talb2",
+    "um-talb3",
+    "um-talb4",
+    "um-labbayk",
+    "um-allahumma"
+   ]
+  },
+  {
+   "id": "day7",
+   "title": {
+    "en": "Al-Fatiha",
+    "ur": "سورۃ الفاتحہ"
+   },
+   "items": [
+    "um-fat1",
+    "um-fat2",
+    "um-fat3",
+    "um-fat4",
+    "um-fat5",
+    "um-fat6",
+    "um-fat7"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "um-salam",
+   "kind": "phrase",
+   "ar": "السَّلَامُ عَلَيْكُمْ",
+   "tr": "as-salamu 'alaykum",
+   "en": "Peace be upon you (hello)",
+   "ur": "السلام علیکم",
+   "hook": {
+    "en": "The same greeting you already use. Say the ع in ‘alaykum from the throat.",
+    "ur": "یہی سلام جو آپ روز کہتے ہیں۔ عَلَیکم کا ع حلق سے ادا کریں۔"
+   }
+  },
+  {
+   "id": "um-wsalam",
+   "kind": "phrase",
+   "ar": "وَعَلَيْكُمُ السَّلَامُ",
+   "tr": "wa 'alaykumu s-salam",
+   "en": "And peace be upon you (reply)",
+   "ur": "وعلیکم السلام"
+  },
+  {
+   "id": "um-marhaba",
+   "kind": "word",
+   "ar": "مَرْحَبَا",
+   "tr": "marhaba",
+   "en": "Hello / welcome",
+   "ur": "خوش آمدید / ہیلو",
+   "hook": {
+    "en": "Urdu uses ‘marhaba’ too, for ‘well done’. In Arabic it is a friendly hello.",
+    "ur": "اردو میں بھی مرحبا کہتے ہیں۔ عربی میں یہ عام سلام ہے۔"
+   }
+  },
+  {
+   "id": "um-ahlan",
+   "kind": "phrase",
+   "ar": "أَهْلًا وَسَهْلًا",
+   "tr": "ahlan wa sahlan",
+   "en": "Welcome",
+   "ur": "خوش آمدید",
+   "hook": {
+    "en": "ahl = family (as in ahl-e-khana): ‘you are among family’.",
+    "ur": "اہل = گھر والے (اہلِ خانہ): ’آپ اپنوں میں ہیں‘"
+   }
+  },
+  {
+   "id": "um-shukran",
+   "kind": "word",
+   "ar": "شُكْرًا",
+   "tr": "shukran",
+   "en": "Thank you",
+   "ur": "شکریہ",
+   "hook": {
+    "en": "Same root as shukriya.",
+    "ur": "شکریہ ہی کا مادہ۔"
+   }
+  },
+  {
+   "id": "um-afwan",
+   "kind": "word",
+   "ar": "عَفْوًا",
+   "tr": "'afwan",
+   "en": "You're welcome / excuse me",
+   "ur": "کوئی بات نہیں / معاف کیجیے",
+   "hook": {
+    "en": "Same root as ‘afw’ and ‘maafi’ (pardon).",
+    "ur": "عفو اور معافی کا مادہ۔"
+   }
+  },
+  {
+   "id": "um-lawsamaht",
+   "kind": "phrase",
+   "ar": "لَوْ سَمَحْتَ",
+   "tr": "law samaht",
+   "en": "Excuse me / please (to a man)",
+   "ur": "براہِ کرم (مرد سے)",
+   "ar_f": "لَوْ سَمَحْتِ",
+   "tr_f": "law samahti",
+   "en_f": "Excuse me / please (to a woman)"
+  },
+  {
+   "id": "um-masalama",
+   "kind": "phrase",
+   "ar": "مَعَ السَّلَامَةِ",
+   "tr": "ma'a s-salama",
+   "en": "Goodbye (go in peace)",
+   "ur": "خدا حافظ",
+   "hook": {
+    "en": "salama = safety, like ‘salamat’.",
+    "ur": "سلامہ = سلامتی، جیسے ’سلامت‘"
+   }
+  },
+  {
+   "id": "um-iwa",
+   "kind": "word",
+   "ar": "إِيوَه",
+   "tr": "iwa",
+   "en": "Yes (spoken Hijazi)",
+   "ur": "ہاں (حجازی بول چال)",
+   "msa": "نَعَمْ"
+  },
+  {
+   "id": "um-la",
+   "kind": "word",
+   "ar": "لَا",
+   "tr": "la",
+   "en": "No",
+   "ur": "نہیں"
+  },
+  {
+   "id": "um-kayfak",
+   "kind": "phrase",
+   "ar": "كَيْفَكْ؟",
+   "tr": "kayfak?",
+   "en": "How are you? (to a man)",
+   "ur": "آپ کیسے ہیں؟ (مرد سے)",
+   "ar_f": "كَيْفِكْ؟",
+   "tr_f": "kayfik?",
+   "en_f": "How are you? (to a woman)",
+   "msa": "كَيْفَ حَالُكَ؟"
+  },
+  {
+   "id": "um-hamdulillah",
+   "kind": "phrase",
+   "ar": "الْحَمْدُ لِلّٰهِ",
+   "tr": "al-hamdu lillah",
+   "en": "Praise be to Allah (I'm fine)",
+   "ur": "الحمد للہ (میں ٹھیک ہوں)"
+  },
+  {
+   "id": "um-ismi",
+   "kind": "phrase",
+   "ar": "اِسْمِي أَحْمَد",
+   "tr": "ismi Ahmad",
+   "en": "My name is Ahmad",
+   "ur": "میرا نام احمد ہے",
+   "hook": {
+    "en": "ism = name, as in ‘ism-e-girami’.",
+    "ur": "اسم = نام، جیسے ’اسمِ گرامی‘"
+   }
+  },
+  {
+   "id": "um-eeshismak",
+   "kind": "phrase",
+   "ar": "إِيشْ اِسْمَكْ؟",
+   "tr": "eesh ismak?",
+   "en": "What is your name? (to a man)",
+   "ur": "آپ کا نام کیا ہے؟ (مرد سے)",
+   "ar_f": "إِيشْ اِسْمِكْ؟",
+   "tr_f": "eesh ismik?",
+   "en_f": "What is your name? (to a woman)",
+   "msa": "مَا اسْمُكَ؟"
+  },
+  {
+   "id": "um-pakistan",
+   "kind": "phrase",
+   "ar": "أَنَا مِنْ بَاكِسْتَان",
+   "tr": "ana min Pakistan",
+   "en": "I am from Pakistan",
+   "ur": "میں پاکستان سے ہوں"
+  },
+  {
+   "id": "um-mafham",
+   "kind": "phrase",
+   "ar": "مَا أَفْهَمْ عَرَبِي",
+   "tr": "ma afham 'arabi",
+   "en": "I don't understand Arabic",
+   "ur": "مجھے عربی سمجھ نہیں آتی",
+   "hook": {
+    "en": "afham = I understand, from ‘fahm’ (understanding).",
+    "ur": "اَفہم = میں سمجھتا ہوں، ’فہم‘ سے"
+   }
+  },
+  {
+   "id": "um-shwayya",
+   "kind": "phrase",
+   "ar": "شْوَيَّة شْوَيَّة",
+   "tr": "shwayya shwayya",
+   "en": "Slowly, please / little by little",
+   "ur": "آہستہ آہستہ"
+  },
+  {
+   "id": "um-titkallam",
+   "kind": "phrase",
+   "ar": "تِتْكَلَّمْ إِنْجِلِيزِي؟",
+   "tr": "titkallam ingleezi?",
+   "en": "Do you speak English? (to a man)",
+   "ur": "کیا آپ انگریزی بولتے ہیں؟",
+   "ar_f": "تِتْكَلَّمِي إِنْجِلِيزِي؟",
+   "tr_f": "titkallami ingleezi?",
+   "en_f": "Do you speak English? (to a woman)",
+   "hook": {
+    "en": "Same root as ‘kalaam’ (speech).",
+    "ur": "’کلام‘ کا مادہ۔"
+   }
+  },
+  {
+   "id": "um-n1",
+   "kind": "word",
+   "ar": "وَاحِد",
+   "tr": "wahid",
+   "en": "one (1, ١)",
+   "ur": "ایک (١)",
+   "accept": [
+    "1",
+    "١"
+   ],
+   "hook": {
+    "en": "Allah is ‘Wahid’, the One.",
+    "ur": "اللہ ’واحد‘ ہے۔"
+   }
+  },
+  {
+   "id": "um-n2",
+   "kind": "word",
+   "ar": "اِثْنَيْن",
+   "tr": "itneen",
+   "en": "two (2, ٢)",
+   "ur": "دو (٢)",
+   "accept": [
+    "2",
+    "٢"
+   ],
+   "hook": {
+    "en": "Monday is ‘Yaum al-Ithnayn’, day two (Peer).",
+    "ur": "پیر کو ’یوم الاثنین‘ کہتے ہیں۔"
+   }
+  },
+  {
+   "id": "um-n3",
+   "kind": "word",
+   "ar": "ثَلَاثَة",
+   "tr": "talata",
+   "en": "three (3, ٣)",
+   "ur": "تین (٣)",
+   "accept": [
+    "3",
+    "٣"
+   ],
+   "hook": {
+    "en": "‘Thulth’ is one-third, as in ‘sulus’.",
+    "ur": "ثُلُث = تہائی۔"
+   }
+  },
+  {
+   "id": "um-n4",
+   "kind": "word",
+   "ar": "أَرْبَعَة",
+   "tr": "arba'a",
+   "en": "four (4, ٤)",
+   "ur": "چار (٤)",
+   "accept": [
+    "4",
+    "٤"
+   ],
+   "hook": {
+    "en": "‘Arba’een’ is 40, as in ‘chehlum’ (Arbaeen).",
+    "ur": "اربعین = چالیس۔"
+   }
+  },
+  {
+   "id": "um-n5",
+   "kind": "word",
+   "ar": "خَمْسَة",
+   "tr": "khamsa",
+   "en": "five (5, ٥)",
+   "ur": "پانچ (٥)",
+   "accept": [
+    "5",
+    "٥"
+   ],
+   "hook": {
+    "en": "‘Khums’ is one-fifth; ‘Khamsa’ = five.",
+    "ur": "خمس = پانچواں حصہ۔"
+   }
+  },
+  {
+   "id": "um-n6",
+   "kind": "word",
+   "ar": "سِتَّة",
+   "tr": "sitta",
+   "en": "six (6, ٦)",
+   "ur": "چھ (٦)",
+   "accept": [
+    "6",
+    "٦"
+   ]
+  },
+  {
+   "id": "um-n7",
+   "kind": "word",
+   "ar": "سَبْعَة",
+   "tr": "sab'a",
+   "en": "seven (7, ٧)",
+   "ur": "سات (٧)",
+   "accept": [
+    "7",
+    "٧"
+   ],
+   "hook": {
+    "en": "Tawaf is seven rounds: ‘sab’a ashwat’.",
+    "ur": "طواف کے سات چکر: ’سبعة أشواط‘"
+   }
+  },
+  {
+   "id": "um-n8",
+   "kind": "word",
+   "ar": "ثَمَانِيَة",
+   "tr": "tamanya",
+   "en": "eight (8, ٨)",
+   "ur": "آٹھ (٨)",
+   "accept": [
+    "8",
+    "٨"
+   ]
+  },
+  {
+   "id": "um-n9",
+   "kind": "word",
+   "ar": "تِسْعَة",
+   "tr": "tis'a",
+   "en": "nine (9, ٩)",
+   "ur": "نو (٩)",
+   "accept": [
+    "9",
+    "٩"
+   ]
+  },
+  {
+   "id": "um-n10",
+   "kind": "word",
+   "ar": "عَشَرَة",
+   "tr": "'ashara",
+   "en": "ten (10, ١٠)",
+   "ur": "دس (١٠)",
+   "accept": [
+    "10",
+    "١٠"
+   ],
+   "hook": {
+    "en": "Ashura is the 10th of Muharram.",
+    "ur": "عاشورہ = دس محرم۔"
+   }
+  },
+  {
+   "id": "um-abgha",
+   "kind": "word",
+   "ar": "أَبْغَى",
+   "tr": "abgha",
+   "en": "I want (spoken Saudi)",
+   "ur": "مجھے چاہیے",
+   "msa": "أُرِيدُ",
+   "hook": {
+    "en": "Textbook Arabic says ‘ureedu’ (like ‘irada’). In Saudi Arabia everyone says ‘abgha’.",
+    "ur": "کتابی عربی میں ’اُرید‘ (ارادہ)، سعودی عرب میں ’ابغى‘"
+   }
+  },
+  {
+   "id": "um-moya",
+   "kind": "word",
+   "ar": "مُوَيَّة",
+   "tr": "moya",
+   "en": "Water (spoken)",
+   "ur": "پانی",
+   "msa": "مَاء"
+  },
+  {
+   "id": "um-abghamoya",
+   "kind": "phrase",
+   "ar": "أَبْغَى مُوَيَّة",
+   "tr": "abgha moya",
+   "en": "I want water",
+   "ur": "مجھے پانی چاہیے"
+  },
+  {
+   "id": "um-shay",
+   "kind": "word",
+   "ar": "شَاي",
+   "tr": "shay",
+   "en": "Tea",
+   "ur": "چائے",
+   "hook": {
+    "en": "Sounds like ‘chai’.",
+    "ur": "’چائے‘ جیسا۔"
+   }
+  },
+  {
+   "id": "um-gahwa",
+   "kind": "word",
+   "ar": "قَهْوَة",
+   "tr": "gahwa",
+   "en": "Coffee (Saudi say q as g)",
+   "ur": "قہوہ / کافی",
+   "hook": {
+    "en": "Same word as ‘qahwa’ in Urdu. Saudis say the ق like g.",
+    "ur": "اردو کا ’قہوہ‘۔ سعودی ق کو گ بولتے ہیں۔"
+   }
+  },
+  {
+   "id": "um-khubz",
+   "kind": "word",
+   "ar": "خُبْز",
+   "tr": "khubz",
+   "en": "Bread",
+   "ur": "روٹی"
+  },
+  {
+   "id": "um-akl",
+   "kind": "word",
+   "ar": "أَكْل",
+   "tr": "akl",
+   "en": "Food",
+   "ur": "کھانا",
+   "hook": {
+    "en": "Same root as ‘akl-o-sharb’ (eating and drinking).",
+    "ur": "’اکل و شرب‘ کا مادہ۔"
+   }
+  },
+  {
+   "id": "um-abghashay",
+   "kind": "phrase",
+   "ar": "أَبْغَى شَاي لَوْ سَمَحْتْ",
+   "tr": "abgha shay law samaht",
+   "en": "I want tea, please",
+   "ur": "مجھے چائے چاہیے، براہِ کرم"
+  },
+  {
+   "id": "um-bikam",
+   "kind": "phrase",
+   "ar": "بِكَمْ هَادَا؟",
+   "tr": "bikam hada?",
+   "en": "How much is this?",
+   "ur": "یہ کتنے کا ہے؟",
+   "msa": "بِكَمْ هَذَا؟"
+  },
+  {
+   "id": "um-fen",
+   "kind": "word",
+   "ar": "فِينْ؟",
+   "tr": "fen?",
+   "en": "Where? (spoken)",
+   "ur": "کہاں؟",
+   "msa": "أَيْنَ؟"
+  },
+  {
+   "id": "um-fenhammam",
+   "kind": "phrase",
+   "ar": "فِينْ الْحَمَّامْ؟",
+   "tr": "fen al-hammam?",
+   "en": "Where is the toilet?",
+   "ur": "بیت الخلا کہاں ہے؟",
+   "hook": {
+    "en": "‘Hammam’ is also a bath in Urdu.",
+    "ur": "اردو میں بھی ’حمام‘ غسل خانہ ہے۔"
+   }
+  },
+  {
+   "id": "um-fenharam",
+   "kind": "phrase",
+   "ar": "فِينْ الْحَرَمْ؟",
+   "tr": "fen al-haram?",
+   "en": "Where is the Haram?",
+   "ur": "حرم کہاں ہے؟"
+  },
+  {
+   "id": "um-funduq",
+   "kind": "word",
+   "ar": "فُنْدُق",
+   "tr": "funduq",
+   "en": "Hotel",
+   "ur": "ہوٹل"
+  },
+  {
+   "id": "um-fenfunduq",
+   "kind": "phrase",
+   "ar": "فِينْ الْفُنْدُقْ؟",
+   "tr": "fen al-funduq?",
+   "en": "Where is the hotel?",
+   "ur": "ہوٹل کہاں ہے؟"
+  },
+  {
+   "id": "um-yameen",
+   "kind": "word",
+   "ar": "يَمِين",
+   "tr": "yameen",
+   "en": "Right",
+   "ur": "دائیں",
+   "hook": {
+    "en": "‘Yameen’ = right hand side, as in ‘ashab al-yameen’.",
+    "ur": "یمین = دایاں، جیسے ’اصحاب الیمین‘"
+   }
+  },
+  {
+   "id": "um-yasar",
+   "kind": "word",
+   "ar": "يَسَار",
+   "tr": "yasar",
+   "en": "Left",
+   "ur": "بائیں"
+  },
+  {
+   "id": "um-alatool",
+   "kind": "phrase",
+   "ar": "عَلَى طُولْ",
+   "tr": "'ala tool",
+   "en": "Straight ahead",
+   "ur": "سیدھا آگے",
+   "hook": {
+    "en": "‘Tool’ = length, as in ‘tool-o-arz’.",
+    "ur": "طول = لمبائی، جیسے ’طول و عرض‘"
+   }
+  },
+  {
+   "id": "um-qareeb",
+   "kind": "word",
+   "ar": "قَرِيب",
+   "tr": "qareeb",
+   "en": "Near",
+   "ur": "قریب",
+   "hook": {
+    "en": "Same as Urdu ‘qareeb’.",
+    "ur": "اردو کا ’قریب‘۔"
+   }
+  },
+  {
+   "id": "um-baeed",
+   "kind": "word",
+   "ar": "بَعِيد",
+   "tr": "ba'eed",
+   "en": "Far",
+   "ur": "دور",
+   "hook": {
+    "en": "Same as Urdu ‘baeed’ (far-off).",
+    "ur": "اردو کا ’بعید‘۔"
+   }
+  },
+  {
+   "id": "um-talb1",
+   "kind": "dua",
+   "ar": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ",
+   "tr": "labbayk allahumma labbayk",
+   "en": "Here I am, O Allah, here I am",
+   "ur": "حاضر ہوں، اے اللہ، میں حاضر ہوں"
+  },
+  {
+   "id": "um-talb2",
+   "kind": "dua",
+   "ar": "لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ",
+   "tr": "labbayka la shareeka laka labbayk",
+   "en": "Here I am, You have no partner, here I am",
+   "ur": "حاضر ہوں، تیرا کوئی شریک نہیں، میں حاضر ہوں",
+   "hook": {
+    "en": "‘Shareek’ = partner, as in Urdu ‘shareek’.",
+    "ur": "شریک = ساجھی، اردو کی طرح"
+   }
+  },
+  {
+   "id": "um-talb3",
+   "kind": "dua",
+   "ar": "إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ",
+   "tr": "inna l-hamda wan-ni'mata laka wal-mulk",
+   "en": "All praise, all blessings and all sovereignty are Yours",
+   "ur": "بے شک ساری تعریف، ساری نعمت اور ساری بادشاہی تیری ہے",
+   "hook": {
+    "en": "hamd = praise, ni’mat = blessing, mulk = kingdom: all Urdu words.",
+    "ur": "حمد، نعمت، ملک: سب اردو کے الفاظ"
+   }
+  },
+  {
+   "id": "um-talb4",
+   "kind": "dua",
+   "ar": "لَا شَرِيكَ لَكَ",
+   "tr": "la shareeka lak",
+   "en": "You have no partner",
+   "ur": "تیرا کوئی شریک نہیں"
+  },
+  {
+   "id": "um-labbayk",
+   "kind": "word",
+   "ar": "لَبَّيْكَ",
+   "tr": "labbayk",
+   "en": "Here I am (at Your service)",
+   "ur": "میں حاضر ہوں"
+  },
+  {
+   "id": "um-allahumma",
+   "kind": "word",
+   "ar": "اللَّهُمَّ",
+   "tr": "allahumma",
+   "en": "O Allah",
+   "ur": "اے اللہ"
+  },
+  {
+   "id": "um-fat1",
+   "kind": "ayah",
+   "quran": "1:1",
+   "ar": "",
+   "tr": "bismillahi r-rahmani r-raheem",
+   "en": "In the name of Allah, the Most Gracious, the Most Merciful.",
+   "ur": "اللہ کے نام سے جو بڑا مہربان، نہایت رحم والا ہے۔"
+  },
+  {
+   "id": "um-fat2",
+   "kind": "ayah",
+   "quran": "1:2",
+   "ar": "",
+   "tr": "al-hamdu lillahi rabbi l-'alameen",
+   "en": "All praise is for Allah, Lord of all the worlds.",
+   "ur": "سب تعریف اللہ کے لیے ہے جو تمام جہانوں کا رب ہے۔"
+  },
+  {
+   "id": "um-fat3",
+   "kind": "ayah",
+   "quran": "1:3",
+   "ar": "",
+   "tr": "ar-rahmani r-raheem",
+   "en": "The Most Gracious, the Most Merciful.",
+   "ur": "بڑا مہربان، نہایت رحم والا۔"
+  },
+  {
+   "id": "um-fat4",
+   "kind": "ayah",
+   "quran": "1:4",
+   "ar": "",
+   "tr": "maliki yawmi d-deen",
+   "en": "Master of the Day of Judgement.",
+   "ur": "روزِ جزا کا مالک۔"
+  },
+  {
+   "id": "um-fat5",
+   "kind": "ayah",
+   "quran": "1:5",
+   "ar": "",
+   "tr": "iyyaka na'budu wa iyyaka nasta'een",
+   "en": "You alone we worship, and You alone we ask for help.",
+   "ur": "ہم صرف تیری عبادت کرتے ہیں اور صرف تجھ سے مدد مانگتے ہیں۔"
+  },
+  {
+   "id": "um-fat6",
+   "kind": "ayah",
+   "quran": "1:6",
+   "ar": "",
+   "tr": "ihdina s-sirata l-mustaqeem",
+   "en": "Guide us to the straight path.",
+   "ur": "ہمیں سیدھا راستہ دکھا۔"
+  },
+  {
+   "id": "um-fat7",
+   "kind": "ayah",
+   "quran": "1:7",
+   "ar": "",
+   "tr": "sirata lladheena an'amta 'alayhim ghayri l-maghdubi 'alayhim wa la d-dalleen",
+   "en": "The path of those You have blessed, not of those who earned Your anger, nor of those who went astray.",
+   "ur": "ان لوگوں کا راستہ جن پر تو نے انعام کیا، نہ ان کا جن پر غضب ہوا اور نہ گمراہوں کا۔"
+  }
+ ],
+ "planned": 200
+}

@@ -1,0 +1,485 @@
+{
+ "id": "foundations",
+ "title": {
+  "en": "Foundations: alphabet and vowel marks",
+  "ur": "بنیاد: حروفِ تہجی اور اعراب"
+ },
+ "units": [
+  {
+   "id": "letters-1",
+   "title": {
+    "en": "Letters 1",
+    "ur": "حروف 1"
+   },
+   "items": [
+    "f-alif",
+    "f-ba",
+    "f-ta",
+    "f-tha",
+    "f-jim",
+    "f-ha",
+    "f-kha",
+    "f-dal",
+    "f-dhal",
+    "f-ra",
+    "f-zay",
+    "f-sin",
+    "f-shin",
+    "f-sad"
+   ]
+  },
+  {
+   "id": "letters-2",
+   "title": {
+    "en": "Letters 2",
+    "ur": "حروف 2"
+   },
+   "items": [
+    "f-dad",
+    "f-ta2",
+    "f-za",
+    "f-ayn",
+    "f-ghayn",
+    "f-fa",
+    "f-qaf",
+    "f-kaf",
+    "f-lam",
+    "f-mim",
+    "f-nun",
+    "f-ha2",
+    "f-waw",
+    "f-ya"
+   ]
+  },
+  {
+   "id": "marks",
+   "title": {
+    "en": "Vowel marks",
+    "ur": "اعراب"
+   },
+   "items": [
+    "f-fatha",
+    "f-kasra",
+    "f-damma",
+    "f-sukun",
+    "f-shadda",
+    "f-tanween",
+    "f-syl1",
+    "f-syl2",
+    "f-syl3",
+    "f-syl4",
+    "f-syl5",
+    "f-syl6",
+    "f-syl7",
+    "f-syl8",
+    "f-syl9",
+    "f-syl10",
+    "f-syl11",
+    "f-syl12"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "f-alif",
+   "kind": "letter",
+   "ar": "ا",
+   "tr": "alif",
+   "en": "a / aa, as in “father”",
+   "ur": "اَ / آ، جیسے “آم”"
+  },
+  {
+   "id": "f-ba",
+   "kind": "letter",
+   "ar": "ب",
+   "tr": "ba",
+   "en": "b",
+   "ur": "ب"
+  },
+  {
+   "id": "f-ta",
+   "kind": "letter",
+   "ar": "ت",
+   "tr": "ta",
+   "en": "t (soft)",
+   "ur": "ت (نرم)"
+  },
+  {
+   "id": "f-tha",
+   "kind": "letter",
+   "ar": "ث",
+   "tr": "tha",
+   "en": "th, as in “think”",
+   "ur": "انگریزی “think” والا th — اردو کی طرح س نہیں",
+   "hook": {
+    "en": "Urdu says ‘s’ (as in ثواب = sawab). Arabic says ‘th’: thawab.",
+    "ur": "اردو میں س (ثواب = سواب)، عربی میں th: ثَوَاب"
+   }
+  },
+  {
+   "id": "f-jim",
+   "kind": "letter",
+   "ar": "ج",
+   "tr": "jim",
+   "en": "j",
+   "ur": "ج"
+  },
+  {
+   "id": "f-ha",
+   "kind": "letter",
+   "ar": "ح",
+   "tr": "ha",
+   "en": "strong, breathy h from the throat",
+   "ur": "حلق سے زور دار ح — ہ سے مختلف",
+   "hook": {
+    "en": "Urdu says ح like ہ. Arabic pushes air from the throat: think of fogging a mirror.",
+    "ur": "اردو میں ح اور ہ ایک جیسے، عربی میں ح حلق سے ہوا نکال کر"
+   }
+  },
+  {
+   "id": "f-kha",
+   "kind": "letter",
+   "ar": "خ",
+   "tr": "kha",
+   "en": "kh, as in خبر",
+   "ur": "خ، جیسے “خبر”"
+  },
+  {
+   "id": "f-dal",
+   "kind": "letter",
+   "ar": "د",
+   "tr": "dal",
+   "en": "d (soft)",
+   "ur": "د (نرم)"
+  },
+  {
+   "id": "f-dhal",
+   "kind": "letter",
+   "ar": "ذ",
+   "tr": "dhal",
+   "en": "th, as in “this”",
+   "ur": "انگریزی “this” والا th — اردو کی طرح ز نہیں",
+   "hook": {
+    "en": "Urdu says ‘z’ (ذکر = zikr). Arabic says ‘dh’: dhikr.",
+    "ur": "اردو میں ز (ذکر = زکر)، عربی میں dh: ذِکْر"
+   }
+  },
+  {
+   "id": "f-ra",
+   "kind": "letter",
+   "ar": "ر",
+   "tr": "ra",
+   "en": "rolled r",
+   "ur": "ر (لرزتی ہوئی)"
+  },
+  {
+   "id": "f-zay",
+   "kind": "letter",
+   "ar": "ز",
+   "tr": "zay",
+   "en": "z",
+   "ur": "ز"
+  },
+  {
+   "id": "f-sin",
+   "kind": "letter",
+   "ar": "س",
+   "tr": "sin",
+   "en": "s",
+   "ur": "س"
+  },
+  {
+   "id": "f-shin",
+   "kind": "letter",
+   "ar": "ش",
+   "tr": "shin",
+   "en": "sh",
+   "ur": "ش"
+  },
+  {
+   "id": "f-sad",
+   "kind": "letter",
+   "ar": "ص",
+   "tr": "sad",
+   "en": "heavy s (mouth rounded, tongue low)",
+   "ur": "بھاری س — منہ گول اور زبان نیچے",
+   "hook": {
+    "en": "Urdu says ص like س. Arabic makes it deep and heavy.",
+    "ur": "اردو میں ص اور س ایک جیسے، عربی میں ص بھاری"
+   }
+  },
+  {
+   "id": "f-dad",
+   "kind": "letter",
+   "ar": "ض",
+   "tr": "dad",
+   "en": "heavy d",
+   "ur": "بھاری د — اردو کی طرح ز نہیں",
+   "hook": {
+    "en": "Urdu says ‘z’ (ضرور = zaroor). Arabic says a heavy d: daroor.",
+    "ur": "اردو میں ز (ضرور = زرور)، عربی میں بھاری د"
+   }
+  },
+  {
+   "id": "f-ta2",
+   "kind": "letter",
+   "ar": "ط",
+   "tr": "ta",
+   "en": "heavy t",
+   "ur": "بھاری ت",
+   "hook": {
+    "en": "Urdu says ط like ت. Arabic makes it deep and heavy.",
+    "ur": "اردو میں ط اور ت ایک جیسے، عربی میں ط بھاری"
+   }
+  },
+  {
+   "id": "f-za",
+   "kind": "letter",
+   "ar": "ظ",
+   "tr": "za",
+   "en": "heavy dh",
+   "ur": "بھاری ذ — اردو کی طرح ز نہیں",
+   "hook": {
+    "en": "Urdu says ‘z’ (ظلم = zulm). Arabic says a heavy dh: dhulm.",
+    "ur": "اردو میں ز، عربی میں بھاری dh"
+   }
+  },
+  {
+   "id": "f-ayn",
+   "kind": "letter",
+   "ar": "ع",
+   "tr": "ayn",
+   "en": "a tight sound from the middle of the throat",
+   "ur": "حلق کے درمیان سے دبی ہوئی آواز",
+   "hook": {
+    "en": "Urdu often skips ع (علم = ilm). Arabic always sounds it, from the throat.",
+    "ur": "اردو میں ع اکثر خاموش، عربی میں ہمیشہ حلق سے ادا ہوتا ہے"
+   }
+  },
+  {
+   "id": "f-ghayn",
+   "kind": "letter",
+   "ar": "غ",
+   "tr": "ghayn",
+   "en": "gh, as in غلط",
+   "ur": "غ، جیسے “غلط”"
+  },
+  {
+   "id": "f-fa",
+   "kind": "letter",
+   "ar": "ف",
+   "tr": "fa",
+   "en": "f",
+   "ur": "ف"
+  },
+  {
+   "id": "f-qaf",
+   "kind": "letter",
+   "ar": "ق",
+   "tr": "qaf",
+   "en": "deep q from the back of the throat",
+   "ur": "حلق کے پچھلے حصے سے گہرا ق"
+  },
+  {
+   "id": "f-kaf",
+   "kind": "letter",
+   "ar": "ك",
+   "tr": "kaf",
+   "en": "k",
+   "ur": "ک"
+  },
+  {
+   "id": "f-lam",
+   "kind": "letter",
+   "ar": "ل",
+   "tr": "lam",
+   "en": "l",
+   "ur": "ل"
+  },
+  {
+   "id": "f-mim",
+   "kind": "letter",
+   "ar": "م",
+   "tr": "mim",
+   "en": "m",
+   "ur": "م"
+  },
+  {
+   "id": "f-nun",
+   "kind": "letter",
+   "ar": "ن",
+   "tr": "nun",
+   "en": "n",
+   "ur": "ن"
+  },
+  {
+   "id": "f-ha2",
+   "kind": "letter",
+   "ar": "ه",
+   "tr": "ha",
+   "en": "light h, as in “hat”",
+   "ur": "ہلکا ہ، جیسے “ہم”"
+  },
+  {
+   "id": "f-waw",
+   "kind": "letter",
+   "ar": "و",
+   "tr": "waw",
+   "en": "w, or long oo",
+   "ur": "و، یا لمبا او"
+  },
+  {
+   "id": "f-ya",
+   "kind": "letter",
+   "ar": "ي",
+   "tr": "ya",
+   "en": "y, or long ee",
+   "ur": "ی، یا لمبا ای"
+  },
+  {
+   "id": "f-fatha",
+   "kind": "mark",
+   "ar": "بَ",
+   "tr": "ba",
+   "en": "fatha (line above) = a",
+   "ur": "زبر (اوپر لکیر) = اَ"
+  },
+  {
+   "id": "f-kasra",
+   "kind": "mark",
+   "ar": "بِ",
+   "tr": "bi",
+   "en": "kasra (line below) = i",
+   "ur": "زیر (نیچے لکیر) = اِ"
+  },
+  {
+   "id": "f-damma",
+   "kind": "mark",
+   "ar": "بُ",
+   "tr": "bu",
+   "en": "damma (small و above) = u",
+   "ur": "پیش (اوپر چھوٹا و) = اُ"
+  },
+  {
+   "id": "f-sukun",
+   "kind": "mark",
+   "ar": "بْ",
+   "tr": "b",
+   "en": "sukun (small circle) = no vowel",
+   "ur": "جزم (چھوٹا دائرہ) = کوئی حرکت نہیں"
+  },
+  {
+   "id": "f-shadda",
+   "kind": "mark",
+   "ar": "بّ",
+   "tr": "bb",
+   "en": "shadda (small w-shape) = double the letter",
+   "ur": "تشدید = حرف دو بار"
+  },
+  {
+   "id": "f-tanween",
+   "kind": "mark",
+   "ar": "بًا",
+   "tr": "ban",
+   "en": "double fatha at the end = -an",
+   "ur": "دو زبر (تنوین) = -اَن"
+  },
+  {
+   "id": "f-syl1",
+   "kind": "syllable",
+   "ar": "دَمَ",
+   "tr": "dama",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  },
+  {
+   "id": "f-syl2",
+   "kind": "syllable",
+   "ar": "سِلُ",
+   "tr": "silu",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  },
+  {
+   "id": "f-syl3",
+   "kind": "syllable",
+   "ar": "فُرَ",
+   "tr": "fura",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  },
+  {
+   "id": "f-syl4",
+   "kind": "syllable",
+   "ar": "كَبْ",
+   "tr": "kab",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  },
+  {
+   "id": "f-syl5",
+   "kind": "syllable",
+   "ar": "تُمْ",
+   "tr": "tum",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  },
+  {
+   "id": "f-syl6",
+   "kind": "syllable",
+   "ar": "نَفِسَ",
+   "tr": "nafisa",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  },
+  {
+   "id": "f-syl7",
+   "kind": "syllable",
+   "ar": "زُرِقْ",
+   "tr": "zuriq",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  },
+  {
+   "id": "f-syl8",
+   "kind": "syllable",
+   "ar": "قَلَمٌ",
+   "tr": "qalamun",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  },
+  {
+   "id": "f-syl9",
+   "kind": "syllable",
+   "ar": "رَبِّ",
+   "tr": "rabbi",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  },
+  {
+   "id": "f-syl10",
+   "kind": "syllable",
+   "ar": "سَمِعَ",
+   "tr": "sami'a",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  },
+  {
+   "id": "f-syl11",
+   "kind": "syllable",
+   "ar": "جَلَسَ",
+   "tr": "jalasa",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  },
+  {
+   "id": "f-syl12",
+   "kind": "syllable",
+   "ar": "حُبٌّ",
+   "tr": "hubbun",
+   "en": "reading drill",
+   "ur": "پڑھنے کی مشق"
+  }
+ ],
+ "planned": 46
+}

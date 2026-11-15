@@ -1,0 +1,108 @@
+{
+ "version": 1,
+ "paths": [
+  {
+   "id": "umrah",
+   "title": {
+    "en": "Umrah and Hajj travel",
+    "ur": "عمرہ اور حج کا سفر"
+   },
+   "desc": {
+    "en": "Speak in Makkah and Madinah, plus the talbiyah and Al-Fatiha",
+    "ur": "مکہ اور مدینہ میں بات چیت، تلبیہ اور سورۃ الفاتحہ"
+   },
+   "file": "umrah.json",
+   "available": true
+  },
+  {
+   "id": "quran",
+   "title": {
+    "en": "Qur'anic Arabic",
+    "ur": "قرآنی عربی"
+   },
+   "desc": {
+    "en": "Understand the most frequent words of the Qur'an",
+    "ur": "قرآن کے سب سے زیادہ آنے والے الفاظ سمجھیں"
+   },
+   "available": false,
+   "eta": "Jan 2027"
+  },
+  {
+   "id": "reading",
+   "title": {
+    "en": "General reading",
+    "ur": "عام پڑھائی"
+   },
+   "desc": {
+    "en": "Read signs, menus and simple text",
+    "ur": "سائن بورڈ، مینو اور سادہ تحریر پڑھیں"
+   },
+   "available": false,
+   "eta": "Feb 2027"
+  },
+  {
+   "id": "conversation",
+   "title": {
+    "en": "Everyday conversation",
+    "ur": "روزمرہ گفتگو"
+   },
+   "desc": {
+    "en": "Introductions, family, work and small talk",
+    "ur": "تعارف، خاندان، کام اور عام بات چیت"
+   },
+   "available": false,
+   "eta": "Mar 2027"
+  }
+ ],
+ "foundations": "foundations.json",
+ "placement": [
+  [
+   "بَ",
+   "ba",
+   [
+    "bi",
+    "bu"
+   ]
+  ],
+  [
+   "بِ",
+   "bi",
+   [
+    "ba",
+    "bu"
+   ]
+  ],
+  [
+   "دَمَ",
+   "dama",
+   [
+    "dumi",
+    "dima"
+   ]
+  ],
+  [
+   "سِلُ",
+   "silu",
+   [
+    "sala",
+    "sulu"
+   ]
+  ],
+  [
+   "كَبْ",
+   "kab",
+   [
+    "kaba",
+    "kib"
+   ]
+  ],
+  [
+   "نَفِسَ",
+   "nafisa",
+   [
+    "nufisa",
+    "nafasa"
+   ]
+  ]
+ ]
+}
