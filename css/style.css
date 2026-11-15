@@ -89,7 +89,8 @@ html[lang=ur] .tab { font-size: 13px; line-height: 1.6; }
 .star-n { font: 600 44px var(--ui); fill: var(--ink); text-anchor: middle; }
 .star-sub { font: 400 12.5px var(--ui); fill: var(--muted); text-anchor: middle; }
 .today-card { background: var(--paper); border-radius: 28px; padding: 22px 20px 20px; box-shadow: var(--shadow); margin: 18px 0 14px; }
-.today-card .btn { width: 100%; margin-top: 6px; }
+.today-card .btn { width: 100%; margin-top: 8px; }
+.today-card.done .btn:not(.primary) { background: transparent; border-color: color-mix(in srgb, var(--mint-ink) 30%, transparent); }
 .today-card.done { background: var(--mint); box-shadow: none; }
 .today-card.done h2 { color: var(--mint-ink); }
 .preview { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 6px 0 10px; }

@@ -3,7 +3,7 @@ import { today, addDays, daysBetween, newProgress, grade, newPerDay } from './sr
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback, geminiChat, stripMarks } from './speech.js';
 import { t, L, setLang, getLang } from './i18n.js';
 
-const APP_VERSION = '3.0.0';
+const APP_VERSION = '3.1.0';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
 
@@ -341,6 +341,7 @@ async function home() {
     <section class="star-wrap">${starSvg(done8, st.streak, t('stat_streak'))}<p class="hint center">${t('star_caption')}</p></section>
     <section class="today-card ${st.doneToday ? 'done' : ''}">
       ${st.doneToday ? `<h2>${t('home_done_today')}</h2><p class="lead">${t('done_sub')}</p>
+        ${remainingIds.length ? `<button class="btn primary" id="more">${t('learn_more')}</button>` : ''}
         <button class="btn" id="again">${t('home_again')}</button>`
       : `<h2>${t('today_level')}</h2>
         ${preview.length ? `<div class="preview" lang="ar" dir="rtl">${preview.map(i => `<span class="ar">${esc(view(i).ar)}</span>`).join('')}</div>` : ''}
@@ -351,6 +352,7 @@ async function home() {
     ${matchMedia('(display-mode: standalone)').matches ? '' : `<p class="hint center install">${t('install_hint')}</p>`}`);
   on('#start', 'click', () => startLevel(false));
   on('#again', 'click', () => startLevel(true));
+  on('#more', 'click', () => startLevel(false, true));
   on('#bk', 'click', doExport);
 }
 
@@ -429,8 +431,8 @@ async function progressTab() {
 // ---------- level ----------
 let LV = null;
 
-function startLevel(practice) {
-  LV = buildLevel(practice);
+function startLevel(practice, extra = false) {
+  LV = buildLevel(practice, extra);
   if (!LV.rounds.length) { toast(t('nothing_to_practise')); return home(); }
   nextStep();
 }
@@ -919,7 +921,7 @@ function pathReadiness() {
   });
 }
 
-function buildLevel(practice) {
+function buildLevel(practice, extra = false) {
   const date = today();
   const due = [...S.progress.values()].filter(p => p.due <= date).sort((a, b) => a.due.localeCompare(b.due)).slice(0, 30).map(p => S.items.get(p.id)).filter(Boolean);
   let fresh = [];
@@ -954,7 +956,7 @@ function buildLevel(practice) {
   // Every 7th day: a boss level, a mixed meaning test of everything learned in the last 7 days.
   const dayN = daysBetween(S.profile.start, date) + 1;
   let boss = false;
-  if (!practice && dayN % 7 === 0) {
+  if (!practice && !extra && dayN % 7 === 0) {
     const since = addDays(date, -6);
     const week = [...S.progress.values()].filter(p => p.learned >= since).map(p => S.items.get(p.id)).filter(i => i && ['word', 'phrase', 'dua', 'ayah', 'sign'].includes(i.kind));
     if (week.length >= 4) { boss = true; rounds.push({ type: 'meaning', boss: true, items: sample(week, 12) }); }

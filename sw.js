@@ -1,5 +1,5 @@
 // Service worker: app shell and lessons work offline; Qur'an text/audio and fonts are cached after first use.
-const VERSION = 'kn-v3.0.0';
+const VERSION = 'kn-v3.1.0';
 const SHELL = [
   './', 'index.html', 'css/style.css', 'manifest.webmanifest',
   'js/app.js', 'js/db.js', 'js/srs.js', 'js/speech.js', 'js/i18n.js',
