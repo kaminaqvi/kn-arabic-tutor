@@ -2,18 +2,17 @@ import { db, kv, requestPersistence, exportData, importData } from './db.js';
 import { today, addDays, daysBetween, newProgress, grade, newPerDay } from './srs.js';
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback, geminiChat, stripMarks } from './speech.js';
 import { t, L, setLang, getLang } from './i18n.js';
+import { listProfiles, activeProfile, migrateProfiles, createProfile, deleteProfile, openProfile, chooseProfile, profileSummary, updateProfile, getMode, setMode, ADULT_ICONS } from './profiles.js';
 
-const APP_VERSION = '3.5.1';
+const APP_VERSION = '3.6.0';
 const APP_DATE = '2026-11-16';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
 
-// ---------- mode (grown-up or kids), remembered on this phone ----------
-const setMode = m => { try { localStorage.setItem('kn-mode', m); } catch (e) {} };
-const getMode = () => { try { return localStorage.getItem('kn-mode'); } catch (e) { return null; } };
-function toKids() { setMode('kids'); location.href = 'kids/'; }
-function modeSwitch() {
-  return `<div class="mode-switch" role="group" aria-label="${t('mode_label')}"><button class="on" aria-pressed="true">${t('mode_adult')}</button><button id="to-kids" aria-pressed="false">${t('mode_kids')}</button></div>`;
+// ---------- profile switch (on the Today screen) ----------
+function profileChip() {
+  const p = activeProfile();
+  return `<button class="profile-chip" id="switch-chip" aria-label="${t('switch_profile')}"><span>${esc(p?.icon || '🌿')}</span><b>${esc(p?.name || t('mode_adult'))}</b><i>${t('switch_short')}</i></button>`;
 }
 
 // ---------- version and updates ----------
@@ -215,57 +214,75 @@ function vibrate(ok) { try { navigator.vibrate && navigator.vibrate(ok ? 18 : [3
 
 // ---------- landing: choose who is learning ----------
 const CAMEL = `<svg viewBox="0 0 220 190" aria-hidden="true" class="camel">
-  <ellipse cx="105" cy="178" rx="70" ry="7" fill="rgba(43,35,80,.12)"/>
   <path d="M48 120c-6 22-4 40-2 52M70 128c-2 20 0 34 2 44M128 128c2 20 0 34-2 44M150 120c6 22 4 40 2 52" fill="none" stroke="#C9962E" stroke-width="12" stroke-linecap="round"/>
   <path d="M30 118c0-30 22-44 40-44 6-22 22-30 32-30s24 10 30 30c18 2 36 14 36 40 0 22-30 30-70 30s-68-6-68-26z" fill="#F2C879" stroke="#C9962E" stroke-width="3"/>
   <path d="M158 104c8-14 10-36 12-56" fill="none" stroke="#F2C879" stroke-width="22" stroke-linecap="round"/>
   <ellipse cx="180" cy="44" rx="24" ry="18" fill="#F2C879" stroke="#C9962E" stroke-width="3"/>
   <circle cx="186" cy="40" r="4.5" fill="#2B2350"/><circle cx="192" cy="52" r="4" fill="#FF5E7E" opacity=".55"/>
   <path d="M196 47c3 3 3 7 0 9" fill="none" stroke="#2B2350" stroke-width="3" stroke-linecap="round"/></svg>`;
+const KID_ICONS = ['🐪', '🦁', '🐱', '🦊', '🐼', '🐢'];
 
-// Read the kids app's saved name and stars without creating its database.
-async function kidsSummary() {
-  try {
-    if (!indexedDB.databases) return null;
-    const list = await indexedDB.databases();
-    if (!list.some(d => d.name === 'kn-arabic-kids')) return null;
-    const kdb = await new Promise((res, rej) => { const r = indexedDB.open('kn-arabic-kids'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
-    if (!kdb.objectStoreNames.contains('kv')) { kdb.close(); return null; }
-    const get = k => new Promise(res => { const q = kdb.transaction('kv').objectStore('kv').get(k); q.onsuccess = () => res(q.result); q.onerror = () => res(null); });
-    const [profile, units] = [await get('profile'), await get('units')];
-    kdb.close();
-    if (!profile) return null;
-    return { name: profile.name, buddy: profile.buddy, stars: Object.values(units || {}).reduce((a, u) => a + (u.stars || 0), 0), levels: Object.keys(units || {}).length };
-  } catch (e) { return null; }
+function profileCard(p, sum, manage) {
+  const kid = p.type === 'kid';
+  const name = p.name || (kid ? t('mode_kids') : t('mode_adult'));
+  const sub = sum.fresh ? (kid ? t('land_kids_new') : t('land_adult_new'))
+    : kid ? t('land_kid_stats', { s: sum.stars, l: sum.levels }) : t('land_adult_stats', { d: sum.day, s: sum.streak, w: sum.words });
+  return `<div class="who-row"><button class="who ${kid ? 'kids' : 'adult'}" data-open="${p.id}">
+      <span class="who-art">${kid && p.icon === '🐪' ? CAMEL : `<span class="who-buddy">${esc(p.icon)}</span>`}</span>
+      <span class="who-text"><b>${esc(name)}</b><small>${kid ? t('mode_kids') : t('mode_adult')}</small><em>${sub}</em></span></button>
+    ${manage ? `<div class="who-tools"><button class="btn small" data-rename="${p.id}">${t('rename')}</button><button class="btn small danger" data-del="${p.id}">${t('delete')}</button></div>` : ''}</div>`;
 }
 
-async function landing() {
-  const kid = await kidsSummary();
-  const st = S.profile ? await computeStats() : null;
-  const adultSub = S.profile ? t('land_adult_progress', { d: daysBetween(S.profile.start, today()) + 1, s: st.streak, w: S.progress.size }) : t('land_adult_new');
-  const kidSub = kid ? t('land_kids_progress', { n: esc(kid.name || ''), s: kid.stars, l: kid.levels }) : t('land_kids_new');
+async function landing(manage = false) {
+  const list = await migrateProfiles();
+  const sums = await Promise.all(list.map(p => profileSummary(p)));
+  const adults = list.map((p, i) => [p, sums[i]]).filter(([p]) => p.type === 'adult');
+  const kids = list.map((p, i) => [p, sums[i]]).filter(([p]) => p.type === 'kid');
   render(`<main class="landing">
     <header class="land-top"><div class="land-lang"><button data-l="en" class="${getLang() === 'en' ? 'on' : ''}">English</button><button data-l="ur" class="${getLang() === 'ur' ? 'on' : ''}">اردو</button></div></header>
     <h1>${t('land_title')}</h1>
-    <p class="lead">${t('land_sub')}</p>
-    <button class="who adult" id="pick-adult">
-      <span class="who-art ar" lang="ar">اقْرَأْ</span>
-      <span class="who-text"><b>${t('mode_adult')}</b><small>${t('land_adult_desc')}</small><em>${adultSub}</em></span>
-    </button>
-    <button class="who kids" id="pick-kids">
-      <span class="who-art">${kid && kid.buddy && kid.buddy !== '🐪' ? `<span class="who-buddy">${esc(kid.buddy)}</span>` : CAMEL}</span>
-      <span class="who-text"><b>${t('mode_kids')}</b><small>${t('land_kids_desc')}</small><em>${kidSub}</em></span>
-    </button>
+    <p class="lead">${list.length ? t('land_sub') : t('land_sub_new')}</p>
+    ${adults.length ? `<h2 class="group-title">${t('land_adults')}</h2>${adults.map(([p, s]) => profileCard(p, s, manage)).join('')}` : ''}
+    ${kids.length ? `<h2 class="group-title">${t('land_kids')}</h2>${kids.map(([p, s]) => profileCard(p, s, manage)).join('')}` : ''}
+    <div id="addform"></div>
+    <div class="add-row"><button class="add-btn" id="add-adult">＋ ${t('add_adult')}</button><button class="add-btn kids" id="add-kid">＋ ${t('add_kid')}</button></div>
+    ${list.length ? `<button class="btn text" id="manage">${manage ? t('done') : t('manage_profiles')}</button>` : ''}
     <p class="hint center">${t('land_note')}</p>
     <p class="hint center ver-line">${t('ver_label', { v: APP_VERSION })}</p>
   </main>`);
-  on('[data-l]', 'click', e => { setLang(e.currentTarget.dataset.l); landing(); });
-  on('#pick-kids', 'click', toKids);
-  on('#pick-adult', 'click', () => {
-    setMode('adult');
-    if (S.profile) { saveProfile(); home(); }
-    else { initOnboarding(); OB.data.lang = getLang() === 'ur' ? 'ur' : 'enur'; obLang(); }
+  on('[data-l]', 'click', e => { setLang(e.currentTarget.dataset.l); landing(manage); });
+  on('[data-open]', 'click', e => { const p = list.find(x => x.id === e.currentTarget.dataset.open); if (p) openProfile(p, './'); });
+  on('#manage', 'click', () => landing(!manage));
+  on('[data-del]', 'click', async e => {
+    const p = list.find(x => x.id === e.currentTarget.dataset.del);
+    if (p && confirm(t('delete_confirm', { n: p.name || (p.type === 'kid' ? t('mode_kids') : t('mode_adult')) }))) { await deleteProfile(p.id); landing(true); }
   });
+  on('[data-rename]', 'click', e => {
+    const p = list.find(x => x.id === e.currentTarget.dataset.rename);
+    const n = prompt(t('rename_q'), p?.name || '');
+    if (p && n !== null) { updateProfile(p.id, { name: n.trim().slice(0, 24) }); landing(true); }
+  });
+  const addForm = type => {
+    const icons = type === 'kid' ? KID_ICONS : ADULT_ICONS;
+    let icon = icons[0];
+    $app.querySelector('#addform').innerHTML = `<div class="add-form ${type === 'kid' ? 'kids' : ''}">
+      <h2>${type === 'kid' ? t('add_kid') : t('add_adult')}</h2>
+      <input id="newname" class="field" maxlength="24" autocomplete="off" placeholder="${t('profile_name_ph')}" aria-label="${t('profile_name_ph')}">
+      <div class="icon-pick">${icons.map(i => `<button class="${i === icon ? 'on' : ''}" data-icon="${i}" aria-label="${i}">${i}</button>`).join('')}</div>
+      <p class="err" id="adderr" role="alert"></p>
+      <div class="pair"><button class="btn" id="addcancel">${t('cancel')}</button><button class="btn primary" id="addgo">${t('create_open')}</button></div></div>`;
+    on('[data-icon]', 'click', e => { icon = e.currentTarget.dataset.icon; $app.querySelectorAll('[data-icon]').forEach(b => b.classList.toggle('on', b.dataset.icon === icon)); });
+    on('#addcancel', 'click', () => { $app.querySelector('#addform').innerHTML = ''; });
+    on('#addgo', 'click', () => {
+      const name = $app.querySelector('#newname').value.trim();
+      if (!name) { $app.querySelector('#adderr').textContent = t('profile_name_need'); return; }
+      openProfile(createProfile(type, name, icon), './');
+    });
+    $app.querySelector('#newname').focus();
+    $app.querySelector('#addform').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+  on('#add-adult', 'click', () => addForm('adult'));
+  on('#add-kid', 'click', () => addForm('kid'));
 }
 
 // ---------- onboarding ----------
@@ -290,7 +307,7 @@ function startOnboarding() {
     <p class="hint center ver-line">${t('ver_label', { v: APP_VERSION })}</p>
     <div class="dock"><button class="btn primary" id="go">${t('start')}</button></div></div>`);
   on('#go', 'click', obLang);
-  on('#kids-link', 'click', e => { e.preventDefault(); toKids(); });
+  on('#kids-link', 'click', e => { e.preventDefault(); chooseProfile('./'); });
 }
 
 function tiles(name, options, selected, multi = false) {
@@ -437,7 +454,7 @@ async function home() {
   if (needBackup) notes.push(`<div class="note"><span>${t('backup_reminder')}</span><button class="btn small" id="bk">${t('backup_now')}</button></div>`);
 
   shell('today', `
-    <div class="top-row">${modeSwitch()}</div>
+    <div class="top-row">${profileChip()}</div>
     <header class="today-head"><h1>${t('home_day', { n: dayN })}</h1><p class="lead">${left !== null ? t('home_goal_left', { n: left }) : t('home_no_goal')}</p></header>
     <section class="star-wrap">${starSvg(done8, st.streak, t('stat_streak'))}<p class="hint center">${t('star_caption')}</p></section>
     <section class="today-card ${st.doneToday ? 'done' : ''}">
@@ -456,7 +473,7 @@ async function home() {
   on('#start', 'click', () => startLevel(false));
   on('#again', 'click', () => startLevel(true));
   on('#more', 'click', () => startLevel(false, true));
-  on('#to-kids', 'click', toKids);
+  on('#switch-chip', 'click', () => chooseProfile('./'));
   on('#bk', 'click', doExport);
 }
 
@@ -988,8 +1005,8 @@ function settings() {
     <p class="hint">${t('about_body')}</p>
     <button class="btn danger wide" id="reset">${t('reset_btn')}</button>`);
   wireVersion(settings);
-  on('#kids-row', 'click', e => { e.preventDefault(); toKids(); });
-  on('#switch-profile', 'click', () => { setMode('choose'); landing(); });
+  on('#kids-row', 'click', e => { e.preventDefault(); chooseProfile('./'); });
+  on('#switch-profile', 'click', () => chooseProfile('./'));
   $app.querySelector('#lang').value = p.lang; $app.querySelector('#form').value = p.form; $app.querySelector('#min').value = String(p.minutes);
   on('#save', 'click', async () => {
     p.lang = $app.querySelector('#lang').value; p.form = $app.querySelector('#form').value;
@@ -1005,7 +1022,7 @@ function settings() {
   on('#reset', 'click', async () => {
     if (!confirm(t('reset_confirm'))) return;
     await db.clear('progress'); await db.clear('log'); await kv.set('profile', null);
-    S.progress = new Map(); S.profile = null; setMode('choose'); landing();
+    S.progress = new Map(); S.profile = null; chooseProfile('./');
   });
 }
 
@@ -1166,14 +1183,17 @@ async function copyReport() {
 // ---------- boot ----------
 async function boot() {
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => {});
+  await migrateProfiles();
+  if (location.hash.includes('grown-up')) { setMode('choose'); history.replaceState(null, '', location.pathname); }
+  const active = activeProfile();
   const mode = getMode();
-  if (mode === 'kids' && !location.hash.includes('grown-up')) { location.replace('kids/'); return; }
-  if (location.hash.includes('grown-up')) { setMode('adult'); history.replaceState(null, '', location.pathname); }
+  if (active && active.type === 'kid' && mode === 'kids') { location.replace('kids/'); return; }
+  const showPicker = mode === 'choose' || !active || active.type !== 'adult' || globalThis.KN_DB !== active.db;
   await loadState();
   setLang(S.profile?.lang === 'ur' ? 'ur' : ((navigator.language || '').startsWith('ur') && !S.profile ? 'ur' : 'en'));
   try { await loadContent(); }
   catch (e) { render(`<main class="screen"><p class="warn">Could not load lessons. Check your connection and reload.</p></main>`); return; }
-  if (getMode() !== 'adult') landing(); else if (!S.profile) { initOnboarding(); obLang(); } else home();
+  if (showPicker) landing(); else if (!S.profile) { initOnboarding(); obLang(); } else home();
   checkUpdate().then(ready => { if (ready && S.profile && $app.querySelector('.today-head')) home(); });
 }
 

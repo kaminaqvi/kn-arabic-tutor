@@ -1,10 +1,10 @@
 // Service worker.
 // App files: network first (so a new release shows up on the next open), cache as the offline fallback.
 // Qur'an text/audio and fonts: cache first after the first download.
-const VERSION = 'kn-v3.5.1';
+const VERSION = 'kn-v3.6.0';
 const SHELL = [
   './', 'index.html', 'css/style.css', 'manifest.webmanifest', 'version.json',
-  'js/app.js', 'js/db.js', 'js/srs.js', 'js/speech.js', 'js/i18n.js',
+  'js/app.js', 'js/profiles.js', 'js/db.js', 'js/srs.js', 'js/speech.js', 'js/i18n.js',
   'content/index.json', 'content/foundations.json', 'content/umrah.json', 'content/shared.json', 'content/roleplays.json', 'content/quran.json', 'content/reading.json', 'content/conversation.json',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png',
   'kids/', 'kids/index.html', 'kids/manifest.webmanifest', 'js/kids.js', 'css/kids.css', 'content/kids.json', 'icons/kids-192.png', 'icons/kids-512.png',

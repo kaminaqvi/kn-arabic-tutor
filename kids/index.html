@@ -13,7 +13,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;600;800&family=Amiri+Quran&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/kids.css">
-  <script>window.KN_DB = 'kn-arabic-kids';</script>
+  <script>
+    // Pick this child's database before the app loads (the active child, else the first child).
+    (function () { try {
+      var list = JSON.parse(localStorage.getItem('kn-profiles') || '[]'), id = localStorage.getItem('kn-active');
+      var kids = list.filter(function (x) { return x.type === 'kid'; });
+      var p = kids.filter(function (x) { return x.id === id; })[0] || kids[0];
+      if (p) { localStorage.setItem('kn-active', p.id); window.KN_PROFILE_ID = p.id; }
+      window.KN_DB = p ? p.db : 'kn-arabic-kids';
+    } catch (e) { window.KN_DB = 'kn-arabic-kids'; } })();
+  </script>
 </head>
 <body>
   <div id="app"><div class="k-boot">🐪</div></div>

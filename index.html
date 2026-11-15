@@ -14,6 +14,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Baloo+Bhaijaan+2:wght@600&family=Amiri+Quran&family=Noto+Nastaliq+Urdu:wght@400;600&family=Readex+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Pick this profile's database before the app loads.
+    (function () { try {
+      var list = JSON.parse(localStorage.getItem('kn-profiles') || '[]'), id = localStorage.getItem('kn-active');
+      var p = list.filter(function (x) { return x.id === id && x.type === 'adult'; })[0];
+      window.KN_DB = p ? p.db : 'kn-arabic';
+    } catch (e) { window.KN_DB = 'kn-arabic'; } })();
+  </script>
 </head>
 <body>
   <div id="app"><div class="boot"><div class="boot-mark ar" lang="ar">ع</div></div></div>

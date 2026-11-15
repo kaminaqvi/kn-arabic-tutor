@@ -3,9 +3,10 @@
 import { db, kv, requestPersistence, exportData, importData } from './db.js';
 import { today, newProgress, grade } from './srs.js';
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice } from './speech.js';
+import { activeProfile, updateProfile, createProfile, chooseProfile, setMode as setProfileMode } from './profiles.js';
 
-const KIDS_VERSION = '1.3.0';
-const setMode = m => { try { localStorage.setItem('kn-mode', m); } catch (e) {} };
+const KIDS_VERSION = '1.4.0';
+const setMode = setProfileMode;
 const $app = document.getElementById('app');
 const K = { profile: null, items: new Map(), pack: null, progress: new Map(), units: {}, stickers: [] };
 
@@ -149,10 +150,11 @@ function welcome() {
 }
 
 function setup() {
-  let buddy = '🐪';
+  const reg = activeProfile();
+  let buddy = reg?.type === 'kid' && reg.icon ? reg.icon : '🐪';
   render(`<main class="k-screen">
     <h1>${t('your_name')}</h1>
-    <input id="name" class="k-input" maxlength="20" autocomplete="off" placeholder="${t('name_ph')}" aria-label="${t('name_ph')}">
+    <input id="name" class="k-input" maxlength="20" autocomplete="off" placeholder="${t('name_ph')}" aria-label="${t('name_ph')}" value="${esc(reg?.type === 'kid' ? reg.name || '' : '')}">
     <h2>${t('pick_buddy')}</h2>
     <div class="k-buddies">${BUDDIES.map(b => `<button class="k-buddy ${b === buddy ? 'on' : ''}" data-b="${b}" aria-label="${b}">${b}</button>`).join('')}</div>
     <button class="k-btn big" id="start">${t('start')}</button>
@@ -160,7 +162,11 @@ function setup() {
   on('[data-b]', 'click', e => { buddy = e.currentTarget.dataset.b; $app.querySelectorAll('.k-buddy').forEach(x => x.classList.toggle('on', x.dataset.b === buddy)); chime(true); });
   on('#start', 'click', async () => {
     K.profile = { name: $app.querySelector('#name').value.trim().slice(0, 20), buddy, lang, sounds: true, start: today(), created: new Date().toISOString() };
-    await saveProfile(); await requestPersistence(); map();
+    await saveProfile(); await requestPersistence();
+    const r = activeProfile();
+    if (r && r.type === 'kid') updateProfile(r.id, { name: K.profile.name, icon: buddy });
+    else { const np = createProfile('kid', K.profile.name, buddy); np.db = globalThis.KN_DB; updateProfile(np.id, { db: globalThis.KN_DB }); try { localStorage.setItem('kn-active', np.id); } catch (e) {} }
+    map();
   });
 }
 
@@ -404,10 +410,10 @@ function parents() {
   </main>`);
   $app.querySelector('#lang').value = p.lang; $app.querySelector('#snd').value = p.sounds === false ? '0' : '1';
   on('#back', 'click', map);
-  on('#grown', 'click', () => { setMode('choose'); location.href = '../'; });
+  on('#grown', 'click', () => chooseProfile('../'));
   on('#save', 'click', async () => {
     p.lang = $app.querySelector('#lang').value; p.sounds = $app.querySelector('#snd').value === '1'; p.name = $app.querySelector('#name').value.trim().slice(0, 20);
-    await saveProfile(); setLang(p.lang); toast(t('saved')); map();
+    await saveProfile(); const r = activeProfile(); if (r && r.type === 'kid') updateProfile(r.id, { name: p.name }); setLang(p.lang); toast(t('saved')); map();
   });
   on('#exp', 'click', async () => {
     const data = await exportData(); data.units = K.units; data.stickers = K.stickers;
