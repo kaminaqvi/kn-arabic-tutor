@@ -127,6 +127,118 @@
     "um-fat6",
     "um-fat7"
    ]
+  },
+  {
+   "id": "day8",
+   "title": {
+    "en": "At the airport",
+    "ur": "ہوائی اڈے پر"
+   },
+   "items": [
+    "um-matar",
+    "um-jawaz",
+    "um-tasheera",
+    "um-shanta",
+    "um-fenshanta",
+    "um-jayumra",
+    "um-bawwaba",
+    "um-rihla",
+    "um-jawwal"
+   ]
+  },
+  {
+   "id": "day9",
+   "title": {
+    "en": "Taking a taxi",
+    "ur": "ٹیکسی"
+   },
+   "items": [
+    "um-taksi",
+    "um-abghaarooh",
+    "um-bikamtiwassil",
+    "um-addad",
+    "um-hina",
+    "um-waggif",
+    "um-liffyameen",
+    "um-liffyasar",
+    "um-alamahlak",
+    "um-yalla"
+   ]
+  },
+  {
+   "id": "day10",
+   "title": {
+    "en": "At the hotel",
+    "ur": "ہوٹل میں"
+   },
+   "items": [
+    "um-ghurfa",
+    "um-miftah",
+    "um-hajz",
+    "um-indihajz",
+    "um-raqamghurfa",
+    "um-mukayyif",
+    "um-wifi",
+    "um-masad",
+    "um-futoor"
+   ]
+  },
+  {
+   "id": "day11",
+   "title": {
+    "en": "Qur'an words 1",
+    "ur": "قرآنی الفاظ 1"
+   },
+   "items": [
+    "qw-allah",
+    "qw-rabb",
+    "qw-qala",
+    "qw-yawm",
+    "qw-ard",
+    "qw-sama",
+    "qw-kitab",
+    "qw-ilm",
+    "qw-rahma",
+    "qw-haqq"
+   ]
+  },
+  {
+   "id": "day12",
+   "title": {
+    "en": "Qur'an words 2",
+    "ur": "قرآنی الفاظ 2"
+   },
+   "items": [
+    "qw-nas",
+    "qw-qalb",
+    "qw-noor",
+    "qw-salah",
+    "qw-janna",
+    "qw-nar",
+    "qw-amanu",
+    "qw-amilu",
+    "qw-salihat",
+    "qw-kafaru"
+   ]
+  },
+  {
+   "id": "day13",
+   "title": {
+    "en": "Money and prices",
+    "ur": "پیسے اور قیمت"
+   },
+   "items": [
+    "um-riyal",
+    "um-ishreen",
+    "um-talateen",
+    "um-khamseen",
+    "um-miya",
+    "um-alf",
+    "um-nuss",
+    "um-ghali",
+    "um-rakhees",
+    "um-ghalimarra"
+   ]
   }
  ],
  "items": [
@@ -783,6 +895,641 @@
    "tr": "sirata lladheena an'amta 'alayhim ghayri l-maghdubi 'alayhim wa la d-dalleen",
    "en": "The path of those You have blessed, not of those who earned Your anger, nor of those who went astray.",
    "ur": "ان لوگوں کا راستہ جن پر تو نے انعام کیا، نہ ان کا جن پر غضب ہوا اور نہ گمراہوں کا۔"
+  },
+  {
+   "id": "um-matar",
+   "kind": "word",
+   "ar": "مَطَار",
+   "tr": "matar",
+   "en": "Airport",
+   "ur": "ہوائی اڈہ",
+   "hook": {
+    "en": "From ‘tayyara’ (plane) and ‘tair’ (bird): the place of flying.",
+    "ur": "’طیارہ‘ اور ’طائر‘ (پرندہ) سے: اڑنے کی جگہ"
+   }
+  },
+  {
+   "id": "um-jawaz",
+   "kind": "phrase",
+   "ar": "جَوَازُ السَّفَرِ",
+   "tr": "jawaz as-safar",
+   "en": "Passport",
+   "ur": "پاسپورٹ",
+   "hook": {
+    "en": "‘Safar’ = journey, as in Urdu.",
+    "ur": "سفر، اردو کی طرح"
+   }
+  },
+  {
+   "id": "um-tasheera",
+   "kind": "word",
+   "ar": "تَأْشِيرَة",
+   "tr": "ta'sheera",
+   "en": "Visa",
+   "ur": "ویزا"
+  },
+  {
+   "id": "um-shanta",
+   "kind": "word",
+   "ar": "شَنْطَة",
+   "tr": "shanta",
+   "en": "Bag, suitcase",
+   "ur": "بیگ، سوٹ کیس"
+  },
+  {
+   "id": "um-fenshanta",
+   "kind": "phrase",
+   "ar": "فِينْ شَنْطَتِي؟",
+   "tr": "fen shantati?",
+   "en": "Where is my bag?",
+   "ur": "میرا بیگ کہاں ہے؟"
+  },
+  {
+   "id": "um-jayumra",
+   "kind": "phrase",
+   "ar": "أَنَا جَايْ عُمْرَة",
+   "tr": "ana jay 'umra",
+   "en": "I have come for Umrah (man)",
+   "ur": "میں عمرے کے لیے آیا ہوں",
+   "ar_f": "أَنَا جَايَة عُمْرَة",
+   "tr_f": "ana jaya 'umra",
+   "en_f": "I have come for Umrah (woman)"
+  },
+  {
+   "id": "um-bawwaba",
+   "kind": "word",
+   "ar": "بَوَّابَة",
+   "tr": "bawwaba",
+   "en": "Gate",
+   "ur": "گیٹ، دروازہ",
+   "hook": {
+    "en": "Same root as ‘baab’ (door), as in Bab-ul-Islam.",
+    "ur": "’باب‘ کا مادہ، جیسے باب الاسلام"
+   }
+  },
+  {
+   "id": "um-rihla",
+   "kind": "word",
+   "ar": "رِحْلَة",
+   "tr": "rihla",
+   "en": "Flight, trip",
+   "ur": "پرواز، سفر",
+   "hook": {
+    "en": "Urdu ‘rihlat’ (passing away) is the same word: a journey.",
+    "ur": "اردو کا ’رحلت‘ بھی یہی لفظ ہے: سفر"
+   }
+  },
+  {
+   "id": "um-jawwal",
+   "kind": "word",
+   "ar": "جَوَّال",
+   "tr": "jawwal",
+   "en": "Mobile phone (Saudi)",
+   "ur": "موبائل فون"
+  },
+  {
+   "id": "um-taksi",
+   "kind": "word",
+   "ar": "تَاكْسِي",
+   "tr": "taksi",
+   "en": "Taxi",
+   "ur": "ٹیکسی"
+  },
+  {
+   "id": "um-abghaarooh",
+   "kind": "phrase",
+   "ar": "أَبْغَى أَرُوحْ الْحَرَمْ",
+   "tr": "abgha arooh al-haram",
+   "en": "I want to go to the Haram",
+   "ur": "میں حرم جانا چاہتا ہوں",
+   "msa": "أُرِيدُ أَنْ أَذْهَبَ إِلَى الْحَرَمِ"
+  },
+  {
+   "id": "um-bikamtiwassil",
+   "kind": "phrase",
+   "ar": "بِكَمْ تْوَصِّلْنِي الْحَرَمْ؟",
+   "tr": "bikam tiwassilni al-haram?",
+   "en": "How much to take me to the Haram?",
+   "ur": "حرم تک کتنے پیسے لو گے؟",
+   "hook": {
+    "en": "‘wasl’ = to reach/join, as in ‘wisal’ and ‘wasool’.",
+    "ur": "’وصل‘ = پہنچنا، جیسے وصال اور وصول"
+   }
+  },
+  {
+   "id": "um-addad",
+   "kind": "phrase",
+   "ar": "مُمْكِنْ تْشَغِّلْ الْعَدَّادْ؟",
+   "tr": "mumkin tishaghghil al-'addad?",
+   "en": "Can you turn on the meter?",
+   "ur": "میٹر چلا دیں گے؟",
+   "hook": {
+    "en": "‘mumkin’ = possible, as in Urdu.",
+    "ur": "’ممکن‘، اردو کی طرح"
+   }
+  },
+  {
+   "id": "um-hina",
+   "kind": "word",
+   "ar": "هِنَا",
+   "tr": "hina",
+   "en": "Here (spoken)",
+   "ur": "یہاں",
+   "msa": "هُنَا"
+  },
+  {
+   "id": "um-waggif",
+   "kind": "phrase",
+   "ar": "وَقِّفْ هِنَا",
+   "tr": "waggif hina",
+   "en": "Stop here",
+   "ur": "یہاں روکیں",
+   "hook": {
+    "en": "‘waqf/waqfa’ = a stop or pause.",
+    "ur": "’وقف/وقفہ‘ = ٹھہرنا"
+   }
+  },
+  {
+   "id": "um-liffyameen",
+   "kind": "phrase",
+   "ar": "لِفّْ يَمِينْ",
+   "tr": "liff yameen",
+   "en": "Turn right",
+   "ur": "دائیں مڑیں"
+  },
+  {
+   "id": "um-liffyasar",
+   "kind": "phrase",
+   "ar": "لِفّْ يَسَارْ",
+   "tr": "liff yasar",
+   "en": "Turn left",
+   "ur": "بائیں مڑیں"
+  },
+  {
+   "id": "um-alamahlak",
+   "kind": "phrase",
+   "ar": "عَلَى مَهْلَكْ",
+   "tr": "'ala mahlak",
+   "en": "Slowly, take it easy",
+   "ur": "آرام سے، آہستہ",
+   "hook": {
+    "en": "‘mohlat’ (time allowed) is the same root.",
+    "ur": "’مہلت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-yalla",
+   "kind": "word",
+   "ar": "يَلَّا",
+   "tr": "yalla",
+   "en": "Let's go / come on",
+   "ur": "چلیں"
+  },
+  {
+   "id": "um-ghurfa",
+   "kind": "word",
+   "ar": "غُرْفَة",
+   "tr": "ghurfa",
+   "en": "Room",
+   "ur": "کمرہ"
+  },
+  {
+   "id": "um-miftah",
+   "kind": "word",
+   "ar": "مِفْتَاح",
+   "tr": "miftah",
+   "en": "Key",
+   "ur": "چابی",
+   "hook": {
+    "en": "Same root as ‘fatah’ (opening) and ‘iftitah’.",
+    "ur": "’فتح‘ اور ’افتتاح‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-hajz",
+   "kind": "word",
+   "ar": "حَجْز",
+   "tr": "hajz",
+   "en": "Reservation, booking",
+   "ur": "بکنگ"
+  },
+  {
+   "id": "um-indihajz",
+   "kind": "phrase",
+   "ar": "عِنْدِي حَجْزْ بِاسْمْ أَحْمَدْ",
+   "tr": "'indi hajz b-ism Ahmad",
+   "en": "I have a booking under the name Ahmad",
+   "ur": "میری احمد کے نام سے بکنگ ہے"
+  },
+  {
+   "id": "um-raqamghurfa",
+   "kind": "phrase",
+   "ar": "رَقَمْ الْغُرْفَة كَمْ؟",
+   "tr": "ragam al-ghurfa kam?",
+   "en": "What is the room number?",
+   "ur": "کمرہ نمبر کیا ہے؟",
+   "hook": {
+    "en": "‘raqam’ = number, as in Urdu ‘raqam’ (amount).",
+    "ur": "’رقم‘ = نمبر/عدد"
+   }
+  },
+  {
+   "id": "um-mukayyif",
+   "kind": "phrase",
+   "ar": "الْمُكَيِّفْ خَرْبَانْ",
+   "tr": "al-mukayyif kharban",
+   "en": "The air conditioner is broken",
+   "ur": "اے سی خراب ہے",
+   "hook": {
+    "en": "‘kharban’ sounds like Urdu ‘kharab’.",
+    "ur": "’خربان‘ اردو ’خراب‘ جیسا"
+   }
+  },
+  {
+   "id": "um-wifi",
+   "kind": "phrase",
+   "ar": "إِيشْ كِلْمَةْ سِرّْ الْوَايْ فَايْ؟",
+   "tr": "eesh kilmat sirr al-way fay?",
+   "en": "What is the Wi-Fi password?",
+   "ur": "وائی فائی کا پاس ورڈ کیا ہے؟",
+   "hook": {
+    "en": "‘sirr’ = secret, as in ‘sirr/asrar’.",
+    "ur": "’سر/اسرار‘ = راز"
+   }
+  },
+  {
+   "id": "um-masad",
+   "kind": "word",
+   "ar": "مِصْعَد",
+   "tr": "mis'ad",
+   "en": "Lift, elevator",
+   "ur": "لفٹ",
+   "hook": {
+    "en": "Same root as ‘su’ud’ (going up).",
+    "ur": "’صعود‘ (اوپر جانا) کا مادہ"
+   }
+  },
+  {
+   "id": "um-futoor",
+   "kind": "phrase",
+   "ar": "مَتَى الْفُطُورْ؟",
+   "tr": "mata al-futoor?",
+   "en": "When is breakfast?",
+   "ur": "ناشتہ کب ہے؟",
+   "hook": {
+    "en": "Same root as ‘iftar’: breaking the fast.",
+    "ur": "’افطار‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-allah",
+   "kind": "word",
+   "ar": "اللَّه",
+   "tr": "allah",
+   "en": "Allah",
+   "ur": "اللہ",
+   "tag": "quran"
+  },
+  {
+   "id": "qw-rabb",
+   "kind": "word",
+   "ar": "رَبّ",
+   "tr": "rabb",
+   "en": "Lord, Sustainer",
+   "ur": "رب، پالنے والا",
+   "tag": "quran",
+   "hook": {
+    "en": "Same as Urdu ‘Rabb’.",
+    "ur": "اردو کا ’رب‘"
+   }
+  },
+  {
+   "id": "qw-qala",
+   "kind": "word",
+   "ar": "قَالَ",
+   "tr": "qala",
+   "en": "He said",
+   "ur": "اس نے کہا",
+   "tag": "quran",
+   "hook": {
+    "en": "Same root as ‘qaul’ (saying).",
+    "ur": "’قول‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-yawm",
+   "kind": "word",
+   "ar": "يَوْم",
+   "tr": "yawm",
+   "en": "Day",
+   "ur": "دن",
+   "tag": "quran",
+   "hook": {
+    "en": "‘Yaum’, as in Yaum-e-Azadi.",
+    "ur": "’یوم‘، جیسے یومِ آزادی"
+   }
+  },
+  {
+   "id": "qw-ard",
+   "kind": "word",
+   "ar": "أَرْض",
+   "tr": "ard",
+   "en": "Earth, land",
+   "ur": "زمین",
+   "tag": "quran",
+   "hook": {
+    "en": "Urdu ‘arz’ (as in arz-e-pak). Arabic ض is a heavy d.",
+    "ur": "اردو ’ارض‘ (ارضِ پاک)، عربی میں ض بھاری د"
+   }
+  },
+  {
+   "id": "qw-sama",
+   "kind": "word",
+   "ar": "سَمَاء",
+   "tr": "sama'",
+   "en": "Sky, heaven",
+   "ur": "آسمان",
+   "tag": "quran",
+   "hook": {
+    "en": "Think ‘samawi’ (heavenly).",
+    "ur": "’سماوی‘ (آسمانی)"
+   }
+  },
+  {
+   "id": "qw-kitab",
+   "kind": "word",
+   "ar": "كِتَاب",
+   "tr": "kitab",
+   "en": "Book, scripture",
+   "ur": "کتاب",
+   "tag": "quran"
+  },
+  {
+   "id": "qw-ilm",
+   "kind": "word",
+   "ar": "عِلْم",
+   "tr": "'ilm",
+   "en": "Knowledge",
+   "ur": "علم",
+   "tag": "quran",
+   "hook": {
+    "en": "Same as Urdu ‘ilm’; sound the ع.",
+    "ur": "اردو ’علم‘، ع ادا کریں"
+   }
+  },
+  {
+   "id": "qw-rahma",
+   "kind": "word",
+   "ar": "رَحْمَة",
+   "tr": "rahma",
+   "en": "Mercy",
+   "ur": "رحمت",
+   "tag": "quran",
+   "hook": {
+    "en": "Urdu ‘rehmat’.",
+    "ur": "اردو ’رحمت‘"
+   }
+  },
+  {
+   "id": "qw-haqq",
+   "kind": "word",
+   "ar": "حَقّ",
+   "tr": "haqq",
+   "en": "Truth, right",
+   "ur": "حق، سچ",
+   "tag": "quran"
+  },
+  {
+   "id": "qw-nas",
+   "kind": "word",
+   "ar": "نَاس",
+   "tr": "nas",
+   "en": "People, mankind",
+   "ur": "لوگ",
+   "tag": "quran",
+   "hook": {
+    "en": "Surah An-Nas; also ‘insaan’.",
+    "ur": "سورۃ الناس؛ ’انسان‘"
+   }
+  },
+  {
+   "id": "qw-qalb",
+   "kind": "word",
+   "ar": "قَلْب",
+   "tr": "qalb",
+   "en": "Heart",
+   "ur": "دل",
+   "tag": "quran",
+   "hook": {
+    "en": "Urdu ‘qalb’ (heart).",
+    "ur": "اردو ’قلب‘"
+   }
+  },
+  {
+   "id": "qw-noor",
+   "kind": "word",
+   "ar": "نُور",
+   "tr": "noor",
+   "en": "Light",
+   "ur": "روشنی، نور",
+   "tag": "quran"
+  },
+  {
+   "id": "qw-salah",
+   "kind": "word",
+   "ar": "صَلَاة",
+   "tr": "salah",
+   "en": "Prayer",
+   "ur": "نماز",
+   "tag": "quran",
+   "hook": {
+    "en": "‘Salat’, the Arabic word for namaz.",
+    "ur": "نماز کا عربی نام"
+   }
+  },
+  {
+   "id": "qw-janna",
+   "kind": "word",
+   "ar": "جَنَّة",
+   "tr": "janna",
+   "en": "Paradise, garden",
+   "ur": "جنت",
+   "tag": "quran"
+  },
+  {
+   "id": "qw-nar",
+   "kind": "word",
+   "ar": "نَار",
+   "tr": "nar",
+   "en": "Fire",
+   "ur": "آگ",
+   "tag": "quran",
+   "hook": {
+    "en": "Urdu ‘naar’ (hellfire).",
+    "ur": "اردو ’نار‘"
+   }
+  },
+  {
+   "id": "qw-amanu",
+   "kind": "word",
+   "ar": "آمَنُوا",
+   "tr": "amanu",
+   "en": "They believed",
+   "ur": "وہ ایمان لائے",
+   "tag": "quran",
+   "hook": {
+    "en": "Same root as ‘iman’ and ‘amaan’ (safety).",
+    "ur": "’ایمان‘ اور ’امان‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-amilu",
+   "kind": "word",
+   "ar": "عَمِلُوا",
+   "tr": "'amilu",
+   "en": "They did (deeds)",
+   "ur": "انہوں نے عمل کیے",
+   "tag": "quran",
+   "hook": {
+    "en": "Same root as ‘amal’ (deed).",
+    "ur": "’عمل‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-salihat",
+   "kind": "word",
+   "ar": "الصَّالِحَات",
+   "tr": "as-salihat",
+   "en": "Good deeds",
+   "ur": "نیک اعمال",
+   "tag": "quran",
+   "hook": {
+    "en": "Same root as ‘saleh’ (righteous).",
+    "ur": "’صالح‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-kafaru",
+   "kind": "word",
+   "ar": "كَفَرُوا",
+   "tr": "kafaru",
+   "en": "They disbelieved",
+   "ur": "انہوں نے انکار کیا",
+   "tag": "quran",
+   "hook": {
+    "en": "Same root as ‘kufr’.",
+    "ur": "’کفر‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-riyal",
+   "kind": "word",
+   "ar": "رِيَال",
+   "tr": "riyal",
+   "en": "Riyal (Saudi currency)",
+   "ur": "ریال"
+  },
+  {
+   "id": "um-ishreen",
+   "kind": "word",
+   "ar": "عِشْرِين",
+   "tr": "'ishreen",
+   "en": "Twenty (20, ٢٠)",
+   "ur": "بیس (٢٠)",
+   "accept": [
+    "20",
+    "٢٠"
+   ]
+  },
+  {
+   "id": "um-talateen",
+   "kind": "word",
+   "ar": "ثَلَاثِين",
+   "tr": "talateen",
+   "en": "Thirty (30, ٣٠)",
+   "ur": "تیس (٣٠)",
+   "accept": [
+    "30",
+    "٣٠"
+   ]
+  },
+  {
+   "id": "um-khamseen",
+   "kind": "word",
+   "ar": "خَمْسِين",
+   "tr": "khamseen",
+   "en": "Fifty (50, ٥٠)",
+   "ur": "پچاس (٥٠)",
+   "accept": [
+    "50",
+    "٥٠"
+   ]
+  },
+  {
+   "id": "um-miya",
+   "kind": "word",
+   "ar": "مِيَّة",
+   "tr": "miya",
+   "en": "One hundred (100, ١٠٠)",
+   "ur": "سو (١٠٠)",
+   "msa": "مِائَة",
+   "accept": [
+    "100",
+    "١٠٠"
+   ]
+  },
+  {
+   "id": "um-alf",
+   "kind": "word",
+   "ar": "أَلْف",
+   "tr": "alf",
+   "en": "One thousand (1000)",
+   "ur": "ہزار (١٠٠٠)",
+   "accept": [
+    "1000",
+    "١٠٠٠"
+   ],
+   "hook": {
+    "en": "Alif Laila = ‘a thousand nights’.",
+    "ur": "الف لیلہ = ہزار راتیں"
+   }
+  },
+  {
+   "id": "um-nuss",
+   "kind": "word",
+   "ar": "نُصّ",
+   "tr": "nuss",
+   "en": "Half",
+   "ur": "آدھا",
+   "msa": "نِصْف",
+   "hook": {
+    "en": "Urdu ‘nisf’ (half).",
+    "ur": "اردو ’نصف‘"
+   }
+  },
+  {
+   "id": "um-ghali",
+   "kind": "word",
+   "ar": "غَالِي",
+   "tr": "ghali",
+   "en": "Expensive",
+   "ur": "مہنگا"
+  },
+  {
+   "id": "um-rakhees",
+   "kind": "word",
+   "ar": "رَخِيص",
+   "tr": "rakhees",
+   "en": "Cheap",
+   "ur": "سستا"
+  },
+  {
+   "id": "um-ghalimarra",
+   "kind": "phrase",
+   "ar": "غَالِي مَرَّة",
+   "tr": "ghali marra",
+   "en": "Very expensive (spoken)",
+   "ur": "بہت مہنگا"
   }
  ],
  "planned": 200

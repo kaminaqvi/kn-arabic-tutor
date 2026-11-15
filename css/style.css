@@ -101,3 +101,6 @@ input[type=date], input[type=password], input[type=text], select { width: 100%; 
 .settings fieldset { border: 1px solid var(--line); border-radius: 12px; margin: 6px 0 12px; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
 .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 10px; font-size: 14px; max-width: 90vw; z-index: 10; }
+.boss { background: var(--accent); color: #fff; padding: 2px 8px; border-radius: 6px; }
+.boss-banner { background: #faeeda; color: #633806; font-weight: 600; }
+@media (prefers-color-scheme: dark) { .boss-banner { background: #412402; color: #fac775; } }

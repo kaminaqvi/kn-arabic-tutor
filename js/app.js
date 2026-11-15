@@ -3,7 +3,7 @@ import { today, addDays, daysBetween, newProgress, grade, newPerDay } from './sr
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback } from './speech.js';
 import { t, L, setLang, getLang } from './i18n.js';
 
-const APP_VERSION = '1.0.0';
+const APP_VERSION = '1.1.0';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
 
@@ -310,6 +310,7 @@ async function home() {
       <div class="stat"><b>${due}</b><span>${t('stat_due')}</span></div>
       <div class="stat"><b>${st.doneToday ? 0 : nNew}</b><span>${t('stat_new')}</span></div>
     </section>
+    ${dayN % 7 === 0 && !st.doneToday ? `<div class="banner boss-banner">${t('boss_banner')}</div>` : ''}
     ${needBackup ? `<div class="banner">${t('backup_reminder')} <button class="btn small" id="bk">${t('backup_now')}</button></div>` : ''}
     ${st.doneToday ? `<p class="ok center">${t('home_done_today')}</p><button class="btn big" id="again">${t('home_again')}</button>`
       : `<button class="btn primary big" id="start">${t('home_start')}</button>`}
@@ -351,9 +352,19 @@ function buildLevel(practice) {
     const pick = [...speakable.filter(i => fresh.includes(i)), ...shuffle(speakable.filter(i => !fresh.includes(i)))].slice(0, 4);
     rounds.push({ type: 'speak', items: pick });
   }
+  const meaningPool = pool.filter(i => ['word', 'phrase', 'dua'].includes(i.kind) && !fresh.includes(i));
+  if (meaningPool.length) rounds.push({ type: 'meaning', items: sample(meaningPool, 4) });
   const buildable = speakable.filter(i => ['phrase', 'dua'].includes(i.kind) && view(i).ar.split(/\s+/).length >= 2);
   if (buildable.length) rounds.push({ type: 'build', items: sample(buildable, 3) });
-  return { practice, rounds, fresh: new Set(fresh.map(i => i.id)), base: new Map(pool.map(i => [i.id, S.progress.get(i.id)])), results: new Map(), right: 0, total: 0, r: 0, i: 0, started: Date.now() };
+  // Every 7th day: a boss level, a mixed meaning test of everything learned in the last 7 days.
+  const dayN = daysBetween(S.profile.start, date) + 1;
+  let boss = false;
+  if (!practice && dayN % 7 === 0) {
+    const since = addDays(date, -6);
+    const week = [...S.progress.values()].filter(p => p.learned >= since).map(p => S.items.get(p.id)).filter(i => i && ['word', 'phrase', 'dua', 'ayah'].includes(i.kind));
+    if (week.length >= 4) { boss = true; rounds.push({ type: 'meaning', boss: true, items: sample(week, 12) }); }
+  }
+  return { practice, boss, rounds, fresh: new Set(fresh.map(i => i.id)), base: new Map(pool.map(i => [i.id, S.progress.get(i.id)])), results: new Map(), right: 0, total: 0, r: 0, i: 0, started: Date.now() };
 }
 
 function startLevel(practice) {
@@ -362,7 +373,7 @@ function startLevel(practice) {
   nextStep();
 }
 
-const ROUND_NAME = { review: 'round_review', learn: 'round_learn', read: 'round_read', listen: 'round_listen', speak: 'round_speak', build: 'round_build' };
+const ROUND_NAME = { review: 'round_review', learn: 'round_learn', read: 'round_read', listen: 'round_listen', speak: 'round_speak', build: 'round_build', meaning: 'round_meaning' };
 
 function levelFrame(inner) {
   const totalSteps = LV.rounds.reduce((s, r) => s + r.items.length, 0);
@@ -370,7 +381,7 @@ function levelFrame(inner) {
   render(`<main class="screen level">
     <header class="lv-top"><button class="icon-btn" id="quit" aria-label="Close">✕</button>
       <div class="lv-bar"><i style="width:${Math.round(100 * doneSteps / totalSteps)}%"></i></div></header>
-    <div class="round-name">${t(ROUND_NAME[LV.rounds[LV.r].type])}</div>
+    <div class="round-name">${LV.rounds[LV.r].boss ? `<span class="boss">${t('round_boss')}</span> · ` : ''}${t(ROUND_NAME[LV.rounds[LV.r].type])}</div>
     ${inner}</main>`);
   on('#quit', 'click', home);
 }
@@ -380,7 +391,7 @@ function nextStep() {
   if (!round) return finishLevel();
   if (LV.i >= round.items.length) { LV.r++; LV.i = 0; return nextStep(); }
   const item = round.items[LV.i];
-  ({ review: stepReview, learn: stepLearn, read: stepRead, listen: stepListen, speak: stepSpeak, build: stepBuild })[round.type](item);
+  ({ review: stepReview, learn: stepLearn, read: stepRead, listen: stepListen, speak: stepSpeak, build: stepBuild, meaning: stepMeaning })[round.type](item);
 }
 function advance() { LV.i++; nextStep(); }
 
@@ -501,6 +512,16 @@ function stepListen(item) {
   setTimeout(() => play(item), 300);
 }
 
+function stepMeaning(item) {
+  const group = item.kind === 'ayah' ? ['ayah'] : ['word', 'phrase', 'dua'];
+  const mean = o => getLang() === 'ur' ? o.ur : view(o).en;
+  const others = sample([...S.items.values()].filter(i => i.id !== item.id && group.includes(i.kind) && mean(i) !== mean(item)), 2);
+  const arClass = item.kind === 'ayah' ? 'ayah ar' : 'big-ar ar';
+  optionsStep(item, `<p class="q">${t('pick_meaning')}</p><div class="card"><div class="${arClass}">${esc(view(item).ar)}</div></div>`, item, others, o => esc(mean(o)), () => {
+    $app.querySelector('#fb').textContent = view(item).tr;
+  });
+}
+
 function feedbackHtml() {
   return `<button class="btn small" id="gem">${t('feedback_btn')}</button><div id="gemout" class="gem"></div>`;
 }
@@ -608,18 +629,18 @@ async function finishLevel() {
   const date = today();
   const score = LV.total ? Math.round(100 * LV.right / LV.total) : 100;
   const passed = score >= 80;
-  const xp = LV.right * 10 + (passed ? 50 : 0);
+  const xp = LV.right * 10 + (passed ? 50 : 0) + (passed && LV.boss ? 100 : 0);
   const prev = await db.get('log', date);
   const minutes = Math.round((Date.now() - LV.started) / 60000);
   const rounds = Object.fromEntries(LV.rounds.map(r => [r.type, r.items.length]));
   const entry = prev ? { ...prev, score: Math.max(prev.score, score), passed: prev.passed || passed, xp: (prev.xp || 0) + xp, minutes: (prev.minutes || 0) + minutes, practice: (prev.practice || 0) + (LV.practice ? 1 : 0) }
-    : { date, day: daysBetween(S.profile.start, date) + 1, score, passed, xp, minutes, learned: LV.fresh.size, rounds, practice: LV.practice ? 1 : 0 };
+    : { date, day: daysBetween(S.profile.start, date) + 1, score, passed, xp, minutes, learned: LV.fresh.size, rounds, practice: LV.practice ? 1 : 0, boss: LV.boss };
   await db.put('log', entry);
   const missed = [...LV.results.entries()].filter(([, r]) => !r.ok).map(([id]) => S.items.get(id));
   render(`<main class="screen summary">
     <h1>${t('summary_title')}</h1>
     <div class="score ${passed ? 'ok' : 'bad'}">${score}%</div>
-    <p>${passed ? t('summary_pass') : t('summary_fail')}</p>
+    <p>${passed ? t('summary_pass') : t('summary_fail')}</p>${LV.boss && passed ? `<p class="ok"><b>${t('summary_boss')}</b></p>` : ''}
     <div class="stats"><div class="stat"><b>+${xp}</b><span>${t('summary_xp')}</span></div><div class="stat"><b>${LV.right}/${LV.total}</b><span>${t('summary_score')}</span></div></div>
     ${missed.length ? `<h2>${t('summary_missed')}</h2><ul class="missed">${missed.map(i => `<li><span class="ar">${esc(view(i).ar)}</span> — ${esc(view(i).tr)}</li>`).join('')}</ul>` : ''}
     <button class="btn primary big" id="home">${t('home_btn')}</button></main>`);
@@ -719,5 +740,5 @@ async function boot() {
   if (!S.profile) startOnboarding(); else home();
 }
 
-window.__kn = { S, buildReport }; // for debugging and tests
+window.__kn = { S, buildReport, startLevel, home }; // for debugging and tests
 boot();
