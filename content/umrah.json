@@ -503,6 +503,109 @@
     "um-tafaddal",
     "um-fenmasad"
    ]
+  },
+  {
+   "id": "day28",
+   "title": {
+    "en": "Asking questions",
+    "ur": "سوال پوچھنا"
+   },
+   "items": [
+    "um-meen",
+    "um-eesh",
+    "um-leesh",
+    "um-kayf",
+    "um-mata",
+    "um-kam",
+    "um-eeshhada",
+    "um-leeshmagfool"
+   ]
+  },
+  {
+   "id": "day29",
+   "title": {
+    "en": "The days of Hajj",
+    "ur": "حج کے دن"
+   },
+   "items": [
+    "um-mina",
+    "um-arafat",
+    "um-muzdalifa",
+    "um-jamarat",
+    "um-ramy",
+    "um-yawmarafa",
+    "um-hady",
+    "um-ifada",
+    "um-wada",
+    "um-khayma"
+   ]
+  },
+  {
+   "id": "day30",
+   "title": {
+    "en": "Visiting places in Makkah",
+    "ur": "مکہ کی زیارتیں"
+   },
+   "items": [
+    "um-jabalnoor",
+    "um-hira",
+    "um-thawr",
+    "um-taneem",
+    "um-azoor",
+    "um-burj",
+    "um-baabmalik"
+   ]
+  },
+  {
+   "id": "day31",
+   "title": {
+    "en": "Colours and clothes",
+    "ur": "رنگ اور کپڑے"
+   },
+   "items": [
+    "um-abyad",
+    "um-aswad",
+    "um-akhdar",
+    "um-ahmar",
+    "um-azraq",
+    "um-asfar",
+    "um-thob",
+    "um-naal",
+    "um-izar",
+    "um-rida"
+   ]
+  },
+  {
+   "id": "day32",
+   "title": {
+    "en": "Bigger numbers",
+    "ur": "بڑی گنتی"
+   },
+   "items": [
+    "um-arbaeen",
+    "um-sitteen",
+    "um-sabeen",
+    "um-tamaneen",
+    "um-tiseen",
+    "um-meetayn",
+    "um-khamsmiya"
+   ]
+  },
+  {
+   "id": "day33",
+   "title": {
+    "en": "Feelings and needs",
+    "ur": "احساسات اور ضرورتیں"
+   },
+   "items": [
+    "um-juan",
+    "um-atshan",
+    "um-bardan",
+    "um-nasan",
+    "um-mabsoot",
+    "um-artah",
+    "um-mumushkila"
+   ]
   }
  ],
  "items": [
@@ -2899,7 +3002,509 @@
    "tr": "fen al-mis'ad?",
    "en": "Where is the lift?",
    "ur": "لفٹ کہاں ہے؟"
+  },
+  {
+   "id": "um-meen",
+   "kind": "word",
+   "ar": "مِينْ؟",
+   "tr": "meen?",
+   "en": "Who? (spoken)",
+   "ur": "کون؟",
+   "msa": "مَنْ؟"
+  },
+  {
+   "id": "um-eesh",
+   "kind": "word",
+   "ar": "إِيشْ؟",
+   "tr": "eesh?",
+   "en": "What? (spoken)",
+   "ur": "کیا؟",
+   "msa": "مَاذَا؟"
+  },
+  {
+   "id": "um-leesh",
+   "kind": "word",
+   "ar": "لِيشْ؟",
+   "tr": "leesh?",
+   "en": "Why? (spoken)",
+   "ur": "کیوں؟",
+   "msa": "لِمَاذَا؟"
+  },
+  {
+   "id": "um-kayf",
+   "kind": "word",
+   "ar": "كَيْفْ؟",
+   "tr": "kayf?",
+   "en": "How?",
+   "ur": "کیسے؟",
+   "hook": {
+    "en": "As in ‘kaifiyat’ (condition).",
+    "ur": "’کیفیت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-mata",
+   "kind": "word",
+   "ar": "مَتَى؟",
+   "tr": "mata?",
+   "en": "When?",
+   "ur": "کب؟"
+  },
+  {
+   "id": "um-kam",
+   "kind": "word",
+   "ar": "كَمْ؟",
+   "tr": "kam?",
+   "en": "How many? How much?",
+   "ur": "کتنے؟ کتنا؟"
+  },
+  {
+   "id": "um-eeshhada",
+   "kind": "phrase",
+   "ar": "إِيشْ هَادَا؟",
+   "tr": "eesh hada?",
+   "en": "What is this?",
+   "ur": "یہ کیا ہے؟"
+  },
+  {
+   "id": "um-leeshmagfool",
+   "kind": "phrase",
+   "ar": "لِيشْ مَقْفُولْ؟",
+   "tr": "leesh magfool?",
+   "en": "Why is it closed?",
+   "ur": "یہ کیوں بند ہے؟",
+   "hook": {
+    "en": "‘Qufl’ = lock, as in Urdu ‘qufl’.",
+    "ur": "’قفل‘ = تالا"
+   }
+  },
+  {
+   "id": "um-mina",
+   "kind": "word",
+   "ar": "مِنَى",
+   "tr": "mina",
+   "en": "Mina",
+   "ur": "منیٰ"
+  },
+  {
+   "id": "um-arafat",
+   "kind": "word",
+   "ar": "عَرَفَات",
+   "tr": "'arafat",
+   "en": "Arafat",
+   "ur": "عرفات"
+  },
+  {
+   "id": "um-muzdalifa",
+   "kind": "word",
+   "ar": "مُزْدَلِفَة",
+   "tr": "muzdalifa",
+   "en": "Muzdalifah",
+   "ur": "مزدلفہ"
+  },
+  {
+   "id": "um-jamarat",
+   "kind": "word",
+   "ar": "الْجَمَرَاتْ",
+   "tr": "al-jamarat",
+   "en": "The Jamarat (stoning pillars)",
+   "ur": "جمرات"
+  },
+  {
+   "id": "um-ramy",
+   "kind": "phrase",
+   "ar": "رَمْيُ الْجَمَرَاتْ",
+   "tr": "ramyu l-jamarat",
+   "en": "Stoning the Jamarat",
+   "ur": "رمیِ جمرات"
+  },
+  {
+   "id": "um-yawmarafa",
+   "kind": "phrase",
+   "ar": "يَوْمُ عَرَفَة",
+   "tr": "yawmu 'arafa",
+   "en": "The Day of Arafah",
+   "ur": "یومِ عرفہ"
+  },
+  {
+   "id": "um-hady",
+   "kind": "word",
+   "ar": "الْهَدْيْ",
+   "tr": "al-hady",
+   "en": "The sacrificial animal",
+   "ur": "ہدی (قربانی کا جانور)"
+  },
+  {
+   "id": "um-ifada",
+   "kind": "phrase",
+   "ar": "طَوَافُ الْإِفَاضَة",
+   "tr": "tawafu l-ifada",
+   "en": "Tawaf al-Ifadah",
+   "ur": "طوافِ زیارت (افاضہ)"
+  },
+  {
+   "id": "um-wada",
+   "kind": "phrase",
+   "ar": "طَوَافُ الْوَدَاعْ",
+   "tr": "tawafu l-wada'",
+   "en": "The farewell tawaf",
+   "ur": "طوافِ وداع",
+   "hook": {
+    "en": "‘Wida’’ = farewell, as in ‘alvida’.",
+    "ur": "’وداع‘، جیسے ’الوداع‘"
+   }
+  },
+  {
+   "id": "um-khayma",
+   "kind": "word",
+   "ar": "خَيْمَة",
+   "tr": "khayma",
+   "en": "Tent",
+   "ur": "خیمہ",
+   "hook": {
+    "en": "Urdu ‘khaima’.",
+    "ur": "اردو ’خیمہ‘"
+   }
+  },
+  {
+   "id": "um-jabalnoor",
+   "kind": "phrase",
+   "ar": "جَبَلُ النُّورْ",
+   "tr": "jabalu n-noor",
+   "en": "Jabal an-Nour (Mountain of Light)",
+   "ur": "جبلِ نور"
+  },
+  {
+   "id": "um-hira",
+   "kind": "phrase",
+   "ar": "غَارُ حِرَاءْ",
+   "tr": "gharu hira'",
+   "en": "The Cave of Hira",
+   "ur": "غارِ حرا"
+  },
+  {
+   "id": "um-thawr",
+   "kind": "phrase",
+   "ar": "جَبَلُ ثَوْرْ",
+   "tr": "jabalu thawr",
+   "en": "Mount Thawr",
+   "ur": "جبلِ ثور"
+  },
+  {
+   "id": "um-taneem",
+   "kind": "phrase",
+   "ar": "مَسْجِدُ التَّنْعِيمْ",
+   "tr": "masjidu t-tan'eem",
+   "en": "Tan'eem Mosque (Masjid Aisha)",
+   "ur": "مسجدِ تنعیم (مسجدِ عائشہ)"
+  },
+  {
+   "id": "um-azoor",
+   "kind": "phrase",
+   "ar": "أَبْغَى أَزُورْ غَارْ حِرَاءْ",
+   "tr": "abgha azoor ghar hira'",
+   "en": "I want to visit the Cave of Hira",
+   "ur": "میں غارِ حرا کی زیارت کرنا چاہتا ہوں",
+   "hook": {
+    "en": "‘Ziyarat’ is the same root.",
+    "ur": "’زیارت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-burj",
+   "kind": "phrase",
+   "ar": "بُرْجُ السَّاعَة",
+   "tr": "burju s-sa'a",
+   "en": "The Clock Tower",
+   "ur": "کلاک ٹاور",
+   "hook": {
+    "en": "‘Burj’ = tower, as in ‘burj’ in Urdu.",
+    "ur": "’برج‘ = مینار"
+   }
+  },
+  {
+   "id": "um-baabmalik",
+   "kind": "phrase",
+   "ar": "بَابُ الْمَلِكْ عَبْدِ الْعَزِيزْ",
+   "tr": "babu l-malik 'abdi l-'azeez",
+   "en": "King Abdulaziz Gate",
+   "ur": "باب الملک عبدالعزیز"
+  },
+  {
+   "id": "um-abyad",
+   "kind": "word",
+   "ar": "أَبْيَضْ",
+   "tr": "abyad",
+   "en": "White",
+   "ur": "سفید",
+   "hook": {
+    "en": "‘Bayaz’ (white notebook) is the same root.",
+    "ur": "’بیاض‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-aswad",
+   "kind": "word",
+   "ar": "أَسْوَدْ",
+   "tr": "aswad",
+   "en": "Black",
+   "ur": "کالا",
+   "hook": {
+    "en": "As in ‘Hajar-e-Aswad’ (the Black Stone).",
+    "ur": "’حجرِ اسود‘"
+   }
+  },
+  {
+   "id": "um-akhdar",
+   "kind": "word",
+   "ar": "أَخْضَرْ",
+   "tr": "akhdar",
+   "en": "Green",
+   "ur": "سبز",
+   "hook": {
+    "en": "As in ‘Gumbad-e-Khazra’ (the Green Dome).",
+    "ur": "’گنبدِ خضریٰ‘"
+   }
+  },
+  {
+   "id": "um-ahmar",
+   "kind": "word",
+   "ar": "أَحْمَرْ",
+   "tr": "ahmar",
+   "en": "Red",
+   "ur": "سرخ",
+   "hook": {
+    "en": "‘Ahmar’, as in ‘Bahr-e-Ahmar’ (the Red Sea).",
+    "ur": "’بحرِ احمر‘"
+   }
+  },
+  {
+   "id": "um-azraq",
+   "kind": "word",
+   "ar": "أَزْرَقْ",
+   "tr": "azraq",
+   "en": "Blue",
+   "ur": "نیلا"
+  },
+  {
+   "id": "um-asfar",
+   "kind": "word",
+   "ar": "أَصْفَرْ",
+   "tr": "asfar",
+   "en": "Yellow",
+   "ur": "پیلا"
+  },
+  {
+   "id": "um-thob",
+   "kind": "word",
+   "ar": "ثُوبْ",
+   "tr": "thob",
+   "en": "Thobe (long robe)",
+   "ur": "لمبا کرتا (ثوب)"
+  },
+  {
+   "id": "um-naal",
+   "kind": "word",
+   "ar": "نَعَالْ",
+   "tr": "na'al",
+   "en": "Sandals",
+   "ur": "چپل",
+   "hook": {
+    "en": "Urdu ‘naalain’ (sandals).",
+    "ur": "اردو ’نعلین‘"
+   }
+  },
+  {
+   "id": "um-izar",
+   "kind": "word",
+   "ar": "إِزَارْ",
+   "tr": "izar",
+   "en": "Lower ihram cloth",
+   "ur": "ازار (احرام کی نچلی چادر)"
+  },
+  {
+   "id": "um-rida",
+   "kind": "word",
+   "ar": "رِدَاءْ",
+   "tr": "rida'",
+   "en": "Upper ihram cloth",
+   "ur": "ردا (احرام کی اوپری چادر)",
+   "hook": {
+    "en": "Urdu ‘rida’ (shawl).",
+    "ur": "اردو ’ردا‘"
+   }
+  },
+  {
+   "id": "um-arbaeen",
+   "kind": "word",
+   "ar": "أَرْبَعِينْ",
+   "tr": "arba'een",
+   "en": "Forty (40, ٤٠)",
+   "ur": "چالیس (٤٠)",
+   "accept": [
+    "40",
+    "٤٠"
+   ]
+  },
+  {
+   "id": "um-sitteen",
+   "kind": "word",
+   "ar": "سِتِّينْ",
+   "tr": "sitteen",
+   "en": "Sixty (60, ٦٠)",
+   "ur": "ساٹھ (٦٠)",
+   "accept": [
+    "60",
+    "٦٠"
+   ]
+  },
+  {
+   "id": "um-sabeen",
+   "kind": "word",
+   "ar": "سَبْعِينْ",
+   "tr": "sab'een",
+   "en": "Seventy (70, ٧٠)",
+   "ur": "ستر (٧٠)",
+   "accept": [
+    "70",
+    "٧٠"
+   ]
+  },
+  {
+   "id": "um-tamaneen",
+   "kind": "word",
+   "ar": "ثَمَانِينْ",
+   "tr": "tamaneen",
+   "en": "Eighty (80, ٨٠)",
+   "ur": "اسی (٨٠)",
+   "accept": [
+    "80",
+    "٨٠"
+   ]
+  },
+  {
+   "id": "um-tiseen",
+   "kind": "word",
+   "ar": "تِسْعِينْ",
+   "tr": "tis'een",
+   "en": "Ninety (90, ٩٠)",
+   "ur": "نوے (٩٠)",
+   "accept": [
+    "90",
+    "٩٠"
+   ]
+  },
+  {
+   "id": "um-meetayn",
+   "kind": "word",
+   "ar": "مِيتَيْنْ",
+   "tr": "meetayn",
+   "en": "Two hundred (200)",
+   "ur": "دو سو (٢٠٠)",
+   "accept": [
+    "200",
+    "٢٠٠"
+   ]
+  },
+  {
+   "id": "um-khamsmiya",
+   "kind": "word",
+   "ar": "خَمْسْمِيَّة",
+   "tr": "khamsmiya",
+   "en": "Five hundred (500)",
+   "ur": "پانچ سو (٥٠٠)",
+   "accept": [
+    "500",
+    "٥٠٠"
+   ]
+  },
+  {
+   "id": "um-juan",
+   "kind": "phrase",
+   "ar": "أَنَا جُوعَانْ",
+   "tr": "ana ju'an",
+   "en": "I am hungry (man)",
+   "ur": "مجھے بھوک لگی ہے",
+   "ar_f": "أَنَا جُوعَانَة",
+   "tr_f": "ana ju'ana",
+   "en_f": "I am hungry (woman)"
+  },
+  {
+   "id": "um-atshan",
+   "kind": "phrase",
+   "ar": "أَنَا عَطْشَانْ",
+   "tr": "ana 'atshan",
+   "en": "I am thirsty (man)",
+   "ur": "مجھے پیاس لگی ہے",
+   "ar_f": "أَنَا عَطْشَانَة",
+   "tr_f": "ana 'atshana",
+   "en_f": "I am thirsty (woman)",
+   "hook": {
+    "en": "‘Atash’ = thirst, as in Urdu.",
+    "ur": "’عطش‘ = پیاس"
+   }
+  },
+  {
+   "id": "um-bardan",
+   "kind": "phrase",
+   "ar": "أَنَا بَرْدَانْ",
+   "tr": "ana bardan",
+   "en": "I am cold (man)",
+   "ur": "مجھے سردی لگ رہی ہے",
+   "ar_f": "أَنَا بَرْدَانَة",
+   "tr_f": "ana bardana",
+   "en_f": "I am cold (woman)",
+   "hook": {
+    "en": "‘Bard’ = cold. Think of ‘barf’ (ice).",
+    "ur": "’برد‘ = ٹھنڈک۔ ’برف‘ سے یاد رکھیں"
+   }
+  },
+  {
+   "id": "um-nasan",
+   "kind": "phrase",
+   "ar": "أَنَا نَعْسَانْ",
+   "tr": "ana na'san",
+   "en": "I am sleepy (man)",
+   "ur": "مجھے نیند آ رہی ہے",
+   "ar_f": "أَنَا نَعْسَانَة",
+   "tr_f": "ana na'sana",
+   "en_f": "I am sleepy (woman)"
+  },
+  {
+   "id": "um-mabsoot",
+   "kind": "phrase",
+   "ar": "أَنَا مَبْسُوطْ",
+   "tr": "ana mabsoot",
+   "en": "I am happy (man)",
+   "ur": "میں خوش ہوں",
+   "ar_f": "أَنَا مَبْسُوطَة",
+   "tr_f": "ana mabsoota",
+   "en_f": "I am happy (woman)"
+  },
+  {
+   "id": "um-artah",
+   "kind": "phrase",
+   "ar": "أَبْغَى أَرْتَاحْ",
+   "tr": "abgha artah",
+   "en": "I want to rest",
+   "ur": "میں آرام کرنا چاہتا ہوں",
+   "hook": {
+    "en": "‘Raahat’ (comfort).",
+    "ur": "’راحت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-mumushkila",
+   "kind": "phrase",
+   "ar": "مُو مُشْكِلَة",
+   "tr": "mu mushkila",
+   "en": "No problem",
+   "ur": "کوئی مسئلہ نہیں",
+   "hook": {
+    "en": "‘Mushkil’, as in Urdu.",
+    "ur": "’مشکل‘ اردو کی طرح"
+   }
   }
  ],
- "planned": 256
+ "planned": 305
 }

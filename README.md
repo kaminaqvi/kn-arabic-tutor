@@ -12,6 +12,10 @@ A free, installable web app (PWA) for English and Urdu speakers to learn to read
 - **Speaking:** Chrome's speech recognition (`ar-SA`); optional detailed feedback from Gemini with the learner's own free API key.
 - **Privacy:** no accounts, no server. Progress stays in the browser (IndexedDB) with export/import backup. The Gemini key is never exported.
 
+## Kids version
+
+https://kaminaqvi.github.io/kn-arabic-tutor/kids/ — a separate installable app for children with its own saved progress: picture words for every letter, numbers, colours, family, body, Islamic words, little duas and Surah Al-Ikhlas. Stars, a sticker book and Jamal the camel. No accounts, no chat, no AI. Settings sit behind a 2-second hold for parents.
+
 ## Run locally
 
 Any static server works:

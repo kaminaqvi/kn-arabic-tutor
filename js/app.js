@@ -3,7 +3,7 @@ import { today, addDays, daysBetween, newProgress, grade, newPerDay } from './sr
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback, geminiChat, stripMarks } from './speech.js';
 import { t, L, setLang, getLang } from './i18n.js';
 
-const APP_VERSION = '3.2.1';
+const APP_VERSION = '3.3.0';
 const APP_DATE = '2026-11-16';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
@@ -221,6 +221,7 @@ function startOnboarding() {
   render(`<div class="welcome">
     <div class="welcome-art"><div class="iqra ar" lang="ar">اقْرَأْ</div><p class="iqra-note">${t('welcome_caption')}</p></div>
     <div class="welcome-text"><h1>${t('welcome_title')}</h1><p class="lead">${t('welcome_body')}</p></div>
+    <p class="center"><a class="kids-link" href="kids/">${t('kids_link')}</a></p>
     <p class="hint center ver-line">${t('ver_label', { v: APP_VERSION })}</p>
     <div class="dock"><button class="btn primary" id="go">${t('start')}</button></div></div>`);
   on('#go', 'click', obLang);
@@ -912,6 +913,8 @@ function settings() {
       <label>${t('set_model')}<input type="text" id="model" class="field" value="${esc(S.settings.model || DEFAULT_MODEL)}"></label>
     </section>
     <button class="btn primary wide" id="save">${t('save_settings')}</button>
+    <h2 class="group-title">${t('kids_title')}</h2>
+    <section class="group"><a class="row-btn" href="kids/"><span><b>${t('kids_open')}</b><small>${t('kids_sub')}</small></span></a></section>
     <h2 class="group-title">${t('about_title')}</h2>
     ${versionHtml()}
     <p class="hint">${t('about_body')}</p>

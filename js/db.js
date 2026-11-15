@@ -1,5 +1,5 @@
 // Tiny IndexedDB wrapper. Stores: progress (per item), log (per day), kv (profile, settings, caches).
-const DB_NAME = 'kn-arabic';
+const DB_NAME = globalThis.KN_DB || 'kn-arabic'; // the kids app uses its own database
 const DB_VERSION = 1;
 let dbp = null;
 
@@ -62,11 +62,11 @@ export const SCHEMA_VERSION = 1;
 // Backup excludes settings (which hold the Gemini key).
 export async function exportData() {
   const [profile, progress, log] = await Promise.all([kv.get('profile'), db.all('progress'), db.all('log')]);
-  return { app: 'kn-arabic-tutor', schema: SCHEMA_VERSION, exported: new Date().toISOString(), profile, progress, log };
+  return { app: globalThis.KN_DB === 'kn-arabic-kids' ? 'kn-arabic-kids' : 'kn-arabic-tutor', schema: SCHEMA_VERSION, exported: new Date().toISOString(), profile, progress, log };
 }
 
 export async function importData(data) {
-  if (!data || data.app !== 'kn-arabic-tutor' || !Array.isArray(data.progress)) throw new Error('bad-file');
+  if (!data || data.app !== (globalThis.KN_DB === 'kn-arabic-kids' ? 'kn-arabic-kids' : 'kn-arabic-tutor') || !Array.isArray(data.progress)) throw new Error('bad-file');
   await kv.set('autobackup', await exportData());
   await db.clear('progress');
   await db.clear('log');

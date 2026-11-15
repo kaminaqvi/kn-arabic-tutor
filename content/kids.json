@@ -1,0 +1,966 @@
+{
+ "id": "kids",
+ "title": {
+  "en": "Kids",
+  "ur": "بچے"
+ },
+ "units": [
+  {
+   "id": "k-islam",
+   "title": {
+    "en": "Words we love",
+    "ur": "پیارے الفاظ"
+   },
+   "icon": "🕌",
+   "items": [
+    "k-salam",
+    "k-shukran",
+    "k-masjid",
+    "k-kaaba",
+    "k-quran",
+    "k-najma",
+    "k-maa",
+    "k-kitab"
+   ]
+  },
+  {
+   "id": "k-letters1",
+   "title": {
+    "en": "Letters أ to ث",
+    "ur": "حروف أ سے ث"
+   },
+   "icon": "🦁",
+   "items": [
+    "k-asad",
+    "k-batta",
+    "k-tuffaha",
+    "k-thalab"
+   ]
+  },
+  {
+   "id": "k-numbers1",
+   "title": {
+    "en": "Numbers 1 to 5",
+    "ur": "گنتی ایک سے پانچ"
+   },
+   "icon": "🔢",
+   "items": [
+    "k-n1",
+    "k-n2",
+    "k-n3",
+    "k-n4",
+    "k-n5"
+   ]
+  },
+  {
+   "id": "k-letters2",
+   "title": {
+    "en": "Letters ج to د",
+    "ur": "حروف ج سے د"
+   },
+   "icon": "🐪",
+   "items": [
+    "k-jamal",
+    "k-hisan",
+    "k-kharoof",
+    "k-dubb"
+   ]
+  },
+  {
+   "id": "k-colours",
+   "title": {
+    "en": "Colours",
+    "ur": "رنگ"
+   },
+   "icon": "🎨",
+   "items": [
+    "k-ahmar",
+    "k-azraq",
+    "k-akhdar",
+    "k-asfar",
+    "k-abyad",
+    "k-aswad"
+   ]
+  },
+  {
+   "id": "k-letters3",
+   "title": {
+    "en": "Letters ذ to س",
+    "ur": "حروف ذ سے س"
+   },
+   "icon": "🌽",
+   "items": [
+    "k-dhura",
+    "k-reesha",
+    "k-zarafa",
+    "k-samaka"
+   ]
+  },
+  {
+   "id": "k-family",
+   "title": {
+    "en": "My family",
+    "ur": "میرا خاندان"
+   },
+   "icon": "🏠",
+   "items": [
+    "k-ab",
+    "k-umm",
+    "k-akh",
+    "k-ukht",
+    "k-jadd",
+    "k-jadda",
+    "k-tifl"
+   ]
+  },
+  {
+   "id": "k-letters4",
+   "title": {
+    "en": "Letters ش to ط",
+    "ur": "حروف ش سے ط"
+   },
+   "icon": "☀️",
+   "items": [
+    "k-shams",
+    "k-saqr",
+    "k-difda",
+    "k-taira"
+   ]
+  },
+  {
+   "id": "k-numbers2",
+   "title": {
+    "en": "Numbers 6 to 10",
+    "ur": "گنتی چھ سے دس"
+   },
+   "icon": "🔟",
+   "items": [
+    "k-n6",
+    "k-n7",
+    "k-n8",
+    "k-n9",
+    "k-n10"
+   ]
+  },
+  {
+   "id": "k-letters5",
+   "title": {
+    "en": "Letters ظ to ف",
+    "ur": "حروف ظ سے ف"
+   },
+   "icon": "✉️",
+   "items": [
+    "k-dharf",
+    "k-inab",
+    "k-ghayma",
+    "k-feel"
+   ]
+  },
+  {
+   "id": "k-body",
+   "title": {
+    "en": "My body",
+    "ur": "میرا جسم"
+   },
+   "icon": "🙂",
+   "items": [
+    "k-ayn",
+    "k-udhun",
+    "k-anf",
+    "k-fam",
+    "k-rijl",
+    "k-qalb"
+   ]
+  },
+  {
+   "id": "k-letters6",
+   "title": {
+    "en": "Letters ق to م",
+    "ur": "حروف ق سے م"
+   },
+   "icon": "🐱",
+   "items": [
+    "k-qitta",
+    "k-kalb",
+    "k-laymoon",
+    "k-mawz"
+   ]
+  },
+  {
+   "id": "k-duas",
+   "title": {
+    "en": "Little duas",
+    "ur": "چھوٹی دعائیں"
+   },
+   "icon": "🤲",
+   "items": [
+    "k-bismillah",
+    "k-alhamdulillah",
+    "k-sleep",
+    "k-wake",
+    "k-inshallah",
+    "k-mashallah"
+   ]
+  },
+  {
+   "id": "k-letters7",
+   "title": {
+    "en": "Letters ن to ي",
+    "ur": "حروف ن سے ي"
+   },
+   "icon": "🐝",
+   "items": [
+    "k-nahla",
+    "k-hilal",
+    "k-warda",
+    "k-yad"
+   ]
+  },
+  {
+   "id": "k-ikhlas",
+   "title": {
+    "en": "Surah Al-Ikhlas",
+    "ur": "سورۃ الاخلاص"
+   },
+   "icon": "📖",
+   "items": [
+    "q-112-1",
+    "q-112-2",
+    "q-112-3",
+    "q-112-4"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "k-asad",
+   "kind": "pic",
+   "ar": "أَسَد",
+   "tr": "asad",
+   "en": "Lion",
+   "ur": "شیر",
+   "pic": "🦁",
+   "letter": "أ"
+  },
+  {
+   "id": "k-batta",
+   "kind": "pic",
+   "ar": "بَطَّة",
+   "tr": "batta",
+   "en": "Duck",
+   "ur": "بطخ",
+   "pic": "🦆",
+   "letter": "ب"
+  },
+  {
+   "id": "k-tuffaha",
+   "kind": "pic",
+   "ar": "تُفَّاحَة",
+   "tr": "tuffaha",
+   "en": "Apple",
+   "ur": "سیب",
+   "pic": "🍎",
+   "letter": "ت"
+  },
+  {
+   "id": "k-thalab",
+   "kind": "pic",
+   "ar": "ثَعْلَب",
+   "tr": "tha'lab",
+   "en": "Fox",
+   "ur": "لومڑی",
+   "pic": "🦊",
+   "letter": "ث"
+  },
+  {
+   "id": "k-jamal",
+   "kind": "pic",
+   "ar": "جَمَل",
+   "tr": "jamal",
+   "en": "Camel",
+   "ur": "اونٹ",
+   "pic": "🐪",
+   "letter": "ج"
+  },
+  {
+   "id": "k-hisan",
+   "kind": "pic",
+   "ar": "حِصَان",
+   "tr": "hisan",
+   "en": "Horse",
+   "ur": "گھوڑا",
+   "pic": "🐴",
+   "letter": "ح"
+  },
+  {
+   "id": "k-kharoof",
+   "kind": "pic",
+   "ar": "خَرُوف",
+   "tr": "kharoof",
+   "en": "Sheep",
+   "ur": "بھیڑ",
+   "pic": "🐑",
+   "letter": "خ"
+  },
+  {
+   "id": "k-dubb",
+   "kind": "pic",
+   "ar": "دُبّ",
+   "tr": "dubb",
+   "en": "Bear",
+   "ur": "ریچھ",
+   "pic": "🐻",
+   "letter": "د"
+  },
+  {
+   "id": "k-dhura",
+   "kind": "pic",
+   "ar": "ذُرَة",
+   "tr": "dhura",
+   "en": "Corn",
+   "ur": "مکئی",
+   "pic": "🌽",
+   "letter": "ذ"
+  },
+  {
+   "id": "k-reesha",
+   "kind": "pic",
+   "ar": "رِيشَة",
+   "tr": "reesha",
+   "en": "Feather",
+   "ur": "پر",
+   "pic": "🪶",
+   "letter": "ر"
+  },
+  {
+   "id": "k-zarafa",
+   "kind": "pic",
+   "ar": "زَرَافَة",
+   "tr": "zarafa",
+   "en": "Giraffe",
+   "ur": "زرافہ",
+   "pic": "🦒",
+   "letter": "ز"
+  },
+  {
+   "id": "k-samaka",
+   "kind": "pic",
+   "ar": "سَمَكَة",
+   "tr": "samaka",
+   "en": "Fish",
+   "ur": "مچھلی",
+   "pic": "🐟",
+   "letter": "س"
+  },
+  {
+   "id": "k-shams",
+   "kind": "pic",
+   "ar": "شَمْس",
+   "tr": "shams",
+   "en": "Sun",
+   "ur": "سورج",
+   "pic": "☀️",
+   "letter": "ش"
+  },
+  {
+   "id": "k-saqr",
+   "kind": "pic",
+   "ar": "صَقْر",
+   "tr": "saqr",
+   "en": "Falcon",
+   "ur": "باز",
+   "pic": "🦅",
+   "letter": "ص"
+  },
+  {
+   "id": "k-difda",
+   "kind": "pic",
+   "ar": "ضِفْدَع",
+   "tr": "difda'",
+   "en": "Frog",
+   "ur": "مینڈک",
+   "pic": "🐸",
+   "letter": "ض"
+  },
+  {
+   "id": "k-taira",
+   "kind": "pic",
+   "ar": "طَائِرَة",
+   "tr": "ta'ira",
+   "en": "Aeroplane",
+   "ur": "ہوائی جہاز",
+   "pic": "✈️",
+   "letter": "ط"
+  },
+  {
+   "id": "k-dharf",
+   "kind": "pic",
+   "ar": "ظَرْف",
+   "tr": "dharf",
+   "en": "Envelope",
+   "ur": "لفافہ",
+   "pic": "✉️",
+   "letter": "ظ"
+  },
+  {
+   "id": "k-inab",
+   "kind": "pic",
+   "ar": "عِنَب",
+   "tr": "'inab",
+   "en": "Grapes",
+   "ur": "انگور",
+   "pic": "🍇",
+   "letter": "ع"
+  },
+  {
+   "id": "k-ghayma",
+   "kind": "pic",
+   "ar": "غَيْمَة",
+   "tr": "ghayma",
+   "en": "Cloud",
+   "ur": "بادل",
+   "pic": "☁️",
+   "letter": "غ"
+  },
+  {
+   "id": "k-feel",
+   "kind": "pic",
+   "ar": "فِيل",
+   "tr": "feel",
+   "en": "Elephant",
+   "ur": "ہاتھی",
+   "pic": "🐘",
+   "letter": "ف"
+  },
+  {
+   "id": "k-qitta",
+   "kind": "pic",
+   "ar": "قِطَّة",
+   "tr": "qitta",
+   "en": "Cat",
+   "ur": "بلی",
+   "pic": "🐱",
+   "letter": "ق"
+  },
+  {
+   "id": "k-kalb",
+   "kind": "pic",
+   "ar": "كَلْب",
+   "tr": "kalb",
+   "en": "Dog",
+   "ur": "کتا",
+   "pic": "🐶",
+   "letter": "ك"
+  },
+  {
+   "id": "k-laymoon",
+   "kind": "pic",
+   "ar": "لَيْمُون",
+   "tr": "laymoon",
+   "en": "Lemon",
+   "ur": "لیموں",
+   "pic": "🍋",
+   "letter": "ل"
+  },
+  {
+   "id": "k-mawz",
+   "kind": "pic",
+   "ar": "مَوْز",
+   "tr": "mawz",
+   "en": "Banana",
+   "ur": "کیلا",
+   "pic": "🍌",
+   "letter": "م"
+  },
+  {
+   "id": "k-nahla",
+   "kind": "pic",
+   "ar": "نَحْلَة",
+   "tr": "nahla",
+   "en": "Bee",
+   "ur": "شہد کی مکھی",
+   "pic": "🐝",
+   "letter": "ن"
+  },
+  {
+   "id": "k-hilal",
+   "kind": "pic",
+   "ar": "هِلَال",
+   "tr": "hilal",
+   "en": "Crescent moon",
+   "ur": "ہلال",
+   "pic": "🌙",
+   "letter": "ه"
+  },
+  {
+   "id": "k-warda",
+   "kind": "pic",
+   "ar": "وَرْدَة",
+   "tr": "warda",
+   "en": "Rose",
+   "ur": "گلاب",
+   "pic": "🌹",
+   "letter": "و"
+  },
+  {
+   "id": "k-yad",
+   "kind": "pic",
+   "ar": "يَد",
+   "tr": "yad",
+   "en": "Hand",
+   "ur": "ہاتھ",
+   "pic": "✋",
+   "letter": "ي"
+  },
+  {
+   "id": "k-n1",
+   "kind": "pic",
+   "ar": "وَاحِد",
+   "tr": "wahid",
+   "en": "One",
+   "ur": "ایک",
+   "pic": "١",
+   "accept": [
+    "1",
+    "١"
+   ],
+   "num": 1
+  },
+  {
+   "id": "k-n2",
+   "kind": "pic",
+   "ar": "اِثْنَان",
+   "tr": "ithnan",
+   "en": "Two",
+   "ur": "دو",
+   "pic": "٢",
+   "accept": [
+    "2",
+    "٢"
+   ],
+   "num": 2
+  },
+  {
+   "id": "k-n3",
+   "kind": "pic",
+   "ar": "ثَلَاثَة",
+   "tr": "thalatha",
+   "en": "Three",
+   "ur": "تین",
+   "pic": "٣",
+   "accept": [
+    "3",
+    "٣"
+   ],
+   "num": 3
+  },
+  {
+   "id": "k-n4",
+   "kind": "pic",
+   "ar": "أَرْبَعَة",
+   "tr": "arba'a",
+   "en": "Four",
+   "ur": "چار",
+   "pic": "٤",
+   "accept": [
+    "4",
+    "٤"
+   ],
+   "num": 4
+  },
+  {
+   "id": "k-n5",
+   "kind": "pic",
+   "ar": "خَمْسَة",
+   "tr": "khamsa",
+   "en": "Five",
+   "ur": "پانچ",
+   "pic": "٥",
+   "accept": [
+    "5",
+    "٥"
+   ],
+   "num": 5
+  },
+  {
+   "id": "k-n6",
+   "kind": "pic",
+   "ar": "سِتَّة",
+   "tr": "sitta",
+   "en": "Six",
+   "ur": "چھ",
+   "pic": "٦",
+   "accept": [
+    "6",
+    "٦"
+   ],
+   "num": 6
+  },
+  {
+   "id": "k-n7",
+   "kind": "pic",
+   "ar": "سَبْعَة",
+   "tr": "sab'a",
+   "en": "Seven",
+   "ur": "سات",
+   "pic": "٧",
+   "accept": [
+    "7",
+    "٧"
+   ],
+   "num": 7
+  },
+  {
+   "id": "k-n8",
+   "kind": "pic",
+   "ar": "ثَمَانِيَة",
+   "tr": "thamaniya",
+   "en": "Eight",
+   "ur": "آٹھ",
+   "pic": "٨",
+   "accept": [
+    "8",
+    "٨"
+   ],
+   "num": 8
+  },
+  {
+   "id": "k-n9",
+   "kind": "pic",
+   "ar": "تِسْعَة",
+   "tr": "tis'a",
+   "en": "Nine",
+   "ur": "نو",
+   "pic": "٩",
+   "accept": [
+    "9",
+    "٩"
+   ],
+   "num": 9
+  },
+  {
+   "id": "k-n10",
+   "kind": "pic",
+   "ar": "عَشَرَة",
+   "tr": "'ashara",
+   "en": "Ten",
+   "ur": "دس",
+   "pic": "١٠",
+   "accept": [
+    "10",
+    "١٠"
+   ],
+   "num": 10
+  },
+  {
+   "id": "k-ahmar",
+   "kind": "pic",
+   "ar": "أَحْمَر",
+   "tr": "ahmar",
+   "en": "Red",
+   "ur": "سرخ",
+   "pic": "🔴",
+   "color": "#E5484D"
+  },
+  {
+   "id": "k-azraq",
+   "kind": "pic",
+   "ar": "أَزْرَق",
+   "tr": "azraq",
+   "en": "Blue",
+   "ur": "نیلا",
+   "pic": "🔵",
+   "color": "#3E7BFA"
+  },
+  {
+   "id": "k-akhdar",
+   "kind": "pic",
+   "ar": "أَخْضَر",
+   "tr": "akhdar",
+   "en": "Green",
+   "ur": "سبز",
+   "pic": "🟢",
+   "color": "#2FA36B"
+  },
+  {
+   "id": "k-asfar",
+   "kind": "pic",
+   "ar": "أَصْفَر",
+   "tr": "asfar",
+   "en": "Yellow",
+   "ur": "پیلا",
+   "pic": "🟡",
+   "color": "#F5C518"
+  },
+  {
+   "id": "k-abyad",
+   "kind": "pic",
+   "ar": "أَبْيَض",
+   "tr": "abyad",
+   "en": "White",
+   "ur": "سفید",
+   "pic": "⚪",
+   "color": "#FFFFFF"
+  },
+  {
+   "id": "k-aswad",
+   "kind": "pic",
+   "ar": "أَسْوَد",
+   "tr": "aswad",
+   "en": "Black",
+   "ur": "کالا",
+   "pic": "⚫",
+   "color": "#222222"
+  },
+  {
+   "id": "k-ab",
+   "kind": "pic",
+   "ar": "أَب",
+   "tr": "ab",
+   "en": "Father",
+   "ur": "ابو",
+   "pic": "👨"
+  },
+  {
+   "id": "k-umm",
+   "kind": "pic",
+   "ar": "أُمّ",
+   "tr": "umm",
+   "en": "Mother",
+   "ur": "امی",
+   "pic": "👩"
+  },
+  {
+   "id": "k-akh",
+   "kind": "pic",
+   "ar": "أَخ",
+   "tr": "akh",
+   "en": "Brother",
+   "ur": "بھائی",
+   "pic": "👦"
+  },
+  {
+   "id": "k-ukht",
+   "kind": "pic",
+   "ar": "أُخْت",
+   "tr": "ukht",
+   "en": "Sister",
+   "ur": "بہن",
+   "pic": "👧"
+  },
+  {
+   "id": "k-jadd",
+   "kind": "pic",
+   "ar": "جَدّ",
+   "tr": "jadd",
+   "en": "Grandfather",
+   "ur": "دادا / نانا",
+   "pic": "👴"
+  },
+  {
+   "id": "k-jadda",
+   "kind": "pic",
+   "ar": "جَدَّة",
+   "tr": "jadda",
+   "en": "Grandmother",
+   "ur": "دادی / نانی",
+   "pic": "👵"
+  },
+  {
+   "id": "k-tifl",
+   "kind": "pic",
+   "ar": "طِفْل",
+   "tr": "tifl",
+   "en": "Baby",
+   "ur": "بچہ",
+   "pic": "👶"
+  },
+  {
+   "id": "k-ayn",
+   "kind": "pic",
+   "ar": "عَيْن",
+   "tr": "'ayn",
+   "en": "Eye",
+   "ur": "آنکھ",
+   "pic": "👁️"
+  },
+  {
+   "id": "k-udhun",
+   "kind": "pic",
+   "ar": "أُذُن",
+   "tr": "udhun",
+   "en": "Ear",
+   "ur": "کان",
+   "pic": "👂"
+  },
+  {
+   "id": "k-anf",
+   "kind": "pic",
+   "ar": "أَنْف",
+   "tr": "anf",
+   "en": "Nose",
+   "ur": "ناک",
+   "pic": "👃"
+  },
+  {
+   "id": "k-fam",
+   "kind": "pic",
+   "ar": "فَم",
+   "tr": "fam",
+   "en": "Mouth",
+   "ur": "منہ",
+   "pic": "👄"
+  },
+  {
+   "id": "k-rijl",
+   "kind": "pic",
+   "ar": "رِجْل",
+   "tr": "rijl",
+   "en": "Leg",
+   "ur": "ٹانگ",
+   "pic": "🦵"
+  },
+  {
+   "id": "k-qalb",
+   "kind": "pic",
+   "ar": "قَلْب",
+   "tr": "qalb",
+   "en": "Heart",
+   "ur": "دل",
+   "pic": "❤️"
+  },
+  {
+   "id": "k-salam",
+   "kind": "pic",
+   "ar": "السَّلَامُ عَلَيْكُمْ",
+   "tr": "as-salamu 'alaykum",
+   "en": "Peace be upon you",
+   "ur": "السلام علیکم",
+   "pic": "👋"
+  },
+  {
+   "id": "k-shukran",
+   "kind": "pic",
+   "ar": "شُكْرًا",
+   "tr": "shukran",
+   "en": "Thank you",
+   "ur": "شکریہ",
+   "pic": "🙏"
+  },
+  {
+   "id": "k-masjid",
+   "kind": "pic",
+   "ar": "مَسْجِد",
+   "tr": "masjid",
+   "en": "Mosque",
+   "ur": "مسجد",
+   "pic": "🕌"
+  },
+  {
+   "id": "k-kaaba",
+   "kind": "pic",
+   "ar": "الْكَعْبَة",
+   "tr": "al-ka'ba",
+   "en": "The Ka'bah",
+   "ur": "کعبہ",
+   "pic": "🕋"
+  },
+  {
+   "id": "k-quran",
+   "kind": "pic",
+   "ar": "الْقُرْآن",
+   "tr": "al-qur'an",
+   "en": "The Qur'an",
+   "ur": "قرآن",
+   "pic": "📖"
+  },
+  {
+   "id": "k-najma",
+   "kind": "pic",
+   "ar": "نَجْمَة",
+   "tr": "najma",
+   "en": "Star",
+   "ur": "ستارہ",
+   "pic": "⭐"
+  },
+  {
+   "id": "k-maa",
+   "kind": "pic",
+   "ar": "مَاء",
+   "tr": "ma'",
+   "en": "Water",
+   "ur": "پانی",
+   "pic": "💧"
+  },
+  {
+   "id": "k-kitab",
+   "kind": "pic",
+   "ar": "كِتَاب",
+   "tr": "kitab",
+   "en": "Book",
+   "ur": "کتاب",
+   "pic": "📚"
+  },
+  {
+   "id": "k-bismillah",
+   "kind": "pic",
+   "ar": "بِسْمِ اللَّهِ",
+   "tr": "bismillah",
+   "en": "In the name of Allah (before eating)",
+   "ur": "اللہ کے نام سے (کھانے سے پہلے)",
+   "pic": "🍽️",
+   "dua": true
+  },
+  {
+   "id": "k-alhamdulillah",
+   "kind": "pic",
+   "ar": "الْحَمْدُ لِلَّهِ",
+   "tr": "al-hamdu lillah",
+   "en": "All praise is for Allah (after eating)",
+   "ur": "سب تعریف اللہ کے لیے (کھانے کے بعد)",
+   "pic": "😊",
+   "dua": true
+  },
+  {
+   "id": "k-sleep",
+   "kind": "pic",
+   "ar": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+   "tr": "bismika llahumma amootu wa ahya",
+   "en": "In Your name, O Allah, I die and I live (before sleeping)",
+   "ur": "اے اللہ، تیرے نام سے مرتا اور جیتا ہوں (سونے سے پہلے)",
+   "pic": "😴",
+   "dua": true
+  },
+  {
+   "id": "k-wake",
+   "kind": "pic",
+   "ar": "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+   "tr": "al-hamdu lillahi lladhee ahyana ba'da ma amatana wa ilayhi n-nushoor",
+   "en": "Praise be to Allah who gave us life after death, and to Him is the return (on waking up)",
+   "ur": "سب تعریف اللہ کی جس نے ہمیں مارنے کے بعد زندہ کیا اور اسی کی طرف لوٹنا ہے (جاگنے پر)",
+   "pic": "🌅",
+   "dua": true
+  },
+  {
+   "id": "k-inshallah",
+   "kind": "pic",
+   "ar": "إِنْ شَاءَ اللَّهُ",
+   "tr": "in sha' allah",
+   "en": "If Allah wills",
+   "ur": "ان شاء اللہ",
+   "pic": "🤲",
+   "dua": true
+  },
+  {
+   "id": "k-mashallah",
+   "kind": "pic",
+   "ar": "مَا شَاءَ اللَّهُ",
+   "tr": "ma sha' allah",
+   "en": "What Allah has willed (how wonderful!)",
+   "ur": "ما شاء اللہ",
+   "pic": "🌟",
+   "dua": true
+  }
+ ],
+ "planned": 75
+}

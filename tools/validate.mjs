@@ -1,7 +1,7 @@
 // Content checks: unique ids, required fields, unit references, vowel marks on Arabic, role-play references.
 import { readFileSync, existsSync } from 'node:fs';
 const idx = JSON.parse(readFileSync('content/index.json', 'utf8'));
-const files = [idx.foundations, idx.shared, ...idx.paths.filter(p => p.available).map(p => p.file)].filter(Boolean);
+const files = [idx.foundations, idx.shared, ...idx.paths.filter(p => p.available).map(p => p.file), idx.kids].filter(Boolean);
 const HARAKAT = /[ً-ْ]/;
 let errors = 0; const all = new Map(); const packs = [];
 const err = m => { errors++; console.error('✗ ' + m); };
@@ -14,7 +14,8 @@ for (const f of files) {
     for (const k of ['id', 'kind', 'tr', 'en', 'ur']) if (!it[k]) err(`${f}: ${it.id} missing ${k}`);
     if (it.kind === 'ayah') { if (!/^\d+:\d+$/.test(it.quran || '')) err(`${f}: ${it.id} needs quran ref`); continue; }
     if (!it.ar) err(`${f}: ${it.id} missing ar`);
-    if (['word', 'phrase', 'dua', 'syllable', 'mark', 'sign'].includes(it.kind) && !HARAKAT.test(it.ar)) err(`${f}: ${it.id} has no vowel marks`);
+    if (['word', 'phrase', 'dua', 'syllable', 'mark', 'sign', 'pic'].includes(it.kind) && !HARAKAT.test(it.ar)) err(`${f}: ${it.id} has no vowel marks`);
+    if (it.kind === 'pic' && !it.pic) err(`${f}: ${it.id} needs a picture`);
     if (it.ar_f && !it.tr_f) err(`${f}: ${it.id} has ar_f without tr_f`);
   }
 }

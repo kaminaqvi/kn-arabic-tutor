@@ -289,3 +289,5 @@ html[dir=rtl] .meter i { margin-inline-start: auto; }
 .version.has-update { background: var(--mint); box-shadow: none; }
 .note.update { background: var(--mint); border-color: transparent; color: var(--mint-ink); font-weight: 500; }
 .ver-line { margin-top: 4px; font-size: 12.5px; }
+.kids-link { color: var(--green); font-weight: 500; font-size: 15px; text-decoration: underline; text-underline-offset: 3px; }
+a.row-btn { color: inherit; text-decoration: none; }

@@ -233,6 +233,100 @@
     "q-103-2",
     "q-103-3"
    ]
+  },
+  {
+   "id": "q-fil",
+   "title": {
+    "en": "Surah Al-Fil",
+    "ur": "سورۃ الفیل"
+   },
+   "items": [
+    "q-105-1",
+    "q-105-2",
+    "q-105-3",
+    "q-105-4",
+    "q-105-5"
+   ]
+  },
+  {
+   "id": "q-quraysh",
+   "title": {
+    "en": "Surah Quraysh",
+    "ur": "سورۃ قریش"
+   },
+   "items": [
+    "q-106-1",
+    "q-106-2",
+    "q-106-3",
+    "q-106-4"
+   ]
+  },
+  {
+   "id": "q-maun",
+   "title": {
+    "en": "Surah Al-Ma'un",
+    "ur": "سورۃ الماعون"
+   },
+   "items": [
+    "q-107-1",
+    "q-107-2",
+    "q-107-3",
+    "q-107-4",
+    "q-107-5",
+    "q-107-6",
+    "q-107-7"
+   ]
+  },
+  {
+   "id": "q-kafirun",
+   "title": {
+    "en": "Surah Al-Kafirun",
+    "ur": "سورۃ الکافرون"
+   },
+   "items": [
+    "q-109-1",
+    "q-109-2",
+    "q-109-3",
+    "q-109-4",
+    "q-109-5",
+    "q-109-6"
+   ]
+  },
+  {
+   "id": "q-nasr",
+   "title": {
+    "en": "Surah An-Nasr",
+    "ur": "سورۃ النصر"
+   },
+   "items": [
+    "q-110-1",
+    "q-110-2",
+    "q-110-3"
+   ]
+  },
+  {
+   "id": "q-masad",
+   "title": {
+    "en": "Surah Al-Masad",
+    "ur": "سورۃ المسد"
+   },
+   "items": [
+    "q-111-1",
+    "q-111-2",
+    "q-111-3",
+    "q-111-4",
+    "q-111-5"
+   ]
+  },
+  {
+   "id": "q-kursi",
+   "title": {
+    "en": "Ayat al-Kursi",
+    "ur": "آیۃ الکرسی"
+   },
+   "items": [
+    "q-2-255"
+   ]
   }
  ],
  "items": [
@@ -964,7 +1058,286 @@
    "tr": "illa lladheena amanu wa 'amilu s-salihati wa tawasaw bil-haqqi wa tawasaw bis-sabr",
    "en": "except those who believe, do good deeds, and urge one another to the truth and to patience.",
    "ur": "سوائے ان کے جو ایمان لائے، نیک عمل کیے، اور ایک دوسرے کو حق اور صبر کی تلقین کی"
+  },
+  {
+   "id": "q-105-1",
+   "kind": "ayah",
+   "quran": "105:1",
+   "ar": "",
+   "tr": "alam tara kayfa fa'ala rabbuka bi-ashabi l-feel",
+   "en": "Have you not seen how your Lord dealt with the people of the elephant?",
+   "ur": "کیا آپ نے نہیں دیکھا کہ آپ کے رب نے ہاتھی والوں کے ساتھ کیا کیا؟"
+  },
+  {
+   "id": "q-105-2",
+   "kind": "ayah",
+   "quran": "105:2",
+   "ar": "",
+   "tr": "alam yaj'al kaydahum fee tadleel",
+   "en": "Did He not make their plan go astray?",
+   "ur": "کیا اس نے ان کی چال کو ناکام نہیں کر دیا؟"
+  },
+  {
+   "id": "q-105-3",
+   "kind": "ayah",
+   "quran": "105:3",
+   "ar": "",
+   "tr": "wa arsala 'alayhim tayran ababeel",
+   "en": "And He sent against them birds in flocks,",
+   "ur": "اور ان پر پرندوں کے جھنڈ بھیجے"
+  },
+  {
+   "id": "q-105-4",
+   "kind": "ayah",
+   "quran": "105:4",
+   "ar": "",
+   "tr": "tarmeehim bi-hijaratin min sijjeel",
+   "en": "striking them with stones of baked clay,",
+   "ur": "جو ان پر پکی مٹی کے پتھر پھینکتے تھے"
+  },
+  {
+   "id": "q-105-5",
+   "kind": "ayah",
+   "quran": "105:5",
+   "ar": "",
+   "tr": "fa-ja'alahum ka-'asfin ma'kool",
+   "en": "and He made them like eaten straw.",
+   "ur": "پھر انہیں کھائے ہوئے بھوسے کی طرح کر دیا"
+  },
+  {
+   "id": "q-106-1",
+   "kind": "ayah",
+   "quran": "106:1",
+   "ar": "",
+   "tr": "li-eelafi quraysh",
+   "en": "For the security of Quraysh,",
+   "ur": "قریش کے مانوس رکھنے کی وجہ سے"
+  },
+  {
+   "id": "q-106-2",
+   "kind": "ayah",
+   "quran": "106:2",
+   "ar": "",
+   "tr": "eelafihim rihlata sh-shita'i wa s-sayf",
+   "en": "their security in the journeys of winter and summer,",
+   "ur": "سردی اور گرمی کے سفر سے ان کو مانوس رکھنے کی وجہ سے"
+  },
+  {
+   "id": "q-106-3",
+   "kind": "ayah",
+   "quran": "106:3",
+   "ar": "",
+   "tr": "fal-ya'budoo rabba hadha l-bayt",
+   "en": "so let them worship the Lord of this House,",
+   "ur": "پس انہیں اس گھر کے رب کی عبادت کرنی چاہیے"
+  },
+  {
+   "id": "q-106-4",
+   "kind": "ayah",
+   "quran": "106:4",
+   "ar": "",
+   "tr": "alladhee at'amahum min joo'in wa amanahum min khawf",
+   "en": "who fed them against hunger and made them safe from fear.",
+   "ur": "جس نے انہیں بھوک میں کھانا دیا اور خوف سے امن دیا"
+  },
+  {
+   "id": "q-107-1",
+   "kind": "ayah",
+   "quran": "107:1",
+   "ar": "",
+   "tr": "ara'ayta lladhee yukadhdhibu bid-deen",
+   "en": "Have you seen the one who denies the Judgement?",
+   "ur": "کیا آپ نے اسے دیکھا جو روزِ جزا کو جھٹلاتا ہے؟"
+  },
+  {
+   "id": "q-107-2",
+   "kind": "ayah",
+   "quran": "107:2",
+   "ar": "",
+   "tr": "fa-dhalika lladhee yadu''u l-yateem",
+   "en": "That is the one who pushes away the orphan",
+   "ur": "یہی وہ ہے جو یتیم کو دھکے دیتا ہے"
+  },
+  {
+   "id": "q-107-3",
+   "kind": "ayah",
+   "quran": "107:3",
+   "ar": "",
+   "tr": "wa la yahuddu 'ala ta'ami l-miskeen",
+   "en": "and does not encourage feeding the poor.",
+   "ur": "اور مسکین کو کھانا کھلانے کی ترغیب نہیں دیتا"
+  },
+  {
+   "id": "q-107-4",
+   "kind": "ayah",
+   "quran": "107:4",
+   "ar": "",
+   "tr": "fa-waylun lil-musalleen",
+   "en": "So woe to those who pray",
+   "ur": "پس ان نمازیوں کے لیے خرابی ہے"
+  },
+  {
+   "id": "q-107-5",
+   "kind": "ayah",
+   "quran": "107:5",
+   "ar": "",
+   "tr": "alladheena hum 'an salatihim sahoon",
+   "en": "who are heedless of their prayer,",
+   "ur": "جو اپنی نماز سے غافل ہیں"
+  },
+  {
+   "id": "q-107-6",
+   "kind": "ayah",
+   "quran": "107:6",
+   "ar": "",
+   "tr": "alladheena hum yura'oon",
+   "en": "who only show off,",
+   "ur": "جو دکھاوا کرتے ہیں"
+  },
+  {
+   "id": "q-107-7",
+   "kind": "ayah",
+   "quran": "107:7",
+   "ar": "",
+   "tr": "wa yamna'oona l-ma'oon",
+   "en": "and withhold small kindnesses.",
+   "ur": "اور معمولی چیزیں بھی دینے سے روکتے ہیں"
+  },
+  {
+   "id": "q-109-1",
+   "kind": "ayah",
+   "quran": "109:1",
+   "ar": "",
+   "tr": "qul ya ayyuha l-kafiroon",
+   "en": "Say: O disbelievers,",
+   "ur": "کہہ دیجیے: اے کافرو"
+  },
+  {
+   "id": "q-109-2",
+   "kind": "ayah",
+   "quran": "109:2",
+   "ar": "",
+   "tr": "la a'budu ma ta'budoon",
+   "en": "I do not worship what you worship,",
+   "ur": "میں اس کی عبادت نہیں کرتا جس کی تم عبادت کرتے ہو"
+  },
+  {
+   "id": "q-109-3",
+   "kind": "ayah",
+   "quran": "109:3",
+   "ar": "",
+   "tr": "wa la antum 'abidoona ma a'bud",
+   "en": "nor do you worship what I worship,",
+   "ur": "اور نہ تم اس کی عبادت کرتے ہو جس کی میں عبادت کرتا ہوں"
+  },
+  {
+   "id": "q-109-4",
+   "kind": "ayah",
+   "quran": "109:4",
+   "ar": "",
+   "tr": "wa la ana 'abidun ma 'abadtum",
+   "en": "nor will I worship what you have worshipped,",
+   "ur": "اور نہ میں اس کی عبادت کرنے والا ہوں جس کی تم نے عبادت کی"
+  },
+  {
+   "id": "q-109-5",
+   "kind": "ayah",
+   "quran": "109:5",
+   "ar": "",
+   "tr": "wa la antum 'abidoona ma a'bud",
+   "en": "nor will you worship what I worship.",
+   "ur": "اور نہ تم اس کی عبادت کرنے والے ہو جس کی میں عبادت کرتا ہوں"
+  },
+  {
+   "id": "q-109-6",
+   "kind": "ayah",
+   "quran": "109:6",
+   "ar": "",
+   "tr": "lakum deenukum wa liya deen",
+   "en": "To you your religion, and to me mine.",
+   "ur": "تمہارے لیے تمہارا دین اور میرے لیے میرا دین"
+  },
+  {
+   "id": "q-110-1",
+   "kind": "ayah",
+   "quran": "110:1",
+   "ar": "",
+   "tr": "idha ja'a nasru llahi wal-fath",
+   "en": "When the help of Allah and the victory come,",
+   "ur": "جب اللہ کی مدد اور فتح آ جائے"
+  },
+  {
+   "id": "q-110-2",
+   "kind": "ayah",
+   "quran": "110:2",
+   "ar": "",
+   "tr": "wa ra'ayta n-nasa yadkhuloona fee deeni llahi afwaja",
+   "en": "and you see people entering Allah's religion in crowds,",
+   "ur": "اور آپ لوگوں کو اللہ کے دین میں فوج در فوج داخل ہوتے دیکھیں"
+  },
+  {
+   "id": "q-110-3",
+   "kind": "ayah",
+   "quran": "110:3",
+   "ar": "",
+   "tr": "fa-sabbih bi-hamdi rabbika wastaghfirh, innahu kana tawwaba",
+   "en": "then glorify the praise of your Lord and ask His forgiveness. He is ever accepting of repentance.",
+   "ur": "تو اپنے رب کی حمد کے ساتھ تسبیح کیجیے اور اس سے مغفرت مانگیے، بے شک وہ بڑا توبہ قبول کرنے والا ہے"
+  },
+  {
+   "id": "q-111-1",
+   "kind": "ayah",
+   "quran": "111:1",
+   "ar": "",
+   "tr": "tabbat yada abee lahabin wa tabb",
+   "en": "May the hands of Abu Lahab perish, and he has perished.",
+   "ur": "ابو لہب کے دونوں ہاتھ ٹوٹ جائیں اور وہ ہلاک ہو گیا"
+  },
+  {
+   "id": "q-111-2",
+   "kind": "ayah",
+   "quran": "111:2",
+   "ar": "",
+   "tr": "ma aghna 'anhu maluhu wa ma kasab",
+   "en": "His wealth and what he earned will not help him.",
+   "ur": "نہ اس کا مال اس کے کام آیا اور نہ جو اس نے کمایا"
+  },
+  {
+   "id": "q-111-3",
+   "kind": "ayah",
+   "quran": "111:3",
+   "ar": "",
+   "tr": "sayasla naran dhata lahab",
+   "en": "He will burn in a fire of blazing flame,",
+   "ur": "وہ عنقریب بھڑکتی آگ میں داخل ہوگا"
+  },
+  {
+   "id": "q-111-4",
+   "kind": "ayah",
+   "quran": "111:4",
+   "ar": "",
+   "tr": "wamra'atuhu hammalata l-hatab",
+   "en": "and his wife too, the carrier of firewood.",
+   "ur": "اور اس کی بیوی بھی، جو لکڑیاں اٹھانے والی ہے"
+  },
+  {
+   "id": "q-111-5",
+   "kind": "ayah",
+   "quran": "111:5",
+   "ar": "",
+   "tr": "fee jeediha hablun min masad",
+   "en": "Around her neck is a rope of palm fibre.",
+   "ur": "اس کی گردن میں مونج کی رسی ہے"
+  },
+  {
+   "id": "q-2-255",
+   "kind": "ayah",
+   "quran": "2:255",
+   "ar": "",
+   "tr": "allahu la ilaha illa huwa l-hayyu l-qayyum…",
+   "en": "Allah: there is no god but Him, the Ever-Living, the Sustainer of all. Neither drowsiness nor sleep overtakes Him. To Him belongs all that is in the heavens and the earth… His Throne extends over the heavens and the earth, and guarding them does not tire Him. He is the Most High, the Most Great.",
+   "ur": "اللہ، اس کے سوا کوئی معبود نہیں، وہ زندہ ہے، سب کو تھامنے والا ہے۔ نہ اسے اونگھ آتی ہے نہ نیند۔ آسمانوں اور زمین میں جو کچھ ہے اسی کا ہے… اس کی کرسی آسمانوں اور زمین پر چھائی ہوئی ہے اور ان کی حفاظت اسے نہیں تھکاتی۔ وہ بلند اور عظمت والا ہے۔"
   }
  ],
- "planned": 103
+ "planned": 134
 }
