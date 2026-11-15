@@ -104,3 +104,16 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
 .boss { background: var(--accent); color: #fff; padding: 2px 8px; border-radius: 6px; }
 .boss-banner { background: #faeeda; color: #633806; font-weight: 600; }
 @media (prefers-color-scheme: dark) { .boss-banner { background: #412402; color: #fac775; } }
+.bubble { border-radius: 16px; padding: 10px 14px; margin: 8px 0; max-width: 92%; }
+.bubble .ar { font-size: 24px; line-height: 1.8; }
+.bubble small { display: block; color: var(--muted); }
+.bubble.npc { background: var(--card); border: 1px solid var(--line); margin-inline-end: auto; }
+.bubble.me { background: var(--accent-bg); margin-inline-start: auto; }
+.mean-sm { font-size: 15px; font-weight: 500; }
+.rp-card { display: flex; justify-content: space-between; gap: 10px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; margin: 10px 0; }
+.rp-card > div:first-child { display: grid; } .rp-card small { color: var(--muted); }
+.rp-actions { display: grid; gap: 6px; }
+.chat .log { min-height: 40vh; }
+.chat .row input { margin: 0; }
+.practice { margin-top: 8px; }
+.path-row { margin: 10px 0; } .path-row .bar-row { margin: 0; grid-template-columns: 1fr 80px 44px; }

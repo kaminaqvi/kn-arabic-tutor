@@ -159,3 +159,27 @@ Listen to the recording. Reply in ${lang}, in at most 3 short bullet points:
   const parts = json?.candidates?.[0]?.content?.parts || [];
   return parts.map(p => p.text || '').join('\n').trim() || '—';
 }
+
+// Arabic as it is usually printed: no vowel marks.
+export function stripMarks(s) { return (s || '').replace(DIACRITICS, ''); }
+
+// ---------- Gemini role-play conversation (text in, JSON out) ----------
+export async function geminiChat({ key, model, system, history }) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+  const resp = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+    body: JSON.stringify({
+      systemInstruction: { parts: [{ text: system }] },
+      contents: history.map(h => ({ role: h.role, parts: [{ text: h.text }] })),
+      generationConfig: { responseMimeType: 'application/json', temperature: 0.7 },
+    }),
+  });
+  if (!resp.ok) {
+    const txt = await resp.text().catch(() => '');
+    throw new Error(`Gemini ${resp.status}: ${txt.slice(0, 200)}`);
+  }
+  const json = await resp.json();
+  const text = (json?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('');
+  try { return JSON.parse(text); } catch (e) { return { ar: text, tr: '', en: '', ur: '' }; }
+}

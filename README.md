@@ -2,9 +2,12 @@
 
 A free, installable web app (PWA) for English and Urdu speakers to learn to read and speak Arabic in short daily game levels.
 
-- **Paths:** Umrah and Hajj travel (Release 1: Days 1–7). Coming next: Qur'anic Arabic, general reading, everyday conversation.
+- **Live app:** https://kaminaqvi.github.io/kn-arabic-tutor/
+- **Paths:** Umrah and Hajj travel (27 units, 256 items), Qur'anic Arabic (14 units incl. Al-Fatiha and four short surahs), general reading (MSA, 7 units), everyday conversation (Saudi, 6 units).
 - **Foundations module** for complete beginners (alphabet and vowel marks), skipped after a short reading check.
-- **Daily level:** review → learn → read → listen and tap → speak to unlock → build and say.
+- **Daily level:** review → learn → read → meaning check → read without vowel marks → listen and tap → speak to unlock → build and say. A boss level every 7th day.
+- **Role-plays:** 10 scripted scenes (airport, taxi, hotel, restaurant, shopping, directions, Rawdah, help, meeting people, making plans), plus free conversation with Gemini.
+- **Final recall test:** type the meaning, no answer choices.
 - **Memory:** 5-box Leitner schedule (1, 2, 4, 7, 14 days); gaps capped at 4 days in the last 10 days before a goal date.
 - **Speaking:** Chrome's speech recognition (`ar-SA`); optional detailed feedback from Gemini with the learner's own free API key.
 - **Privacy:** no accounts, no server. Progress stays in the browser (IndexedDB) with export/import backup. The Gemini key is never exported.
@@ -26,6 +29,8 @@ Lessons live in `content/*.json`. Check them with:
 ```
 node tools/validate.mjs
 ```
+
+Content is generated from the scripts in `tools/src/` (run them from the repo root), then validated.
 
 Qur'an text and recitation (Mishary Alafasy) are loaded at runtime from [AlQuran Cloud](https://alquran.cloud) and cached on the device; they are never retyped by hand. Spoken phrases use Saudi (Hijazi) Arabic, with the textbook form shown where it differs.
 

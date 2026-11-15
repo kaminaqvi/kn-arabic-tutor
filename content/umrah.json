@@ -239,6 +239,270 @@
     "um-rakhees",
     "um-ghalimarra"
    ]
+  },
+  {
+   "id": "day14",
+   "title": {
+    "en": "At the restaurant",
+    "ur": "ریسٹورنٹ میں"
+   },
+   "items": [
+    "um-menu",
+    "um-abghahada",
+    "um-wahidkaman",
+    "um-bidoonsukkar",
+    "um-bidoonharr",
+    "um-safari",
+    "um-mahalli",
+    "um-kifaya",
+    "um-hisab",
+    "um-lazeez"
+   ]
+  },
+  {
+   "id": "day15",
+   "title": {
+    "en": "Food and drink",
+    "ur": "کھانا پینا"
+   },
+   "items": [
+    "um-dajaj",
+    "um-laham",
+    "um-ruzz",
+    "um-samak",
+    "um-aseer",
+    "um-haleeb",
+    "um-tamr",
+    "um-kabsa",
+    "um-abghakabsa",
+    "um-gahwaarabi"
+   ]
+  },
+  {
+   "id": "day16",
+   "title": {
+    "en": "Shopping",
+    "ur": "خریداری"
+   },
+   "items": [
+    "um-bas",
+    "um-indak",
+    "um-kamsiruh",
+    "um-akhirsir",
+    "um-nazzil",
+    "um-magas",
+    "um-akbar",
+    "um-asghar",
+    "um-lontani",
+    "um-khalas",
+    "um-adfa"
+   ]
+  },
+  {
+   "id": "day17",
+   "title": {
+    "en": "Gifts and souvenirs",
+    "ur": "تحفے"
+   },
+   "items": [
+    "um-hadiyya",
+    "um-miswak",
+    "um-itr",
+    "um-sajjada",
+    "um-sibha",
+    "um-mushaf",
+    "um-zamzam",
+    "um-abaya",
+    "um-kees"
+   ]
+  },
+  {
+   "id": "day18",
+   "title": {
+    "en": "Masjid an-Nabawi",
+    "ur": "مسجدِ نبوی"
+   },
+   "items": [
+    "um-nabawi",
+    "um-fenbabsalam",
+    "um-rawda",
+    "um-tasreeh",
+    "um-qubba",
+    "um-musalla",
+    "um-salamrasool",
+    "um-baqee",
+    "um-quba",
+    "um-uhud"
+   ]
+  },
+  {
+   "id": "day19",
+   "title": {
+    "en": "Prayer and the masjid",
+    "ur": "نماز اور مسجد"
+   },
+   "items": [
+    "um-adhan",
+    "um-iqama",
+    "um-fajr",
+    "um-dhuhr",
+    "um-asr",
+    "um-maghrib",
+    "um-isha",
+    "um-mataadhan",
+    "um-wudu",
+    "um-feehmakan"
+   ]
+  },
+  {
+   "id": "day20",
+   "title": {
+    "en": "Reading signs",
+    "ur": "سائن بورڈ پڑھنا"
+   },
+   "items": [
+    "um-s-makhraj",
+    "um-s-madkhal",
+    "um-s-rijal",
+    "um-s-nisa",
+    "um-s-miyah",
+    "um-s-tasweer",
+    "um-s-mawaqif",
+    "um-s-maftooh",
+    "um-s-mughlaq",
+    "um-s-tawari",
+    "um-s-istilamat"
+   ]
+  },
+  {
+   "id": "day21",
+   "title": {
+    "en": "Ihram and the miqat",
+    "ur": "احرام اور میقات"
+   },
+   "items": [
+    "um-meeqat",
+    "um-ihram",
+    "um-niyya",
+    "um-labbaykumra",
+    "um-abyarali",
+    "um-kambaqi",
+    "um-ghusl"
+   ]
+  },
+  {
+   "id": "day22",
+   "title": {
+    "en": "The Haram and tawaf",
+    "ur": "حرم اور طواف"
+   },
+   "items": [
+    "um-masjidharam",
+    "um-kaaba",
+    "um-tawaf",
+    "um-shawt",
+    "um-hajaraswad",
+    "um-bismillahakbar",
+    "um-rukn",
+    "um-rabbana",
+    "um-maqam",
+    "um-mataf"
+   ]
+  },
+  {
+   "id": "day23",
+   "title": {
+    "en": "Sa'i and finishing Umrah",
+    "ur": "سعی اور عمرہ مکمل"
+   },
+   "items": [
+    "um-sai",
+    "um-safa",
+    "um-marwa",
+    "um-halq",
+    "um-taqseer",
+    "um-fenhallaq",
+    "um-taqabbal",
+    "um-umramaqbula"
+   ]
+  },
+  {
+   "id": "day24",
+   "title": {
+    "en": "Help and health",
+    "ur": "مدد اور صحت"
+   },
+   "items": [
+    "um-saidni",
+    "um-diit",
+    "um-qareebharam",
+    "um-tabaan",
+    "um-suda",
+    "um-mustashfa",
+    "um-saydaliyya",
+    "um-dawa",
+    "um-isaf",
+    "um-shurta",
+    "um-dajawwali",
+    "um-harrmarra"
+   ]
+  },
+  {
+   "id": "day25",
+   "title": {
+    "en": "Travel between cities",
+    "ur": "شہروں کے درمیان سفر"
+   },
+   "items": [
+    "um-qitar",
+    "um-mahatta",
+    "um-tadhkara",
+    "um-makka",
+    "um-madina",
+    "um-jidda",
+    "um-kamsaa",
+    "um-matayitla",
+    "um-bas2",
+    "um-magad"
+   ]
+  },
+  {
+   "id": "day26",
+   "title": {
+    "en": "Time and days",
+    "ur": "وقت اور دن"
+   },
+   "items": [
+    "um-alyom",
+    "um-bukra",
+    "um-ams",
+    "um-alheen",
+    "um-badayn",
+    "um-kamassaa",
+    "um-dageega",
+    "um-kamdageega",
+    "um-subh",
+    "um-layl"
+   ]
+  },
+  {
+   "id": "day27",
+   "title": {
+    "en": "Blessings and courtesy",
+    "ur": "دعائیں اور آداب"
+   },
+   "items": [
+    "um-insha",
+    "um-masha",
+    "um-jazak",
+    "um-barakallah",
+    "um-allahyihfazak",
+    "um-yateek",
+    "um-maaleesh",
+    "um-asif",
+    "um-tafaddal",
+    "um-fenmasad"
+   ]
   }
  ],
  "items": [
@@ -1182,246 +1446,6 @@
    }
   },
   {
-   "id": "qw-allah",
-   "kind": "word",
-   "ar": "اللَّه",
-   "tr": "allah",
-   "en": "Allah",
-   "ur": "اللہ",
-   "tag": "quran"
-  },
-  {
-   "id": "qw-rabb",
-   "kind": "word",
-   "ar": "رَبّ",
-   "tr": "rabb",
-   "en": "Lord, Sustainer",
-   "ur": "رب، پالنے والا",
-   "tag": "quran",
-   "hook": {
-    "en": "Same as Urdu ‘Rabb’.",
-    "ur": "اردو کا ’رب‘"
-   }
-  },
-  {
-   "id": "qw-qala",
-   "kind": "word",
-   "ar": "قَالَ",
-   "tr": "qala",
-   "en": "He said",
-   "ur": "اس نے کہا",
-   "tag": "quran",
-   "hook": {
-    "en": "Same root as ‘qaul’ (saying).",
-    "ur": "’قول‘ کا مادہ"
-   }
-  },
-  {
-   "id": "qw-yawm",
-   "kind": "word",
-   "ar": "يَوْم",
-   "tr": "yawm",
-   "en": "Day",
-   "ur": "دن",
-   "tag": "quran",
-   "hook": {
-    "en": "‘Yaum’, as in Yaum-e-Azadi.",
-    "ur": "’یوم‘، جیسے یومِ آزادی"
-   }
-  },
-  {
-   "id": "qw-ard",
-   "kind": "word",
-   "ar": "أَرْض",
-   "tr": "ard",
-   "en": "Earth, land",
-   "ur": "زمین",
-   "tag": "quran",
-   "hook": {
-    "en": "Urdu ‘arz’ (as in arz-e-pak). Arabic ض is a heavy d.",
-    "ur": "اردو ’ارض‘ (ارضِ پاک)، عربی میں ض بھاری د"
-   }
-  },
-  {
-   "id": "qw-sama",
-   "kind": "word",
-   "ar": "سَمَاء",
-   "tr": "sama'",
-   "en": "Sky, heaven",
-   "ur": "آسمان",
-   "tag": "quran",
-   "hook": {
-    "en": "Think ‘samawi’ (heavenly).",
-    "ur": "’سماوی‘ (آسمانی)"
-   }
-  },
-  {
-   "id": "qw-kitab",
-   "kind": "word",
-   "ar": "كِتَاب",
-   "tr": "kitab",
-   "en": "Book, scripture",
-   "ur": "کتاب",
-   "tag": "quran"
-  },
-  {
-   "id": "qw-ilm",
-   "kind": "word",
-   "ar": "عِلْم",
-   "tr": "'ilm",
-   "en": "Knowledge",
-   "ur": "علم",
-   "tag": "quran",
-   "hook": {
-    "en": "Same as Urdu ‘ilm’; sound the ع.",
-    "ur": "اردو ’علم‘، ع ادا کریں"
-   }
-  },
-  {
-   "id": "qw-rahma",
-   "kind": "word",
-   "ar": "رَحْمَة",
-   "tr": "rahma",
-   "en": "Mercy",
-   "ur": "رحمت",
-   "tag": "quran",
-   "hook": {
-    "en": "Urdu ‘rehmat’.",
-    "ur": "اردو ’رحمت‘"
-   }
-  },
-  {
-   "id": "qw-haqq",
-   "kind": "word",
-   "ar": "حَقّ",
-   "tr": "haqq",
-   "en": "Truth, right",
-   "ur": "حق، سچ",
-   "tag": "quran"
-  },
-  {
-   "id": "qw-nas",
-   "kind": "word",
-   "ar": "نَاس",
-   "tr": "nas",
-   "en": "People, mankind",
-   "ur": "لوگ",
-   "tag": "quran",
-   "hook": {
-    "en": "Surah An-Nas; also ‘insaan’.",
-    "ur": "سورۃ الناس؛ ’انسان‘"
-   }
-  },
-  {
-   "id": "qw-qalb",
-   "kind": "word",
-   "ar": "قَلْب",
-   "tr": "qalb",
-   "en": "Heart",
-   "ur": "دل",
-   "tag": "quran",
-   "hook": {
-    "en": "Urdu ‘qalb’ (heart).",
-    "ur": "اردو ’قلب‘"
-   }
-  },
-  {
-   "id": "qw-noor",
-   "kind": "word",
-   "ar": "نُور",
-   "tr": "noor",
-   "en": "Light",
-   "ur": "روشنی، نور",
-   "tag": "quran"
-  },
-  {
-   "id": "qw-salah",
-   "kind": "word",
-   "ar": "صَلَاة",
-   "tr": "salah",
-   "en": "Prayer",
-   "ur": "نماز",
-   "tag": "quran",
-   "hook": {
-    "en": "‘Salat’, the Arabic word for namaz.",
-    "ur": "نماز کا عربی نام"
-   }
-  },
-  {
-   "id": "qw-janna",
-   "kind": "word",
-   "ar": "جَنَّة",
-   "tr": "janna",
-   "en": "Paradise, garden",
-   "ur": "جنت",
-   "tag": "quran"
-  },
-  {
-   "id": "qw-nar",
-   "kind": "word",
-   "ar": "نَار",
-   "tr": "nar",
-   "en": "Fire",
-   "ur": "آگ",
-   "tag": "quran",
-   "hook": {
-    "en": "Urdu ‘naar’ (hellfire).",
-    "ur": "اردو ’نار‘"
-   }
-  },
-  {
-   "id": "qw-amanu",
-   "kind": "word",
-   "ar": "آمَنُوا",
-   "tr": "amanu",
-   "en": "They believed",
-   "ur": "وہ ایمان لائے",
-   "tag": "quran",
-   "hook": {
-    "en": "Same root as ‘iman’ and ‘amaan’ (safety).",
-    "ur": "’ایمان‘ اور ’امان‘ کا مادہ"
-   }
-  },
-  {
-   "id": "qw-amilu",
-   "kind": "word",
-   "ar": "عَمِلُوا",
-   "tr": "'amilu",
-   "en": "They did (deeds)",
-   "ur": "انہوں نے عمل کیے",
-   "tag": "quran",
-   "hook": {
-    "en": "Same root as ‘amal’ (deed).",
-    "ur": "’عمل‘ کا مادہ"
-   }
-  },
-  {
-   "id": "qw-salihat",
-   "kind": "word",
-   "ar": "الصَّالِحَات",
-   "tr": "as-salihat",
-   "en": "Good deeds",
-   "ur": "نیک اعمال",
-   "tag": "quran",
-   "hook": {
-    "en": "Same root as ‘saleh’ (righteous).",
-    "ur": "’صالح‘ کا مادہ"
-   }
-  },
-  {
-   "id": "qw-kafaru",
-   "kind": "word",
-   "ar": "كَفَرُوا",
-   "tr": "kafaru",
-   "en": "They disbelieved",
-   "ur": "انہوں نے انکار کیا",
-   "tag": "quran",
-   "hook": {
-    "en": "Same root as ‘kufr’.",
-    "ur": "’کفر‘ کا مادہ"
-   }
-  },
-  {
    "id": "um-riyal",
    "kind": "word",
    "ar": "رِيَال",
@@ -1530,7 +1554,1352 @@
    "tr": "ghali marra",
    "en": "Very expensive (spoken)",
    "ur": "بہت مہنگا"
+  },
+  {
+   "id": "um-menu",
+   "kind": "phrase",
+   "ar": "عَطْنِي الْمِنْيُو لَوْ سَمَحْتْ",
+   "tr": "'atni al-menyu law samaht",
+   "en": "Give me the menu, please",
+   "ur": "مینو دے دیں، براہِ کرم"
+  },
+  {
+   "id": "um-abghahada",
+   "kind": "phrase",
+   "ar": "أَبْغَى هَادَا",
+   "tr": "abgha hada",
+   "en": "I want this one",
+   "ur": "مجھے یہ چاہیے"
+  },
+  {
+   "id": "um-wahidkaman",
+   "kind": "phrase",
+   "ar": "وَاحِدْ كَمَانْ",
+   "tr": "wahid kaman",
+   "en": "One more",
+   "ur": "ایک اور"
+  },
+  {
+   "id": "um-bidoonsukkar",
+   "kind": "phrase",
+   "ar": "بِدُونْ سُكَّرْ",
+   "tr": "bidoon sukkar",
+   "en": "Without sugar",
+   "ur": "چینی کے بغیر",
+   "hook": {
+    "en": "‘Sukkar’ sounds like ‘shakkar’.",
+    "ur": "’سکر‘ اور ’شکر‘ ایک جیسے"
+   }
+  },
+  {
+   "id": "um-bidoonharr",
+   "kind": "phrase",
+   "ar": "بِدُونْ حَارّْ",
+   "tr": "bidoon harr",
+   "en": "Not spicy",
+   "ur": "مرچ کے بغیر"
+  },
+  {
+   "id": "um-safari",
+   "kind": "word",
+   "ar": "سَفَرِي",
+   "tr": "safari",
+   "en": "Takeaway (Saudi)",
+   "ur": "ساتھ لے جانے کے لیے",
+   "hook": {
+    "en": "From ‘safar’ (journey): food for the road.",
+    "ur": "’سفر‘ سے: راستے کا کھانا"
+   }
+  },
+  {
+   "id": "um-mahalli",
+   "kind": "word",
+   "ar": "مَحَلِّي",
+   "tr": "mahalli",
+   "en": "Eat in (Saudi)",
+   "ur": "یہیں کھائیں گے",
+   "hook": {
+    "en": "From ‘mahal’ (place), as in Urdu ‘mahal-e-waqoo’.",
+    "ur": "’محل‘ (جگہ) سے"
+   }
+  },
+  {
+   "id": "um-kifaya",
+   "kind": "word",
+   "ar": "كِفَايَة",
+   "tr": "kifaya",
+   "en": "Enough",
+   "ur": "کافی ہے",
+   "hook": {
+    "en": "Urdu ‘kifayat’ and ‘kaafi’.",
+    "ur": "اردو ’کفایت‘ اور ’کافی‘"
+   }
+  },
+  {
+   "id": "um-hisab",
+   "kind": "phrase",
+   "ar": "الْحِسَابْ لَوْ سَمَحْتْ",
+   "tr": "al-hisab law samaht",
+   "en": "The bill, please",
+   "ur": "بل دے دیں، براہِ کرم",
+   "hook": {
+    "en": "Urdu ‘hisaab’.",
+    "ur": "اردو ’حساب‘"
+   }
+  },
+  {
+   "id": "um-lazeez",
+   "kind": "word",
+   "ar": "لَذِيذْ",
+   "tr": "lazeez",
+   "en": "Delicious",
+   "ur": "مزیدار",
+   "hook": {
+    "en": "Urdu ‘lazeez’.",
+    "ur": "اردو ’لذیذ‘"
+   }
+  },
+  {
+   "id": "um-dajaj",
+   "kind": "word",
+   "ar": "دَجَاجْ",
+   "tr": "dajaj",
+   "en": "Chicken",
+   "ur": "مرغی"
+  },
+  {
+   "id": "um-laham",
+   "kind": "word",
+   "ar": "لَحَمْ",
+   "tr": "laham",
+   "en": "Meat",
+   "ur": "گوشت",
+   "hook": {
+    "en": "Urdu ‘lahm’ in ‘lahmi’ dishes.",
+    "ur": "’لحم‘ = گوشت"
+   }
+  },
+  {
+   "id": "um-ruzz",
+   "kind": "word",
+   "ar": "رُزّْ",
+   "tr": "ruzz",
+   "en": "Rice",
+   "ur": "چاول"
+  },
+  {
+   "id": "um-samak",
+   "kind": "word",
+   "ar": "سَمَكْ",
+   "tr": "samak",
+   "en": "Fish",
+   "ur": "مچھلی"
+  },
+  {
+   "id": "um-aseer",
+   "kind": "word",
+   "ar": "عَصِيرْ",
+   "tr": "'aseer",
+   "en": "Juice",
+   "ur": "جوس"
+  },
+  {
+   "id": "um-haleeb",
+   "kind": "word",
+   "ar": "حَلِيبْ",
+   "tr": "haleeb",
+   "en": "Milk",
+   "ur": "دودھ"
+  },
+  {
+   "id": "um-tamr",
+   "kind": "word",
+   "ar": "تَمْرْ",
+   "tr": "tamr",
+   "en": "Dates (fruit)",
+   "ur": "کھجور",
+   "hook": {
+    "en": "‘Tamar Hindi’ = ‘Indian date’ (tamarind).",
+    "ur": "’تمر ہندی‘ = املی"
+   }
+  },
+  {
+   "id": "um-kabsa",
+   "kind": "word",
+   "ar": "كَبْسَة",
+   "tr": "kabsa",
+   "en": "Kabsa (Saudi rice dish)",
+   "ur": "کبسہ (سعودی چاول)"
+  },
+  {
+   "id": "um-abghakabsa",
+   "kind": "phrase",
+   "ar": "أَبْغَى كَبْسَة دَجَاجْ",
+   "tr": "abgha kabsa dajaj",
+   "en": "I want chicken kabsa",
+   "ur": "مجھے مرغی کا کبسہ چاہیے"
+  },
+  {
+   "id": "um-gahwaarabi",
+   "kind": "phrase",
+   "ar": "قَهْوَة عَرَبِي وَتَمْرْ",
+   "tr": "gahwa 'arabi wa tamr",
+   "en": "Arabic coffee and dates",
+   "ur": "عربی قہوہ اور کھجور"
+  },
+  {
+   "id": "um-bas",
+   "kind": "phrase",
+   "ar": "بَسْ أَتْفَرَّجْ",
+   "tr": "bas atfarraj",
+   "en": "Just looking",
+   "ur": "بس دیکھ رہا ہوں",
+   "hook": {
+    "en": "‘Bas’ = only, as in Urdu.",
+    "ur": "’بس‘ اردو کی طرح"
+   }
+  },
+  {
+   "id": "um-indak",
+   "kind": "phrase",
+   "ar": "عِنْدَكْ هَادَا؟",
+   "tr": "'indak hada?",
+   "en": "Do you have this? (to a man)",
+   "ur": "کیا آپ کے پاس یہ ہے؟",
+   "ar_f": "عِنْدِكْ هَادَا؟",
+   "tr_f": "'indik hada?",
+   "en_f": "Do you have this? (to a woman)"
+  },
+  {
+   "id": "um-kamsiruh",
+   "kind": "phrase",
+   "ar": "كَمْ سِعْرُهْ؟",
+   "tr": "kam si'ruh?",
+   "en": "How much is it?",
+   "ur": "اس کی قیمت کتنی ہے؟",
+   "hook": {
+    "en": "‘Si’r’ = price.",
+    "ur": "’سعر‘ = قیمت"
+   }
+  },
+  {
+   "id": "um-akhirsir",
+   "kind": "phrase",
+   "ar": "آخِرْ سِعْرْ؟",
+   "tr": "akhir si'r?",
+   "en": "Last price? (best price)",
+   "ur": "آخری قیمت؟",
+   "hook": {
+    "en": "‘Akhir’ = last, as in Urdu ‘aakhir’.",
+    "ur": "’آخر‘ اردو کی طرح"
+   }
+  },
+  {
+   "id": "um-nazzil",
+   "kind": "phrase",
+   "ar": "نَزِّلْ شْوَيَّة",
+   "tr": "nazzil shwayya",
+   "en": "Lower it a little (to a man)",
+   "ur": "تھوڑا کم کریں",
+   "ar_f": "نَزِّلِي شْوَيَّة",
+   "tr_f": "nazzili shwayya",
+   "en_f": "Lower it a little (to a woman)",
+   "hook": {
+    "en": "‘Nuzool’ = coming down.",
+    "ur": "’نزول‘ = نیچے آنا"
+   }
+  },
+  {
+   "id": "um-magas",
+   "kind": "word",
+   "ar": "مَقَاسْ",
+   "tr": "magas",
+   "en": "Size (Saudi say q as g)",
+   "ur": "سائز",
+   "hook": {
+    "en": "‘Qiyas’ = measure.",
+    "ur": "’قیاس‘ = اندازہ"
+   }
+  },
+  {
+   "id": "um-akbar",
+   "kind": "word",
+   "ar": "أَكْبَرْ",
+   "tr": "akbar",
+   "en": "Bigger",
+   "ur": "بڑا",
+   "hook": {
+    "en": "As in ‘Allahu Akbar’.",
+    "ur": "جیسے ’اللہ اکبر‘"
+   }
+  },
+  {
+   "id": "um-asghar",
+   "kind": "word",
+   "ar": "أَصْغَرْ",
+   "tr": "asghar",
+   "en": "Smaller",
+   "ur": "چھوٹا",
+   "hook": {
+    "en": "Urdu ‘sagheer’ (small).",
+    "ur": "اردو ’صغیر‘"
+   }
+  },
+  {
+   "id": "um-lontani",
+   "kind": "phrase",
+   "ar": "لَوْنْ ثَانِي",
+   "tr": "lon tani",
+   "en": "Another colour",
+   "ur": "دوسرا رنگ",
+   "hook": {
+    "en": "‘Sani’ = second, as in Urdu ‘saani’.",
+    "ur": "’ثانی‘ = دوسرا"
+   }
+  },
+  {
+   "id": "um-khalas",
+   "kind": "phrase",
+   "ar": "خَلَاصْ، آخُذُهْ",
+   "tr": "khalas, akhudhuh",
+   "en": "Okay, I'll take it",
+   "ur": "ٹھیک ہے، میں لے لیتا ہوں",
+   "hook": {
+    "en": "‘Khalas’ = done, like Urdu ‘khalaas’.",
+    "ur": "’خلاص‘ = بس، ختم"
+   }
+  },
+  {
+   "id": "um-adfa",
+   "kind": "phrase",
+   "ar": "أَدْفَعْ بِالْبَطَاقَة؟",
+   "tr": "adfa' bil-bitaqa?",
+   "en": "Can I pay by card?",
+   "ur": "کیا میں کارڈ سے ادائیگی کر سکتا ہوں؟"
+  },
+  {
+   "id": "um-hadiyya",
+   "kind": "word",
+   "ar": "هَدِيَّة",
+   "tr": "hadiyya",
+   "en": "Gift",
+   "ur": "تحفہ",
+   "hook": {
+    "en": "Urdu ‘hadiya’.",
+    "ur": "اردو ’ہدیہ‘"
+   }
+  },
+  {
+   "id": "um-miswak",
+   "kind": "word",
+   "ar": "مِسْوَاكْ",
+   "tr": "miswak",
+   "en": "Miswak (tooth stick)",
+   "ur": "مسواک"
+  },
+  {
+   "id": "um-itr",
+   "kind": "word",
+   "ar": "عِطْرْ",
+   "tr": "'itr",
+   "en": "Perfume, attar",
+   "ur": "عطر"
+  },
+  {
+   "id": "um-sajjada",
+   "kind": "word",
+   "ar": "سَجَّادَة",
+   "tr": "sajjada",
+   "en": "Prayer mat",
+   "ur": "جائے نماز",
+   "hook": {
+    "en": "Urdu ‘sajjada’, from ‘sajda’.",
+    "ur": "’سجادہ‘، ’سجدہ‘ سے"
+   }
+  },
+  {
+   "id": "um-sibha",
+   "kind": "word",
+   "ar": "سِبْحَة",
+   "tr": "sibha",
+   "en": "Prayer beads",
+   "ur": "تسبیح",
+   "hook": {
+    "en": "From ‘subhanallah’.",
+    "ur": "’سبحان اللہ‘ سے"
+   }
+  },
+  {
+   "id": "um-mushaf",
+   "kind": "word",
+   "ar": "مُصْحَفْ",
+   "tr": "mushaf",
+   "en": "Copy of the Qur'an",
+   "ur": "قرآن کا نسخہ"
+  },
+  {
+   "id": "um-zamzam",
+   "kind": "word",
+   "ar": "زَمْزَمْ",
+   "tr": "zamzam",
+   "en": "Zamzam water",
+   "ur": "آبِ زمزم"
+  },
+  {
+   "id": "um-abaya",
+   "kind": "word",
+   "ar": "عَبَايَة",
+   "tr": "'abaya",
+   "en": "Abaya (cloak)",
+   "ur": "عبایا"
+  },
+  {
+   "id": "um-kees",
+   "kind": "word",
+   "ar": "كِيسْ",
+   "tr": "kees",
+   "en": "Bag (shopping bag)",
+   "ur": "تھیلی"
+  },
+  {
+   "id": "um-nabawi",
+   "kind": "phrase",
+   "ar": "الْمَسْجِدُ النَّبَوِيّْ",
+   "tr": "al-masjid an-nabawi",
+   "en": "The Prophet's Mosque",
+   "ur": "مسجدِ نبوی"
+  },
+  {
+   "id": "um-fenbabsalam",
+   "kind": "phrase",
+   "ar": "فِينْ بَابْ السَّلَامْ؟",
+   "tr": "fen bab as-salam?",
+   "en": "Where is Bab as-Salam (gate)?",
+   "ur": "باب السلام کہاں ہے؟"
+  },
+  {
+   "id": "um-rawda",
+   "kind": "word",
+   "ar": "الرَّوْضَة",
+   "tr": "ar-rawda",
+   "en": "The Rawdah",
+   "ur": "ریاض الجنۃ (روضہ)"
+  },
+  {
+   "id": "um-tasreeh",
+   "kind": "phrase",
+   "ar": "عِنْدِي تَصْرِيحْ لِلرَّوْضَة",
+   "tr": "'indi tasreeh lir-rawda",
+   "en": "I have a permit for the Rawdah",
+   "ur": "میرے پاس روضہ کا اجازت نامہ ہے",
+   "hook": {
+    "en": "‘Tasreeh’ here means a permit. Book it in the Nusuk app.",
+    "ur": "یہاں ’تصریح‘ = اجازت نامہ۔ نسک ایپ سے بُک کریں۔"
+   }
+  },
+  {
+   "id": "um-qubba",
+   "kind": "phrase",
+   "ar": "الْقُبَّةُ الْخَضْرَاءْ",
+   "tr": "al-qubbatu l-khadra'",
+   "en": "The Green Dome",
+   "ur": "گنبدِ خضریٰ",
+   "hook": {
+    "en": "Urdu ‘Gumbad-e-Khazra’.",
+    "ur": "اردو ’گنبدِ خضریٰ‘"
+   }
+  },
+  {
+   "id": "um-musalla",
+   "kind": "phrase",
+   "ar": "مُصَلَّى النِّسَاءْ",
+   "tr": "musalla an-nisa'",
+   "en": "Women's prayer area",
+   "ur": "خواتین کی نماز کی جگہ",
+   "hook": {
+    "en": "‘Musalla’ = prayer place, as in Urdu.",
+    "ur": "’مصلیٰ‘ اردو کی طرح"
+   }
+  },
+  {
+   "id": "um-salamrasool",
+   "kind": "dua",
+   "ar": "السَّلَامُ عَلَيْكَ يَا رَسُولَ اللَّهِ",
+   "tr": "as-salamu 'alayka ya rasoolallah",
+   "en": "Peace be upon you, O Messenger of Allah",
+   "ur": "السلام علیک یا رسول اللہ"
+  },
+  {
+   "id": "um-baqee",
+   "kind": "word",
+   "ar": "الْبَقِيعْ",
+   "tr": "al-baqee'",
+   "en": "Al-Baqi' (cemetery)",
+   "ur": "جنت البقیع"
+  },
+  {
+   "id": "um-quba",
+   "kind": "phrase",
+   "ar": "مَسْجِدْ قُبَاءْ",
+   "tr": "masjid quba'",
+   "en": "Quba Mosque",
+   "ur": "مسجدِ قبا"
+  },
+  {
+   "id": "um-uhud",
+   "kind": "phrase",
+   "ar": "جَبَلْ أُحُدْ",
+   "tr": "jabal uhud",
+   "en": "Mount Uhud",
+   "ur": "جبلِ احد",
+   "hook": {
+    "en": "‘Jabal’ = mountain (Jabal-ut-Tariq = Gibraltar).",
+    "ur": "’جبل‘ = پہاڑ"
+   }
+  },
+  {
+   "id": "um-adhan",
+   "kind": "word",
+   "ar": "الْأَذَانْ",
+   "tr": "al-adhan",
+   "en": "The call to prayer",
+   "ur": "اذان"
+  },
+  {
+   "id": "um-iqama",
+   "kind": "word",
+   "ar": "الْإِقَامَة",
+   "tr": "al-iqama",
+   "en": "The call to stand for prayer",
+   "ur": "اقامت"
+  },
+  {
+   "id": "um-fajr",
+   "kind": "phrase",
+   "ar": "صَلَاةُ الْفَجْرْ",
+   "tr": "salat al-fajr",
+   "en": "Fajr prayer",
+   "ur": "فجر کی نماز"
+  },
+  {
+   "id": "um-dhuhr",
+   "kind": "word",
+   "ar": "الظُّهْرْ",
+   "tr": "adh-dhuhr",
+   "en": "Dhuhr (midday prayer)",
+   "ur": "ظہر",
+   "hook": {
+    "en": "Urdu ‘zuhr’; Arabic ظ is a heavy dh.",
+    "ur": "اردو ’ظہر‘؛ عربی میں ظ بھاری ذ"
+   }
+  },
+  {
+   "id": "um-asr",
+   "kind": "word",
+   "ar": "الْعَصْرْ",
+   "tr": "al-'asr",
+   "en": "Asr (afternoon prayer)",
+   "ur": "عصر"
+  },
+  {
+   "id": "um-maghrib",
+   "kind": "word",
+   "ar": "الْمَغْرِبْ",
+   "tr": "al-maghrib",
+   "en": "Maghrib (sunset prayer)",
+   "ur": "مغرب"
+  },
+  {
+   "id": "um-isha",
+   "kind": "word",
+   "ar": "الْعِشَاءْ",
+   "tr": "al-'isha'",
+   "en": "Isha (night prayer)",
+   "ur": "عشاء"
+  },
+  {
+   "id": "um-mataadhan",
+   "kind": "phrase",
+   "ar": "مَتَى الْأَذَانْ؟",
+   "tr": "mata al-adhan?",
+   "en": "When is the adhan?",
+   "ur": "اذان کب ہے؟"
+  },
+  {
+   "id": "um-wudu",
+   "kind": "word",
+   "ar": "الْوُضُوءْ",
+   "tr": "al-wudu'",
+   "en": "Ablution",
+   "ur": "وضو"
+  },
+  {
+   "id": "um-feehmakan",
+   "kind": "phrase",
+   "ar": "فِيهْ مَكَانْ؟",
+   "tr": "feeh makan?",
+   "en": "Is there space?",
+   "ur": "جگہ ہے؟",
+   "hook": {
+    "en": "‘Makan’ = place, as in Urdu ‘makaan’ (house).",
+    "ur": "’مکان‘ = جگہ"
+   }
+  },
+  {
+   "id": "um-s-makhraj",
+   "kind": "sign",
+   "ar": "مَخْرَج",
+   "tr": "makhraj",
+   "en": "Exit",
+   "ur": "باہر جانے کا راستہ",
+   "hook": {
+    "en": "Urdu ‘makhraj’ (outlet), from ‘kharij’ (out).",
+    "ur": "’خارج‘ سے"
+   }
+  },
+  {
+   "id": "um-s-madkhal",
+   "kind": "sign",
+   "ar": "مَدْخَل",
+   "tr": "madkhal",
+   "en": "Entrance",
+   "ur": "داخلہ",
+   "hook": {
+    "en": "From ‘dakhil’ (enter), as in Urdu ‘daakhla’.",
+    "ur": "’داخل‘ سے"
+   }
+  },
+  {
+   "id": "um-s-rijal",
+   "kind": "sign",
+   "ar": "رِجَال",
+   "tr": "rijal",
+   "en": "Men",
+   "ur": "مرد",
+   "hook": {
+    "en": "Urdu ‘rijaal’ (men).",
+    "ur": "اردو ’رجال‘"
+   }
+  },
+  {
+   "id": "um-s-nisa",
+   "kind": "sign",
+   "ar": "نِسَاء",
+   "tr": "nisa'",
+   "en": "Women",
+   "ur": "خواتین",
+   "hook": {
+    "en": "Surah An-Nisa = ‘The Women’.",
+    "ur": "سورۃ النساء"
+   }
+  },
+  {
+   "id": "um-s-miyah",
+   "kind": "sign",
+   "ar": "دَوْرَاتُ الْمِيَاه",
+   "tr": "dawrat al-miyah",
+   "en": "Toilets (on signs)",
+   "ur": "بیت الخلا"
+  },
+  {
+   "id": "um-s-tasweer",
+   "kind": "sign",
+   "ar": "مَمْنُوعُ التَّصْوِير",
+   "tr": "mamnoo' at-tasweer",
+   "en": "No photography",
+   "ur": "تصویر کھینچنا منع ہے",
+   "hook": {
+    "en": "‘Mamnoo’’ = forbidden (Urdu ‘mamnoo’’); ‘tasveer’ = picture.",
+    "ur": "’ممنوع‘ اور ’تصویر‘ اردو کی طرح"
+   }
+  },
+  {
+   "id": "um-s-mawaqif",
+   "kind": "sign",
+   "ar": "مَوَاقِف",
+   "tr": "mawaqif",
+   "en": "Parking",
+   "ur": "پارکنگ",
+   "hook": {
+    "en": "From ‘waqf’ (stop), as in ‘mauqif’ (position).",
+    "ur": "’موقف‘ سے"
+   }
+  },
+  {
+   "id": "um-s-maftooh",
+   "kind": "sign",
+   "ar": "مَفْتُوح",
+   "tr": "maftooh",
+   "en": "Open",
+   "ur": "کھلا",
+   "hook": {
+    "en": "From ‘fatah’ (opening).",
+    "ur": "’فتح‘ سے"
+   }
+  },
+  {
+   "id": "um-s-mughlaq",
+   "kind": "sign",
+   "ar": "مُغْلَق",
+   "tr": "mughlaq",
+   "en": "Closed",
+   "ur": "بند"
+  },
+  {
+   "id": "um-s-tawari",
+   "kind": "sign",
+   "ar": "طَوَارِئ",
+   "tr": "tawari'",
+   "en": "Emergency",
+   "ur": "ایمرجنسی"
+  },
+  {
+   "id": "um-s-istilamat",
+   "kind": "sign",
+   "ar": "اِسْتِعْلَامَات",
+   "tr": "isti'lamat",
+   "en": "Information desk",
+   "ur": "معلومات کاؤنٹر",
+   "hook": {
+    "en": "From ‘ilm’ (knowledge), as in ‘ittila’’ (notice).",
+    "ur": "’علم‘ اور ’اطلاع‘ سے"
+   }
+  },
+  {
+   "id": "um-meeqat",
+   "kind": "word",
+   "ar": "الْمِيقَاتْ",
+   "tr": "al-meeqat",
+   "en": "The miqat (boundary for ihram)",
+   "ur": "میقات"
+  },
+  {
+   "id": "um-ihram",
+   "kind": "word",
+   "ar": "الْإِحْرَامْ",
+   "tr": "al-ihram",
+   "en": "Ihram",
+   "ur": "احرام"
+  },
+  {
+   "id": "um-niyya",
+   "kind": "word",
+   "ar": "النِّيَّة",
+   "tr": "an-niyya",
+   "en": "Intention",
+   "ur": "نیت"
+  },
+  {
+   "id": "um-labbaykumra",
+   "kind": "dua",
+   "ar": "لَبَّيْكَ اللَّهُمَّ عُمْرَةً",
+   "tr": "labbayka llahumma 'umratan",
+   "en": "Here I am, O Allah, for Umrah",
+   "ur": "حاضر ہوں اے اللہ، عمرے کے لیے"
+  },
+  {
+   "id": "um-abyarali",
+   "kind": "phrase",
+   "ar": "أَبْيَارْ عَلِي",
+   "tr": "abyar 'ali",
+   "en": "Abyar Ali (the miqat of Madinah)",
+   "ur": "ابیارِ علی (مدینہ کی میقات)"
+  },
+  {
+   "id": "um-kambaqi",
+   "kind": "phrase",
+   "ar": "كَمْ بَاقِي عَلَى الْمِيقَاتْ؟",
+   "tr": "kam baqi 'ala l-meeqat?",
+   "en": "How far is it to the miqat?",
+   "ur": "میقات کتنی دور ہے؟",
+   "hook": {
+    "en": "‘Baqi’ = remaining, as in Urdu ‘baaqi’.",
+    "ur": "’باقی‘ اردو کی طرح"
+   }
+  },
+  {
+   "id": "um-ghusl",
+   "kind": "word",
+   "ar": "غُسْلْ",
+   "tr": "ghusl",
+   "en": "Ritual bath",
+   "ur": "غسل"
+  },
+  {
+   "id": "um-masjidharam",
+   "kind": "phrase",
+   "ar": "الْمَسْجِدُ الْحَرَامْ",
+   "tr": "al-masjid al-haram",
+   "en": "The Sacred Mosque (Makkah)",
+   "ur": "مسجدِ حرام"
+  },
+  {
+   "id": "um-kaaba",
+   "kind": "word",
+   "ar": "الْكَعْبَة",
+   "tr": "al-ka'ba",
+   "en": "The Ka'bah",
+   "ur": "کعبہ"
+  },
+  {
+   "id": "um-tawaf",
+   "kind": "word",
+   "ar": "الطَّوَافْ",
+   "tr": "at-tawaf",
+   "en": "Tawaf (circling the Ka'bah)",
+   "ur": "طواف"
+  },
+  {
+   "id": "um-shawt",
+   "kind": "phrase",
+   "ar": "سَبْعَةُ أَشْوَاطْ",
+   "tr": "sab'atu ashwat",
+   "en": "Seven rounds",
+   "ur": "سات چکر"
+  },
+  {
+   "id": "um-hajaraswad",
+   "kind": "phrase",
+   "ar": "الْحَجَرُ الْأَسْوَدْ",
+   "tr": "al-hajar al-aswad",
+   "en": "The Black Stone",
+   "ur": "حجرِ اسود"
+  },
+  {
+   "id": "um-bismillahakbar",
+   "kind": "dua",
+   "ar": "بِسْمِ اللَّهِ وَاللَّهُ أَكْبَرُ",
+   "tr": "bismillahi wallahu akbar",
+   "en": "In the name of Allah, Allah is the Greatest (at the Black Stone)",
+   "ur": "اللہ کے نام سے، اللہ سب سے بڑا ہے"
+  },
+  {
+   "id": "um-rukn",
+   "kind": "phrase",
+   "ar": "الرُّكْنُ الْيَمَانِي",
+   "tr": "ar-ruknu l-yamani",
+   "en": "The Yemeni Corner",
+   "ur": "رکنِ یمانی"
+  },
+  {
+   "id": "um-rabbana",
+   "kind": "ayah",
+   "quran": "2:201",
+   "ar": "",
+   "tr": "rabbana atina fi d-dunya hasanatan wa fi l-akhirati hasanatan wa qina 'adhaba n-nar",
+   "en": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+   "ur": "اے ہمارے رب، ہمیں دنیا میں بھی بھلائی دے اور آخرت میں بھی بھلائی، اور ہمیں آگ کے عذاب سے بچا۔"
+  },
+  {
+   "id": "um-maqam",
+   "kind": "phrase",
+   "ar": "مَقَامُ إِبْرَاهِيمْ",
+   "tr": "maqamu ibraheem",
+   "en": "The Station of Ibrahim",
+   "ur": "مقامِ ابراہیم"
+  },
+  {
+   "id": "um-mataf",
+   "kind": "phrase",
+   "ar": "صَحْنُ الْمَطَافْ",
+   "tr": "sahn al-mataf",
+   "en": "The tawaf courtyard",
+   "ur": "مطاف کا صحن",
+   "hook": {
+    "en": "‘Sahn’ = courtyard, as in Urdu.",
+    "ur": "’صحن‘ اردو کی طرح"
+   }
+  },
+  {
+   "id": "um-sai",
+   "kind": "word",
+   "ar": "السَّعْيْ",
+   "tr": "as-sa'i",
+   "en": "Sa'i (walking between Safa and Marwah)",
+   "ur": "سعی",
+   "hook": {
+    "en": "‘Sa’i’ = effort, as in Urdu ‘sa’i’.",
+    "ur": "’سعی‘ = کوشش"
+   }
+  },
+  {
+   "id": "um-safa",
+   "kind": "word",
+   "ar": "الصَّفَا",
+   "tr": "as-safa",
+   "en": "Safa (hill)",
+   "ur": "صفا"
+  },
+  {
+   "id": "um-marwa",
+   "kind": "word",
+   "ar": "الْمَرْوَة",
+   "tr": "al-marwa",
+   "en": "Marwah (hill)",
+   "ur": "مروہ"
+  },
+  {
+   "id": "um-halq",
+   "kind": "word",
+   "ar": "الْحَلْقْ",
+   "tr": "al-halq",
+   "en": "Shaving the head",
+   "ur": "حلق (سر منڈوانا)"
+  },
+  {
+   "id": "um-taqseer",
+   "kind": "word",
+   "ar": "التَّقْصِيرْ",
+   "tr": "at-taqseer",
+   "en": "Shortening the hair",
+   "ur": "تقصیر (بال چھوٹے کرنا)"
+  },
+  {
+   "id": "um-fenhallaq",
+   "kind": "phrase",
+   "ar": "فِينْ الْحَلَّاقْ؟",
+   "tr": "fen al-hallaq?",
+   "en": "Where is the barber?",
+   "ur": "حجام کہاں ہے؟"
+  },
+  {
+   "id": "um-taqabbal",
+   "kind": "phrase",
+   "ar": "تَقَبَّلَ اللَّهُ",
+   "tr": "taqabbal allah",
+   "en": "May Allah accept it",
+   "ur": "اللہ قبول فرمائے"
+  },
+  {
+   "id": "um-umramaqbula",
+   "kind": "phrase",
+   "ar": "عُمْرَة مَقْبُولَة",
+   "tr": "'umra maqbula",
+   "en": "May your Umrah be accepted",
+   "ur": "عمرہ مقبول ہو"
+  },
+  {
+   "id": "um-saidni",
+   "kind": "phrase",
+   "ar": "سَاعِدْنِي لَوْ سَمَحْتْ",
+   "tr": "sa'idni law samaht",
+   "en": "Help me, please (to a man)",
+   "ur": "میری مدد کریں",
+   "ar_f": "سَاعْدِينِي لَوْ سَمَحْتِ",
+   "tr_f": "sa'deeni law samahti",
+   "en_f": "Help me, please (to a woman)"
+  },
+  {
+   "id": "um-diit",
+   "kind": "phrase",
+   "ar": "ضِعْتْ",
+   "tr": "di't",
+   "en": "I'm lost",
+   "ur": "میں راستہ بھول گیا",
+   "hook": {
+    "en": "Urdu ‘zaaya’ (lost, wasted) is the same root.",
+    "ur": "’ضائع‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-qareebharam",
+   "kind": "phrase",
+   "ar": "فُنْدُقِي قَرِيبْ مِنَ الْحَرَمْ",
+   "tr": "funduqi qareeb min al-haram",
+   "en": "My hotel is near the Haram",
+   "ur": "میرا ہوٹل حرم کے قریب ہے"
+  },
+  {
+   "id": "um-tabaan",
+   "kind": "phrase",
+   "ar": "أَنَا تَعْبَانْ",
+   "tr": "ana ta'ban",
+   "en": "I am tired / unwell (man)",
+   "ur": "میں تھکا ہوا / بیمار ہوں",
+   "ar_f": "أَنَا تَعْبَانَة",
+   "tr_f": "ana ta'bana",
+   "en_f": "I am tired / unwell (woman)"
+  },
+  {
+   "id": "um-suda",
+   "kind": "phrase",
+   "ar": "عِنْدِي صُدَاعْ",
+   "tr": "'indi suda'",
+   "en": "I have a headache",
+   "ur": "میرے سر میں درد ہے"
+  },
+  {
+   "id": "um-mustashfa",
+   "kind": "word",
+   "ar": "مُسْتَشْفَى",
+   "tr": "mustashfa",
+   "en": "Hospital",
+   "ur": "ہسپتال",
+   "hook": {
+    "en": "From ‘shifa’ (cure).",
+    "ur": "’شفا‘ سے"
+   }
+  },
+  {
+   "id": "um-saydaliyya",
+   "kind": "word",
+   "ar": "صَيْدَلِيَّة",
+   "tr": "saydaliyya",
+   "en": "Pharmacy",
+   "ur": "دواخانہ"
+  },
+  {
+   "id": "um-dawa",
+   "kind": "word",
+   "ar": "دَوَاءْ",
+   "tr": "dawa'",
+   "en": "Medicine",
+   "ur": "دوا",
+   "hook": {
+    "en": "Urdu ‘dawa’.",
+    "ur": "اردو ’دوا‘"
+   }
+  },
+  {
+   "id": "um-isaf",
+   "kind": "word",
+   "ar": "إِسْعَافْ",
+   "tr": "is'af",
+   "en": "Ambulance",
+   "ur": "ایمبولینس"
+  },
+  {
+   "id": "um-shurta",
+   "kind": "word",
+   "ar": "الشُّرْطَة",
+   "tr": "ash-shurta",
+   "en": "Police",
+   "ur": "پولیس"
+  },
+  {
+   "id": "um-dajawwali",
+   "kind": "phrase",
+   "ar": "ضَاعْ جَوَّالِي",
+   "tr": "da' jawwali",
+   "en": "I lost my phone",
+   "ur": "میرا فون کھو گیا"
+  },
+  {
+   "id": "um-harrmarra",
+   "kind": "phrase",
+   "ar": "حَرّْ مَرَّة",
+   "tr": "harr marra",
+   "en": "It's very hot",
+   "ur": "بہت گرمی ہے",
+   "hook": {
+    "en": "‘Harr’ = heat, as in Urdu ‘haraarat’.",
+    "ur": "’حرارت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-qitar",
+   "kind": "phrase",
+   "ar": "قِطَارُ الْحَرَمَيْنْ",
+   "tr": "qitar al-haramayn",
+   "en": "The Haramain train",
+   "ur": "حرمین ٹرین",
+   "hook": {
+    "en": "‘Qataar’ = a line/row, as in Urdu.",
+    "ur": "’قطار‘ اردو کی طرح"
+   }
+  },
+  {
+   "id": "um-mahatta",
+   "kind": "word",
+   "ar": "مَحَطَّة",
+   "tr": "mahatta",
+   "en": "Station",
+   "ur": "اسٹیشن"
+  },
+  {
+   "id": "um-tadhkara",
+   "kind": "word",
+   "ar": "تَذْكَرَة",
+   "tr": "tadhkara",
+   "en": "Ticket",
+   "ur": "ٹکٹ",
+   "hook": {
+    "en": "Urdu ‘tazkira’ is the same word (a note).",
+    "ur": "اردو ’تذکرہ‘ یہی لفظ ہے"
+   }
+  },
+  {
+   "id": "um-makka",
+   "kind": "word",
+   "ar": "مَكَّة",
+   "tr": "makka",
+   "en": "Makkah",
+   "ur": "مکہ"
+  },
+  {
+   "id": "um-madina",
+   "kind": "word",
+   "ar": "الْمَدِينَة",
+   "tr": "al-madina",
+   "en": "Madinah",
+   "ur": "مدینہ"
+  },
+  {
+   "id": "um-jidda",
+   "kind": "word",
+   "ar": "جِدَّة",
+   "tr": "jidda",
+   "en": "Jeddah",
+   "ur": "جدہ"
+  },
+  {
+   "id": "um-kamsaa",
+   "kind": "phrase",
+   "ar": "كَمْ سَاعَة لِمَكَّة؟",
+   "tr": "kam sa'a li-makka?",
+   "en": "How many hours to Makkah?",
+   "ur": "مکہ کتنے گھنٹے کا ہے؟",
+   "hook": {
+    "en": "‘Sa’at’ = hour, as in Urdu.",
+    "ur": "’ساعت‘ = گھنٹہ"
+   }
+  },
+  {
+   "id": "um-matayitla",
+   "kind": "phrase",
+   "ar": "مَتَى يِطْلَعْ؟",
+   "tr": "mata yitla'?",
+   "en": "When does it leave?",
+   "ur": "یہ کب نکلتی ہے؟",
+   "hook": {
+    "en": "‘Tulu’’ = rising/going out, as in ‘tulu-e-aftab’.",
+    "ur": "’طلوع‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-bas2",
+   "kind": "word",
+   "ar": "بَاصْ",
+   "tr": "bas",
+   "en": "Bus",
+   "ur": "بس"
+  },
+  {
+   "id": "um-magad",
+   "kind": "word",
+   "ar": "مَقْعَدْ",
+   "tr": "mag'ad",
+   "en": "Seat",
+   "ur": "سیٹ",
+   "hook": {
+    "en": "Same root as ‘qa’ida’ (sitting).",
+    "ur": "’قعدہ‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-alyom",
+   "kind": "word",
+   "ar": "الْيَوْمْ",
+   "tr": "al-yom",
+   "en": "Today",
+   "ur": "آج",
+   "hook": {
+    "en": "‘Yaum’ = day.",
+    "ur": "’یوم‘ = دن"
+   }
+  },
+  {
+   "id": "um-bukra",
+   "kind": "word",
+   "ar": "بُكْرَة",
+   "tr": "bukra",
+   "en": "Tomorrow",
+   "ur": "کل (آنے والا)"
+  },
+  {
+   "id": "um-ams",
+   "kind": "word",
+   "ar": "أَمْسْ",
+   "tr": "ams",
+   "en": "Yesterday",
+   "ur": "کل (گزرا ہوا)"
+  },
+  {
+   "id": "um-alheen",
+   "kind": "word",
+   "ar": "الْحِينْ",
+   "tr": "al-heen",
+   "en": "Now (Saudi)",
+   "ur": "ابھی",
+   "msa": "الْآنَ"
+  },
+  {
+   "id": "um-badayn",
+   "kind": "word",
+   "ar": "بَعْدَيْنْ",
+   "tr": "ba'dayn",
+   "en": "Later",
+   "ur": "بعد میں",
+   "hook": {
+    "en": "Urdu ‘baad’ (after).",
+    "ur": "اردو ’بعد‘"
+   }
+  },
+  {
+   "id": "um-kamassaa",
+   "kind": "phrase",
+   "ar": "كَمِ السَّاعَة؟",
+   "tr": "kam as-sa'a?",
+   "en": "What time is it?",
+   "ur": "کیا وقت ہوا ہے؟"
+  },
+  {
+   "id": "um-dageega",
+   "kind": "word",
+   "ar": "دَقِيقَة",
+   "tr": "dageega",
+   "en": "Minute (Saudi say q as g)",
+   "ur": "منٹ",
+   "hook": {
+    "en": "Urdu ‘daqeeqa’ (a fine detail; a minute).",
+    "ur": "اردو ’دقیقہ‘"
+   }
+  },
+  {
+   "id": "um-kamdageega",
+   "kind": "phrase",
+   "ar": "كَمْ دَقِيقَة؟",
+   "tr": "kam dageega?",
+   "en": "How many minutes?",
+   "ur": "کتنے منٹ؟"
+  },
+  {
+   "id": "um-subh",
+   "kind": "word",
+   "ar": "الصُّبْحْ",
+   "tr": "as-subh",
+   "en": "Morning",
+   "ur": "صبح",
+   "hook": {
+    "en": "Urdu ‘subah’.",
+    "ur": "اردو ’صبح‘"
+   }
+  },
+  {
+   "id": "um-layl",
+   "kind": "word",
+   "ar": "بِاللَّيْلْ",
+   "tr": "bil-layl",
+   "en": "At night",
+   "ur": "رات کو",
+   "hook": {
+    "en": "‘Layl’ = night, as in ‘Laila’ and ‘Lailat-ul-Qadr’.",
+    "ur": "’لیل‘ = رات، لیلۃ القدر"
+   }
+  },
+  {
+   "id": "um-insha",
+   "kind": "phrase",
+   "ar": "إِنْ شَاءَ اللَّهُ",
+   "tr": "in sha' allah",
+   "en": "If Allah wills",
+   "ur": "ان شاء اللہ"
+  },
+  {
+   "id": "um-masha",
+   "kind": "phrase",
+   "ar": "مَا شَاءَ اللَّهُ",
+   "tr": "ma sha' allah",
+   "en": "What Allah has willed (praise)",
+   "ur": "ما شاء اللہ"
+  },
+  {
+   "id": "um-jazak",
+   "kind": "phrase",
+   "ar": "جَزَاكَ اللَّهُ خَيْرًا",
+   "tr": "jazaka llahu khayran",
+   "en": "May Allah reward you (to a man)",
+   "ur": "اللہ آپ کو جزائے خیر دے",
+   "ar_f": "جَزَاكِ اللَّهُ خَيْرًا",
+   "tr_f": "jazaki llahu khayran",
+   "en_f": "May Allah reward you (to a woman)"
+  },
+  {
+   "id": "um-barakallah",
+   "kind": "phrase",
+   "ar": "بَارَكَ اللَّهُ فِيكْ",
+   "tr": "baraka llahu feek",
+   "en": "May Allah bless you (to a man)",
+   "ur": "اللہ آپ کو برکت دے",
+   "ar_f": "بَارَكَ اللَّهُ فِيكِي",
+   "tr_f": "baraka llahu feeki",
+   "en_f": "May Allah bless you (to a woman)"
+  },
+  {
+   "id": "um-allahyihfazak",
+   "kind": "phrase",
+   "ar": "اللَّهْ يِحْفَظَكْ",
+   "tr": "allah yihfadhak",
+   "en": "May Allah protect you (to a man)",
+   "ur": "اللہ آپ کی حفاظت کرے",
+   "ar_f": "اللَّهْ يِحْفَظِكْ",
+   "tr_f": "allah yihfadhik",
+   "en_f": "May Allah protect you (to a woman)",
+   "hook": {
+    "en": "‘Hifazat’ (protection).",
+    "ur": "’حفاظت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "um-yateek",
+   "kind": "phrase",
+   "ar": "اللَّهْ يِعْطِيكْ الْعَافْيَة",
+   "tr": "allah ya'teek al-'afya",
+   "en": "Thank you for your effort (God give you health)",
+   "ur": "اللہ آپ کو صحت دے (شکریہ)",
+   "hook": {
+    "en": "‘Afiyat’ = well-being, as in Urdu.",
+    "ur": "’عافیت‘ اردو کی طرح"
+   }
+  },
+  {
+   "id": "um-maaleesh",
+   "kind": "word",
+   "ar": "مَعْلِيشْ",
+   "tr": "ma'leesh",
+   "en": "Never mind / sorry",
+   "ur": "کوئی بات نہیں"
+  },
+  {
+   "id": "um-asif",
+   "kind": "word",
+   "ar": "آسِفْ",
+   "tr": "asif",
+   "en": "Sorry (man)",
+   "ur": "معاف کیجیے",
+   "ar_f": "آسْفَة",
+   "tr_f": "asfa",
+   "en_f": "Sorry (woman)"
+  },
+  {
+   "id": "um-tafaddal",
+   "kind": "word",
+   "ar": "تَفَضَّلْ",
+   "tr": "tafaddal",
+   "en": "Please, go ahead / here you are (to a man)",
+   "ur": "تشریف لائیں / یہ لیجیے",
+   "ar_f": "تَفَضَّلِي",
+   "tr_f": "tafaddali",
+   "en_f": "Please, go ahead (to a woman)"
+  },
+  {
+   "id": "um-fenmasad",
+   "kind": "phrase",
+   "ar": "فِينْ الْمِصْعَدْ؟",
+   "tr": "fen al-mis'ad?",
+   "en": "Where is the lift?",
+   "ur": "لفٹ کہاں ہے؟"
   }
  ],
- "planned": 200
+ "planned": 256
 }

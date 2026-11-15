@@ -1,9 +1,9 @@
 // Service worker: app shell and lessons work offline; Qur'an text/audio and fonts are cached after first use.
-const VERSION = 'kn-v1.1.0';
+const VERSION = 'kn-v2.0.0';
 const SHELL = [
   './', 'index.html', 'css/style.css', 'manifest.webmanifest',
   'js/app.js', 'js/db.js', 'js/srs.js', 'js/speech.js', 'js/i18n.js',
-  'content/index.json', 'content/foundations.json', 'content/umrah.json',
+  'content/index.json', 'content/foundations.json', 'content/umrah.json', 'content/shared.json', 'content/roleplays.json', 'content/quran.json', 'content/reading.json', 'content/conversation.json',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png',
 ];
 const RUNTIME = ['api.alquran.cloud', 'cdn.islamic.network', 'fonts.googleapis.com', 'fonts.gstatic.com'];

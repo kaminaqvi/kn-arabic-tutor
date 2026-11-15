@@ -1,0 +1,601 @@
+{
+ "id": "conversation",
+ "title": {
+  "en": "Everyday conversation",
+  "ur": "روزمرہ گفتگو"
+ },
+ "units": [
+  {
+   "id": "c-intro",
+   "title": {
+    "en": "Introductions",
+    "ur": "تعارف"
+   },
+   "items": [
+    "um-salam",
+    "um-kayfak",
+    "um-hamdulillah",
+    "um-ismi",
+    "um-eeshismak",
+    "um-pakistan",
+    "cv-tasharrafna",
+    "cv-minfen",
+    "cv-askun",
+    "cv-umri"
+   ]
+  },
+  {
+   "id": "c-family",
+   "title": {
+    "en": "Family",
+    "ur": "خاندان"
+   },
+   "items": [
+    "cv-ahli",
+    "cv-abuya",
+    "cv-ummi",
+    "cv-akhuya",
+    "cv-ukhti",
+    "cv-zawjati",
+    "cv-zawji",
+    "cv-iyali",
+    "cv-mutazawwij",
+    "cv-indiwaladayn"
+   ]
+  },
+  {
+   "id": "c-work",
+   "title": {
+    "en": "Work and study",
+    "ur": "کام اور پڑھائی"
+   },
+   "items": [
+    "cv-shughlak",
+    "cv-ashtaghil",
+    "cv-muhandis",
+    "cv-duktoor",
+    "cv-mudarris",
+    "cv-talib",
+    "cv-maktab",
+    "cv-mashghool"
+   ]
+  },
+  {
+   "id": "c-talk",
+   "title": {
+    "en": "Small talk",
+    "ur": "گپ شپ"
+   },
+   "items": [
+    "cv-jawwhilw",
+    "cv-rayak",
+    "cv-wallahi",
+    "cv-akeed",
+    "cv-tamam",
+    "cv-tayyib",
+    "cv-yani",
+    "cv-zaymatibgha",
+    "cv-mubattal"
+   ]
+  },
+  {
+   "id": "c-likes",
+   "title": {
+    "en": "Likes and feelings",
+    "ur": "پسند اور احساسات"
+   },
+   "items": [
+    "cv-ahibb",
+    "cv-ahibbgahwa",
+    "cv-maahibb",
+    "cv-hilw",
+    "cv-mumtaz",
+    "cv-farhan",
+    "cv-zaalan"
+   ]
+  },
+  {
+   "id": "c-plans",
+   "title": {
+    "en": "Phone and plans",
+    "ur": "فون اور منصوبے"
+   },
+   "items": [
+    "um-masalama",
+    "um-insha",
+    "cv-ragamjawwal",
+    "cv-attasil",
+    "cv-nitgabal",
+    "cv-fennitgabal",
+    "cv-fadi",
+    "cv-ashoofak"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "cv-tasharrafna",
+   "kind": "phrase",
+   "ar": "تِشَرَّفْنَا",
+   "tr": "tisharrafna",
+   "en": "Nice to meet you",
+   "ur": "آپ سے مل کر خوشی ہوئی",
+   "hook": {
+    "en": "‘Sharaf’ = honour.",
+    "ur": "’شرف‘ = عزت"
+   }
+  },
+  {
+   "id": "cv-minfen",
+   "kind": "phrase",
+   "ar": "مِنْ فِينْ إِنْتَ؟",
+   "tr": "min fen inta?",
+   "en": "Where are you from? (to a man)",
+   "ur": "آپ کہاں سے ہیں؟",
+   "ar_f": "مِنْ فِينْ إِنْتِي؟",
+   "tr_f": "min fen inti?",
+   "en_f": "Where are you from? (to a woman)"
+  },
+  {
+   "id": "cv-askun",
+   "kind": "phrase",
+   "ar": "أَسْكُنْ فِي كَرَاتْشِي",
+   "tr": "askun fi karachi",
+   "en": "I live in Karachi",
+   "ur": "میں کراچی میں رہتا ہوں",
+   "hook": {
+    "en": "‘Sakin’ = resident, as in Urdu ‘saakin’.",
+    "ur": "اردو ’ساکن‘"
+   }
+  },
+  {
+   "id": "cv-umri",
+   "kind": "phrase",
+   "ar": "عُمْرِي ثَلَاثِينْ سَنَة",
+   "tr": "'umri talateen sana",
+   "en": "I am thirty years old",
+   "ur": "میری عمر تیس سال ہے",
+   "hook": {
+    "en": "‘Umr’ = age.",
+    "ur": "’عمر‘"
+   }
+  },
+  {
+   "id": "cv-ahli",
+   "kind": "word",
+   "ar": "أَهْلِي",
+   "tr": "ahli",
+   "en": "My family",
+   "ur": "میرے گھر والے",
+   "hook": {
+    "en": "‘Ahl-e-khana’.",
+    "ur": "’اہلِ خانہ‘"
+   }
+  },
+  {
+   "id": "cv-abuya",
+   "kind": "word",
+   "ar": "أَبُويَا",
+   "tr": "abuya",
+   "en": "My father (spoken)",
+   "ur": "میرے والد"
+  },
+  {
+   "id": "cv-ummi",
+   "kind": "word",
+   "ar": "أُمِّي",
+   "tr": "ummi",
+   "en": "My mother",
+   "ur": "میری امی",
+   "hook": {
+    "en": "‘Ammi’.",
+    "ur": "’امی‘"
+   }
+  },
+  {
+   "id": "cv-akhuya",
+   "kind": "word",
+   "ar": "أَخُويَا",
+   "tr": "akhuya",
+   "en": "My brother (spoken)",
+   "ur": "میرا بھائی",
+   "hook": {
+    "en": "‘Akhi’ / ‘ukhuwwat’ (brotherhood).",
+    "ur": "’اخوت‘"
+   }
+  },
+  {
+   "id": "cv-ukhti",
+   "kind": "word",
+   "ar": "أُخْتِي",
+   "tr": "ukhti",
+   "en": "My sister",
+   "ur": "میری بہن"
+  },
+  {
+   "id": "cv-zawjati",
+   "kind": "word",
+   "ar": "زَوْجَتِي",
+   "tr": "zawjati",
+   "en": "My wife",
+   "ur": "میری بیوی",
+   "hook": {
+    "en": "‘Zauja’.",
+    "ur": "’زوجہ‘"
+   }
+  },
+  {
+   "id": "cv-zawji",
+   "kind": "word",
+   "ar": "زَوْجِي",
+   "tr": "zawji",
+   "en": "My husband",
+   "ur": "میرے شوہر"
+  },
+  {
+   "id": "cv-iyali",
+   "kind": "word",
+   "ar": "عِيَالِي",
+   "tr": "'iyali",
+   "en": "My children (Saudi)",
+   "ur": "میرے بچے",
+   "hook": {
+    "en": "Urdu ‘ayaal’ (dependants).",
+    "ur": "اردو ’عیال‘"
+   }
+  },
+  {
+   "id": "cv-mutazawwij",
+   "kind": "phrase",
+   "ar": "أَنَا مُتَزَوِّجْ",
+   "tr": "ana mutazawwij",
+   "en": "I am married (man)",
+   "ur": "میں شادی شدہ ہوں",
+   "ar_f": "أَنَا مُتَزَوِّجَة",
+   "tr_f": "ana mutazawwija",
+   "en_f": "I am married (woman)"
+  },
+  {
+   "id": "cv-indiwaladayn",
+   "kind": "phrase",
+   "ar": "عِنْدِي وَلَدَيْنْ وَبِنْتْ",
+   "tr": "'indi waladayn wa bint",
+   "en": "I have two sons and a daughter",
+   "ur": "میرے دو بیٹے اور ایک بیٹی ہے"
+  },
+  {
+   "id": "cv-shughlak",
+   "kind": "phrase",
+   "ar": "إِيشْ شُغْلَكْ؟",
+   "tr": "eesh shughlak?",
+   "en": "What is your job? (to a man)",
+   "ur": "آپ کیا کام کرتے ہیں؟",
+   "ar_f": "إِيشْ شُغْلِكْ؟",
+   "tr_f": "eesh shughlik?",
+   "en_f": "What is your job? (to a woman)",
+   "hook": {
+    "en": "‘Shughl’ = work, as in Urdu ‘mashghala’.",
+    "ur": "’مشغلہ‘ کا مادہ"
+   }
+  },
+  {
+   "id": "cv-ashtaghil",
+   "kind": "phrase",
+   "ar": "أَشْتَغِلْ فِي شَرِكَة",
+   "tr": "ashtaghil fi sharika",
+   "en": "I work in a company",
+   "ur": "میں ایک کمپنی میں کام کرتا ہوں",
+   "hook": {
+    "en": "‘Shirkat’ (partnership, company).",
+    "ur": "’شرکت‘"
+   }
+  },
+  {
+   "id": "cv-muhandis",
+   "kind": "word",
+   "ar": "مُهَنْدِسْ",
+   "tr": "muhandis",
+   "en": "Engineer",
+   "ur": "انجینئر"
+  },
+  {
+   "id": "cv-duktoor",
+   "kind": "word",
+   "ar": "دُكْتُورْ",
+   "tr": "duktoor",
+   "en": "Doctor",
+   "ur": "ڈاکٹر"
+  },
+  {
+   "id": "cv-mudarris",
+   "kind": "word",
+   "ar": "مُدَرِّسْ",
+   "tr": "mudarris",
+   "en": "Teacher",
+   "ur": "استاد",
+   "hook": {
+    "en": "Urdu ‘mudarris’ (teacher), from ‘dars’.",
+    "ur": "’مدرس‘، ’درس‘ سے"
+   }
+  },
+  {
+   "id": "cv-talib",
+   "kind": "word",
+   "ar": "طَالِبْ",
+   "tr": "talib",
+   "en": "Student",
+   "ur": "طالب علم",
+   "hook": {
+    "en": "Urdu ‘talib-e-ilm’.",
+    "ur": "’طالب علم‘"
+   }
+  },
+  {
+   "id": "cv-maktab",
+   "kind": "word",
+   "ar": "مَكْتَبْ",
+   "tr": "maktab",
+   "en": "Office",
+   "ur": "دفتر",
+   "hook": {
+    "en": "Urdu ‘maktab’ (school/office).",
+    "ur": "اردو ’مکتب‘"
+   }
+  },
+  {
+   "id": "cv-mashghool",
+   "kind": "phrase",
+   "ar": "أَنَا مَشْغُولْ",
+   "tr": "ana mashghool",
+   "en": "I am busy (man)",
+   "ur": "میں مصروف ہوں",
+   "ar_f": "أَنَا مَشْغُولَة",
+   "tr_f": "ana mashghoola",
+   "en_f": "I am busy (woman)",
+   "hook": {
+    "en": "Urdu ‘mashghool’.",
+    "ur": "اردو ’مشغول‘"
+   }
+  },
+  {
+   "id": "cv-jawwhilw",
+   "kind": "phrase",
+   "ar": "الْجَوّْ حِلْو",
+   "tr": "al-jaww hilw",
+   "en": "The weather is nice",
+   "ur": "موسم اچھا ہے"
+  },
+  {
+   "id": "cv-rayak",
+   "kind": "phrase",
+   "ar": "إِيشْ رَأْيَكْ؟",
+   "tr": "eesh ra'yak?",
+   "en": "What do you think? (to a man)",
+   "ur": "آپ کی کیا رائے ہے؟",
+   "ar_f": "إِيشْ رَأْيِكْ؟",
+   "tr_f": "eesh ra'yik?",
+   "en_f": "What do you think? (to a woman)",
+   "hook": {
+    "en": "‘Ra’ay’ = opinion, as in Urdu ‘raaye’.",
+    "ur": "’رائے‘"
+   }
+  },
+  {
+   "id": "cv-wallahi",
+   "kind": "word",
+   "ar": "وَاللَّهِ؟",
+   "tr": "wallahi?",
+   "en": "Really?",
+   "ur": "سچ میں؟"
+  },
+  {
+   "id": "cv-akeed",
+   "kind": "word",
+   "ar": "أَكِيدْ",
+   "tr": "akeed",
+   "en": "Sure, of course",
+   "ur": "ضرور",
+   "hook": {
+    "en": "Urdu ‘taakeed’ (emphasis).",
+    "ur": "’تاکید‘ کا مادہ"
+   }
+  },
+  {
+   "id": "cv-tamam",
+   "kind": "word",
+   "ar": "تَمَامْ",
+   "tr": "tamam",
+   "en": "Fine, perfect",
+   "ur": "ٹھیک، بہترین",
+   "hook": {
+    "en": "Urdu ‘tamaam’ (complete).",
+    "ur": "اردو ’تمام‘"
+   }
+  },
+  {
+   "id": "cv-tayyib",
+   "kind": "word",
+   "ar": "طَيِّبْ",
+   "tr": "tayyib",
+   "en": "Okay, good",
+   "ur": "اچھا، ٹھیک",
+   "hook": {
+    "en": "‘Tayyib’ = pure, good.",
+    "ur": "’طیب‘ = پاک"
+   }
+  },
+  {
+   "id": "cv-yani",
+   "kind": "word",
+   "ar": "يَعْنِي",
+   "tr": "ya'ni",
+   "en": "I mean, that is",
+   "ur": "یعنی",
+   "hook": {
+    "en": "Urdu ‘yani’.",
+    "ur": "اردو ’یعنی‘"
+   }
+  },
+  {
+   "id": "cv-zaymatibgha",
+   "kind": "phrase",
+   "ar": "زَيْ مَا تِبْغَى",
+   "tr": "zay ma tibgha",
+   "en": "As you like",
+   "ur": "جیسے آپ چاہیں"
+  },
+  {
+   "id": "cv-mubattal",
+   "kind": "phrase",
+   "ar": "مُو بَطَّالْ",
+   "tr": "mu battal",
+   "en": "Not bad",
+   "ur": "برا نہیں",
+   "hook": {
+    "en": "‘Batil’ = useless.",
+    "ur": "’باطل‘"
+   }
+  },
+  {
+   "id": "cv-ahibb",
+   "kind": "word",
+   "ar": "أَحِبّْ",
+   "tr": "ahibb",
+   "en": "I like, I love",
+   "ur": "مجھے پسند ہے",
+   "hook": {
+    "en": "‘Muhabbat’ and ‘habib’.",
+    "ur": "’محبت‘ اور ’حبیب‘"
+   }
+  },
+  {
+   "id": "cv-ahibbgahwa",
+   "kind": "phrase",
+   "ar": "أَحِبّْ الْقَهْوَة",
+   "tr": "ahibb al-gahwa",
+   "en": "I like coffee",
+   "ur": "مجھے قہوہ پسند ہے"
+  },
+  {
+   "id": "cv-maahibb",
+   "kind": "phrase",
+   "ar": "مَا أَحِبّْ الْحَارّْ",
+   "tr": "ma ahibb al-harr",
+   "en": "I don't like spicy food",
+   "ur": "مجھے مرچ والا پسند نہیں"
+  },
+  {
+   "id": "cv-hilw",
+   "kind": "word",
+   "ar": "حِلْو",
+   "tr": "hilw",
+   "en": "Nice, sweet",
+   "ur": "اچھا، میٹھا",
+   "hook": {
+    "en": "Urdu ‘halwa’ (sweet dish).",
+    "ur": "اردو ’حلوہ‘"
+   }
+  },
+  {
+   "id": "cv-mumtaz",
+   "kind": "word",
+   "ar": "مُمْتَازْ",
+   "tr": "mumtaz",
+   "en": "Excellent",
+   "ur": "بہترین",
+   "hook": {
+    "en": "Urdu ‘mumtaz’ (distinguished).",
+    "ur": "اردو ’ممتاز‘"
+   }
+  },
+  {
+   "id": "cv-farhan",
+   "kind": "phrase",
+   "ar": "أَنَا فَرْحَانْ",
+   "tr": "ana farhan",
+   "en": "I am happy (man)",
+   "ur": "میں خوش ہوں",
+   "ar_f": "أَنَا فَرْحَانَة",
+   "tr_f": "ana farhana",
+   "en_f": "I am happy (woman)",
+   "hook": {
+    "en": "‘Farhat’ (joy).",
+    "ur": "’فرحت‘"
+   }
+  },
+  {
+   "id": "cv-zaalan",
+   "kind": "phrase",
+   "ar": "أَنَا زَعْلَانْ",
+   "tr": "ana za'lan",
+   "en": "I am upset (man)",
+   "ur": "میں ناراض ہوں",
+   "ar_f": "أَنَا زَعْلَانَة",
+   "tr_f": "ana za'lana",
+   "en_f": "I am upset (woman)"
+  },
+  {
+   "id": "cv-ragamjawwal",
+   "kind": "phrase",
+   "ar": "إِيشْ رَقَمْ جَوَّالَكْ؟",
+   "tr": "eesh ragam jawwalak?",
+   "en": "What is your phone number? (to a man)",
+   "ur": "آپ کا موبائل نمبر کیا ہے؟",
+   "ar_f": "إِيشْ رَقَمْ جَوَّالِكْ؟",
+   "tr_f": "eesh ragam jawwalik?",
+   "en_f": "What is your phone number? (to a woman)"
+  },
+  {
+   "id": "cv-attasil",
+   "kind": "phrase",
+   "ar": "أَتَّصِلْ عَلَيْكْ",
+   "tr": "attasil 'aleek",
+   "en": "I'll call you",
+   "ur": "میں آپ کو فون کروں گا",
+   "hook": {
+    "en": "‘Ittisal’ = contact.",
+    "ur": "’اتصال‘ کا مادہ"
+   }
+  },
+  {
+   "id": "cv-nitgabal",
+   "kind": "phrase",
+   "ar": "نِتْقَابَلْ بُكْرَة؟",
+   "tr": "nitgabal bukra?",
+   "en": "Shall we meet tomorrow?",
+   "ur": "کل ملیں؟",
+   "hook": {
+    "en": "‘Muqabla’ = meeting face to face.",
+    "ur": "’مقابلہ‘ کا مادہ"
+   }
+  },
+  {
+   "id": "cv-fennitgabal",
+   "kind": "phrase",
+   "ar": "فِينْ نِتْقَابَلْ؟",
+   "tr": "fen nitgabal?",
+   "en": "Where shall we meet?",
+   "ur": "کہاں ملیں؟"
+  },
+  {
+   "id": "cv-fadi",
+   "kind": "word",
+   "ar": "فَاضِي",
+   "tr": "fadi",
+   "en": "Free (not busy)",
+   "ur": "فارغ"
+  },
+  {
+   "id": "cv-ashoofak",
+   "kind": "phrase",
+   "ar": "أَشُوفَكْ بَعْدَيْنْ",
+   "tr": "ashoofak ba'dayn",
+   "en": "See you later (to a man)",
+   "ur": "بعد میں ملتے ہیں",
+   "ar_f": "أَشُوفِكْ بَعْدَيْنْ",
+   "tr_f": "ashoofik ba'dayn",
+   "en_f": "See you later (to a woman)"
+  }
+ ],
+ "planned": 52
+}

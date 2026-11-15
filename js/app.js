@@ -1,9 +1,9 @@
 import { db, kv, requestPersistence, exportData, importData } from './db.js';
 import { today, addDays, daysBetween, newProgress, grade, newPerDay } from './srs.js';
-import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback } from './speech.js';
+import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback, geminiChat, stripMarks } from './speech.js';
 import { t, L, setLang, getLang } from './i18n.js';
 
-const APP_VERSION = '1.1.0';
+const APP_VERSION = '2.0.0';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
 
@@ -53,7 +53,7 @@ async function loadJSON(path) { const r = await fetch(path); if (!r.ok) throw ne
 
 async function loadContent() {
   S.index = await loadJSON('content/index.json');
-  const files = [S.index.foundations, ...S.index.paths.filter(p => p.available).map(p => p.file)];
+  const files = [S.index.foundations, S.index.shared, ...S.index.paths.filter(p => p.available).map(p => p.file)];
   for (const f of files) {
     const pack = await loadJSON('content/' + f);
     S.packs[pack.id] = pack;
@@ -63,22 +63,32 @@ async function loadContent() {
 }
 
 // Qur'an text and audio come from AlQuran Cloud, never typed by hand. Cached on the device.
+async function fetchAyahs(surah, refs) {
+  // Whole surah when many ayahs are used; single ayahs otherwise.
+  if (refs.length > 3) {
+    const j = await (await fetch(`https://api.alquran.cloud/v1/surah/${surah}/ar.alafasy`)).json();
+    return j.data.ayahs.map(a => ({ ref: `${surah}:${a.numberInSurah}`, text: a.text, audio: a.audio }));
+  }
+  const out = [];
+  for (const ref of refs) {
+    const j = await (await fetch(`https://api.alquran.cloud/v1/ayah/${ref}/ar.alafasy`)).json();
+    out.push({ ref, text: j.data.text, audio: j.data.audio });
+  }
+  return out;
+}
 async function loadQuran() {
-  const surahs = new Set([...S.items.values()].filter(i => i.quran).map(i => i.quran.split(':')[0]));
-  for (const s of surahs) {
-    let data = await kv.get('quran-' + s);
+  const bySurah = {};
+  for (const it of S.items.values()) if (it.quran) (bySurah[it.quran.split(':')[0]] ||= []).push(it.quran);
+  for (const [surah, refs] of Object.entries(bySurah)) {
+    const key = 'quran-' + surah + '-' + refs.length;
+    let data = await kv.get(key);
     if (!data) {
-      try {
-        const r = await fetch(`https://api.alquran.cloud/v1/surah/${s}/ar.alafasy`);
-        const j = await r.json();
-        data = j.data.ayahs.map(a => ({ n: a.numberInSurah, text: a.text, audio: a.audio }));
-        await kv.set('quran-' + s, data);
-      } catch (e) { data = null; }
+      try { data = await fetchAyahs(surah, refs); await kv.set(key, data); } catch (e) { data = null; }
     }
     if (!data) continue;
     for (const it of S.items.values()) {
-      if (!it.quran || it.quran.split(':')[0] !== s) continue;
-      const a = data.find(x => x.n === Number(it.quran.split(':')[1]));
+      if (!it.quran || it.quran.split(':')[0] !== surah) continue;
+      const a = data.find(x => x.ref === it.quran);
       if (a) { it.ar = a.text; it.audio = a.audio; }
     }
   }
@@ -98,7 +108,7 @@ function sequence() {
   while (lists.some((l, i) => idx[i] < l.length)) {
     lists.forEach((l, i) => { if (idx[i] < l.length) out.push(l[idx[i]++]); });
   }
-  return out.filter(id => S.items.has(id) && (S.items.get(id).ar || S.items.get(id).quran));
+  return [...new Set(out)].filter(id => S.items.has(id) && (S.items.get(id).ar || S.items.get(id).quran));
 }
 
 // Items still to learn across the whole planned path (not only the content released so far), for pacing.
@@ -107,8 +117,9 @@ function plannedRemaining() {
   let total = 0;
   for (const id of ids) {
     const pack = S.packs[id]; if (!pack) continue;
-    const learned = pack.items.filter(i => S.progress.has(i.id)).length;
-    total += Math.max(pack.items.length, pack.planned || 0) - learned;
+    const ids = pack.units.flatMap(u => u.items);
+    const learned = ids.filter(id => S.progress.has(id)).length;
+    total += Math.max(ids.length, pack.planned || 0) - learned;
   }
   return total;
 }
@@ -277,16 +288,15 @@ async function computeStats() {
   return { log, streak, xp, doneToday: dates.has(today()) };
 }
 
-function unitReadiness() {
-  const out = [];
-  const packs = [...(S.profile.skipFoundations ? [] : ['foundations']), ...S.profile.paths].map(id => S.packs[id]).filter(Boolean);
-  for (const p of packs) for (const u of p.units) {
-    const ids = u.items.filter(id => S.items.has(id));
-    const mastered = ids.filter(id => (S.progress.get(id)?.box || 0) >= 4).length;
-    const started = ids.some(id => S.progress.has(id));
-    out.push({ pack: p, unit: u, pct: ids.length ? Math.round(100 * mastered / ids.length) : 0, started });
-  }
-  return out;
+function pathReadiness() {
+  const ids = [...(S.profile.skipFoundations ? [] : ['foundations']), ...S.profile.paths];
+  return ids.map(id => S.packs[id]).filter(Boolean).map(pack => {
+    const items = [...new Set(pack.units.flatMap(u => u.items))].filter(id => S.items.has(id));
+    const mastered = items.filter(id => (S.progress.get(id)?.box || 0) >= 4).length;
+    const started = items.filter(id => S.progress.has(id)).length;
+    const current = pack.units.find(u => u.items.some(id => !S.progress.has(id)));
+    return { pack, pct: items.length ? Math.round(100 * mastered / items.length) : 0, started, total: items.length, current };
+  });
 }
 
 async function home() {
@@ -300,7 +310,8 @@ async function home() {
   const lastExport = await kv.get('lastExport');
   const needBackup = daysBetween(S.profile.start, date) >= 7 && (!lastExport || daysBetween(lastExport, date) >= 7);
   const goal = S.profile.goalDate ? t('home_goal_left', { n: Math.max(0, daysBetween(date, S.profile.goalDate)) }) : t('home_no_goal');
-  const ready = unitReadiness().filter(r => r.started);
+  const ready = pathReadiness();
+  const rehearsal = S.profile.goalDate && daysBetween(date, S.profile.goalDate) <= 5 && daysBetween(date, S.profile.goalDate) >= 0;
   render(`<main class="screen home">
     <header class="top"><div><div class="day">${t('home_day', { n: dayN })}</div><div class="hint">${goal}</div></div>
       <button class="icon-btn" id="settings" aria-label="${t('home_settings')}">⚙</button></header>
@@ -315,13 +326,21 @@ async function home() {
     ${st.doneToday ? `<p class="ok center">${t('home_done_today')}</p><button class="btn big" id="again">${t('home_again')}</button>`
       : `<button class="btn primary big" id="start">${t('home_start')}</button>`}
     ${ready.length ? `<section class="ready"><h2>${t('home_readiness')}</h2>${ready.map(r => `
-      <div class="bar-row"><span>${esc(L(r.unit.title))}</span><div class="bar"><i style="width:${r.pct}%"></i></div><b>${r.pct}%</b></div>`).join('')}</section>` : ''}
+      <div class="path-row"><div class="bar-row"><span><b>${esc(L(r.pack.title))}</b></span><div class="bar"><i style="width:${r.pct}%"></i></div><b>${r.pct}%</b></div>
+      <small class="hint">${t('path_progress', { s: r.started, n: r.total })}${r.current ? ` · ${t('path_next')}: ${esc(L(r.current.title))}` : ''}</small></div>`).join('')}</section>` : ''}
+    <section class="practice"><h2>${t('practice_title')}</h2>
+      ${rehearsal ? `<div class="banner boss-banner">${t('rehearsal_banner')}</div>` : ''}
+      <button class="btn big" id="rp">${t('rp_title')}</button>
+      ${S.progress.size >= 20 ? `<button class="btn big" id="ft">${t('ft_title')}</button>` : `<p class="hint">${t('ft_locked')}</p>`}
+    </section>
     <p class="hint center">${t('install_hint')}</p>
   </main>`);
   on('#settings', 'click', settings);
   on('#start', 'click', () => startLevel(false));
   on('#again', 'click', () => startLevel(true));
   on('#bk', 'click', doExport);
+  on('#rp', 'click', rpList);
+  on('#ft', 'click', ftStart);
 }
 
 // ---------- level ----------
@@ -340,7 +359,7 @@ function buildLevel(practice) {
     reviewItems = [...S.progress.values()].sort((a, b) => a.box - b.box || b.wrong - a.wrong).slice(0, 12).map(p => S.items.get(p.id)).filter(Boolean);
   }
   const pool = [...fresh, ...reviewItems];
-  const speakable = pool.filter(i => ['word', 'phrase', 'dua', 'ayah'].includes(i.kind) && i.ar);
+  const speakable = pool.filter(i => ['word', 'phrase', 'dua', 'ayah', 'sign'].includes(i.kind) && i.ar);
   const readable = pool.filter(i => ['letter', 'mark', 'syllable'].includes(i.kind));
   const rounds = [];
   if (reviewItems.length) rounds.push({ type: 'review', items: reviewItems });
@@ -352,8 +371,11 @@ function buildLevel(practice) {
     const pick = [...speakable.filter(i => fresh.includes(i)), ...shuffle(speakable.filter(i => !fresh.includes(i)))].slice(0, 4);
     rounds.push({ type: 'speak', items: pick });
   }
-  const meaningPool = pool.filter(i => ['word', 'phrase', 'dua'].includes(i.kind) && !fresh.includes(i));
+  const meaningPool = pool.filter(i => ['word', 'phrase', 'dua', 'sign'].includes(i.kind) && !fresh.includes(i));
   if (meaningPool.length) rounds.push({ type: 'meaning', items: sample(meaningPool, 4) });
+  const dayNum = daysBetween(S.profile.start, date) + 1;
+  const plainPool = pool.filter(i => i.kind === 'sign' || (dayNum >= 15 && ['word', 'phrase'].includes(i.kind) && !fresh.includes(i)));
+  if (plainPool.length) rounds.push({ type: 'plain', items: sample(plainPool, 4) });
   const buildable = speakable.filter(i => ['phrase', 'dua'].includes(i.kind) && view(i).ar.split(/\s+/).length >= 2);
   if (buildable.length) rounds.push({ type: 'build', items: sample(buildable, 3) });
   // Every 7th day: a boss level, a mixed meaning test of everything learned in the last 7 days.
@@ -361,7 +383,7 @@ function buildLevel(practice) {
   let boss = false;
   if (!practice && dayN % 7 === 0) {
     const since = addDays(date, -6);
-    const week = [...S.progress.values()].filter(p => p.learned >= since).map(p => S.items.get(p.id)).filter(i => i && ['word', 'phrase', 'dua', 'ayah'].includes(i.kind));
+    const week = [...S.progress.values()].filter(p => p.learned >= since).map(p => S.items.get(p.id)).filter(i => i && ['word', 'phrase', 'dua', 'ayah', 'sign'].includes(i.kind));
     if (week.length >= 4) { boss = true; rounds.push({ type: 'meaning', boss: true, items: sample(week, 12) }); }
   }
   return { practice, boss, rounds, fresh: new Set(fresh.map(i => i.id)), base: new Map(pool.map(i => [i.id, S.progress.get(i.id)])), results: new Map(), right: 0, total: 0, r: 0, i: 0, started: Date.now() };
@@ -373,7 +395,7 @@ function startLevel(practice) {
   nextStep();
 }
 
-const ROUND_NAME = { review: 'round_review', learn: 'round_learn', read: 'round_read', listen: 'round_listen', speak: 'round_speak', build: 'round_build', meaning: 'round_meaning' };
+const ROUND_NAME = { review: 'round_review', learn: 'round_learn', read: 'round_read', listen: 'round_listen', speak: 'round_speak', build: 'round_build', meaning: 'round_meaning', plain: 'round_plain' };
 
 function levelFrame(inner) {
   const totalSteps = LV.rounds.reduce((s, r) => s + r.items.length, 0);
@@ -391,7 +413,7 @@ function nextStep() {
   if (!round) return finishLevel();
   if (LV.i >= round.items.length) { LV.r++; LV.i = 0; return nextStep(); }
   const item = round.items[LV.i];
-  ({ review: stepReview, learn: stepLearn, read: stepRead, listen: stepListen, speak: stepSpeak, build: stepBuild, meaning: stepMeaning })[round.type](item);
+  ({ review: stepReview, learn: stepLearn, read: stepRead, listen: stepListen, speak: stepSpeak, build: stepBuild, meaning: stepMeaning, plain: stepPlain })[round.type](item);
 }
 function advance() { LV.i++; nextStep(); }
 
@@ -499,7 +521,7 @@ function stepRead(item) {
 }
 
 function stepListen(item) {
-  const group = item.kind === 'ayah' ? ['ayah'] : ['word', 'phrase', 'dua'];
+  const group = item.kind === 'ayah' ? ['ayah'] : ['word', 'phrase', 'dua', 'sign'];
   const known = [...S.items.values()].filter(i => i.id !== item.id && group.includes(i.kind) && i.ar && view(i).ar !== view(item).ar);
   const pref = known.filter(i => S.progress.has(i.id));
   const others = sample(pref.length >= 2 ? pref : known, 2);
@@ -513,12 +535,21 @@ function stepListen(item) {
 }
 
 function stepMeaning(item) {
-  const group = item.kind === 'ayah' ? ['ayah'] : ['word', 'phrase', 'dua'];
+  const group = item.kind === 'ayah' ? ['ayah'] : ['word', 'phrase', 'dua', 'sign'];
   const mean = o => getLang() === 'ur' ? o.ur : view(o).en;
   const others = sample([...S.items.values()].filter(i => i.id !== item.id && group.includes(i.kind) && mean(i) !== mean(item)), 2);
   const arClass = item.kind === 'ayah' ? 'ayah ar' : 'big-ar ar';
   optionsStep(item, `<p class="q">${t('pick_meaning')}</p><div class="card"><div class="${arClass}">${esc(view(item).ar)}</div></div>`, item, others, o => esc(mean(o)), () => {
     $app.querySelector('#fb').textContent = view(item).tr;
+  });
+}
+
+function stepPlain(item) {
+  const mean = o => getLang() === 'ur' ? o.ur : view(o).en;
+  const group = ['word', 'phrase', 'dua', 'sign'];
+  const others = sample([...S.items.values()].filter(i => i.id !== item.id && group.includes(i.kind) && mean(i) !== mean(item)), 2);
+  optionsStep(item, `<p class="q">${t('plain_q')}</p><div class="card"><div class="big-ar ar">${esc(stripMarks(view(item).ar))}</div></div>`, item, others, o => esc(mean(o)), () => {
+    $app.querySelector('#fb').innerHTML = `<span class="ar">${esc(view(item).ar)}</span> · ${esc(view(item).tr)}`;
   });
 }
 
@@ -647,6 +678,203 @@ async function finishLevel() {
   on('#home', 'click', home);
 }
 
+// ---------- role-plays and final test ----------
+async function loadRoleplays() {
+  if (S.roleplays) return S.roleplays;
+  try { S.roleplays = (await loadJSON('content/roleplays.json')).scenarios; } catch (e) { S.roleplays = []; }
+  return S.roleplays;
+}
+function npcHtml(line) {
+  return `<div class="bubble npc"><div class="ar">${esc(line.ar)}</div><small>${esc(line.tr || '')}</small>
+    <div class="mean-sm">${esc(getLang() === 'ur' ? (line.ur || line.en) : line.en)}</div></div>`;
+}
+
+async function rpList() {
+  const all = await loadRoleplays();
+  const list = all.filter(sc => S.profile.paths.includes(sc.path));
+  const scores = await kv.get('rp-scores') || {};
+  render(`<main class="screen">
+    <header class="top"><button class="icon-btn" id="back" aria-label="${t('back')}">←</button><h1>${t('rp_title')}</h1></header>
+    <p class="hint">${t('rp_desc')}</p>
+    ${list.map(sc => `<div class="rp-card"><div><b>${esc(L(sc.title))}</b><small>${esc(L(sc.desc))}</small>
+      ${scores[sc.id] != null ? `<small class="ok">${t('best', { n: scores[sc.id] })}</small>` : ''}</div>
+      <div class="rp-actions"><button class="btn small primary" data-rp="${sc.id}">${t('rp_start')}</button>
+      <button class="btn small" data-chat="${sc.id}">${t('rp_free')}</button></div></div>`).join('') || `<p class="hint">—</p>`}
+  </main>`);
+  on('#back', 'click', home);
+  on('[data-rp]', 'click', e => rpPlay(list.find(x => x.id === e.currentTarget.dataset.rp), 0, 0));
+  on('[data-chat]', 'click', e => rpChat(list.find(x => x.id === e.currentTarget.dataset.chat)));
+}
+
+function rpPlay(sc, step, score) {
+  if (step >= sc.steps.length) return rpDone(sc, score);
+  const st = sc.steps[step];
+  const exp = st.expect.map(id => S.items.get(id)).filter(Boolean);
+  const targets = exp.flatMap(i => [view(i).ar, i.ar, i.ar_f, i.msa, ...(i.accept || [])]).filter(Boolean);
+  let tries = 0, done = false;
+  render(`<main class="screen level">
+    <header class="lv-top"><button class="icon-btn" id="quit" aria-label="Close">✕</button>
+      <div class="lv-bar"><i style="width:${Math.round(100 * step / sc.steps.length)}%"></i></div></header>
+    <div class="round-name">${esc(L(sc.title))}</div>
+    ${npcHtml(st.npc)}
+    <div class="audio"><button class="btn round" id="play" aria-label="${t('play')}">▶</button></div>
+    <p class="q">${t('rp_your_turn')}</p>
+    <div id="hints" class="hidden">${exp.map(i => `<div class="bubble me"><div class="ar">${esc(view(i).ar)}</div><small>${esc(view(i).tr)} — ${esc(getLang() === 'ur' ? i.ur : view(i).en)}</small></div>`).join('')}</div>
+    <button class="btn small" id="hint">${t('rp_hint')}</button>
+    ${canRecognize ? `<button class="btn primary big mic-btn" id="mic"><span class="mic"></span>${t('tap_mic')}</button>` : `<p class="warn">${t('mic_unsupported')}</p>`}
+    <p id="fb" class="fb"></p>
+    <div class="row"><button class="btn" id="skip">${t('skip_word')}</button><button class="btn primary hidden" id="next">${t('next')}</button></div>
+  </main>`);
+  const say = () => speak(st.npc.ar);
+  say();
+  on('#play', 'click', say);
+  on('#quit', 'click', rpList);
+  on('#hint', 'click', () => $app.querySelector('#hints').classList.remove('hidden'));
+  const fb = () => $app.querySelector('#fb');
+  const finish = ok => { if (done) return; done = true; if (ok) score++; $app.querySelector('#hints').classList.remove('hidden'); $app.querySelector('#mic')?.classList.add('hidden'); $app.querySelector('#skip').classList.add('hidden'); $app.querySelector('#next').classList.remove('hidden'); };
+  on('#mic', 'click', async () => {
+    if (done) return;
+    fb().className = 'fb'; fb().textContent = t('listening');
+    try {
+      const j = judge(await listen(), targets, 0.6); tries++;
+      if (j.pass) { fb().className = 'fb ok'; fb().textContent = `${t('correct')} · ${t('heard', { h: j.heard })}`; finish(true); }
+      else { fb().className = 'fb bad'; fb().textContent = `${t('try_again')} ${t('heard', { h: j.heard })}`; if (tries >= 3) finish(false); }
+    } catch (e) { fb().className = 'fb bad'; fb().textContent = t('mic_fail', { e: e.message }); }
+  });
+  on('#skip', 'click', () => finish(false));
+  on('#next', 'click', () => rpPlay(sc, step + 1, score));
+}
+
+async function rpDone(sc, score) {
+  const pct = Math.round(100 * score / sc.steps.length);
+  const scores = await kv.get('rp-scores') || {};
+  scores[sc.id] = Math.max(scores[sc.id] || 0, pct);
+  await kv.set('rp-scores', scores);
+  render(`<main class="screen summary"><h1>${esc(L(sc.title))}</h1>
+    <div class="score ${pct >= 80 ? 'ok' : 'bad'}">${pct}%</div>
+    <p>${pct >= 80 ? t('summary_pass') : t('rp_again')}</p>
+    <button class="btn primary big" id="again">${t('rp_start')}</button>
+    <button class="btn big" id="list">${t('rp_title')}</button></main>`);
+  on('#again', 'click', () => rpPlay(sc, 0, 0));
+  on('#list', 'click', rpList);
+}
+
+function rpSystem(sc) {
+  return `You are role-playing a scene in Saudi Arabia. Your role: ${sc.persona}
+The learner is a beginner in Arabic whose first language is Urdu or English, practising for Umrah and travel.
+Rules: speak spoken Saudi (Hijazi) Arabic in very short, simple sentences (at most 10 words), always with full tashkeel (vowel marks).
+Stay in your role, be realistic and kind, and move the scene forward with one simple question or statement at a time.
+If the learner's last message has a mistake, or is in English or Urdu, put the correct Arabic they could have said in "tip" (with tashkeel and transliteration); otherwise "tip" is "".
+Always reply with JSON only: {"ar": "your reply", "tr": "simple Latin transliteration", "en": "English meaning", "ur": "Urdu meaning", "tip": "..."}.
+If the learner sends [END], reply with "ar": "" and put 2 or 3 short sentences of feedback on their Arabic in "en" and in "ur".`;
+}
+
+function rpChat(sc) {
+  if (!S.settings.geminiKey) { toast(t('feedback_nokey')); return; }
+  const history = [];
+  let turns = 0;
+  render(`<main class="screen level chat">
+    <header class="lv-top"><button class="icon-btn" id="quit" aria-label="Close">✕</button><div class="round-name">${esc(L(sc.title))} · Gemini</div></header>
+    <div id="log" class="log"></div>
+    <p id="fb" class="fb"></p>
+    ${canRecognize ? `<button class="btn primary big mic-btn" id="mic"><span class="mic"></span>${t('tap_mic')}</button>` : ''}
+    <div class="row"><input type="text" id="txt" dir="auto" placeholder="${t('rp_type_ph')}"><button class="btn" id="send">${t('send')}</button></div>
+    <button class="btn big" id="end">${t('rp_end')}</button>
+  </main>`);
+  const log = $app.querySelector('#log');
+  const fb = $app.querySelector('#fb');
+  const addNpc = r => {
+    const d = document.createElement('div');
+    d.innerHTML = r.ar ? npcHtml(r) + (r.tip ? `<div class="hook"><span class="label">${t('rp_tip')}</span>${esc(r.tip)}</div>` : '')
+      : `<div class="hook">${esc(getLang() === 'ur' ? (r.ur || r.en) : r.en)}</div>`;
+    log.appendChild(d); d.scrollIntoView({ behavior: 'smooth' });
+    if (r.ar) speak(r.ar);
+  };
+  const addMe = text => { const d = document.createElement('div'); d.innerHTML = `<div class="bubble me"><div dir="auto">${esc(text)}</div></div>`; log.appendChild(d); };
+  const send = async text => {
+    if (!text) return;
+    if (text !== '[START]' && text !== '[END]') addMe(text);
+    history.push({ role: 'user', text });
+    fb.textContent = t('rp_thinking');
+    try {
+      const r = await geminiChat({ key: S.settings.geminiKey, model: S.settings.model || DEFAULT_MODEL, system: rpSystem(sc), history });
+      history.push({ role: 'model', text: JSON.stringify(r) });
+      fb.textContent = ''; addNpc(r);
+    } catch (e) { fb.textContent = e.message; history.pop(); }
+  };
+  send('[START]');
+  on('#quit', 'click', rpList);
+  on('#mic', 'click', async () => {
+    fb.textContent = t('listening');
+    try { const alts = await listen({ timeoutMs: 10000 }); turns++; await send(alts[0]); }
+    catch (e) { fb.textContent = t('mic_fail', { e: e.message }); }
+  });
+  on('#send', 'click', () => { const i = $app.querySelector('#txt'); const v = i.value.trim(); i.value = ''; turns++; send(v); });
+  on('#end', 'click', () => send('[END]'));
+}
+
+// Final recall test: type the meaning yourself, no choices.
+const STOP = new Set('a an the to is are am i you he she it we they me my your our this that of for and or in on at be do does with very'.split(' '));
+function keywords(item) {
+  const en = view(item).en.toLowerCase().replace(/\([^)]*\)/g, ' ').split(/[^a-z']+/).filter(w => w.length > 1 && !STOP.has(w));
+  const ur = (item.ur || '').replace(/\([^)]*\)/g, ' ').split(/[\s،۔,/]+/).filter(w => w.length > 1);
+  return { en: [...new Set(en)], ur: [...new Set(ur)] };
+}
+function checkTyped(item, typed) {
+  const raw = typed.trim().toLowerCase();
+  if ((item.accept || []).some(a => raw === a)) return true;
+  const words = new Set(raw.split(/[^a-z'؀-ۿ0-9]+/).filter(Boolean));
+  const k = keywords(item);
+  const hit = list => list.length && list.filter(w => words.has(w) || [...words].some(x => x.length > 3 && (x.startsWith(w) || w.startsWith(x)))).length / list.length;
+  return Math.max(hit(k.en) || 0, hit(k.ur) || 0) >= 0.5;
+}
+
+function ftStart() {
+  const learned = [...S.progress.keys()].map(id => S.items.get(id)).filter(i => i && ['word', 'phrase', 'dua', 'sign'].includes(i.kind));
+  ftStep(sample(learned, 20), 0, 0, []);
+}
+function ftStep(items, i, right, missed) {
+  if (i >= items.length) return ftDone(items.length, right, missed);
+  const item = items[i]; let checked = false;
+  render(`<main class="screen level">
+    <header class="lv-top"><button class="icon-btn" id="quit" aria-label="Close">✕</button>
+      <div class="lv-bar"><i style="width:${Math.round(100 * i / items.length)}%"></i></div></header>
+    <div class="round-name">${t('ft_title')} · ${i + 1} / ${items.length}</div>
+    <div class="card"><div class="big-ar ar">${esc(view(item).ar)}</div></div>
+    <input type="text" id="ans" dir="auto" autocomplete="off" placeholder="${t('ft_ph')}">
+    <p id="fb" class="fb"></p>
+    <button class="btn primary big" id="go">${t('check')}</button></main>`);
+  const input = $app.querySelector('#ans'); input.focus();
+  const act = () => {
+    const fb = $app.querySelector('#fb');
+    if (!checked) {
+      if (!input.value.trim()) { fb.className = 'fb bad'; fb.textContent = t('ft_ph'); return; }
+      checked = true;
+      const ok = checkTyped(item, input.value);
+      if (ok) right++; else missed.push(item);
+      fb.className = ok ? 'fb ok' : 'fb bad';
+      fb.innerHTML = `${ok ? t('correct') : ''} ${esc(view(item).tr)} — ${esc(getLang() === 'ur' ? item.ur : view(item).en)}`;
+      $app.querySelector('#go').textContent = t('next');
+      return;
+    }
+    ftStep(items, i + 1, right, missed);
+  };
+  on('#go', 'click', act);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') act(); });
+  on('#quit', 'click', home);
+}
+async function ftDone(n, right, missed) {
+  const pct = n ? Math.round(100 * right / n) : 0;
+  const tests = await kv.get('final-tests') || [];
+  tests.push({ date: today(), score: pct, n });
+  await kv.set('final-tests', tests);
+  render(`<main class="screen summary"><h1>${t('ft_title')}</h1>
+    <div class="score ${pct >= 85 ? 'ok' : 'bad'}">${pct}%</div><p>${t('ft_result', { r: right, n })}</p>
+    ${missed.length ? `<h2>${t('summary_missed')}</h2><ul class="missed">${missed.map(i => `<li><span class="ar">${esc(view(i).ar)}</span> — ${esc(getLang() === 'ur' ? i.ur : view(i).en)}</li>`).join('')}</ul>` : ''}
+    <button class="btn primary big" id="home">${t('home_btn')}</button></main>`);
+  on('#home', 'click', home);
+}
+
 // ---------- settings, backup, report ----------
 function settings() {
   const p = S.profile;
@@ -714,7 +942,7 @@ async function buildReport() {
   const weak = prog.filter(x => x.wrong > 0).sort((a, b) => b.wrong - a.wrong || a.box - b.box).slice(0, 10)
     .map(x => { const i = S.items.get(x.id); return i ? `${view(i).ar} (${view(i).tr}) wrong ${x.wrong}, box ${x.box}` : x.id; });
   const st = await computeStats();
-  const ready = unitReadiness().filter(r => r.started).map(r => `${L(r.unit.title)} ${r.pct}%`);
+  const ready = pathReadiness().map(r => `${L(r.pack.title)} ${r.pct}% mastered (${r.started}/${r.total} started)`);
   return [
     `KN Arabic Tutor report — ${date} (v${APP_VERSION})`,
     `Day ${daysBetween(p.start, date) + 1} · paths: ${p.paths.join(', ')}${p.skipFoundations ? '' : ' + foundations'} · goal: ${p.goalDate || 'none'} · ${p.minutes} min/day · form: ${p.form}`,
@@ -722,6 +950,7 @@ async function buildReport() {
     `Last days: ${log.slice(-7).map(l => `${l.date.slice(5)} ${l.score}%${l.passed ? '' : '✗'}`).join(' | ') || '—'}`,
     `Readiness: ${ready.join(' · ') || '—'}`,
     `Weakest: ${weak.join('; ') || '—'}`,
+    `Final tests: ${((await kv.get('final-tests')) || []).slice(-3).map(x => `${x.date.slice(5)} ${x.score}%`).join(' | ') || '—'} · Role-plays: ${Object.entries((await kv.get('rp-scores')) || {}).map(([k, v]) => `${k} ${v}%`).join(', ') || '—'}`,
   ].join('\n');
 }
 async function copyReport() {
@@ -740,5 +969,5 @@ async function boot() {
   if (!S.profile) startOnboarding(); else home();
 }
 
-window.__kn = { S, buildReport, startLevel, home }; // for debugging and tests
+window.__kn = { S, buildReport, startLevel, home, rpList, ftStart, checkTyped }; // for debugging and tests
 boot();

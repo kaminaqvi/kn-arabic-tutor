@@ -24,8 +24,8 @@
     "en": "Understand the most frequent words of the Qur'an",
     "ur": "قرآن کے سب سے زیادہ آنے والے الفاظ سمجھیں"
    },
-   "available": false,
-   "eta": "Jan 2027"
+   "available": true,
+   "file": "quran.json"
   },
   {
    "id": "reading",
@@ -37,8 +37,8 @@
     "en": "Read signs, menus and simple text",
     "ur": "سائن بورڈ، مینو اور سادہ تحریر پڑھیں"
    },
-   "available": false,
-   "eta": "Feb 2027"
+   "available": true,
+   "file": "reading.json"
   },
   {
    "id": "conversation",
@@ -50,8 +50,8 @@
     "en": "Introductions, family, work and small talk",
     "ur": "تعارف، خاندان، کام اور عام بات چیت"
    },
-   "available": false,
-   "eta": "Mar 2027"
+   "available": true,
+   "file": "conversation.json"
   }
  ],
  "foundations": "foundations.json",
@@ -104,5 +104,6 @@
     "nafasa"
    ]
   ]
- ]
+ ],
+ "shared": "shared.json"
 }

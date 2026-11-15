@@ -1,0 +1,652 @@
+{
+ "version": 1,
+ "scenarios": [
+  {
+   "id": "airport",
+   "path": "umrah",
+   "title": {
+    "en": "Immigration at the airport",
+    "ur": "ایئرپورٹ پر امیگریشن"
+   },
+   "desc": {
+    "en": "Answer the passport officer",
+    "ur": "پاسپورٹ افسر کو جواب دیں"
+   },
+   "persona": "a polite Saudi immigration officer at Madinah or Jeddah airport checking a pilgrim's passport.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "السَّلَامُ عَلَيْكُمْ، جَوَازَ السَّفَرْ لَوْ سَمَحْتْ",
+      "tr": "as-salamu 'alaykum, jawaz as-safar law samaht",
+      "en": "Peace be upon you. Passport, please.",
+      "ur": "السلام علیکم، پاسپورٹ دیں"
+     },
+     "expect": [
+      "um-wsalam",
+      "um-tafaddal"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "مِنْ فِينْ إِنْتَ؟",
+      "tr": "min fen inta?",
+      "en": "Where are you from?",
+      "ur": "آپ کہاں سے ہیں؟"
+     },
+     "expect": [
+      "um-pakistan"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "إِيشْ سَبَبْ الزِّيَارَة؟",
+      "tr": "eesh sabab az-ziyara?",
+      "en": "What is the reason for your visit?",
+      "ur": "آنے کی وجہ کیا ہے؟"
+     },
+     "expect": [
+      "um-jayumra"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "أَهْلًا وَسَهْلًا، عُمْرَة مَقْبُولَة",
+      "tr": "ahlan wa sahlan, 'umra maqbula",
+      "en": "Welcome. May your Umrah be accepted.",
+      "ur": "خوش آمدید، عمرہ مقبول ہو"
+     },
+     "expect": [
+      "um-shukran",
+      "um-jazak",
+      "um-allahyihfazak"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "taxi",
+   "path": "umrah",
+   "title": {
+    "en": "Taxi to the Haram",
+    "ur": "حرم تک ٹیکسی"
+   },
+   "desc": {
+    "en": "Agree a fare and get there",
+    "ur": "کرایہ طے کریں اور پہنچیں"
+   },
+   "persona": "a friendly Saudi taxi driver in Makkah who likes to bargain a little.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "أَهْلًا، عَلَى فِينْ؟",
+      "tr": "ahlan, 'ala fen?",
+      "en": "Hello, where to?",
+      "ur": "جی، کہاں جانا ہے؟"
+     },
+     "expect": [
+      "um-abghaarooh"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "تَمَامْ، اطْلَعْ",
+      "tr": "tamam, itla'",
+      "en": "Okay, get in.",
+      "ur": "ٹھیک ہے، بیٹھ جائیں"
+     },
+     "expect": [
+      "um-bikamtiwassil",
+      "um-addad"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "خَمْسِينْ رِيَالْ",
+      "tr": "khamseen riyal",
+      "en": "Fifty riyals.",
+      "ur": "پچاس ریال"
+     },
+     "expect": [
+      "um-ghalimarra",
+      "um-akhirsir",
+      "um-nazzil"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "طَيِّبْ، أَرْبَعِينْ",
+      "tr": "tayyib, arba'een",
+      "en": "Fine, forty.",
+      "ur": "ٹھیک ہے، چالیس"
+     },
+     "expect": [
+      "um-yalla",
+      "um-khalas"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "وَصَلْنَا، هَادَا الْحَرَمْ",
+      "tr": "wasalna, hada al-haram",
+      "en": "We've arrived, this is the Haram.",
+      "ur": "پہنچ گئے، یہ حرم ہے"
+     },
+     "expect": [
+      "um-waggif",
+      "um-shukran",
+      "um-yateek"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hotel",
+   "path": "umrah",
+   "title": {
+    "en": "Hotel check-in",
+    "ur": "ہوٹل میں چیک اِن"
+   },
+   "desc": {
+    "en": "Booking, room and Wi-Fi",
+    "ur": "بکنگ، کمرہ اور وائی فائی"
+   },
+   "persona": "a hotel receptionist near the Haram checking in a guest.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "مَرْحَبَا، كَيْفْ أَقْدَرْ أَسَاعْدَكْ؟",
+      "tr": "marhaba, kayf agdar asa'dak?",
+      "en": "Hello, how can I help you?",
+      "ur": "خوش آمدید، کیا خدمت کروں؟"
+     },
+     "expect": [
+      "um-indihajz"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "جَوَازَ السَّفَرْ لَوْ سَمَحْتْ",
+      "tr": "jawaz as-safar law samaht",
+      "en": "Passport, please.",
+      "ur": "پاسپورٹ دیں"
+     },
+     "expect": [
+      "um-tafaddal"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "غُرْفَتَكْ فِي الدَّوْرْ الْخَامِسْ",
+      "tr": "ghurfatak fi d-dor al-khamis",
+      "en": "Your room is on the fifth floor.",
+      "ur": "آپ کا کمرہ پانچویں منزل پر ہے"
+     },
+     "expect": [
+      "um-fenmasad",
+      "um-raqamghurfa"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "تِبْغَى شَيْ ثَانِي؟",
+      "tr": "tibgha shay tani?",
+      "en": "Do you want anything else?",
+      "ur": "کچھ اور چاہیے؟"
+     },
+     "expect": [
+      "um-wifi",
+      "um-futoor",
+      "um-la"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "restaurant",
+   "path": "umrah",
+   "title": {
+    "en": "Ordering food",
+    "ur": "کھانا آرڈر کرنا"
+   },
+   "desc": {
+    "en": "Order, drink and pay",
+    "ur": "آرڈر، مشروب اور ادائیگی"
+   },
+   "persona": "a waiter at a busy Saudi restaurant near the Haram.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "أَهْلًا، سَفَرِي وَلَّا مَحَلِّي؟",
+      "tr": "ahlan, safari walla mahalli?",
+      "en": "Hello, takeaway or eat in?",
+      "ur": "جی، ساتھ لے جائیں گے یا یہیں کھائیں گے؟"
+     },
+     "expect": [
+      "um-safari",
+      "um-mahalli"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "إِيشْ تِبْغَى؟",
+      "tr": "eesh tibgha?",
+      "en": "What would you like?",
+      "ur": "کیا چاہیے؟"
+     },
+     "expect": [
+      "um-abghakabsa",
+      "um-abghahada",
+      "um-menu"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "تِبْغَى عَصِيرْ؟",
+      "tr": "tibgha 'aseer?",
+      "en": "Would you like juice?",
+      "ur": "جوس چاہیے؟"
+     },
+     "expect": [
+      "um-iwa",
+      "um-la",
+      "um-abghamoya"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "حَاضِرْ، شَيْ ثَانِي؟",
+      "tr": "hadir, shay tani?",
+      "en": "Sure. Anything else?",
+      "ur": "جی، کچھ اور؟"
+     },
+     "expect": [
+      "um-kifaya",
+      "um-hisab"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "shopping",
+   "path": "umrah",
+   "title": {
+    "en": "Buying perfume",
+    "ur": "عطر خریدنا"
+   },
+   "desc": {
+    "en": "Ask the price and bargain",
+    "ur": "قیمت پوچھیں اور مول تول کریں"
+   },
+   "persona": "a perfume seller in a market near Masjid an-Nabawi who starts with a high price.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "حَيَّاكْ، تَفَضَّلْ",
+      "tr": "hayyak, tafaddal",
+      "en": "Welcome, come in.",
+      "ur": "خوش آمدید، تشریف لائیں"
+     },
+     "expect": [
+      "um-bas",
+      "um-indak"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "هَادَا عِطْرْ مُمْتَازْ",
+      "tr": "hada 'itr mumtaz",
+      "en": "This is an excellent perfume.",
+      "ur": "یہ بہترین عطر ہے"
+     },
+     "expect": [
+      "um-kamsiruh"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "مِيَّة رِيَالْ",
+      "tr": "miyat riyal",
+      "en": "One hundred riyals.",
+      "ur": "سو ریال"
+     },
+     "expect": [
+      "um-akhirsir",
+      "um-nazzil",
+      "um-ghalimarra"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "عَشَانَكْ، ثَمَانِينْ",
+      "tr": "'ashanak, tamaneen",
+      "en": "For you, eighty.",
+      "ur": "آپ کے لیے، اسی"
+     },
+     "expect": [
+      "um-khalas"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "كَاشْ وَلَّا بَطَاقَة؟",
+      "tr": "kash walla bitaqa?",
+      "en": "Cash or card?",
+      "ur": "نقد یا کارڈ؟"
+     },
+     "expect": [
+      "um-adfa"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "directions",
+   "path": "umrah",
+   "title": {
+    "en": "Finding the gate",
+    "ur": "دروازہ ڈھونڈنا"
+   },
+   "desc": {
+    "en": "Ask the way in Madinah",
+    "ur": "مدینہ میں راستہ پوچھیں"
+   },
+   "persona": "a helpful guard at Masjid an-Nabawi giving directions to a gate.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "تَفَضَّلْ، إِيشْ تِبْغَى؟",
+      "tr": "tafaddal, eesh tibgha?",
+      "en": "Yes, what do you need?",
+      "ur": "جی، کیا چاہیے؟"
+     },
+     "expect": [
+      "um-fenbabsalam",
+      "um-fenhammam"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "امْشِ عَلَى طُولْ، بَعْدَيْنْ يَسَارْ",
+      "tr": "imshi 'ala tool, ba'dayn yasar",
+      "en": "Walk straight, then left.",
+      "ur": "سیدھا چلیں، پھر بائیں"
+     },
+     "expect": [
+      "um-qareeb",
+      "um-baeed"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "إِيوَه، خَمْسْ دَقَايِقْ",
+      "tr": "iwa, khams dagayig",
+      "en": "Yes, five minutes.",
+      "ur": "جی، پانچ منٹ"
+     },
+     "expect": [
+      "um-shukran",
+      "um-jazak",
+      "um-barakallah"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rawdah",
+   "path": "umrah",
+   "title": {
+    "en": "Visiting the Rawdah",
+    "ur": "روضہ کی زیارت"
+   },
+   "desc": {
+    "en": "Permit and waiting",
+    "ur": "اجازت نامہ اور انتظار"
+   },
+   "persona": "an attendant at the Rawdah entrance in Masjid an-Nabawi checking permits.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "عِنْدَكْ تَصْرِيحْ؟",
+      "tr": "'indak tasreeh?",
+      "en": "Do you have a permit?",
+      "ur": "آپ کے پاس اجازت نامہ ہے؟"
+     },
+     "expect": [
+      "um-tasreeh"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "تَمَامْ، اسْتَنَّى هِنَا شْوَيَّة",
+      "tr": "tamam, istanna hina shwayya",
+      "en": "Okay, wait here a little.",
+      "ur": "ٹھیک ہے، یہاں تھوڑا انتظار کریں"
+     },
+     "expect": [
+      "um-kamdageega"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "عَشْرْ دَقَايِقْ، بَعْدَيْنْ تِدْخُلْ",
+      "tr": "'ashr dagayig, ba'dayn tidkhul",
+      "en": "Ten minutes, then you go in.",
+      "ur": "دس منٹ، پھر اندر جائیں"
+     },
+     "expect": [
+      "um-insha",
+      "um-shukran"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "help",
+   "path": "umrah",
+   "title": {
+    "en": "Lost and unwell",
+    "ur": "راستہ بھول گئے اور طبیعت خراب"
+   },
+   "desc": {
+    "en": "Ask for help",
+    "ur": "مدد مانگیں"
+   },
+   "persona": "a kind local man who sees a pilgrim looking lost and tired near the Haram.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "إِيشْ فِيكْ؟ تِحْتَاجْ مُسَاعَدَة؟",
+      "tr": "eesh feek? tihtaj musa'ada?",
+      "en": "What's wrong? Do you need help?",
+      "ur": "کیا ہوا؟ مدد چاہیے؟"
+     },
+     "expect": [
+      "um-diit",
+      "um-saidni"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "فِينْ فُنْدُقَكْ؟",
+      "tr": "fen funduqak?",
+      "en": "Where is your hotel?",
+      "ur": "آپ کا ہوٹل کہاں ہے؟"
+     },
+     "expect": [
+      "um-qareebharam"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "إِنْتَ تَعْبَانْ؟",
+      "tr": "inta ta'ban?",
+      "en": "Are you unwell?",
+      "ur": "آپ کی طبیعت ٹھیک نہیں؟"
+     },
+     "expect": [
+      "um-tabaan",
+      "um-suda"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "فِيهْ صَيْدَلِيَّة هِنَا، تَعَالْ مَعَايَا",
+      "tr": "feeh saydaliyya hina, ta'al ma'aya",
+      "en": "There's a pharmacy here, come with me.",
+      "ur": "یہاں دواخانہ ہے، میرے ساتھ آئیں"
+     },
+     "expect": [
+      "um-allahyihfazak",
+      "um-jazak",
+      "um-shukran"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "meet",
+   "path": "conversation",
+   "title": {
+    "en": "Meeting someone new",
+    "ur": "کسی نئے سے ملاقات"
+   },
+   "desc": {
+    "en": "Introduce yourself",
+    "ur": "اپنا تعارف کرائیں"
+   },
+   "persona": "a friendly Saudi man meeting the learner for the first time at a gathering.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "السَّلَامُ عَلَيْكُمْ، كَيْفَكْ؟",
+      "tr": "as-salamu 'alaykum, kayfak?",
+      "en": "Peace be upon you, how are you?",
+      "ur": "السلام علیکم، کیسے ہیں؟"
+     },
+     "expect": [
+      "um-wsalam",
+      "um-hamdulillah"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "إِيشْ اِسْمَكْ؟",
+      "tr": "eesh ismak?",
+      "en": "What's your name?",
+      "ur": "آپ کا نام کیا ہے؟"
+     },
+     "expect": [
+      "um-ismi"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "تِشَرَّفْنَا، مِنْ فِينْ إِنْتَ؟",
+      "tr": "tisharrafna, min fen inta?",
+      "en": "Nice to meet you. Where are you from?",
+      "ur": "خوشی ہوئی، کہاں سے ہیں؟"
+     },
+     "expect": [
+      "um-pakistan",
+      "cv-askun"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "إِيشْ شُغْلَكْ؟",
+      "tr": "eesh shughlak?",
+      "en": "What do you do?",
+      "ur": "کیا کام کرتے ہیں؟"
+     },
+     "expect": [
+      "cv-ashtaghil",
+      "cv-muhandis",
+      "cv-duktoor",
+      "cv-mudarris",
+      "cv-talib"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "مَا شَاءَ اللَّهُ، تِشَرَّفْنَا",
+      "tr": "ma sha' allah, tisharrafna",
+      "en": "Ma sha Allah, nice to meet you.",
+      "ur": "ما شاء اللہ، خوشی ہوئی"
+     },
+     "expect": [
+      "cv-tasharrafna",
+      "um-allahyihfazak"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "plans",
+   "path": "conversation",
+   "title": {
+    "en": "Making plans",
+    "ur": "ملنے کا پروگرام"
+   },
+   "desc": {
+    "en": "Arrange to meet",
+    "ur": "ملاقات طے کریں"
+   },
+   "persona": "a Saudi friend arranging to meet the learner for coffee.",
+   "steps": [
+    {
+     "npc": {
+      "ar": "نِتْقَابَلْ بُكْرَة؟",
+      "tr": "nitgabal bukra?",
+      "en": "Shall we meet tomorrow?",
+      "ur": "کل ملیں؟"
+     },
+     "expect": [
+      "cv-akeed",
+      "um-insha",
+      "um-iwa"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "فَاضِي الْعَصْرْ؟",
+      "tr": "fadi al-'asr?",
+      "en": "Are you free in the afternoon?",
+      "ur": "عصر کے وقت فارغ ہیں؟"
+     },
+     "expect": [
+      "cv-fadi",
+      "cv-mashghool",
+      "um-iwa",
+      "um-la"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "نِشْرَبْ قَهْوَة؟",
+      "tr": "nishrab gahwa?",
+      "en": "Shall we drink coffee?",
+      "ur": "قہوہ پئیں؟"
+     },
+     "expect": [
+      "cv-ahibbgahwa",
+      "cv-tamam",
+      "cv-akeed"
+     ]
+    },
+    {
+     "npc": {
+      "ar": "طَيِّبْ، أَشُوفَكْ بُكْرَة",
+      "tr": "tayyib, ashoofak bukra",
+      "en": "Okay, see you tomorrow.",
+      "ur": "ٹھیک ہے، کل ملتے ہیں"
+     },
+     "expect": [
+      "um-masalama",
+      "cv-ashoofak",
+      "um-insha"
+     ]
+    }
+   ]
+  }
+ ]
+}

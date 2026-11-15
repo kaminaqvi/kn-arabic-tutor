@@ -1,0 +1,970 @@
+{
+ "id": "quran",
+ "title": {
+  "en": "Qur'anic Arabic",
+  "ur": "قرآنی عربی"
+ },
+ "units": [
+  {
+   "id": "q-fatiha",
+   "title": {
+    "en": "Al-Fatiha",
+    "ur": "سورۃ الفاتحہ"
+   },
+   "items": [
+    "um-fat1",
+    "um-fat2",
+    "um-fat3",
+    "um-fat4",
+    "um-fat5",
+    "um-fat6",
+    "um-fat7"
+   ]
+  },
+  {
+   "id": "q-salah",
+   "title": {
+    "en": "Words of the salah",
+    "ur": "نماز کے الفاظ"
+   },
+   "items": [
+    "qd-subhanallah",
+    "qd-alhamdulillah",
+    "qd-akbar",
+    "qd-tahleel",
+    "qd-istighfar",
+    "qd-ruku",
+    "qd-sujood",
+    "qd-samia",
+    "qd-rabbana"
+   ]
+  },
+  {
+   "id": "q-words1",
+   "title": {
+    "en": "Qur'an words 1",
+    "ur": "قرآنی الفاظ 1"
+   },
+   "items": [
+    "qw-allah",
+    "qw-rabb",
+    "qw-qala",
+    "qw-yawm",
+    "qw-ard",
+    "qw-sama",
+    "qw-kitab",
+    "qw-ilm",
+    "qw-rahma",
+    "qw-haqq"
+   ]
+  },
+  {
+   "id": "q-words2",
+   "title": {
+    "en": "Qur'an words 2",
+    "ur": "قرآنی الفاظ 2"
+   },
+   "items": [
+    "qw-nas",
+    "qw-qalb",
+    "qw-noor",
+    "qw-salah",
+    "qw-janna",
+    "qw-nar",
+    "qw-amanu",
+    "qw-amilu",
+    "qw-salihat",
+    "qw-kafaru"
+   ]
+  },
+  {
+   "id": "q-ikhlas",
+   "title": {
+    "en": "Surah Al-Ikhlas",
+    "ur": "سورۃ الاخلاص"
+   },
+   "items": [
+    "q-112-1",
+    "q-112-2",
+    "q-112-3",
+    "q-112-4"
+   ]
+  },
+  {
+   "id": "q-words3",
+   "title": {
+    "en": "Small but frequent words",
+    "ur": "چھوٹے مگر عام الفاظ"
+   },
+   "items": [
+    "qw-min",
+    "qw-fi",
+    "qw-ala",
+    "qw-ila",
+    "qw-la",
+    "qw-inna",
+    "qw-alladhina",
+    "qw-huwa",
+    "qw-hum",
+    "qw-kana",
+    "qw-kull",
+    "qw-qul"
+   ]
+  },
+  {
+   "id": "q-names",
+   "title": {
+    "en": "Names and attributes of Allah",
+    "ur": "اللہ کے نام اور صفات"
+   },
+   "items": [
+    "qw-aleem",
+    "qw-hakeem",
+    "qw-ghafoor",
+    "qw-raheem",
+    "qw-rahman",
+    "qw-qadeer",
+    "qw-samee",
+    "qw-baseer"
+   ]
+  },
+  {
+   "id": "q-falaq",
+   "title": {
+    "en": "Surah Al-Falaq",
+    "ur": "سورۃ الفلق"
+   },
+   "items": [
+    "q-113-1",
+    "q-113-2",
+    "q-113-3",
+    "q-113-4",
+    "q-113-5"
+   ]
+  },
+  {
+   "id": "q-words4",
+   "title": {
+    "en": "This world and the next",
+    "ur": "دنیا اور آخرت"
+   },
+   "items": [
+    "qw-dunya",
+    "qw-akhira",
+    "qw-mawt",
+    "qw-hayat",
+    "qw-huda",
+    "qw-sirat",
+    "qw-adhab",
+    "qw-ajr",
+    "qw-khayr",
+    "qw-deen"
+   ]
+  },
+  {
+   "id": "q-nas",
+   "title": {
+    "en": "Surah An-Nas",
+    "ur": "سورۃ الناس"
+   },
+   "items": [
+    "q-114-1",
+    "q-114-2",
+    "q-114-3",
+    "q-114-4",
+    "q-114-5",
+    "q-114-6"
+   ]
+  },
+  {
+   "id": "q-words5",
+   "title": {
+    "en": "Virtues",
+    "ur": "اچھی صفات"
+   },
+   "items": [
+    "qw-sabr",
+    "qw-shukr",
+    "qw-dhikr",
+    "qw-taqwa",
+    "qw-tawba",
+    "qw-iman",
+    "qw-ihsan",
+    "qw-adl"
+   ]
+  },
+  {
+   "id": "q-kawthar",
+   "title": {
+    "en": "Surah Al-Kawthar",
+    "ur": "سورۃ الکوثر"
+   },
+   "items": [
+    "q-108-1",
+    "q-108-2",
+    "q-108-3"
+   ]
+  },
+  {
+   "id": "q-words6",
+   "title": {
+    "en": "Creation",
+    "ur": "کائنات"
+   },
+   "items": [
+    "qw-shams",
+    "qw-qamar",
+    "qw-layl",
+    "qw-nahar",
+    "qw-bahr",
+    "qw-nafs",
+    "qw-insan",
+    "qw-rasool"
+   ]
+  },
+  {
+   "id": "q-asr",
+   "title": {
+    "en": "Surah Al-Asr",
+    "ur": "سورۃ العصر"
+   },
+   "items": [
+    "q-103-1",
+    "q-103-2",
+    "q-103-3"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "qd-subhanallah",
+   "kind": "dua",
+   "ar": "سُبْحَانَ اللَّهِ",
+   "tr": "subhanallah",
+   "en": "Glory be to Allah",
+   "ur": "اللہ پاک ہے"
+  },
+  {
+   "id": "qd-alhamdulillah",
+   "kind": "dua",
+   "ar": "الْحَمْدُ لِلَّهِ",
+   "tr": "al-hamdu lillah",
+   "en": "All praise is for Allah",
+   "ur": "سب تعریف اللہ کے لیے ہے"
+  },
+  {
+   "id": "qd-akbar",
+   "kind": "dua",
+   "ar": "اللَّهُ أَكْبَرُ",
+   "tr": "allahu akbar",
+   "en": "Allah is the Greatest",
+   "ur": "اللہ سب سے بڑا ہے"
+  },
+  {
+   "id": "qd-tahleel",
+   "kind": "dua",
+   "ar": "لَا إِلَٰهَ إِلَّا اللَّهُ",
+   "tr": "la ilaha illallah",
+   "en": "There is no god but Allah",
+   "ur": "اللہ کے سوا کوئی معبود نہیں"
+  },
+  {
+   "id": "qd-istighfar",
+   "kind": "dua",
+   "ar": "أَسْتَغْفِرُ اللَّهَ",
+   "tr": "astaghfirullah",
+   "en": "I seek Allah's forgiveness",
+   "ur": "میں اللہ سے معافی مانگتا ہوں"
+  },
+  {
+   "id": "qd-ruku",
+   "kind": "dua",
+   "ar": "سُبْحَانَ رَبِّيَ الْعَظِيمِ",
+   "tr": "subhana rabbiya l-'adheem",
+   "en": "Glory be to my Lord, the Magnificent (in ruku')",
+   "ur": "پاک ہے میرا رب عظمت والا (رکوع)"
+  },
+  {
+   "id": "qd-sujood",
+   "kind": "dua",
+   "ar": "سُبْحَانَ رَبِّيَ الْأَعْلَى",
+   "tr": "subhana rabbiya l-a'la",
+   "en": "Glory be to my Lord, the Most High (in sujud)",
+   "ur": "پاک ہے میرا رب سب سے بلند (سجدہ)"
+  },
+  {
+   "id": "qd-samia",
+   "kind": "dua",
+   "ar": "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ",
+   "tr": "sami'a llahu liman hamidah",
+   "en": "Allah hears whoever praises Him",
+   "ur": "اللہ نے سن لی جس نے اس کی تعریف کی"
+  },
+  {
+   "id": "qd-rabbana",
+   "kind": "dua",
+   "ar": "رَبَّنَا وَلَكَ الْحَمْدُ",
+   "tr": "rabbana wa laka l-hamd",
+   "en": "Our Lord, and to You belongs all praise",
+   "ur": "اے ہمارے رب، تیرے ہی لیے سب تعریف ہے"
+  },
+  {
+   "id": "q-112-1",
+   "kind": "ayah",
+   "quran": "112:1",
+   "ar": "",
+   "tr": "qul huwa llahu ahad",
+   "en": "Say: He is Allah, the One.",
+   "ur": "کہہ دیجیے: وہ اللہ ایک ہے۔"
+  },
+  {
+   "id": "q-112-2",
+   "kind": "ayah",
+   "quran": "112:2",
+   "ar": "",
+   "tr": "allahu s-samad",
+   "en": "Allah, the Eternal Refuge.",
+   "ur": "اللہ بے نیاز ہے۔"
+  },
+  {
+   "id": "q-112-3",
+   "kind": "ayah",
+   "quran": "112:3",
+   "ar": "",
+   "tr": "lam yalid wa lam yulad",
+   "en": "He neither begets nor is born.",
+   "ur": "نہ اس کی کوئی اولاد ہے اور نہ وہ کسی کی اولاد ہے۔"
+  },
+  {
+   "id": "q-112-4",
+   "kind": "ayah",
+   "quran": "112:4",
+   "ar": "",
+   "tr": "wa lam yakun lahu kufuwan ahad",
+   "en": "And there is none comparable to Him.",
+   "ur": "اور کوئی اس کا ہمسر نہیں۔"
+  },
+  {
+   "id": "qw-min",
+   "kind": "word",
+   "ar": "مِنْ",
+   "tr": "min",
+   "en": "From, of",
+   "ur": "سے",
+   "hook": {
+    "en": "Same as Urdu ‘min’ in ‘minjumla’.",
+    "ur": "’من جملہ‘ والا ’من‘"
+   }
+  },
+  {
+   "id": "qw-fi",
+   "kind": "word",
+   "ar": "فِي",
+   "tr": "fi",
+   "en": "In",
+   "ur": "میں",
+   "hook": {
+    "en": "‘Fi sabeelillah’ = in the way of Allah.",
+    "ur": "’فی سبیل اللہ‘"
+   }
+  },
+  {
+   "id": "qw-ala",
+   "kind": "word",
+   "ar": "عَلَى",
+   "tr": "'ala",
+   "en": "On, upon",
+   "ur": "پر",
+   "hook": {
+    "en": "‘Assalamu alaykum’ = peace upon you.",
+    "ur": "’السلام علیکم‘ = آپ پر سلامتی"
+   }
+  },
+  {
+   "id": "qw-ila",
+   "kind": "word",
+   "ar": "إِلَى",
+   "tr": "ila",
+   "en": "To, towards",
+   "ur": "کی طرف",
+   "hook": {
+    "en": "‘Inna ilayhi raji’un’ = to Him we return.",
+    "ur": "’انا الیہ راجعون‘"
+   }
+  },
+  {
+   "id": "qw-la",
+   "kind": "word",
+   "ar": "لَا",
+   "tr": "la",
+   "en": "No, not",
+   "ur": "نہیں"
+  },
+  {
+   "id": "qw-inna",
+   "kind": "word",
+   "ar": "إِنَّ",
+   "tr": "inna",
+   "en": "Indeed, truly",
+   "ur": "بے شک",
+   "hook": {
+    "en": "‘Inna lillahi’ = indeed to Allah…",
+    "ur": "’انا للہ‘"
+   }
+  },
+  {
+   "id": "qw-alladhina",
+   "kind": "word",
+   "ar": "الَّذِينَ",
+   "tr": "alladheena",
+   "en": "Those who",
+   "ur": "وہ لوگ جو"
+  },
+  {
+   "id": "qw-huwa",
+   "kind": "word",
+   "ar": "هُوَ",
+   "tr": "huwa",
+   "en": "He",
+   "ur": "وہ",
+   "hook": {
+    "en": "‘Qul huwa llahu ahad’.",
+    "ur": "’قل ہو اللہ احد‘"
+   }
+  },
+  {
+   "id": "qw-hum",
+   "kind": "word",
+   "ar": "هُمْ",
+   "tr": "hum",
+   "en": "They",
+   "ur": "وہ سب"
+  },
+  {
+   "id": "qw-kana",
+   "kind": "word",
+   "ar": "كَانَ",
+   "tr": "kana",
+   "en": "He was",
+   "ur": "وہ تھا"
+  },
+  {
+   "id": "qw-kull",
+   "kind": "word",
+   "ar": "كُلّ",
+   "tr": "kull",
+   "en": "All, every",
+   "ur": "ہر، سب",
+   "hook": {
+    "en": "Urdu ‘kul’ (total).",
+    "ur": "اردو ’کُل‘"
+   }
+  },
+  {
+   "id": "qw-qul",
+   "kind": "word",
+   "ar": "قُلْ",
+   "tr": "qul",
+   "en": "Say!",
+   "ur": "کہہ دیجیے",
+   "hook": {
+    "en": "The first word of the last four surahs that start ‘Qul’.",
+    "ur": "’قل‘ والی سورتیں"
+   }
+  },
+  {
+   "id": "qw-aleem",
+   "kind": "word",
+   "ar": "عَلِيم",
+   "tr": "'aleem",
+   "en": "All-Knowing",
+   "ur": "سب جاننے والا",
+   "hook": {
+    "en": "Same root as ‘ilm’ and ‘aalim’.",
+    "ur": "’علم‘ اور ’عالم‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-hakeem",
+   "kind": "word",
+   "ar": "حَكِيم",
+   "tr": "hakeem",
+   "en": "All-Wise",
+   "ur": "حکمت والا",
+   "hook": {
+    "en": "Urdu ‘hakeem’ and ‘hikmat’.",
+    "ur": "’حکیم‘ اور ’حکمت‘"
+   }
+  },
+  {
+   "id": "qw-ghafoor",
+   "kind": "word",
+   "ar": "غَفُور",
+   "tr": "ghafoor",
+   "en": "Most Forgiving",
+   "ur": "بہت بخشنے والا",
+   "hook": {
+    "en": "‘Maghfirat’ (forgiveness).",
+    "ur": "’مغفرت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-raheem",
+   "kind": "word",
+   "ar": "رَحِيم",
+   "tr": "raheem",
+   "en": "Most Merciful",
+   "ur": "نہایت رحم والا",
+   "hook": {
+    "en": "‘Raheem’, as in the Bismillah.",
+    "ur": "بسم اللہ والا ’رحیم‘"
+   }
+  },
+  {
+   "id": "qw-rahman",
+   "kind": "word",
+   "ar": "الرَّحْمَٰن",
+   "tr": "ar-rahman",
+   "en": "The Most Gracious",
+   "ur": "بڑا مہربان"
+  },
+  {
+   "id": "qw-qadeer",
+   "kind": "word",
+   "ar": "قَدِير",
+   "tr": "qadeer",
+   "en": "All-Powerful",
+   "ur": "ہر چیز پر قادر",
+   "hook": {
+    "en": "‘Qudrat’ (power).",
+    "ur": "’قدرت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-samee",
+   "kind": "word",
+   "ar": "سَمِيع",
+   "tr": "samee'",
+   "en": "All-Hearing",
+   "ur": "سب سننے والا"
+  },
+  {
+   "id": "qw-baseer",
+   "kind": "word",
+   "ar": "بَصِير",
+   "tr": "baseer",
+   "en": "All-Seeing",
+   "ur": "سب دیکھنے والا",
+   "hook": {
+    "en": "‘Basarat’ (sight).",
+    "ur": "’بصارت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "q-113-1",
+   "kind": "ayah",
+   "quran": "113:1",
+   "ar": "",
+   "tr": "qul a'oodhu bi-rabbi l-falaq",
+   "en": "Say: I seek refuge in the Lord of the daybreak",
+   "ur": "کہہ دیجیے: میں صبح کے رب کی پناہ مانگتا ہوں"
+  },
+  {
+   "id": "q-113-2",
+   "kind": "ayah",
+   "quran": "113:2",
+   "ar": "",
+   "tr": "min sharri ma khalaq",
+   "en": "from the evil of what He created,",
+   "ur": "اس کی مخلوق کے شر سے"
+  },
+  {
+   "id": "q-113-3",
+   "kind": "ayah",
+   "quran": "113:3",
+   "ar": "",
+   "tr": "wa min sharri ghasiqin idha waqab",
+   "en": "and from the evil of darkness when it settles,",
+   "ur": "اور اندھیری رات کے شر سے جب وہ چھا جائے"
+  },
+  {
+   "id": "q-113-4",
+   "kind": "ayah",
+   "quran": "113:4",
+   "ar": "",
+   "tr": "wa min sharri n-naffathati fi l-'uqad",
+   "en": "and from the evil of those who blow on knots,",
+   "ur": "اور گرہوں میں پھونکنے والیوں کے شر سے"
+  },
+  {
+   "id": "q-113-5",
+   "kind": "ayah",
+   "quran": "113:5",
+   "ar": "",
+   "tr": "wa min sharri hasidin idha hasad",
+   "en": "and from the evil of an envier when he envies.",
+   "ur": "اور حسد کرنے والے کے شر سے جب وہ حسد کرے"
+  },
+  {
+   "id": "qw-dunya",
+   "kind": "word",
+   "ar": "الدُّنْيَا",
+   "tr": "ad-dunya",
+   "en": "This world",
+   "ur": "دنیا"
+  },
+  {
+   "id": "qw-akhira",
+   "kind": "word",
+   "ar": "الْآخِرَة",
+   "tr": "al-akhira",
+   "en": "The Hereafter",
+   "ur": "آخرت"
+  },
+  {
+   "id": "qw-mawt",
+   "kind": "word",
+   "ar": "مَوْت",
+   "tr": "mawt",
+   "en": "Death",
+   "ur": "موت"
+  },
+  {
+   "id": "qw-hayat",
+   "kind": "word",
+   "ar": "حَيَاة",
+   "tr": "hayat",
+   "en": "Life",
+   "ur": "زندگی",
+   "hook": {
+    "en": "Urdu ‘hayaat’.",
+    "ur": "اردو ’حیات‘"
+   }
+  },
+  {
+   "id": "qw-huda",
+   "kind": "word",
+   "ar": "هُدًى",
+   "tr": "huda",
+   "en": "Guidance",
+   "ur": "ہدایت",
+   "hook": {
+    "en": "‘Hidayat’ is the same root.",
+    "ur": "’ہدایت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-sirat",
+   "kind": "word",
+   "ar": "صِرَاط",
+   "tr": "sirat",
+   "en": "Path",
+   "ur": "راستہ",
+   "hook": {
+    "en": "‘Sirat-ul-mustaqeem’ in Al-Fatiha.",
+    "ur": "فاتحہ کا ’صراط مستقیم‘"
+   }
+  },
+  {
+   "id": "qw-adhab",
+   "kind": "word",
+   "ar": "عَذَاب",
+   "tr": "'adhab",
+   "en": "Punishment",
+   "ur": "عذاب"
+  },
+  {
+   "id": "qw-ajr",
+   "kind": "word",
+   "ar": "أَجْر",
+   "tr": "ajr",
+   "en": "Reward",
+   "ur": "اجر",
+   "hook": {
+    "en": "Urdu ‘ajr’ (reward).",
+    "ur": "اردو ’اجر‘"
+   }
+  },
+  {
+   "id": "qw-khayr",
+   "kind": "word",
+   "ar": "خَيْر",
+   "tr": "khayr",
+   "en": "Good",
+   "ur": "بھلائی",
+   "hook": {
+    "en": "Urdu ‘khair’.",
+    "ur": "اردو ’خیر‘"
+   }
+  },
+  {
+   "id": "qw-deen",
+   "kind": "word",
+   "ar": "دِين",
+   "tr": "deen",
+   "en": "Religion; judgement",
+   "ur": "دین؛ جزا",
+   "hook": {
+    "en": "‘Yawm ad-deen’ = Day of Judgement.",
+    "ur": "’یوم الدین‘"
+   }
+  },
+  {
+   "id": "q-114-1",
+   "kind": "ayah",
+   "quran": "114:1",
+   "ar": "",
+   "tr": "qul a'oodhu bi-rabbi n-nas",
+   "en": "Say: I seek refuge in the Lord of mankind,",
+   "ur": "کہہ دیجیے: میں لوگوں کے رب کی پناہ مانگتا ہوں"
+  },
+  {
+   "id": "q-114-2",
+   "kind": "ayah",
+   "quran": "114:2",
+   "ar": "",
+   "tr": "maliki n-nas",
+   "en": "the King of mankind,",
+   "ur": "لوگوں کے بادشاہ کی"
+  },
+  {
+   "id": "q-114-3",
+   "kind": "ayah",
+   "quran": "114:3",
+   "ar": "",
+   "tr": "ilahi n-nas",
+   "en": "the God of mankind,",
+   "ur": "لوگوں کے معبود کی"
+  },
+  {
+   "id": "q-114-4",
+   "kind": "ayah",
+   "quran": "114:4",
+   "ar": "",
+   "tr": "min sharri l-waswasi l-khannas",
+   "en": "from the evil of the whisperer who withdraws,",
+   "ur": "وسوسہ ڈالنے والے، پیچھے ہٹ جانے والے کے شر سے"
+  },
+  {
+   "id": "q-114-5",
+   "kind": "ayah",
+   "quran": "114:5",
+   "ar": "",
+   "tr": "alladhi yuwaswisu fi sudoori n-nas",
+   "en": "who whispers in the hearts of mankind,",
+   "ur": "جو لوگوں کے دلوں میں وسوسہ ڈالتا ہے"
+  },
+  {
+   "id": "q-114-6",
+   "kind": "ayah",
+   "quran": "114:6",
+   "ar": "",
+   "tr": "mina l-jinnati wa n-nas",
+   "en": "from among the jinn and mankind.",
+   "ur": "جنوں میں سے ہو یا انسانوں میں سے"
+  },
+  {
+   "id": "qw-sabr",
+   "kind": "word",
+   "ar": "صَبْر",
+   "tr": "sabr",
+   "en": "Patience",
+   "ur": "صبر"
+  },
+  {
+   "id": "qw-shukr",
+   "kind": "word",
+   "ar": "شُكْر",
+   "tr": "shukr",
+   "en": "Gratitude",
+   "ur": "شکر"
+  },
+  {
+   "id": "qw-dhikr",
+   "kind": "word",
+   "ar": "ذِكْر",
+   "tr": "dhikr",
+   "en": "Remembrance",
+   "ur": "ذکر",
+   "hook": {
+    "en": "Urdu ‘zikr’; Arabic ذ = dh.",
+    "ur": "اردو ’ذکر‘؛ عربی میں ذ = dh"
+   }
+  },
+  {
+   "id": "qw-taqwa",
+   "kind": "word",
+   "ar": "تَقْوَى",
+   "tr": "taqwa",
+   "en": "God-consciousness",
+   "ur": "تقویٰ"
+  },
+  {
+   "id": "qw-tawba",
+   "kind": "word",
+   "ar": "تَوْبَة",
+   "tr": "tawba",
+   "en": "Repentance",
+   "ur": "توبہ"
+  },
+  {
+   "id": "qw-iman",
+   "kind": "word",
+   "ar": "إِيمَان",
+   "tr": "iman",
+   "en": "Faith",
+   "ur": "ایمان"
+  },
+  {
+   "id": "qw-ihsan",
+   "kind": "word",
+   "ar": "إِحْسَان",
+   "tr": "ihsan",
+   "en": "Excellence, doing good",
+   "ur": "احسان"
+  },
+  {
+   "id": "qw-adl",
+   "kind": "word",
+   "ar": "عَدْل",
+   "tr": "'adl",
+   "en": "Justice",
+   "ur": "عدل، انصاف",
+   "hook": {
+    "en": "Urdu ‘adl’ and ‘adaalat’.",
+    "ur": "’عدل‘ اور ’عدالت‘"
+   }
+  },
+  {
+   "id": "q-108-1",
+   "kind": "ayah",
+   "quran": "108:1",
+   "ar": "",
+   "tr": "inna a'taynaka l-kawthar",
+   "en": "Indeed, We have given you al-Kawthar (abundance).",
+   "ur": "بے شک ہم نے آپ کو کوثر عطا کی"
+  },
+  {
+   "id": "q-108-2",
+   "kind": "ayah",
+   "quran": "108:2",
+   "ar": "",
+   "tr": "fa-salli li-rabbika wa nhar",
+   "en": "So pray to your Lord and sacrifice.",
+   "ur": "پس اپنے رب کے لیے نماز پڑھیں اور قربانی کریں"
+  },
+  {
+   "id": "q-108-3",
+   "kind": "ayah",
+   "quran": "108:3",
+   "ar": "",
+   "tr": "inna shani'aka huwa l-abtar",
+   "en": "Indeed, your enemy is the one cut off.",
+   "ur": "بے شک آپ کا دشمن ہی بے نام و نشان ہے"
+  },
+  {
+   "id": "qw-shams",
+   "kind": "word",
+   "ar": "شَمْس",
+   "tr": "shams",
+   "en": "Sun",
+   "ur": "سورج",
+   "hook": {
+    "en": "‘Shamsi’ calendar = solar.",
+    "ur": "’شمسی‘ سال"
+   }
+  },
+  {
+   "id": "qw-qamar",
+   "kind": "word",
+   "ar": "قَمَر",
+   "tr": "qamar",
+   "en": "Moon",
+   "ur": "چاند",
+   "hook": {
+    "en": "‘Qamari’ calendar = lunar.",
+    "ur": "’قمری‘ سال"
+   }
+  },
+  {
+   "id": "qw-layl",
+   "kind": "word",
+   "ar": "لَيْل",
+   "tr": "layl",
+   "en": "Night",
+   "ur": "رات"
+  },
+  {
+   "id": "qw-nahar",
+   "kind": "word",
+   "ar": "نَهَار",
+   "tr": "nahar",
+   "en": "Daytime",
+   "ur": "دن"
+  },
+  {
+   "id": "qw-bahr",
+   "kind": "word",
+   "ar": "بَحْر",
+   "tr": "bahr",
+   "en": "Sea",
+   "ur": "سمندر",
+   "hook": {
+    "en": "‘Bahr-e-Arab’ = Arabian Sea.",
+    "ur": "’بحیرۂ عرب‘"
+   }
+  },
+  {
+   "id": "qw-nafs",
+   "kind": "word",
+   "ar": "نَفْس",
+   "tr": "nafs",
+   "en": "Soul, self",
+   "ur": "نفس، جان"
+  },
+  {
+   "id": "qw-insan",
+   "kind": "word",
+   "ar": "إِنْسَان",
+   "tr": "insan",
+   "en": "Human being",
+   "ur": "انسان"
+  },
+  {
+   "id": "qw-rasool",
+   "kind": "word",
+   "ar": "رَسُول",
+   "tr": "rasool",
+   "en": "Messenger",
+   "ur": "رسول"
+  },
+  {
+   "id": "q-103-1",
+   "kind": "ayah",
+   "quran": "103:1",
+   "ar": "",
+   "tr": "wal-'asr",
+   "en": "By time,",
+   "ur": "زمانے کی قسم"
+  },
+  {
+   "id": "q-103-2",
+   "kind": "ayah",
+   "quran": "103:2",
+   "ar": "",
+   "tr": "inna l-insana la-fee khusr",
+   "en": "indeed, mankind is in loss,",
+   "ur": "بے شک انسان خسارے میں ہے"
+  },
+  {
+   "id": "q-103-3",
+   "kind": "ayah",
+   "quran": "103:3",
+   "ar": "",
+   "tr": "illa lladheena amanu wa 'amilu s-salihati wa tawasaw bil-haqqi wa tawasaw bis-sabr",
+   "en": "except those who believe, do good deeds, and urge one another to the truth and to patience.",
+   "ur": "سوائے ان کے جو ایمان لائے، نیک عمل کیے، اور ایک دوسرے کو حق اور صبر کی تلقین کی"
+  }
+ ],
+ "planned": 103
+}

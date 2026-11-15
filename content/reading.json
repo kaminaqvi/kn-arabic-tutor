@@ -1,0 +1,815 @@
+{
+ "id": "reading",
+ "title": {
+  "en": "General reading",
+  "ur": "عام پڑھائی"
+ },
+ "units": [
+  {
+   "id": "r-people",
+   "title": {
+    "en": "People and places",
+    "ur": "لوگ اور جگہیں"
+   },
+   "items": [
+    "rd-rajul",
+    "rd-imraa",
+    "rd-walad",
+    "rd-bint",
+    "rd-ab",
+    "rd-umm",
+    "rd-madrasa",
+    "rd-madina",
+    "rd-souq",
+    "rd-masjid",
+    "rd-shari",
+    "rd-bayt"
+   ]
+  },
+  {
+   "id": "r-past",
+   "title": {
+    "en": "Verbs: what happened",
+    "ur": "فعل: کیا ہوا"
+   },
+   "items": [
+    "rd-dhahaba",
+    "rd-jaa",
+    "rd-akala",
+    "rd-shariba",
+    "rd-kataba",
+    "rd-qaraa",
+    "rd-jalasa",
+    "rd-kharaja",
+    "rd-dakhala",
+    "rd-fataha",
+    "rd-samia",
+    "rd-arafa"
+   ]
+  },
+  {
+   "id": "r-present",
+   "title": {
+    "en": "Verbs: I, you, he, we",
+    "ur": "فعل: میں، تم، وہ، ہم"
+   },
+   "items": [
+    "rd-adhhabu",
+    "rd-tadhhabu",
+    "rd-yadhhabu",
+    "rd-nadhhabu",
+    "rd-ureedu",
+    "rd-arifu",
+    "rd-laarifu",
+    "rd-afhamu"
+   ]
+  },
+  {
+   "id": "r-describe",
+   "title": {
+    "en": "Describing words",
+    "ur": "صفت"
+   },
+   "items": [
+    "rd-kabeer",
+    "rd-sagheer",
+    "rd-jadeed",
+    "rd-qadeem",
+    "rd-jameel",
+    "rd-taweel",
+    "rd-qaseer",
+    "rd-katheer",
+    "rd-qaleel",
+    "rd-sahl",
+    "rd-saab"
+   ]
+  },
+  {
+   "id": "r-signs",
+   "title": {
+    "en": "Reading signs",
+    "ur": "سائن بورڈ"
+   },
+   "items": [
+    "um-s-makhraj",
+    "um-s-madkhal",
+    "um-s-rijal",
+    "um-s-nisa",
+    "um-s-miyah",
+    "um-s-tasweer",
+    "um-s-mawaqif",
+    "um-s-maftooh",
+    "um-s-mughlaq",
+    "um-s-tawari",
+    "um-s-istilamat"
+   ]
+  },
+  {
+   "id": "r-sentences",
+   "title": {
+    "en": "First sentences",
+    "ur": "پہلے جملے"
+   },
+   "items": [
+    "rd-s1",
+    "rd-s2",
+    "rd-s3",
+    "rd-s4",
+    "rd-s5",
+    "rd-s6",
+    "rd-s7",
+    "rd-s8"
+   ]
+  },
+  {
+   "id": "r-news",
+   "title": {
+    "en": "News words",
+    "ur": "خبروں کے الفاظ"
+   },
+   "items": [
+    "rd-akhbar",
+    "rd-hukooma",
+    "rd-raees",
+    "rd-wazeer",
+    "rd-dawla",
+    "rd-alam",
+    "rd-iqtisad",
+    "rd-intikhabat",
+    "rd-taqs",
+    "rd-yawmi"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "rd-rajul",
+   "kind": "word",
+   "ar": "رَجُل",
+   "tr": "rajul",
+   "en": "Man",
+   "ur": "آدمی",
+   "hook": {
+    "en": "‘Rijal’ (men) is its plural.",
+    "ur": "جمع ’رجال‘"
+   }
+  },
+  {
+   "id": "rd-imraa",
+   "kind": "word",
+   "ar": "اِمْرَأَة",
+   "tr": "imra'a",
+   "en": "Woman",
+   "ur": "عورت"
+  },
+  {
+   "id": "rd-walad",
+   "kind": "word",
+   "ar": "وَلَد",
+   "tr": "walad",
+   "en": "Boy, child",
+   "ur": "لڑکا، بچہ",
+   "hook": {
+    "en": "‘Walid’ (father) and ‘aulad’ (children).",
+    "ur": "’والد‘ اور ’اولاد‘"
+   }
+  },
+  {
+   "id": "rd-bint",
+   "kind": "word",
+   "ar": "بِنْت",
+   "tr": "bint",
+   "en": "Girl, daughter",
+   "ur": "لڑکی، بیٹی",
+   "hook": {
+    "en": "As in ‘Bint-e-Ali’.",
+    "ur": "جیسے ’بنتِ علی‘"
+   }
+  },
+  {
+   "id": "rd-ab",
+   "kind": "word",
+   "ar": "أَب",
+   "tr": "ab",
+   "en": "Father",
+   "ur": "باپ",
+   "hook": {
+    "en": "‘Abba’, ‘Abu’.",
+    "ur": "’ابا‘، ’ابو‘"
+   }
+  },
+  {
+   "id": "rd-umm",
+   "kind": "word",
+   "ar": "أُمّ",
+   "tr": "umm",
+   "en": "Mother",
+   "ur": "ماں",
+   "hook": {
+    "en": "‘Ummi’, ‘Ummul-Mo’mineen’.",
+    "ur": "’امی‘، ’ام المؤمنین‘"
+   }
+  },
+  {
+   "id": "rd-madrasa",
+   "kind": "word",
+   "ar": "مَدْرَسَة",
+   "tr": "madrasa",
+   "en": "School",
+   "ur": "اسکول، مدرسہ",
+   "hook": {
+    "en": "Urdu ‘madrassa’.",
+    "ur": "اردو ’مدرسہ‘"
+   }
+  },
+  {
+   "id": "rd-madina",
+   "kind": "word",
+   "ar": "مَدِينَة",
+   "tr": "madina",
+   "en": "City",
+   "ur": "شہر",
+   "hook": {
+    "en": "Madinah = ‘The City’.",
+    "ur": "مدینہ = ’شہر‘"
+   }
+  },
+  {
+   "id": "rd-souq",
+   "kind": "word",
+   "ar": "سُوق",
+   "tr": "sooq",
+   "en": "Market",
+   "ur": "بازار"
+  },
+  {
+   "id": "rd-masjid",
+   "kind": "word",
+   "ar": "مَسْجِد",
+   "tr": "masjid",
+   "en": "Mosque",
+   "ur": "مسجد"
+  },
+  {
+   "id": "rd-shari",
+   "kind": "word",
+   "ar": "شَارِع",
+   "tr": "shari'",
+   "en": "Street",
+   "ur": "سڑک",
+   "hook": {
+    "en": "Urdu ‘shahrah’ (highway) is related in sense.",
+    "ur": "’شارع‘ = سڑک"
+   }
+  },
+  {
+   "id": "rd-bayt",
+   "kind": "word",
+   "ar": "بَيْت",
+   "tr": "bayt",
+   "en": "House",
+   "ur": "گھر",
+   "hook": {
+    "en": "‘Baith’ (sitting) helps remember it.",
+    "ur": "’بیٹھنا‘ سے یاد رکھیں"
+   }
+  },
+  {
+   "id": "rd-dhahaba",
+   "kind": "word",
+   "ar": "ذَهَبَ",
+   "tr": "dhahaba",
+   "en": "He went",
+   "ur": "وہ گیا",
+   "hook": {
+    "en": "Root of ‘mazhab’ (the way one goes).",
+    "ur": "’مذہب‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-jaa",
+   "kind": "word",
+   "ar": "جَاءَ",
+   "tr": "ja'a",
+   "en": "He came",
+   "ur": "وہ آیا"
+  },
+  {
+   "id": "rd-akala",
+   "kind": "word",
+   "ar": "أَكَلَ",
+   "tr": "akala",
+   "en": "He ate",
+   "ur": "اس نے کھایا",
+   "hook": {
+    "en": "‘Akl’ = food.",
+    "ur": "’اکل‘ = کھانا"
+   }
+  },
+  {
+   "id": "rd-shariba",
+   "kind": "word",
+   "ar": "شَرِبَ",
+   "tr": "shariba",
+   "en": "He drank",
+   "ur": "اس نے پیا",
+   "hook": {
+    "en": "Root of ‘sharbat’.",
+    "ur": "’شربت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-kataba",
+   "kind": "word",
+   "ar": "كَتَبَ",
+   "tr": "kataba",
+   "en": "He wrote",
+   "ur": "اس نے لکھا",
+   "hook": {
+    "en": "Root of ‘kitab’ and ‘maktab’.",
+    "ur": "’کتاب‘ اور ’مکتب‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-qaraa",
+   "kind": "word",
+   "ar": "قَرَأَ",
+   "tr": "qara'a",
+   "en": "He read",
+   "ur": "اس نے پڑھا",
+   "hook": {
+    "en": "Root of ‘Qur’an’ and ‘qari’.",
+    "ur": "’قرآن‘ اور ’قاری‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-jalasa",
+   "kind": "word",
+   "ar": "جَلَسَ",
+   "tr": "jalasa",
+   "en": "He sat",
+   "ur": "وہ بیٹھا",
+   "hook": {
+    "en": "Root of ‘jalsa’ (gathering).",
+    "ur": "’جلسہ‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-kharaja",
+   "kind": "word",
+   "ar": "خَرَجَ",
+   "tr": "kharaja",
+   "en": "He went out",
+   "ur": "وہ باہر نکلا",
+   "hook": {
+    "en": "Root of ‘kharij’ (out).",
+    "ur": "’خارج‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-dakhala",
+   "kind": "word",
+   "ar": "دَخَلَ",
+   "tr": "dakhala",
+   "en": "He entered",
+   "ur": "وہ داخل ہوا",
+   "hook": {
+    "en": "Root of ‘dakhil’.",
+    "ur": "’داخل‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-fataha",
+   "kind": "word",
+   "ar": "فَتَحَ",
+   "tr": "fataha",
+   "en": "He opened",
+   "ur": "اس نے کھولا",
+   "hook": {
+    "en": "Root of ‘fateh’ and ‘Fatiha’.",
+    "ur": "’فتح‘ اور ’فاتحہ‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-samia",
+   "kind": "word",
+   "ar": "سَمِعَ",
+   "tr": "sami'a",
+   "en": "He heard",
+   "ur": "اس نے سنا",
+   "hook": {
+    "en": "Root of ‘sama’at’ (hearing).",
+    "ur": "’سماعت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-arafa",
+   "kind": "word",
+   "ar": "عَرَفَ",
+   "tr": "'arafa",
+   "en": "He knew, recognised",
+   "ur": "اس نے پہچانا",
+   "hook": {
+    "en": "Root of ‘ma’rifat’ and ‘ta’aruf’.",
+    "ur": "’معرفت‘ اور ’تعارف‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-adhhabu",
+   "kind": "word",
+   "ar": "أَذْهَبُ",
+   "tr": "adh-habu",
+   "en": "I go",
+   "ur": "میں جاتا ہوں",
+   "hook": {
+    "en": "أَ at the start = I.",
+    "ur": "شروع میں أَ = میں"
+   }
+  },
+  {
+   "id": "rd-tadhhabu",
+   "kind": "word",
+   "ar": "تَذْهَبُ",
+   "tr": "tadh-habu",
+   "en": "You go",
+   "ur": "تم جاتے ہو",
+   "hook": {
+    "en": "تَ at the start = you.",
+    "ur": "شروع میں تَ = تم"
+   }
+  },
+  {
+   "id": "rd-yadhhabu",
+   "kind": "word",
+   "ar": "يَذْهَبُ",
+   "tr": "yadh-habu",
+   "en": "He goes",
+   "ur": "وہ جاتا ہے",
+   "hook": {
+    "en": "يَ at the start = he.",
+    "ur": "شروع میں يَ = وہ"
+   }
+  },
+  {
+   "id": "rd-nadhhabu",
+   "kind": "word",
+   "ar": "نَذْهَبُ",
+   "tr": "nadh-habu",
+   "en": "We go",
+   "ur": "ہم جاتے ہیں",
+   "hook": {
+    "en": "نَ at the start = we.",
+    "ur": "شروع میں نَ = ہم"
+   }
+  },
+  {
+   "id": "rd-ureedu",
+   "kind": "word",
+   "ar": "أُرِيدُ",
+   "tr": "ureedu",
+   "en": "I want",
+   "ur": "میں چاہتا ہوں",
+   "hook": {
+    "en": "Root of ‘irada’ (intention).",
+    "ur": "’ارادہ‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-arifu",
+   "kind": "word",
+   "ar": "أَعْرِفُ",
+   "tr": "a'rifu",
+   "en": "I know",
+   "ur": "میں جانتا ہوں"
+  },
+  {
+   "id": "rd-laarifu",
+   "kind": "phrase",
+   "ar": "لَا أَعْرِفُ",
+   "tr": "la a'rifu",
+   "en": "I don't know",
+   "ur": "میں نہیں جانتا"
+  },
+  {
+   "id": "rd-afhamu",
+   "kind": "word",
+   "ar": "أَفْهَمُ",
+   "tr": "afhamu",
+   "en": "I understand",
+   "ur": "میں سمجھتا ہوں",
+   "hook": {
+    "en": "Root of ‘fahm’.",
+    "ur": "’فہم‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-kabeer",
+   "kind": "word",
+   "ar": "كَبِير",
+   "tr": "kabeer",
+   "en": "Big",
+   "ur": "بڑا",
+   "hook": {
+    "en": "‘Kabeer’, as in Urdu.",
+    "ur": "اردو ’کبیر‘"
+   }
+  },
+  {
+   "id": "rd-sagheer",
+   "kind": "word",
+   "ar": "صَغِير",
+   "tr": "sagheer",
+   "en": "Small",
+   "ur": "چھوٹا",
+   "hook": {
+    "en": "‘Sagheer’, as in Urdu.",
+    "ur": "اردو ’صغیر‘"
+   }
+  },
+  {
+   "id": "rd-jadeed",
+   "kind": "word",
+   "ar": "جَدِيد",
+   "tr": "jadeed",
+   "en": "New",
+   "ur": "نیا",
+   "hook": {
+    "en": "Urdu ‘jadeed’ (modern).",
+    "ur": "اردو ’جدید‘"
+   }
+  },
+  {
+   "id": "rd-qadeem",
+   "kind": "word",
+   "ar": "قَدِيم",
+   "tr": "qadeem",
+   "en": "Old",
+   "ur": "پرانا",
+   "hook": {
+    "en": "Urdu ‘qadeem’.",
+    "ur": "اردو ’قدیم‘"
+   }
+  },
+  {
+   "id": "rd-jameel",
+   "kind": "word",
+   "ar": "جَمِيل",
+   "tr": "jameel",
+   "en": "Beautiful",
+   "ur": "خوبصورت",
+   "hook": {
+    "en": "‘Jamal’ (beauty).",
+    "ur": "’جمال‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-taweel",
+   "kind": "word",
+   "ar": "طَوِيل",
+   "tr": "taweel",
+   "en": "Long, tall",
+   "ur": "لمبا",
+   "hook": {
+    "en": "Urdu ‘taveel’.",
+    "ur": "اردو ’طویل‘"
+   }
+  },
+  {
+   "id": "rd-qaseer",
+   "kind": "word",
+   "ar": "قَصِير",
+   "tr": "qaseer",
+   "en": "Short",
+   "ur": "چھوٹا، کوتاہ",
+   "hook": {
+    "en": "‘Qasr’ = shortening the prayer.",
+    "ur": "’قصر‘ نماز"
+   }
+  },
+  {
+   "id": "rd-katheer",
+   "kind": "word",
+   "ar": "كَثِير",
+   "tr": "katheer",
+   "en": "Many, a lot",
+   "ur": "بہت",
+   "hook": {
+    "en": "Urdu ‘kaseer’ (abundant).",
+    "ur": "اردو ’کثیر‘"
+   }
+  },
+  {
+   "id": "rd-qaleel",
+   "kind": "word",
+   "ar": "قَلِيل",
+   "tr": "qaleel",
+   "en": "Few, a little",
+   "ur": "تھوڑا",
+   "hook": {
+    "en": "Urdu ‘qaleel’.",
+    "ur": "اردو ’قلیل‘"
+   }
+  },
+  {
+   "id": "rd-sahl",
+   "kind": "word",
+   "ar": "سَهْل",
+   "tr": "sahl",
+   "en": "Easy",
+   "ur": "آسان",
+   "hook": {
+    "en": "‘Sahulat’ (facility).",
+    "ur": "’سہولت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-saab",
+   "kind": "word",
+   "ar": "صَعْب",
+   "tr": "sa'b",
+   "en": "Difficult",
+   "ur": "مشکل"
+  },
+  {
+   "id": "rd-s1",
+   "kind": "phrase",
+   "ar": "ذَهَبَ الْوَلَدُ إِلَى الْمَدْرَسَةِ",
+   "tr": "dhahaba l-waladu ila l-madrasati",
+   "en": "The boy went to school",
+   "ur": "لڑکا اسکول گیا"
+  },
+  {
+   "id": "rd-s2",
+   "kind": "phrase",
+   "ar": "الْبَيْتُ كَبِيرٌ",
+   "tr": "al-baytu kabeerun",
+   "en": "The house is big",
+   "ur": "گھر بڑا ہے"
+  },
+  {
+   "id": "rd-s3",
+   "kind": "phrase",
+   "ar": "قَرَأَتِ الْبِنْتُ الْكِتَابَ",
+   "tr": "qara'ati l-bintu l-kitab",
+   "en": "The girl read the book",
+   "ur": "لڑکی نے کتاب پڑھی",
+   "hook": {
+    "en": "A ت after the verb shows a female doer.",
+    "ur": "فعل کے بعد ت = مؤنث"
+   }
+  },
+  {
+   "id": "rd-s4",
+   "kind": "phrase",
+   "ar": "أَيْنَ الْمَسْجِدُ؟",
+   "tr": "ayna l-masjidu?",
+   "en": "Where is the mosque?",
+   "ur": "مسجد کہاں ہے؟",
+   "hook": {
+    "en": "Textbook ‘ayna’ = Saudi ‘fen’.",
+    "ur": "کتابی ’أین‘ = سعودی ’فین‘"
+   }
+  },
+  {
+   "id": "rd-s5",
+   "kind": "phrase",
+   "ar": "هَذَا كِتَابٌ جَدِيدٌ",
+   "tr": "hadha kitabun jadeed",
+   "en": "This is a new book",
+   "ur": "یہ نئی کتاب ہے"
+  },
+  {
+   "id": "rd-s6",
+   "kind": "phrase",
+   "ar": "الْمَدِينَةُ جَمِيلَةٌ",
+   "tr": "al-madinatu jameela",
+   "en": "The city is beautiful",
+   "ur": "شہر خوبصورت ہے"
+  },
+  {
+   "id": "rd-s7",
+   "kind": "phrase",
+   "ar": "شَرِبَ الرَّجُلُ الْمَاءَ",
+   "tr": "shariba r-rajulu l-ma'",
+   "en": "The man drank the water",
+   "ur": "آدمی نے پانی پیا"
+  },
+  {
+   "id": "rd-s8",
+   "kind": "phrase",
+   "ar": "أُرِيدُ أَنْ أَتَعَلَّمَ الْعَرَبِيَّةَ",
+   "tr": "ureedu an ata'allama l-'arabiyya",
+   "en": "I want to learn Arabic",
+   "ur": "میں عربی سیکھنا چاہتا ہوں",
+   "hook": {
+    "en": "‘Ta’allum’ = learning, as in ‘ta’leem’.",
+    "ur": "’تعلیم‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-akhbar",
+   "kind": "word",
+   "ar": "أَخْبَار",
+   "tr": "akhbar",
+   "en": "News",
+   "ur": "خبریں",
+   "hook": {
+    "en": "Urdu ‘akhbaar’ (newspaper).",
+    "ur": "اردو ’اخبار‘"
+   }
+  },
+  {
+   "id": "rd-hukooma",
+   "kind": "word",
+   "ar": "حُكُومَة",
+   "tr": "hukooma",
+   "en": "Government",
+   "ur": "حکومت"
+  },
+  {
+   "id": "rd-raees",
+   "kind": "word",
+   "ar": "رَئِيس",
+   "tr": "ra'ees",
+   "en": "President, head",
+   "ur": "صدر، سربراہ",
+   "hook": {
+    "en": "Urdu ‘raees’ (chief, rich man).",
+    "ur": "اردو ’رئیس‘"
+   }
+  },
+  {
+   "id": "rd-wazeer",
+   "kind": "word",
+   "ar": "وَزِير",
+   "tr": "wazeer",
+   "en": "Minister",
+   "ur": "وزیر"
+  },
+  {
+   "id": "rd-dawla",
+   "kind": "word",
+   "ar": "دَوْلَة",
+   "tr": "dawla",
+   "en": "State, country",
+   "ur": "ریاست، ملک",
+   "hook": {
+    "en": "Urdu ‘daulat’ (wealth) is the same root.",
+    "ur": "’دولت‘ کا مادہ"
+   }
+  },
+  {
+   "id": "rd-alam",
+   "kind": "word",
+   "ar": "عَالَم",
+   "tr": "'alam",
+   "en": "World",
+   "ur": "دنیا، عالم",
+   "hook": {
+    "en": "Urdu ‘aalam’.",
+    "ur": "اردو ’عالم‘"
+   }
+  },
+  {
+   "id": "rd-iqtisad",
+   "kind": "word",
+   "ar": "اِقْتِصَاد",
+   "tr": "iqtisad",
+   "en": "Economy",
+   "ur": "معیشت",
+   "hook": {
+    "en": "Urdu ‘iqtisadiyat’.",
+    "ur": "اردو ’اقتصادیات‘"
+   }
+  },
+  {
+   "id": "rd-intikhabat",
+   "kind": "word",
+   "ar": "اِنْتِخَابَات",
+   "tr": "intikhabat",
+   "en": "Elections",
+   "ur": "انتخابات"
+  },
+  {
+   "id": "rd-taqs",
+   "kind": "word",
+   "ar": "طَقْس",
+   "tr": "taqs",
+   "en": "Weather",
+   "ur": "موسم"
+  },
+  {
+   "id": "rd-yawmi",
+   "kind": "word",
+   "ar": "يَوْمِيّ",
+   "tr": "yawmi",
+   "en": "Daily",
+   "ur": "روزانہ",
+   "hook": {
+    "en": "From ‘yawm’ (day).",
+    "ur": "’یوم‘ سے"
+   }
+  }
+ ],
+ "planned": 72
+}

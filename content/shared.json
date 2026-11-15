@@ -1,0 +1,250 @@
+{
+ "id": "shared",
+ "title": {
+  "en": "Shared items",
+  "ur": "مشترک"
+ },
+ "units": [],
+ "items": [
+  {
+   "id": "qw-allah",
+   "kind": "word",
+   "ar": "اللَّه",
+   "tr": "allah",
+   "en": "Allah",
+   "ur": "اللہ",
+   "tag": "quran"
+  },
+  {
+   "id": "qw-rabb",
+   "kind": "word",
+   "ar": "رَبّ",
+   "tr": "rabb",
+   "en": "Lord, Sustainer",
+   "ur": "رب، پالنے والا",
+   "tag": "quran",
+   "hook": {
+    "en": "Same as Urdu ‘Rabb’.",
+    "ur": "اردو کا ’رب‘"
+   }
+  },
+  {
+   "id": "qw-qala",
+   "kind": "word",
+   "ar": "قَالَ",
+   "tr": "qala",
+   "en": "He said",
+   "ur": "اس نے کہا",
+   "tag": "quran",
+   "hook": {
+    "en": "Same root as ‘qaul’ (saying).",
+    "ur": "’قول‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-yawm",
+   "kind": "word",
+   "ar": "يَوْم",
+   "tr": "yawm",
+   "en": "Day",
+   "ur": "دن",
+   "tag": "quran",
+   "hook": {
+    "en": "‘Yaum’, as in Yaum-e-Azadi.",
+    "ur": "’یوم‘، جیسے یومِ آزادی"
+   }
+  },
+  {
+   "id": "qw-ard",
+   "kind": "word",
+   "ar": "أَرْض",
+   "tr": "ard",
+   "en": "Earth, land",
+   "ur": "زمین",
+   "tag": "quran",
+   "hook": {
+    "en": "Urdu ‘arz’ (as in arz-e-pak). Arabic ض is a heavy d.",
+    "ur": "اردو ’ارض‘ (ارضِ پاک)، عربی میں ض بھاری د"
+   }
+  },
+  {
+   "id": "qw-sama",
+   "kind": "word",
+   "ar": "سَمَاء",
+   "tr": "sama'",
+   "en": "Sky, heaven",
+   "ur": "آسمان",
+   "tag": "quran",
+   "hook": {
+    "en": "Think ‘samawi’ (heavenly).",
+    "ur": "’سماوی‘ (آسمانی)"
+   }
+  },
+  {
+   "id": "qw-kitab",
+   "kind": "word",
+   "ar": "كِتَاب",
+   "tr": "kitab",
+   "en": "Book, scripture",
+   "ur": "کتاب",
+   "tag": "quran"
+  },
+  {
+   "id": "qw-ilm",
+   "kind": "word",
+   "ar": "عِلْم",
+   "tr": "'ilm",
+   "en": "Knowledge",
+   "ur": "علم",
+   "tag": "quran",
+   "hook": {
+    "en": "Same as Urdu ‘ilm’; sound the ع.",
+    "ur": "اردو ’علم‘، ع ادا کریں"
+   }
+  },
+  {
+   "id": "qw-rahma",
+   "kind": "word",
+   "ar": "رَحْمَة",
+   "tr": "rahma",
+   "en": "Mercy",
+   "ur": "رحمت",
+   "tag": "quran",
+   "hook": {
+    "en": "Urdu ‘rehmat’.",
+    "ur": "اردو ’رحمت‘"
+   }
+  },
+  {
+   "id": "qw-haqq",
+   "kind": "word",
+   "ar": "حَقّ",
+   "tr": "haqq",
+   "en": "Truth, right",
+   "ur": "حق، سچ",
+   "tag": "quran"
+  },
+  {
+   "id": "qw-nas",
+   "kind": "word",
+   "ar": "نَاس",
+   "tr": "nas",
+   "en": "People, mankind",
+   "ur": "لوگ",
+   "tag": "quran",
+   "hook": {
+    "en": "Surah An-Nas; also ‘insaan’.",
+    "ur": "سورۃ الناس؛ ’انسان‘"
+   }
+  },
+  {
+   "id": "qw-qalb",
+   "kind": "word",
+   "ar": "قَلْب",
+   "tr": "qalb",
+   "en": "Heart",
+   "ur": "دل",
+   "tag": "quran",
+   "hook": {
+    "en": "Urdu ‘qalb’ (heart).",
+    "ur": "اردو ’قلب‘"
+   }
+  },
+  {
+   "id": "qw-noor",
+   "kind": "word",
+   "ar": "نُور",
+   "tr": "noor",
+   "en": "Light",
+   "ur": "روشنی، نور",
+   "tag": "quran"
+  },
+  {
+   "id": "qw-salah",
+   "kind": "word",
+   "ar": "صَلَاة",
+   "tr": "salah",
+   "en": "Prayer",
+   "ur": "نماز",
+   "tag": "quran",
+   "hook": {
+    "en": "‘Salat’, the Arabic word for namaz.",
+    "ur": "نماز کا عربی نام"
+   }
+  },
+  {
+   "id": "qw-janna",
+   "kind": "word",
+   "ar": "جَنَّة",
+   "tr": "janna",
+   "en": "Paradise, garden",
+   "ur": "جنت",
+   "tag": "quran"
+  },
+  {
+   "id": "qw-nar",
+   "kind": "word",
+   "ar": "نَار",
+   "tr": "nar",
+   "en": "Fire",
+   "ur": "آگ",
+   "tag": "quran",
+   "hook": {
+    "en": "Urdu ‘naar’ (hellfire).",
+    "ur": "اردو ’نار‘"
+   }
+  },
+  {
+   "id": "qw-amanu",
+   "kind": "word",
+   "ar": "آمَنُوا",
+   "tr": "amanu",
+   "en": "They believed",
+   "ur": "وہ ایمان لائے",
+   "tag": "quran",
+   "hook": {
+    "en": "Same root as ‘iman’ and ‘amaan’ (safety).",
+    "ur": "’ایمان‘ اور ’امان‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-amilu",
+   "kind": "word",
+   "ar": "عَمِلُوا",
+   "tr": "'amilu",
+   "en": "They did (deeds)",
+   "ur": "انہوں نے عمل کیے",
+   "tag": "quran",
+   "hook": {
+    "en": "Same root as ‘amal’ (deed).",
+    "ur": "’عمل‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-salihat",
+   "kind": "word",
+   "ar": "الصَّالِحَات",
+   "tr": "as-salihat",
+   "en": "Good deeds",
+   "ur": "نیک اعمال",
+   "tag": "quran",
+   "hook": {
+    "en": "Same root as ‘saleh’ (righteous).",
+    "ur": "’صالح‘ کا مادہ"
+   }
+  },
+  {
+   "id": "qw-kafaru",
+   "kind": "word",
+   "ar": "كَفَرُوا",
+   "tr": "kafaru",
+   "en": "They disbelieved",
+   "ur": "انہوں نے انکار کیا",
+   "tag": "quran",
+   "hook": {
+    "en": "Same root as ‘kufr’.",
+    "ur": "’کفر‘ کا مادہ"
+   }
+  }
+ ]
+}
