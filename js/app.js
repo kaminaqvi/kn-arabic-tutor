@@ -4,7 +4,7 @@ import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, ge
 import { t, L, setLang, getLang } from './i18n.js';
 import { listProfiles, activeProfile, migrateProfiles, createProfile, deleteProfile, openProfile, chooseProfile, profileSummary, updateProfile, getMode, setMode, ADULT_ICONS } from './profiles.js';
 
-const APP_VERSION = '3.7.0';
+const APP_VERSION = '3.7.1';
 const APP_DATE = '2026-11-16';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
@@ -233,6 +233,28 @@ function profileCard(p, sum, manage) {
     ${manage ? `<div class="who-tools"><button class="btn small" data-rename="${p.id}">${t('rename')}</button><button class="btn small danger" data-del="${p.id}">${t('delete')}</button></div>` : ''}</div>`;
 }
 
+// Grown-ups only: a sum young children can't solve yet, before renaming or deleting profiles.
+function grownUpCheck(onPass) {
+  const a = 11 + Math.floor(Math.random() * 9), b = 3 + Math.floor(Math.random() * 7);
+  const box = $app.querySelector('#addform');
+  box.innerHTML = `<div class="add-form gate-form">
+    <h2>${t('gate_title')}</h2><p class="hint">${t('gate_body')}</p>
+    <p class="gate-sum" dir="ltr">${a} + ${b} = ?</p>
+    <input id="gateans" class="field" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="${t('gate_answer')}" placeholder="${t('gate_answer')}">
+    <p class="err" id="gateerr" role="alert"></p>
+    <div class="pair"><button class="btn" id="gatecancel">${t('cancel')}</button><button class="btn primary" id="gateok">${t('continue')}</button></div></div>`;
+  const input = box.querySelector('#gateans'); input.focus();
+  box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const check = () => {
+    if (Number(input.value.trim()) === a + b) return onPass();
+    box.querySelector('#gateerr').textContent = t('gate_wrong');
+    setTimeout(() => grownUpCheck(onPass), 1200);
+  };
+  box.querySelector('#gateok').addEventListener('click', check);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+  box.querySelector('#gatecancel').addEventListener('click', () => { box.innerHTML = ''; });
+}
+
 async function landing(manage = false) {
   const list = await migrateProfiles();
   const sums = await Promise.all(list.map(p => profileSummary(p)));
@@ -252,7 +274,7 @@ async function landing(manage = false) {
   </main>`);
   on('[data-l]', 'click', e => { setLang(e.currentTarget.dataset.l); landing(manage); });
   on('[data-open]', 'click', e => { const p = list.find(x => x.id === e.currentTarget.dataset.open); if (p) openProfile(p, './'); });
-  on('#manage', 'click', () => landing(!manage));
+  on('#manage', 'click', () => manage ? landing(false) : grownUpCheck(() => landing(true)));
   on('[data-del]', 'click', async e => {
     const p = list.find(x => x.id === e.currentTarget.dataset.del);
     if (p && confirm(t('delete_confirm', { n: p.name || (p.type === 'kid' ? t('mode_kids') : t('mode_adult')) }))) { await deleteProfile(p.id); landing(true); }
