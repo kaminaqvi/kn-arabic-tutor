@@ -3,10 +3,18 @@ import { today, addDays, daysBetween, newProgress, grade, newPerDay } from './sr
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback, geminiChat, stripMarks } from './speech.js';
 import { t, L, setLang, getLang } from './i18n.js';
 
-const APP_VERSION = '3.3.0';
+const APP_VERSION = '3.4.0';
 const APP_DATE = '2026-11-16';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
+
+// ---------- mode (grown-up or kids), remembered on this phone ----------
+const setMode = m => { try { localStorage.setItem('kn-mode', m); } catch (e) {} };
+const getMode = () => { try { return localStorage.getItem('kn-mode'); } catch (e) { return null; } };
+function toKids() { setMode('kids'); location.href = 'kids/'; }
+function modeSwitch() {
+  return `<div class="mode-switch" role="group" aria-label="${t('mode_label')}"><button class="on" aria-pressed="true">${t('mode_adult')}</button><button id="to-kids" aria-pressed="false">${t('mode_kids')}</button></div>`;
+}
 
 // ---------- version and updates ----------
 const newer = (a, b) => { const x = a.split('.').map(Number), y = b.split('.').map(Number); for (let i = 0; i < 3; i++) { if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0); } return false; };
@@ -221,10 +229,11 @@ function startOnboarding() {
   render(`<div class="welcome">
     <div class="welcome-art"><div class="iqra ar" lang="ar">اقْرَأْ</div><p class="iqra-note">${t('welcome_caption')}</p></div>
     <div class="welcome-text"><h1>${t('welcome_title')}</h1><p class="lead">${t('welcome_body')}</p></div>
-    <p class="center"><a class="kids-link" href="kids/">${t('kids_link')}</a></p>
+    <p class="center"><a class="kids-link" href="kids/" id="kids-link">${t('kids_link')}</a></p>
     <p class="hint center ver-line">${t('ver_label', { v: APP_VERSION })}</p>
     <div class="dock"><button class="btn primary" id="go">${t('start')}</button></div></div>`);
   on('#go', 'click', obLang);
+  on('#kids-link', 'click', e => { e.preventDefault(); toKids(); });
 }
 
 function tiles(name, options, selected, multi = false) {
@@ -371,6 +380,7 @@ async function home() {
   if (needBackup) notes.push(`<div class="note"><span>${t('backup_reminder')}</span><button class="btn small" id="bk">${t('backup_now')}</button></div>`);
 
   shell('today', `
+    <div class="top-row">${modeSwitch()}</div>
     <header class="today-head"><h1>${t('home_day', { n: dayN })}</h1><p class="lead">${left !== null ? t('home_goal_left', { n: left }) : t('home_no_goal')}</p></header>
     <section class="star-wrap">${starSvg(done8, st.streak, t('stat_streak'))}<p class="hint center">${t('star_caption')}</p></section>
     <section class="today-card ${st.doneToday ? 'done' : ''}">
@@ -389,6 +399,7 @@ async function home() {
   on('#start', 'click', () => startLevel(false));
   on('#again', 'click', () => startLevel(true));
   on('#more', 'click', () => startLevel(false, true));
+  on('#to-kids', 'click', toKids);
   on('#bk', 'click', doExport);
 }
 
@@ -914,12 +925,13 @@ function settings() {
     </section>
     <button class="btn primary wide" id="save">${t('save_settings')}</button>
     <h2 class="group-title">${t('kids_title')}</h2>
-    <section class="group"><a class="row-btn" href="kids/"><span><b>${t('kids_open')}</b><small>${t('kids_sub')}</small></span></a></section>
+    <section class="group"><a class="row-btn" href="kids/" id="kids-row"><span><b>${t('kids_open')}</b><small>${t('kids_sub')}</small></span></a></section>
     <h2 class="group-title">${t('about_title')}</h2>
     ${versionHtml()}
     <p class="hint">${t('about_body')}</p>
     <button class="btn danger wide" id="reset">${t('reset_btn')}</button>`);
   wireVersion(settings);
+  on('#kids-row', 'click', e => { e.preventDefault(); toKids(); });
   $app.querySelector('#lang').value = p.lang; $app.querySelector('#form').value = p.form; $app.querySelector('#min').value = String(p.minutes);
   on('#save', 'click', async () => {
     p.lang = $app.querySelector('#lang').value; p.form = $app.querySelector('#form').value;
@@ -1096,6 +1108,7 @@ async function copyReport() {
 // ---------- boot ----------
 async function boot() {
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => {});
+  if (getMode() === 'kids' && !location.hash.includes('grown-up')) { location.replace('kids/'); return; }
   await loadState();
   setLang(S.profile?.lang === 'ur' ? 'ur' : 'en');
   try { await loadContent(); }

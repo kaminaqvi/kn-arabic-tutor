@@ -4,7 +4,8 @@ import { db, kv, requestPersistence, exportData, importData } from './db.js';
 import { today, newProgress, grade } from './srs.js';
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice } from './speech.js';
 
-const KIDS_VERSION = '1.0.0';
+const KIDS_VERSION = '1.1.0';
+const setMode = m => { try { localStorage.setItem('kn-mode', m); } catch (e) {} };
 const $app = document.getElementById('app');
 const K = { profile: null, items: new Map(), pack: null, progress: new Map(), units: {}, stickers: [] };
 
@@ -22,11 +23,11 @@ const STR = {
     back_map: 'Back to map', sticker_book: 'My sticker book', sticker_count: '{n} of {t} collected',
     parent_hold: 'Grown-ups: hold for 2 seconds', parents: 'For parents', lang: 'Help language', sounds: 'Sound effects',
     on: 'On', off: 'Off', export: 'Save a backup file', import: 'Restore from a backup file', reset: 'Start again from zero',
-    reset_confirm: 'Delete all of this child’s progress on this phone?', adult_app: 'Open the grown-up app', close: 'Close',
+    reset_confirm: 'Delete all of this child’s progress on this phone?', adult_app: 'Switch to grown-up mode', close: 'Close',
     version: 'Kids version {v}', saved: 'Saved', imported: 'Backup restored', import_fail: 'That file is not a kids backup.',
     no_voice: 'Install an Arabic voice: phone Settings → Text-to-speech → Install voice data → Arabic.',
     quran_offline: 'Connect to the internet once to download the Qur’an recitation.', mic_fail: 'I could not hear you. Try again!',
-    tap_to_hear: 'Tap to hear', unit_n: 'Level {n}', play_again: 'Play again', save_btn: 'Save',
+    tap_to_hear: 'Tap to hear', unit_n: 'Level {n}', play_again: 'Play again', save_btn: 'Save', child_name: 'Child\u2019s name',
   },
   ur: {
     hello: 'مرحبا!', intro: 'آؤ تصویروں، آوازوں اور ستاروں کے ساتھ عربی سیکھیں۔', go: 'چلو شروع کریں',
@@ -40,11 +41,11 @@ const STR = {
     back_map: 'نقشے پر واپس', sticker_book: 'میری اسٹیکر بک', sticker_count: '{t} میں سے {n} جمع',
     parent_hold: 'بڑوں کے لیے: 2 سیکنڈ دبائے رکھیں', parents: 'والدین کے لیے', lang: 'مدد کی زبان', sounds: 'آوازیں',
     on: 'آن', off: 'آف', export: 'بیک اپ فائل محفوظ کریں', import: 'بیک اپ فائل سے بحال کریں', reset: 'شروع سے دوبارہ',
-    reset_confirm: 'اس فون سے بچے کی تمام پیش رفت مٹا دیں؟', adult_app: 'بڑوں کی ایپ کھولیں', close: 'بند کریں',
+    reset_confirm: 'اس فون سے بچے کی تمام پیش رفت مٹا دیں؟', adult_app: 'بڑوں کے موڈ پر جائیں', close: 'بند کریں',
     version: 'بچوں کا ورژن {v}', saved: 'محفوظ ہو گیا', imported: 'بیک اپ بحال ہو گیا', import_fail: 'یہ بچوں کی بیک اپ فائل نہیں ہے۔',
     no_voice: 'عربی آواز انسٹال کریں: فون کی Settings ← Text-to-speech ← Install voice data ← Arabic',
     quran_offline: 'قرآن کی تلاوت ڈاؤن لوڈ کرنے کے لیے ایک بار انٹرنیٹ سے جڑیں۔', mic_fail: 'آواز نہیں آئی۔ پھر سے کوشش کرو!',
-    tap_to_hear: 'سننے کے لیے دباؤ', unit_n: 'لیول {n}', play_again: 'پھر کھیلو', save_btn: 'محفوظ کریں',
+    tap_to_hear: 'سننے کے لیے دباؤ', unit_n: 'لیول {n}', play_again: 'پھر کھیلو', save_btn: 'محفوظ کریں', child_name: 'بچے کا نام',
   },
 };
 let lang = 'en';
@@ -365,19 +366,20 @@ function parents() {
   const p = K.profile;
   render(`<main class="k-screen k-parents">
     <header class="k-ltop"><button class="k-x" id="back" aria-label="${t('close')}">✕</button><h1 class="k-title">${t('parents')}</h1></header>
+    <button class="k-btn grown" id="grown">${t('adult_app')}</button>
     <label class="k-row">${t('lang')}<select id="lang" class="k-input"><option value="en">English</option><option value="ur">اردو</option></select></label>
     <label class="k-row">${t('sounds')}<select id="snd" class="k-input"><option value="1">${t('on')}</option><option value="0">${t('off')}</option></select></label>
-    <label class="k-row">${t('your_name')}<input id="name" class="k-input" maxlength="20" value="${esc(p.name)}"></label>
+    <label class="k-row">${t('child_name')}<input id="name" class="k-input" maxlength="20" value="${esc(p.name)}"></label>
     <button class="k-btn" id="save">${t('save_btn')}</button>
     <hr>
     <button class="k-btn ghost" id="exp">${t('export')}</button>
     <label class="k-btn ghost">${t('import')}<input type="file" id="imp" accept="application/json,.json" hidden></label>
-    <a class="k-btn ghost" href="../">${t('adult_app')}</a>
     <button class="k-btn danger" id="reset">${t('reset')}</button>
     <p class="k-small center">${t('version', { v: KIDS_VERSION })}</p>
   </main>`);
   $app.querySelector('#lang').value = p.lang; $app.querySelector('#snd').value = p.sounds === false ? '0' : '1';
   on('#back', 'click', map);
+  on('#grown', 'click', () => { setMode('adult'); location.href = '../#grown-up'; });
   on('#save', 'click', async () => {
     p.lang = $app.querySelector('#lang').value; p.sounds = $app.querySelector('#snd').value === '1'; p.name = $app.querySelector('#name').value.trim().slice(0, 20);
     await saveProfile(); setLang(p.lang); toast(t('saved')); map();
@@ -401,6 +403,7 @@ function parents() {
 
 // ---------- start ----------
 async function boot() {
+  setMode('kids');
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('../sw.js', { scope: '../', updateViaCache: 'none' }).catch(() => {});
   await loadState();
   setLang(K.profile?.lang || ((navigator.language || '').startsWith('ur') ? 'ur' : 'en'));
