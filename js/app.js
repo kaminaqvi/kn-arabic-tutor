@@ -3,7 +3,7 @@ import { today, addDays, daysBetween, newProgress, grade, newPerDay } from './sr
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback, geminiChat, stripMarks } from './speech.js';
 import { t, L, setLang, getLang } from './i18n.js';
 
-const APP_VERSION = '3.5.0';
+const APP_VERSION = '3.5.1';
 const APP_DATE = '2026-11-16';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
