@@ -52,10 +52,11 @@ h2 { font-size: 22px; font-weight: 600; margin: 22px 0 10px; }
 .k-buddy.on { border-color: var(--sun); transform: scale(1.05); }
 
 /* map */
-.k-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.k-me { display: flex; align-items: center; gap: 10px; font-size: 20px; }
-.k-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--paper); display: grid; place-items: center; font-size: 32px; box-shadow: 0 4px 0 var(--line); }
-.k-score { background: var(--paper); border-radius: 999px; padding: 6px 14px; font-weight: 800; font-size: 20px; box-shadow: 0 4px 0 var(--line); }
+.k-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 56px; }
+.k-me { display: flex; align-items: center; gap: 10px; font-size: 18px; min-width: 0; }
+.k-me b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.k-avatar { width: 46px; height: 46px; flex: none; border-radius: 50%; background: var(--paper); display: grid; place-items: center; font-size: 28px; box-shadow: 0 3px 0 var(--line); }
+.k-score { background: var(--paper); border-radius: 999px; padding: 4px 12px; font-weight: 800; font-size: 16px; line-height: 32px; box-shadow: 0 3px 0 var(--line); white-space: nowrap; }
 .k-book { display: flex; align-items: center; gap: 10px; width: 100%; margin: 16px 0 6px; padding: 12px 18px; border: 0; border-radius: 22px; background: var(--sun); box-shadow: 0 6px 0 var(--sun-dark); font-size: 18px; }
 .k-book span { font-size: 30px; } .k-book b { flex: 1; text-align: start; } .k-book small { font-weight: 800; }
 .k-path { list-style: none; margin: 18px 0 0; padding: 0; position: relative; }
@@ -159,3 +160,8 @@ html[dir=rtl] .k-meter i { margin-inline-start: auto; }
 .k-gate-msg { min-height: 28px; color: #C2334F; font-weight: 600; text-align: center; }
 .k-adultbar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
 .k-adultbar .k-grownups { margin-top: 0; }
+
+.k-tools { display: flex; align-items: center; gap: 6px; flex: none; }
+.k-tool { width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--paper); color: var(--soft); display: grid; place-items: center; box-shadow: 0 3px 0 var(--line); }
+.k-tool svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.k-tool:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--line); }

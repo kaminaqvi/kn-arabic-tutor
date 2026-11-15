@@ -5,7 +5,7 @@ import { today, newProgress, grade } from './srs.js';
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice } from './speech.js';
 import { activeProfile, updateProfile, createProfile, chooseProfile, setMode as setProfileMode } from './profiles.js';
 
-const KIDS_VERSION = '1.5.0';
+const KIDS_VERSION = '1.6.0';
 const setMode = setProfileMode;
 const $app = document.getElementById('app');
 const K = { profile: null, items: new Map(), pack: null, progress: new Map(), units: {}, stickers: [] };
@@ -104,6 +104,8 @@ const JAMAL = `<svg class="jamal" viewBox="0 0 220 190" role="img" aria-label="J
   <path d="M30 116c-10 2-14 10-12 18" class="j-tail"/>
 </svg>`;
 
+const ICON_SWITCH = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><path d="M16 5.5h5M19 3l2.5 2.5L19 8M21 13.5h-5M18 11l-2.5 2.5L18 16"/></svg>';
+const ICON_GEAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M5.5 18.5l2.1-2.1M16.4 7.6l2.1-2.1"/></svg>';
 const BUDDIES = ['🐪', '🦁', '🐱', '🦊', '🐼', '🐢'];
 const STICKERS = ['🐪', '🦁', '🐼', '🐬', '🦄', '🐢', '🦋', '🐞', '🌈', '🚀', '🌵', '🍉', '🧁', '🏆', '🎈', '🦜', '🐠', '🦒', '🐘', '🌙', '⭐', '🍭', '🎁', '🕌', '🐝', '🦉', '🐧', '🌻', '🍓', '⚽'];
 
@@ -186,9 +188,12 @@ function map() {
   render(`<main class="k-screen k-map">
     <header class="k-top">
       <span class="k-me"><span class="k-avatar">${esc(K.profile.buddy)}</span><b>${K.profile.name ? t('hi', { n: esc(K.profile.name) }) : t('hi_anon')}</b></span>
-      <span class="k-score" aria-label="${totalStars()} ${t('stars')}">⭐ ${totalStars()}</span>
+      <span class="k-tools">
+        <span class="k-score" aria-label="${totalStars()} ${t('stars')}">⭐ ${totalStars()}</span>
+        <button class="k-tool" id="switch" aria-label="${t('switch_profile')}" title="${t('switch_profile')}">${ICON_SWITCH}</button>
+        <button class="k-tool" id="grownups" aria-label="${t('settings_short')}" title="${t('settings_short')}">${ICON_GEAR}</button>
+      </span>
     </header>
-    <div class="k-adultbar"><button class="k-grownups" id="switch">👥 ${t('switch_profile')}</button><button class="k-grownups" id="grownups">⚙️ ${t('settings_short')}</button></div>
     <button class="k-book" id="book"><span>📒</span><b>${t('stickers')}</b><small>${K.stickers.length}/${STICKERS.length}</small></button>
     <ol class="k-path">${nodes}</ol>
     <footer class="k-foot"><small>${t('version', { v: KIDS_VERSION })}</small></footer>
