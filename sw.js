@@ -1,7 +1,9 @@
-// Service worker: app shell and lessons work offline; Qur'an text/audio and fonts are cached after first use.
-const VERSION = 'kn-v3.2.0';
+// Service worker.
+// App files: network first (so a new release shows up on the next open), cache as the offline fallback.
+// Qur'an text/audio and fonts: cache first after the first download.
+const VERSION = 'kn-v3.2.1';
 const SHELL = [
-  './', 'index.html', 'css/style.css', 'manifest.webmanifest',
+  './', 'index.html', 'css/style.css', 'manifest.webmanifest', 'version.json',
   'js/app.js', 'js/db.js', 'js/srs.js', 'js/speech.js', 'js/i18n.js',
   'content/index.json', 'content/foundations.json', 'content/umrah.json', 'content/shared.json', 'content/roleplays.json', 'content/quran.json', 'content/reading.json', 'content/conversation.json',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png',
@@ -9,7 +11,8 @@ const SHELL = [
 const RUNTIME = ['api.alquran.cloud', 'cdn.islamic.network', 'fonts.googleapis.com', 'fonts.gstatic.com'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  // cache: 'reload' skips the browser's HTTP cache, so a new release never precaches old files.
+  e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL.map(u => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
@@ -17,18 +20,29 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  const url = new URL(e.request.url);
-  if (e.request.method !== 'GET' || e.request.headers.has('range')) return; // audio streams: let the browser handle them
+  const req = e.request;
+  if (req.method !== 'GET' || req.headers.has('range')) return; // audio streams: let the browser handle them
+  const url = new URL(req.url);
   const sameOrigin = url.origin === self.location.origin;
-  if (sameOrigin && url.pathname.endsWith('/version.json')) return; // always ask the network for the latest version
-  if (!sameOrigin && !RUNTIME.includes(url.hostname)) return; // e.g. Gemini: always network
-  // Stale-while-revalidate: answer from cache at once, refresh in the background.
+  if (sameOrigin) {
+    e.respondWith((async () => {
+      const cache = await caches.open(VERSION);
+      try {
+        const fresh = await fetch(req, { cache: 'no-cache' });
+        if (fresh.ok && !url.pathname.endsWith('/version.json')) cache.put(req, fresh.clone());
+        return fresh;
+      } catch (err) {
+        return (await cache.match(req, { ignoreSearch: true })) || (req.mode === 'navigate' ? cache.match('index.html') : Response.error());
+      }
+    })());
+    return;
+  }
+  if (!RUNTIME.includes(url.hostname)) return; // e.g. Gemini: always network
   e.respondWith(caches.open(VERSION).then(async cache => {
-    const cached = await cache.match(e.request, { ignoreSearch: sameOrigin });
-    const network = fetch(e.request).then(resp => {
-      if (resp && (resp.ok || resp.type === 'opaque')) cache.put(e.request, resp.clone());
-      return resp;
-    }).catch(() => cached);
-    return cached || network;
+    const cached = await cache.match(req);
+    if (cached) return cached;
+    const resp = await fetch(req);
+    if (resp && (resp.ok || resp.type === 'opaque')) cache.put(req, resp.clone());
+    return resp;
   }));
 });

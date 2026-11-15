@@ -3,7 +3,7 @@ import { today, addDays, daysBetween, newProgress, grade, newPerDay } from './sr
 import { speak, playUrl, listen, judge, canRecognize, hasArabicVoice, record, geminiFeedback, geminiChat, stripMarks } from './speech.js';
 import { t, L, setLang, getLang } from './i18n.js';
 
-const APP_VERSION = '3.2.0';
+const APP_VERSION = '3.2.1';
 const APP_DATE = '2026-11-16';
 const DEFAULT_MODEL = 'gemini-flash-latest';
 const $app = document.getElementById('app');
@@ -221,6 +221,7 @@ function startOnboarding() {
   render(`<div class="welcome">
     <div class="welcome-art"><div class="iqra ar" lang="ar">اقْرَأْ</div><p class="iqra-note">${t('welcome_caption')}</p></div>
     <div class="welcome-text"><h1>${t('welcome_title')}</h1><p class="lead">${t('welcome_body')}</p></div>
+    <p class="hint center ver-line">${t('ver_label', { v: APP_VERSION })}</p>
     <div class="dock"><button class="btn primary" id="go">${t('start')}</button></div></div>`);
   on('#go', 'click', obLang);
 }
@@ -1091,7 +1092,7 @@ async function copyReport() {
 
 // ---------- boot ----------
 async function boot() {
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => {});
   await loadState();
   setLang(S.profile?.lang === 'ur' ? 'ur' : 'en');
   try { await loadContent(); }
